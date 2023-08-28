@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/pageReceitas.css">
+    <link rel="stylesheet" href="css/.css">
     <title>Página de Receitas</title>
 </head>
 <body>
@@ -56,7 +56,10 @@
 
 
         <div id="cards-conteiner">    
-            <div class="card">
+            <?php include('../configuration/generate_cards.php');?>
+        </div>
+
+        <!-- <div class="card">
                 <div><img src="https://static.itdg.com.br/images/1200-630/901f400bf4dd4e6e9e2ab65bcec454d8/354055-original.jpg" alt="" width="100%"></div>
                 <div><a href="pageReceitas.php">Receitas</a></div>
             </div>
@@ -84,8 +87,7 @@
             <div class="card">
                 <div><img src="css\imagens\Cookbook.png" alt=""></div>
                 <div><a href="">Categorias</a></div>
-            </div>
-        </div>
+            </div> -->
     </section>
 
 </body>
