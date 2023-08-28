@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/pageLivroReceitas.css">
     <title>Página de Receitas</title>
 </head>
-<body>fd
+<body>
     
     <header class="header">
         <div class="usuario">
