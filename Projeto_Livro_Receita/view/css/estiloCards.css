@@ -2,7 +2,7 @@
     font-size: 12px;
     width: auto;
     height: auto;
-    padding-left: 30%;
+    padding-left: 25%;
     padding-top: 6%;
     text-align: left;
 }
@@ -23,9 +23,17 @@ hr{
     margin-bottom: 30px;
 }
 
+.conteiner-cards{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
 
 
 .card{
+    flex-grow: 0;
+    flex-basis: 300px;
     background-color: #FD7058;
     text-align: left;
     height: auto;
@@ -36,8 +44,8 @@ hr{
     border-radius: 17px;
     box-shadow: 1px 4px 10px #000;
     transition: 0.3s;
+   
 }
-
 
 .card a{
     color: #ffff;
@@ -97,4 +105,8 @@ hr{
 
 .edicaoReceita a{
     margin-right: 5px;
+}
+
+.edicaoReceita img + img {
+    margin-left: 10px;
 }

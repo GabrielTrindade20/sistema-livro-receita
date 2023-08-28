@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/.css">
+    <link rel="stylesheet" href="css/estiloCards.css">
     <title>Página de Receitas</title>
 </head>
 <body>
@@ -25,10 +25,10 @@
             <a href="homePage.php">Home</a>
             <a href="pageReceitas.php">Receitas</a>
             <a href="pageLivroReceitas.php">Livro de Receitas</a>
-            <a href="">Categoria</a>
-            <a href="">Cargo</a>
-            <a href="">Funcionários</a>
-            <a href="">Restaurantes</a>
+            <a href="pageCategoria">Categoria</a>
+            <a href="pageCargo">Cargo</a>
+            <a href="pageFuncionario">Funcionários</a>
+            <a href="pageRestaurante">Restaurantes</a>
         </div>
 
         <div id="perfil">
@@ -55,39 +55,28 @@
         <hr>
 
 
-        <div id="cards-conteiner">    
-            <?php include('../configuration/generate_cards.php');?>
+        <div class="conteiner-cards">
+        <?php include('../configuration/generate_cards.php');?>
+
+
+
+    
+        
+        <!-- EXEMPLO DE COMO É PARA FICAR
+            <div class="card">
+                <div><img src="https://static.itdg.com.br/images/1200-630/901f400bf4dd4e6e9e2ab65bcec454d8/354055-original.jpg" alt=""></div>
+                <div class="conteudo-card">
+                    <div class="nomeReceita">
+                        <a href="pageReceitas.php">Receitas de Milho</a>
+                    </div>
+                    <div class="edicaoReceita">
+                        <div><a href=""><img src="css\imagens\editar.png" alt=""></a></div>
+                        <div><a href=""><img src="css\imagens\delete.png" alt=""></a></div>
+                    </div>
+                </div>
+            </div>  -->
+
         </div>
-
-        <!-- <div class="card">
-                <div><img src="https://static.itdg.com.br/images/1200-630/901f400bf4dd4e6e9e2ab65bcec454d8/354055-original.jpg" alt="" width="100%"></div>
-                <div><a href="pageReceitas.php">Receitas</a></div>
-            </div>
-
-            <div class="card">
-                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                <div><a href="pageLivroReceitas.php">Livros de Receitas</a></div>
-            </div>
-
-            <div class="card">
-                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                <div><a href="">Categorias</a></div>
-            </div>
-
-            <div class="card">
-                <div><img src="css\imagens\Tableware.png" alt="" width="90px"></div>
-                <div><a href="E:\FACULDADE\4 Semestre\Laboratório de Inovação IV\1 bi\Projeto_Livro_Receita\view\pageReceitas.php">Receitas</a></div>
-            </div>
-
-            <div class="card">
-                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                <div><a href="">Livros de Receitas</a></div>
-            </div>
-
-            <div class="card">
-                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                <div><a href="">Categorias</a></div>
-            </div> -->
     </section>
 
 </body>

@@ -54,7 +54,14 @@
         </div>
         <hr>
 
-            <?php include('../configuration/generate_cards.php');?>   
+
+        <div class="conteiner-cards">
+        <?php include('../configuration/generate_cards.php');?>
+
+
+
+    
+        
 
             <!-- <div class="card">
                 <div><img src="https://static.itdg.com.br/images/1200-630/901f400bf4dd4e6e9e2ab65bcec454d8/354055-original.jpg" alt=""></div>
@@ -106,9 +113,8 @@
                         <div><a href=""><img src="css\imagens\delete.png" alt=""></a></div>
                     </div>
                 </div>
-            </div>
-
+            </div> -->
+        </div>
     </section>
-
 </body>
 </html>

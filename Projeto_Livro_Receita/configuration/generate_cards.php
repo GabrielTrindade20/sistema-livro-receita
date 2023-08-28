@@ -30,12 +30,10 @@
                     echo '</div>';
                 
                 echo '</div>'; // Fecha div "conteudo-card"
-            echo '</div>'; 
-                
-            echo '</div>';
+            echo '</div>';                 
         }
     } else {
-    echo "Nenhum card encontrado.";
+        echo "Nenhum card encontrado.";
     }
 
     $conn->close();
