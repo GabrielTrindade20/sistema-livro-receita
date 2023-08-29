@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/pageCargo.css">
+    <link rel="stylesheet" href="css/estiloTable.css">
     <title>Página de Receitas</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
 
         <div id="perfil">
             <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="">
-            <a href="">Perfil</a>
+            <a href="">Vitor Braga</a>
         </div>
     </nav>
 
@@ -55,7 +55,7 @@
         <hr>
 
 
-        <div id="cards-conteiner">    
+        <div class="conteiner-table">    
             <table>
                 <tr id="titulo-cards">
                     <th id="descricao">Descrição</th>

@@ -55,16 +55,16 @@
         <hr>
 
 
-        <div id="cards-conteiner">    
+        <div class="conteiner-table">    
             <table>
                 <tr id="titulo-cards">
-                    <th id="descricao">Restaurantes</th>
-                    <th id="pseudonimo" colspan="2">Contato</th>
-                    <th id="operacao" colspan="2">Operações</th>
+                    <th id="contato" colspan="">Contato</th>
+                    <th id="telefone" colspan="2">Telefone</th>
+                    <th id="operacao" colspan="3">Operação</th>
                 </tr>
                 
                 <tr>
-                    <td>Ondas Burguer<td>
+                    <td>dsfdfa<td>
                     <td>(61) 98456-1468<td>
                     <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
                 </tr>

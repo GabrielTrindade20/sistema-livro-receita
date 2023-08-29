@@ -1,12 +1,9 @@
 <!-- Conexão com o banco de dados --->
 <?php
-
-<<<<<<< HEAD
     // define('HOST', 'localhost');
     // define('DATABASENAME', 'livro_receita_dev');
     // define('USER', 'adm_LivroReceitas');
     // define('PASSAWORD', 'livro123');
-=======
 // Conexão local, usuario, senha, banco de dados
 $host = 'localhost';
 $usuario = 'adm_LivroReceitas';
@@ -22,7 +19,5 @@ if (mysqli_connect_errno()) {
     printf("Erro ao conectar ao banco de dados: %s<br> ", mysqli_connect_error() );
     exit();
 }
->>>>>>> 8253baf2cb5806d6385071c1ee128e338eda0d9d
-
     
 ?>

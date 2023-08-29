@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/pageCategoria.css">
+    <link rel="stylesheet" href="css/estiloTable.css">
     <title>Página de Receitas</title>
 </head>
 <body>
@@ -55,7 +55,7 @@
         <hr>
 
 
-        <div id="cards-conteiner">    
+        <div class="conteiner-table">    
             <table>
                 <tr id="titulo-cards">
                     <th id="descricao">Descrição</th>

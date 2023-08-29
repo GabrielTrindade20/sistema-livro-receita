@@ -74,3 +74,7 @@ td img{
     width: 15px;
     height: 17px;
 }
+
+#operacao{
+    text-align: right;
+}

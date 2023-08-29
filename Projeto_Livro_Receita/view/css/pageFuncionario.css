@@ -32,11 +32,7 @@ table{
     border-radius: 15px;
 }
 
-#titulo-cards{
-    line-height: 50px;
-    width: 100%;
-    align-items: center;
-}
+
 
 tr{
     line-height: 30px;

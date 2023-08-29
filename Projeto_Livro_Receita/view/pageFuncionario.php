@@ -55,23 +55,23 @@
         <hr>
 
 
-        <div id="cards-conteiner">    
+        <div class="conteiner-table">    
             <table>
                 <tr id="titulo-cards">
                     <th id="descricao">Nome</th>
-                    <th id="pseudonimo" colspan="2">Pseudônimo</th>
-                    <th id="cargo" colspan="2">Cargo</th>
-                    <th id="operacao" colspan="2">Operações</th>
+                    <th id="pseudonimo">Pseudônimo</th>
+                    <th id="cargo">Cargo</th>
+                    <th id="operacao" colspan="1">Operações</th>
                 </tr>
                 
                 <tr>
-                    <td>Ana Julia<td>
-                    <td>Catarina<td>
-                    <td>Degustador</td>
+                    <td>lksdfjaç</td>
+                    <td>lksdfjaç</td>
+                    <td>lksdfjaç</td>
                     <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
                 </tr>
 
-                <tr>
+                <!-- <tr>
                     <td>Roberto<td>
                     <td>Robert<td>
                     <td>Editor</td>
@@ -83,7 +83,7 @@
                     <td>Clara<td>
                     <td>Cozinheiro</td>
                     <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
-                </tr>
+                </tr> -->
 
                 
             </table>
