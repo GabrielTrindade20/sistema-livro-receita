@@ -1,3 +1,6 @@
+<?php
+include_once('../controller/protect.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,6 +41,10 @@
     </nav>
 
     <section class="conteiner-conteudo">
+        <p>
+            <a href="../controller/logoutController.php">Sair</a>
+        </p>
+
         <div class="titulos" id="titulo">
             <h1>Bem-Vindo</h1>
         </div>

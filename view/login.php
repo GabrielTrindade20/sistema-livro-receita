@@ -1,3 +1,6 @@
+<?php
+include_once('../controller/LoginController.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,13 +20,17 @@
                 </div>
             </section>
             
-            <section id="section-direita">           
+            <section id="section-direita">  
+            <?php if (isset($mensagem)): ?>
+                <div><?php echo $mensagem; ?></div>
+            <?php endif; ?>
+         
                 <div id="conteiner-formulario">
                     <div id="conteiner-dados">
                             <h2 class="titulo"><a href="">Login</a></h2>
 
-                        <form action="">                        
-                            <input type="text" name="name" id="name" placeholder="nome">
+                        <form action="" method="POST">                        
+                            <input type="text" name="nome" id="name" placeholder="nome">
 
                             <input type="password" name="senha" id="senha" placeholder="senha">
 
