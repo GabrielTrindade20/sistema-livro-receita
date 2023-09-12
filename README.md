@@ -57,6 +57,6 @@ VISUAL STUDIO CODE (editor de código)
 
 ## :octocat: Para iniciar o projeto use: <br>
 ```
-git clone 
+git clone https://github.com/GabrielTrindade20/Projeto-Livro-Receta.git
 ```
 
