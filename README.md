@@ -11,7 +11,7 @@
 Patrícia Suellen
 Geovanna Alcântara
 Gabriel Rocha
-Guirmelhe
+Guilherme Ribeiro
 Deibson
 ```
 ## PADRÃO DO PROJETO
