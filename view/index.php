@@ -23,9 +23,11 @@ include_once('../controller/LoginController.php');
             </section>
             
             <section id="section-direita">  
-            <?php if (isset($mensagem)): ?>
-                <div><?php echo $mensagem; ?></div>
-            <?php endif; ?>
+                <div id="erro-login">
+                    <?php if (isset($mensagem)): ?>
+                        <div><?php echo $mensagem; ?></div>
+                    <?php endif; ?>
+                </div>
          
                 <div id="conteiner-formulario">
                     <div id="conteiner-dados">

@@ -25,6 +25,16 @@
     margin-top: 50px;
 }
 
+#erro-login{
+    padding-left: 15px;
+    color: #EEB253;
+    font-size: 15pt;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    top: 0%;
+    background-color: #005a0a94;
+}
 
 #conteiner-formulario{
     padding-top: 20%;
