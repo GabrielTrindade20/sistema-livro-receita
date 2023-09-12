@@ -79,7 +79,7 @@ nav{
 .menu-lateral{
     background-color: #EEB253;
     width: auto;
-    padding-right: 50px;
+    padding-right: 80px;
     height: 100%;
     float: left;
     position: fixed;
@@ -106,7 +106,7 @@ nav{
 }
 
 #a-menu a{
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     width: auto;
     padding-left: 50px;
@@ -120,7 +120,7 @@ nav{
     display: inline-flex;
     align-items: center;
     text-align: left;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 0px auto;
     background-color: rgb(247,247,247, 0.5);
     border-radius: 10px;
@@ -136,7 +136,7 @@ nav{
 }
 
 #perfil img{
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     border-radius: 35px;
     margin-right: 10px;
     margin-left: 10px;
@@ -147,10 +147,10 @@ nav{
 .conteiner-conteudo{
     width: auto;
     height: auto;
-    padding-left: 25%;
+    padding-left: 300px;
     padding-top: 2%;
     text-align: left;
     display: block;
-    margin-left: 5%;
+    margin-left: auto;
 }
 
