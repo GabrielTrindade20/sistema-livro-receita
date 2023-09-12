@@ -4,7 +4,7 @@
 
 **Descrição:** informatizar acervo de receitas e comercialização de livros de receitas.<br>
 
-**Funcionalidades:** CRUD de receitas, livros, cargos, funcionarios, etc., respeitando as regras de acesso aoa sistema.
+**Funcionalidades:** CRUD de receitas, livros, cargos, funcionarios, etc., respeitando as regras de acesso ao sistema.
 
 ## Grupo - turma ADS-M-4ºS_2023
 ```
@@ -57,6 +57,6 @@ VISUAL STUDIO CODE (editor de código)
 
 ## :octocat: Para iniciar o projeto use: <br>
 ```
-git clone 
+git clone https://github.com/GabrielTrindade20/Projeto-Livro-Receta.git
 ```
 
