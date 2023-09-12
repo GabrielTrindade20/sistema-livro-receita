@@ -8,7 +8,7 @@ include_once('../controller/protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="css/homePage.css">
     <title>Página Principal</title>
 </head>
 <body>
@@ -37,17 +37,26 @@ include_once('../controller/protect.php');
         <div id="perfil">
             <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="">
             <a href="">Perfil</a>
+            <a href="../controller/logoutController.php">Sair</a>
         </div>
     </nav>
 
     <section class="conteiner-conteudo">
-        <p>
-            <a href="../controller/logoutController.php">Sair</a>
-        </p>
+
 
         <div class="titulos" id="titulo">
             <h1>Bem-Vindo</h1>
         </div>
+
+        <div class="box-busca">
+            <div class="search-box">
+                <form method="post" action="#">
+                    <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
+                    <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
+                
+                </form>
+            </div><!-- Search -->
+        </div><!--Box Busca-->
 
         <div id="sub-titulo">
             <h2>Acesso Rápido</h2>

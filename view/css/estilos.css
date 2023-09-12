@@ -80,7 +80,7 @@ nav{
     background-color: #EEB253;
     width: auto;
     padding-right: 50px;
-    height: 900px;
+    height: 100%;
     float: left;
     position: fixed;
     z-index: 1;
@@ -153,3 +153,4 @@ nav{
     display: block;
     margin-left: 5%;
 }
+

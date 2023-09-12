@@ -70,21 +70,6 @@
                     <td>lksdfjaç</td>
                     <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
                 </tr>
-
-                <!-- <tr>
-                    <td>Roberto<td>
-                    <td>Robert<td>
-                    <td>Editor</td>
-                    <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
-                </tr>
-
-                <tr>
-                    <td>Clarencio<td>
-                    <td>Clara<td>
-                    <td>Cozinheiro</td>
-                    <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
-                </tr> -->
-
                 
             </table>
         </div>
