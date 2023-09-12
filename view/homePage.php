@@ -56,35 +56,48 @@ include_once('../controller/protect.php');
 
         <div id="cards-conteiner">
             
-            <div class="card">
-                <div><img src="css\imagens\Tableware.png" alt="" width="90px"></div>
-                <div><a href="pageReceitas.php">Receitas</a></div>
-            </div>
+            <a href="pageReceitas.php">
+                <div class="card">
+                    <div><img src="css\imagens\Tableware.png" alt="" width="90px"></div>
+                    <div><a href="pageReceitas.php">Receitas</a></div>
+                </div>
+            </a>
+            
 
-            <div class="card">
-                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                <div><a href="pageLivroReceitas.php">Livros de Receitas</a></div>
-            </div>
+            <a href="pageLivroReceitas.php">
+                <div class="card">
+                    <div><img src="css\imagens\Cookbook.png" alt=""></div>
+                    <div><a href="pageLivroReceitas.php">Livros de Receitas</a></div>
+                </div>
+            </a>
 
-            <div class="card">
-                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                <div><a href="pageCategoria.php">Categorias</a></div>
-            </div>
+            <a href="pageCategoria.php">
+                <div class="card">
+                    <div><img src="css\imagens\Cookbook.png" alt=""></div>
+                    <div><a href="pageCategoria.php">Categorias</a></div>
+                </div>
+            </a>
 
-            <div class="card">
-                <div><img src="css\imagens\Restaurant.png" alt=""></div>
-                <div><a href="pageCargo.php">Cargo</a></div>
-            </div>
+            <a href="pageCargo.php">
+                <div class="card">
+                    <div><img src="css\imagens\Restaurant.png" alt=""></div>
+                    <div><a href="pageCargo.php">Cargo</a></div>
+                </div>
+            </a>
 
-            <div class="card">
-                <div><img src="css\imagens\Management.png" alt=""></div>
-                <div><a href="pageFuncionario.php">Funcionários</a></div>
-            </div>
+            <a href="pageFuncionario.php">
+                <div class="card">
+                    <div><img src="css\imagens\Management.png" alt=""></div>
+                    <div><a href="pageFuncionario.php">Funcionários</a></div>
+                </div>
+            </a>
 
-            <div class="card">
-                <div><img src="css\imagens\Restaurant.png" alt=""></div>
-                <div><a href="pageRestaurante.php">Restaurantes</a></div>
-            </div>
+            <a href="ageRestaurante.php">
+                <div class="card">
+                    <div><img src="css\imagens\Restaurant.png" alt=""></div>
+                    <div><a href="pageRestaurante.php">Restaurantes</a></div>
+                </div>
+            </a>
         </div>
     </section>
 
