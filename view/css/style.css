@@ -1,0 +1,108 @@
+
+#div-logo{
+    margin: auto 5%;
+    width: 50%;
+}
+
+#div-logo img{
+    width: 170%;
+    margin-top: 250px;
+}
+
+#section-esquerda{
+    width: 40%;
+    align-items: center;
+    background-color: #EEB253;
+    height: 100%;
+    position: fixed;
+    float: left;
+}
+
+#section-direita{
+    width: 60%;
+    float: right;
+    margin-left: 30%;
+    margin-top: 50px;
+}
+
+
+#conteiner-formulario{
+    padding-top: 20%;
+    width: 100%;
+}
+
+#conteiner-dados{
+    margin: auto 20% auto 20%;
+    height: 300px;
+    text-align: center;
+    width: 60%;
+}
+
+form{
+    text-align: center;
+    padding: 10px; 
+    width: 60% auto;
+    display: grid;
+    margin: 0%;
+}
+
+
+input{
+    width: 90%;
+    margin-top: 20px;
+    padding: 3%;
+    border-radius: 20px;
+    border: 1px solid;
+}
+
+#redefSenha{
+    margin-top: 10px;
+}
+
+#name::placeholder{
+    background-image: url("https://png.pngtree.com/png-vector/20190411/ourmid/pngtree-vector-business-men-icon-png-image_925963.jpg");
+    text-align: left;
+    background-position: left;
+    background-size: 1rem;
+    background-repeat: no-repeat;
+    padding: 20px;
+    font-weight: 500;
+}
+
+#senha::placeholder{
+    background-image: url("https://e7.pngegg.com/pngimages/102/821/png-clipart-padlock-computer-icons-padlock-technic-padlock.png");
+    text-align: left;
+    background-position: left;
+    background-size: 1rem;
+    background-repeat: no-repeat;
+    padding: 20px;
+    font-weight: 500;
+
+}
+
+h2 a{
+    color: #EEB253;
+    font-size: 2rem;
+    text-decoration: none;
+    border-bottom: 5px solid black;
+    padding-bottom: 3px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+#botao{
+    color: white;
+    background-color: #01093F;
+    opacity: 80%;
+    width: 97%;
+}
+
+p{
+    margin-top: 5px;
+    font-size: 9pt;
+}
+
+span a{
+    color: #EEB253;
+}
+

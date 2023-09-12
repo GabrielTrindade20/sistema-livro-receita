@@ -8,15 +8,17 @@ include_once('../controller/LoginController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css"> 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>login</title>
 </head>
 <body>
 
     <header>
             <section id="section-esquerda">
-                <div class="div-logo" id="section1">
-                    <div id="logo">logo</div>
+                <div id="div-logo" id="section1">
+                    <a href="">
+                        <img src="css/imagens/logo.png" alt="logo">
+                    </a>
                 </div>
             </section>
             
