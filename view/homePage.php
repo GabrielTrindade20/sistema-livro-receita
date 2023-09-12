@@ -22,7 +22,7 @@ include_once('../controller/protect.php');
 
     <nav class="menu-lateral">
         <div class="links-menu">
-            <img src="https://img.freepik.com/vetores-premium/modelo-de-vetor-de-design-de-logotipo-de-chef-de-cozinha_15146-1164.jpg?w=2000" alt="">
+            <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a>
         </div>
         <div class="links-menu" id="a-menu">
             <a href="homePage.php">Home</a>

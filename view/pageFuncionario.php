@@ -19,13 +19,14 @@
 
     <nav class="menu-lateral">
         <div class="links-menu">
-            <img src="https://img.freepik.com/vetores-premium/modelo-de-vetor-de-design-de-logotipo-de-chef-de-cozinha_15146-1164.jpg?w=2000" alt="">
+            <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a>
         </div>
         <div class="links-menu" id="a-menu">
             <a href="homePage.php">Home</a>
             <a href="pageReceitas.php">Receitas</a>
             <a href="pageLivroReceitas.php">Livro de Receitas</a>
             <a href="pageCategoria.php">Categoria</a>
+            <a href="pageDegustacao.php">Degustação</a>
             <a href="pageCargo.php">Cargo</a>
             <a href="pageFuncionario.php">Funcionários</a>
             <a href="pageRestaurante.php">Restaurantes</a>

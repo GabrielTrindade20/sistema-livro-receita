@@ -86,12 +86,6 @@ nav{
     z-index: 1;
 }
 
-.links-menu img{
-    margin-bottom: 20px;
-    width: 100px;
-    padding-left: 50px;
-}
-
 .links-menu{
     width: auto;
     text-align: justify;
