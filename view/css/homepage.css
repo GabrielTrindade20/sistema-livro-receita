@@ -5,45 +5,59 @@
 }
 
 #sub-titulo{
-    margin-left: 10px;
+    display: grid;
+    width: auto;
+    grid-template-columns: 35% 25% 35%;
+    margin-right: 50px;
+    text-align: center;
+    align-items: center;
+}
+#sub-titulo hr{
+    margin: 0px;
+    width: 100%;
+}
+#sub-titulo h2{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px 0px;
+    font-size: 13px;
 }
 
-hr{
-    width: 95%;
-    margin-bottom: 30px;
+.cards-conteiner{ 
+    display: block; 
+    text-align: center;
 }
 
-.card-container {
+#cards-conteiner-1{
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between; /* Distribui o espaço entre as linhas */
+}
+#cards-conteiner-2{
+    display: flex;
 }
 
 .card{
-    background-color: #FD7058;
+    background-color: #EEB253;
     text-align: center;
-    display: inline-block;
+    display: block;
     height: 120px;
-    margin: 1%;
-    width: 20%;
-    padding: 15px 25px 15px 25px;
-    position:-webkit-sticky;
-    border-radius: 17px;
+    margin: 3% 5% 3% 0%;
+    width: 15%;
+    padding: 1% 1% 2% 1%; 
+    border-radius: 3px;
     box-shadow: 1px 4px 10px #000;
     transition: 0.3s;
 
 }
 
 .card img{
-    margin-top: 3%;
-    margin-bottom: 15px;
+    width: 70%;
+    margin-top: 0px;
 }
 
 .card a{
     color: #ffff;
     text-align: center;
-    font-size: 10pt;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -54,7 +68,6 @@ hr{
     width: auto;
     margin-left: 20%;
     margin-bottom: 30px;
-    background-color: #ffffff;
 }
 
 .search-box{
@@ -64,7 +77,7 @@ hr{
 
 
 .search-box-input::placeholder {   
-    color:#ffffff;
+    color:#000000;
     opacity: 0.6;
 }
 
@@ -79,53 +92,44 @@ hr{
 
 
 .search-box form {
+    width: 100%;
     display: flex;
     border-radius: 50px;
     border: 1px solid rgba(0, 0, 0, 0.347);
-    background-color: white;
     height: 30px;
-
-}
-
-input[type='submit']{
-    padding: 15px;
+    color: #000;
 }
 
 .search-box-input {
-    padding-left: 30px;
+    padding-left: 15px;
     padding-right: 20px;
-    width: 100%;
-    font-size: 1em;
-    color: rgb(0, 0, 0);
+    float: left;
+    width: 90%;
+    font-size: 1rem;
     border: none;
     background: none;
     transition: .45s;
+}
 
+input[placeholder]{
+    color: #000000;
 }
 
 .search-box-button {
    display: flex;
-   width: 100%;
-   height: 100%;
+   float: right;
+   width: 10%;
    background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
    text-align: left;
-   background-color: #fff;
+   background-color: rgb(255, 255, 255);
    background-position: right;
    background-size: 1.5rem;
    background-repeat: no-repeat;
-   margin-right: 10px;
-   padding: 0px;
+   margin: 0px 15px 0px auto;
    font-weight: 500;
    border: none;
    border-radius: 15px;
    cursor: pointer;
    transition: .3s;
-
-}
-
-.search-box-icone {
-
-    margin: auto;
-    color: #fff;
 
 }
