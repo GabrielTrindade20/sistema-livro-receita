@@ -96,7 +96,7 @@ nav{
 
 /* Estilo para a logo */
 .logo img {
-  width: 100px;
+  width: 200px;
   margin: 20px auto;
   display: block;
 }
@@ -127,19 +127,19 @@ nav{
   font-weight: 500;
 }
 
-/* Estilo para a linha horizontal */
-.menu-lateral hr {
+/* Estilo para a linha separadora entre o menu e o perfil */
+.linha-separadora-menu {
   background-color: #01093F;
   height: 1px;
-  margin: 20px 0;
+  width: 100%; /* Defina a largura total do menu lateral */
+  margin: 15px 0px 15px 0px; /* Margem superior e inferior para manter a distância desejada */
 }
-
-/* Estilo para o perfil */
+/* Estilos para o perfil */
 .conteiner-perfil {
-  padding: 20px;
   background-color: #fff;
+  margin-top: 15px; /* Margem superior para posicionar abaixo da linha */
+  position: relative;
 }
-
 /* Estilo para o perfil do usuário */
 .perfil {
   display: flex;
@@ -152,6 +152,7 @@ nav{
   color: #01093F;
   text-decoration: none;
   margin-right: 10px;
+  font-size: 1rem;
 }
 
 /* Estilo para a imagem de perfil */

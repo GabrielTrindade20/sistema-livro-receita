@@ -22,7 +22,7 @@ include_once('../controller/protect.php');
 
     <nav class="menu-lateral">
         <div class="logo">
-            <!-- <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a> -->
+            <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a>
         </div>
 
         <div class="links-menu">
@@ -108,22 +108,24 @@ include_once('../controller/protect.php');
             
         </div>
 
-        <hr>
+        <hr class="linha-separadora-menu">
+        
         <div class="conteiner-perfil">
             <div class="perfil">
                 <div>
                     <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="">
                 </div>
-
+                
                 <div>
                     <a href="">Gabriel Rocha</a>
                 </div>
-
+                
                 <div>
                     <a href="../controller/logoutController.php">Sair</a>
                 </div>
             </div>
         </div>
+        
     </nav>
 
     <section class="conteiner-conteudo">
