@@ -23,16 +23,27 @@
     font-size: 13px;
 }
 
-.cards-conteiner{ 
-    display: block; 
-    text-align: center;
+.cards-conteiner{
+    margin-right: 100px;
 }
 
 #cards-conteiner-1{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 90px); /* Quatro colunas com largura de 100px cada */
+    grid-gap: 10%; /* Espaçamento entre os cards */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-content: center; /* Centraliza verticalmente */
+    margin-top: 20px; /* Ajuste o espaçamento superior conforme necessário */
+    text-align: center;
 }
 #cards-conteiner-2{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 90px); /* Quatro colunas com largura de 100px cada */
+    grid-gap: 10%; /* Espaçamento entre os cards */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-content: center; /* Centraliza verticalmente */
+    margin-top: 20px; /* Ajuste o espaçamento superior conforme necessário */
+    text-align: center;
 }
 
 .card{
@@ -40,9 +51,9 @@
     text-align: center;
     display: block;
     height: 120px;
-    margin: 3% 5% 3% 0%;
-    width: 15%;
-    padding: 1% 1% 2% 1%; 
+    margin: 10% 5% 3% 0%;
+    width: 100px;
+    padding: 5px 15px 20px 15px; 
     border-radius: 3px;
     box-shadow: 1px 4px 10px #000;
     transition: 0.3s;
@@ -50,8 +61,8 @@
 }
 
 .card img{
-    width: 70%;
-    margin-top: 0px;
+    width: 50%;
+    margin-top: 15px;
 }
 
 .card a{
