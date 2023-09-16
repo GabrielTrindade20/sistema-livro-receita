@@ -9,7 +9,7 @@ include_once('../controller/LoginController.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css"> 
     <link rel="stylesheet" href="css/style.css">
-    <title>login</title>
+    <title>Login</title>
 </head>
 <body>
 
@@ -34,9 +34,9 @@ include_once('../controller/LoginController.php');
                             <h2 class="titulo"><a href="">Login</a></h2>
 
                         <form action="" method="POST">                        
-                            <input type="text" name="nome" id="name" placeholder="nome">
+                            <input type="text" name="nome" id="name" placeholder="nome" required>
 
-                            <input type="password" name="senha" id="senha" placeholder="senha">
+                            <input type="password" name="senha" id="senha" placeholder="senha" required>
 
                             <input type="submit" value="Entrar" id="botao">
                         </form>

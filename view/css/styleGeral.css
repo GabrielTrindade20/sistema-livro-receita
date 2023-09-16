@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+:root {
+    --blue: #01093F;
+    --white: #ffffff;
+    --black: #000000;
+    --laranja: #EEB253;
+}
+
 *{
     margin: 0px;
     padding: 0px;
@@ -38,7 +45,7 @@ h2{
 
 .header{
     float: right;
-    background-color: #01093F;
+    background-color: var(--blue);
     padding: 10px;
     width: 100%;
     height: 40px;
@@ -54,7 +61,7 @@ h2{
 }
 
 .usuario div{
-    color: white;
+    color: var(--white);
     width: auto;
     text-align: right;
     vertical-align: middle;
@@ -65,7 +72,7 @@ h2{
 
 .usuario img{
     width: 40px;
-    background-color: white;
+    background-color: var(--white);
     border-radius: 50px;
 }
 
@@ -78,110 +85,108 @@ nav{
 
 /* Estilo base para o menu lateral */
 .menu-lateral {
-    background-color: #EEB253;
-    width: 250px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-    padding-right: 50px;
-  }
-  
-  /* Estilo para a logo */
-  .logo img {
-    width: 200px;
-    margin: 20px auto;
-    display: block;
-  }
-  
-  /* Estilo para os links do menu */
-  .links-menu {
-    padding: 20px;
-  }
-  
-  /* Estilo para cada item do menu */
-  .conteiner-menu {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo para o ícone do menu */
-  .icone-menu img {
-    width: 20px;
-    margin-right: 10px;
-  }
-  
-  /* Estilo para os links do menu */
-  .links-menu a {
-    color: #000;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-  }
-  
-  /* Estilo para a linha horizontal */
-  .menu-lateral hr {
-    background-color: #01093F;
-    height: 1px;
-    margin: 20px 0;
-    width: 1000px;
-    
-  }
-  
-  /* Estilo para o perfil */
+  background-color: #EEB253;
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+/* Estilo para a logo */
+.logo img {
+  width: 100px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* Estilo para os links do menu */
+.links-menu {
+  padding: 20px;
+}
+
+/* Estilo para cada item do menu */
+.conteiner-menu {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Estilo para o ícone do menu */
+.icone-menu img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+/* Estilo para os links do menu */
+.links-menu a {
+  color: #000;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Estilo para a linha horizontal */
+.menu-lateral hr {
+  background-color: #01093F;
+  height: 1px;
+  margin: 20px 0;
+}
+
+/* Estilo para o perfil */
 .conteiner-perfil {
-    padding: 20px;
-    background-color: #fff;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Estilo para o perfil do usuário */
+.perfil {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+/* Estilo para os links do perfil */
+.perfil a {
+  color: #01093F;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+/* Estilo para a imagem de perfil */
+.perfil img {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+/* Estilos para tornar o menu responsivo */
+@media (max-width: 768px) {
+  .menu-lateral {
+    width: 100%;
+    height: auto;
+    position: static;
   }
-  
-  /* Estilo para o perfil do usuário */
-  .perfil {
-    display: flex;
-    align-items: center;
-    color: #000;
+
+  .logo img {
+    width: 80px;
   }
-  
-  /* Estilo para os links do perfil */
-  .perfil a {
-    color: #01093F;
-    text-decoration: none;
-    margin-right: 10px;
+
+  .links-menu {
+    padding: 10px;
   }
-  
-  /* Estilo para a imagem de perfil */
-  .perfil img {
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    margin-right: 10px;
+
+  .conteiner-menu {
+    margin: 10px 0;
   }
-  
-  /* Estilos para tornar o menu responsivo */
-  /* @media (max-width: 768px) {
-    .menu-lateral {
-      width: 100%;
-      height: auto;
-      position: static;
-    }
-  
-    .logo img {
-      width: 80px;
-    }
-  
-    .links-menu {
-      padding: 10px;
-    }
-  
-    .conteiner-menu {
-      margin: 10px 0;
-    }
-  
-    .conteiner-perfil {
-      padding: 10px;
-    }
-  } */
+
+  .conteiner-perfil {
+    padding: 10px;
+  }
+}
+
   
 
 .conteiner-conteudo{

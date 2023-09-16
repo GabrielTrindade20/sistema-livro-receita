@@ -1,12 +1,15 @@
+<?php
+include_once('../controller/protect.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/estiloTable.css">
-    <title>Página de Receitas</title>
+    <title>Categorias</title>
 </head>
 <body>
     
@@ -39,7 +42,8 @@
     </nav>
 
         <div id="sub-titulo">
-            <a href="">links paginas</a>
+            <a href="homePage.php">Homepage > </a>
+            <a href="pageCategoria.php">Categoria</a>
         </div>
 
     <section class="conteiner-conteudo">
@@ -54,7 +58,6 @@
             </div>
         </div>
         <hr>
-
 
         <div class="conteiner-table">    
             <table>
