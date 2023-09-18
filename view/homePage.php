@@ -7,15 +7,15 @@ include_once('../controller/protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/homePage.css">
+    <link rel="stylesheet" href="css/styleGeral.css">
+    <link rel="stylesheet" href="css/styleHomePag.css">
     <title>Página Principal</title>
 </head>
 <body>
     
     <header class="header">
         <div class="usuario">
-            <div id="usuario"><p>Gabriel Trindade Rocha</p></div>
+            <div id="usuario"><p>Gabriel Rocha</p></div>
             <div><img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário"></div>
         </div>
     </header>
@@ -107,27 +107,28 @@ include_once('../controller/protect.php');
             </div>
             
         </div>
-
-        <hr>
+        
         <div class="conteiner-perfil">
             <div class="perfil">
                 <div>
-                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="">
+                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário" id="icone-usuario">
                 </div>
-
+                
                 <div>
                     <a href="">Gabriel Rocha</a>
                 </div>
-
+                
                 <div>
-                    <a href="../controller/logoutController.php">Sair</a>
+                    <a href="../controller/logoutController.php"><img id="logout" src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/e48d9c67ecf1746f00bd874d702ec9a4e0821617/view/css/iconsSVG/iconLogoout.svg?token=AYIZEWU4XQN5KCHC2UJDKKTFBCFHW" alt="logout"></a>
                 </div>
             </div>
         </div>
+
+        <hr class="linha-separadora-menu">
+        
     </nav>
 
     <section class="conteiner-conteudo">
-
 
         <div class="titulos" id="titulo">
             <h1>Bem-Vindo</h1>
@@ -151,59 +152,78 @@ include_once('../controller/protect.php');
 
         <div class="cards-conteiner">
             
+            
             <div id="cards-conteiner-1">
-                <a href="pageReceitas.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Tableware.png" alt=""></div>
-                        <div><a href="pageReceitas.php">Receitas</a></div>
-                    </div>
-                </a>
+                <div>
+                    <a href="pageReceitas.php">
+                        <div class="card">
+                            <div><img src="css\imagens\Cookbook.png" alt=""></div>
+                            <div><a href="pageReceitas.php">Receitas</a></div>
+                        </div>
+                    </a>
+                </div>
+                    
+
+                <div>
+                    <a href="pageLivroReceitas.php">
+                            <div class="card">
+                                <div><img src="css\imagens\Cookbook.png" alt=""></div>
+                                <div><a href="pageLivroReceitas.php">Livros de Receitas</a></div>
+                            </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="pageCategoria.php">
+                        <div class="card">
+                            <div><img src="css\imagens\Cookbook.png" alt=""></div>
+                            <div><a href="pageCategoria.php">Categorias</a></div>
+                        </div>
+                    </a>
+                </div>
+
                 
-
-                <a href="pageLivroReceitas.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                        <div><a href="pageLivroReceitas.php">Livros de Receitas</a></div>
-                    </div>
-                </a>
-
-                <a href="pageCategoria.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                        <div><a href="pageCategoria.php">Categorias</a></div>
-                    </div>
-                </a>
-
-                <a href="pageDegustacao.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                        <div><a href="pageDegustacao.php">Categorias</a></div>
-                    </div>
-                </a>
+                <div>
+                    <a href="pageDegustacao.php">
+                        <div class="card">
+                            <div><img src="css\imagens\Cookbook.png" alt=""></div>
+                            <div><a href="pageDegustacao.php">Categorias</a></div>
+                        </div>
+                    </a>
+                </div>
             </div>
+           
 
             <div id="cards-conteiner-2">
-                <a href="pageCargo.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Restaurant.png" alt=""></div>
-                        <div><a href="pageCargo.php">Cargo</a></div>
-                    </div>
-                </a>
+                <div>
+                    <a href="pageCargo.php">
+                        <div class="card">
+                            <div><img src="css\imagens\Restaurant.png" alt=""></div>
+                            <div><a href="pageCargo.php">Cargo</a></div>
+                        </div>
+                    </a>
+                </div>
 
-                <a href="pageFuncionario.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Management.png" alt=""></div>
-                        <div><a href="pageFuncionario.php">Funcionários</a></div>
-                    </div>
-                </a>
+                <div>
+                    <a href="pageFuncionario.php">
+                        <div class="card">
+                            <div><img src="css\imagens\Management.png" alt=""></div>
+                            <div><a href="pageFuncionario.php">Funcionários</a></div>
+                        </div>
+                    </a>
+                </div>
 
-                <a href="ageRestaurante.php">
-                    <div class="card">
-                        <div><img src="css\imagens\Restaurant.png" alt=""></div>
-                        <div><a href="pageRestaurante.php">Restaurantes</a></div>
-                    </div>
-                </a>
+                <div>
+                    <a href="ageRestaurante.php">
+                        <div class="card">
+                            <div><img src="css\imagens\Restaurant.png" alt=""></div>
+                            <div><a href="pageRestaurante.php">Restaurantes</a></div>
+                        </div>
+                    </a>
+                </div>
             </div>
+            
+            
         </div>
     </section>
 
