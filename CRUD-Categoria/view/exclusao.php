@@ -11,7 +11,7 @@
         // efetua a exclusão da categoria com o id informado.
         $id = $_GET["id"];
         
-        include_once "../configuration/connect.php";
+        include_once('../configuration/connect.php');
 
         $query = "DELETE FROM Categoria WHERE idCategoria='$id';";
         

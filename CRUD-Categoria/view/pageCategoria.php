@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/estiloTable.css">
-    <title>Página de Receitas</title>
+    <title>Rceitas</title>
 </head>
 <body>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 	<?php 
         // lista categoria cadastrados  
 
-        include_once "../configuration/connect.php";
+        include_once('../configuration/connect.php');
 
         echo "<h1>Categoria</h1>";
         
@@ -50,7 +50,7 @@
     ?>  
 
     <br>
-    <a href="">Cadastrar</a>
+    <a href="cadastro.php">Cadastrar</a>
     <br>
     <a href="">Menu Principal</a>        
 
