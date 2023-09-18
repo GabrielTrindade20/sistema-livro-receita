@@ -127,19 +127,24 @@ nav{
   font-weight: 500;
 }
 
-/* Estilo para a linha separadora entre o menu e o perfil */
+/* Estilo para a linha horizontal acima do perfil */
 .linha-separadora-menu {
-  background-color: #01093F;
   height: 1px;
-  width: 100%; /* Defina a largura total do menu lateral */
-  margin: 15px 0px 15px 0px; /* Margem superior e inferior para manter a distância desejada */
+  position: absolute;
+  bottom: 150px;
+  width: 1000px;
+  background-color: #000;
 }
-/* Estilos para o perfil */
+
+/* Estilo para o perfil */
 .conteiner-perfil {
-  background-color: #fff;
-  margin-top: 15px; /* Margem superior para posicionar abaixo da linha */
-  position: relative;
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  padding: 0px;
 }
+
+
 /* Estilo para o perfil do usuário */
 .perfil {
   display: flex;
@@ -156,12 +161,19 @@ nav{
 }
 
 /* Estilo para a imagem de perfil */
-.perfil img {
+#icone-usuario {
   border-radius: 50%;
   width: 35px;
   height: 35px;
   margin-right: 10px;
 }
+#logout {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+
 
 /* Estilos para tornar o menu responsivo */
 @media (max-width: 768px) {

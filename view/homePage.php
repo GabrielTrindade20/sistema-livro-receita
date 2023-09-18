@@ -8,14 +8,14 @@ include_once('../controller/protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleGeral.css">
-    <link rel="stylesheet" href="css/styleHomePage.css">
+    <link rel="stylesheet" href="css/styleHomePag.css">
     <title>Página Principal</title>
 </head>
 <body>
     
     <header class="header">
         <div class="usuario">
-            <div id="usuario"><p>Gabriel Trindade Rocha</p></div>
+            <div id="usuario"><p>Gabriel Rocha</p></div>
             <div><img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário"></div>
         </div>
     </header>
@@ -107,13 +107,11 @@ include_once('../controller/protect.php');
             </div>
             
         </div>
-
-        <hr class="linha-separadora-menu">
         
         <div class="conteiner-perfil">
             <div class="perfil">
                 <div>
-                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="">
+                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário" id="icone-usuario">
                 </div>
                 
                 <div>
@@ -121,10 +119,12 @@ include_once('../controller/protect.php');
                 </div>
                 
                 <div>
-                    <a href="../controller/logoutController.php">Sair</a>
+                    <a href="../controller/logoutController.php"><img id="logout" src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/e48d9c67ecf1746f00bd874d702ec9a4e0821617/view/css/iconsSVG/iconLogoout.svg?token=AYIZEWU4XQN5KCHC2UJDKKTFBCFHW" alt="logout"></a>
                 </div>
             </div>
         </div>
+
+        <hr class="linha-separadora-menu">
         
     </nav>
 
