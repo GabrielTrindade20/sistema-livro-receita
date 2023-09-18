@@ -1,3 +1,8 @@
+<?php
+include_once('../configuration/connect.php');
+include_once('../controller/categoriaController.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,14 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/estiloTable.css">
-    <title>Rceitas</title>
+    <title>Categorias</title>
 </head>
 <body>
 <!DOCTYPE html>
 <!-- lista de categoria -->
 
 	<?php 
-        // lista categoria cadastrados  
+       /* // lista categoria cadastrados  
 
         include_once('../configuration/connect.php');
 
@@ -46,8 +51,25 @@
             mysqli_free_result($result);
         }
         // fecha a conexão
-        mysqli_close($link);
+        mysqli_close($link);*/
     ?>  
+
+    <h1>Categoria</h1>
+    <table border='1'>
+        <tr>
+            <th>id</th>
+            <th>Categoria</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <?php foreach ($categorias as $categoria): ?>
+            <tr>
+                <td><?php echo $categoria["idCategoria"]; ?></td>
+                <td><?php echo $categoria["descricao"]; ?></td>
+                <td><a href="exclusao.php?id=<?php echo $categoria["idCategoria"]; ?>">Excluir</a></td>
+                <td><a href="formAlteracao.php?id=<?php echo $categoria["idCategoria"]; ?>">Alterar</a></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 
     <br>
     <a href="cadastro.php">Cadastrar</a>
