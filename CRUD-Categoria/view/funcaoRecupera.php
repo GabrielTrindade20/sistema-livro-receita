@@ -5,7 +5,7 @@ function recuperaCategoria($id){
     // lista cursos já cadastrados
     $query =   "SELECT idCategoria, descricao
                 FROM Categoria
-                WHERE idCategoria = $id;";
+                WHERE idCategoria = '$id';";
     if ($result = mysqli_query($link, $query)) {
              // busca os dados lidos do banco de dados
         while ($row = mysqli_fetch_assoc($result)) {

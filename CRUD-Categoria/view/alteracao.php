@@ -8,7 +8,7 @@
 <body>
     <?php 
         // efetua alteração da categoria informado em formAlteracao.php
-        $id = $_GET["id"];
+        $id = $_GET["idCategoria"];
         $descricao = $_GET["descricao"];
         
         include_once "../configuration/connect.php";
