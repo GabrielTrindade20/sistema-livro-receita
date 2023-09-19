@@ -36,7 +36,115 @@ h2{
     font-size: large;
 }
 
-.titulo a{
+.titulos {
+  display: flex;
+  align-items: center;
+  width: auto;
+  justify-content: space-between;
+}
+
+.titulos h1 {
+  margin: 0; /* Remova as margens padrão do h1 */
+}
+
+.conteiner-titulo{
+  display: flex;
+  width: auto;
+  align-items: center;
+  float: left;
+  
+}
+
+.card-receitas {
+  background-color: #EEB253;
+  border-radius: 20px;
+  width: auto; /* Ajuste o tamanho do card conforme necessário */
+  height: auto;
+  display: flex;
+  padding: 5px 20px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px; /* Ajuste a margem conforme necessário */
+}
+.card-receitas a{
+  color: rgb(255, 255, 255);
+  font-size: auto;
+  align-items: stretch;
+}
+
+
+/* Estilo para o contêiner de pesquisa e botão */
+.search-container {
+  width: auto;
+  display: flex;
+  float: right;
+  width: auto;
+  align-items: center;
+  margin-right: 15%;
+}
+
+.search-box {
+  display: flex;
+  border-radius: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.347);
+  height: 30px;
+  color: #000;
+  margin-right: 15px;
+  width: 200px;
+}
+
+.search-box-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-box-input {
+  padding-right: 40px; /* Espaço para a largura do botão */
+  width: auto;
+  padding: 3px 15px 0px 20px;
+  float: left;
+  width: 90%;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  transition: .45s;
+}
+
+/* ... Estilos adicionais para o input de pesquisa ... */
+
+.search-box-button {
+  position: absolute;
+  top: 55%;
+  right: 5px; /* Ajuste a margem conforme necessário */
+  transform: translateY(-50%);
+  width: 20px; /* Ajuste a largura do botão conforme necessário */
+  height: 20px; /* Ajuste a altura do botão conforme necessário */
+  background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
+  background-position: center;
+  background-color: white;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: .3s;
+  border: none;
+  border-radius: 50px;
+}
+
+/* Estilo para o botão "Nova Receita" */
+.nova-receita-button {
+  background-color: #EEB253;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto;
+}
+
+
+.titulos a{
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
@@ -199,16 +307,15 @@ nav{
     padding: 10px;
   }
 }
-
-  
+ 
 
 .conteiner-conteudo{
-    width: auto;
-    height: auto;
-    padding-left: 350px;
-    padding-top: 2%;
-    text-align: left;
-    display: block;
-    margin-left: auto;
+  width: auto;
+  height: auto;
+  padding-left: 350px;
+  padding-top: 2%;
+  text-align: left;
+  display: block;
+  margin-left: auto;
 }
 
