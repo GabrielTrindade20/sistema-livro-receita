@@ -7,7 +7,7 @@ include_once('../controller/protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleGeral.css">
+    <link rel="stylesheet" href="css/generalStyles.css">
     <link rel="stylesheet" href="css/styleHomePag.css">
     <title>Página Principal</title>
 </head>
@@ -119,7 +119,7 @@ include_once('../controller/protect.php');
                 </div>
                 
                 <div>
-                    <a href="../controller/logoutController.php"><img id="logout" src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/e48d9c67ecf1746f00bd874d702ec9a4e0821617/view/css/iconsSVG/iconLogoout.svg?token=AYIZEWU4XQN5KCHC2UJDKKTFBCFHW" alt="logout"></a>
+                    <a href="../controller/logoutController.php"><img id="logout" src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/2d7a4f2b3a9cb0a2670d48c5790af5f1f21e1f9c/view/css/iconsSVG/iconLogoout.svg?token=AYIZEWTYADPF36E3ZR7N2M3FBCHZQ" alt="logout"></a>
                 </div>
             </div>
         </div>
