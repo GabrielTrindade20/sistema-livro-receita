@@ -7,7 +7,6 @@ $categoriaModel = new CategoriaModel($link);
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     $id = $_GET["id"];
     $al = $categoriaModel->recuperaCategoria($id);
-    include("../view/formAlteracao.php");
 } 
 elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "atualizar") {
     $id = $_POST["idCategoria"];
@@ -15,7 +14,8 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_PO
     
     if ($categoriaModel->update($id, $descricao)) {
         $mensagem = "Alteração efetuada com sucesso";
-        header("refresh: 2; url=../view/pageCategoria.php");
+        include("../view/formAlteracao.php"); // Inclua a página de alteração novamente para exibir a mensagem
+        //header("refresh: 2; url=../view/pageCategoria.php"); // Redireciona para a lista de categorias após 2 segundos
     } else {
         $mensagem = "Erro ao atualizar a categoria: " . mysqli_error($link);
     }
@@ -24,7 +24,6 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_PO
 }
 else {
     $categorias = $categoriaModel->read();
-    include("../view/pageCategoria.php");
     mysqli_close($link);
 }
 

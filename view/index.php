@@ -7,7 +7,10 @@ include_once('../controller/LoginController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylee.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link 
+        rel="stylesheet" 
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Login</title>
 </head>
 <body>
@@ -15,8 +18,8 @@ include_once('../controller/LoginController.php');
     <header>
             <section id="section-esquerda">
                 <div id="div-logo" id="section1">
-                    <a href="">
-                        <img src="css/imagens/logo.png" alt="logo">
+                    <a href="css/">
+                        <img src="" alt="logo">
                     </a>
                 </div>
             </section>
@@ -30,7 +33,7 @@ include_once('../controller/LoginController.php');
          
                 <div id="conteiner-formulario">
                     <div id="conteiner-dados">
-                            <h2 class="titulo"><a href="">Login</a></h2>
+                        <h2 class="titulo">Login</h2>
 
                         <form action="" method="POST">                        
                             <input type="text" name="nome" id="name" placeholder="nome" required>

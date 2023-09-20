@@ -38,6 +38,10 @@ include_once('../controller/categoriaController.php');
     <?php endforeach; ?>
 </table>
 
+<?php if (isset($mensagem)): ?>
+    <div class="mensagem"><?php echo $mensagem; ?></div>
+<?php endif; ?>
+
     <br>
     <a href="cadastro.php">Cadastrar</a>
     <br>
