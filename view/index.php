@@ -19,7 +19,7 @@ include_once('../controller/LoginController.php');
             <section id="section-esquerda">
                 <div id="div-logo" id="section1">
                     <a href="">
-                        <img src="css/imagens/logo.png" alt="logo">
+                        <img src="" alt="logo">
                     </a>
                 </div>
             </section>
