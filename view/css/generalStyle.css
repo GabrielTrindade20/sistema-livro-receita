@@ -58,7 +58,7 @@ h2 {
     justify-content: space-between;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 5%;
+    padding: 0 2% 0 5%;
 }
 
 @media (max-width: 768px) {
@@ -72,8 +72,8 @@ h2 {
   align-items: center;
   width: 100%;
   max-width: 50%;
-  margin: 0 auto;
-  padding: 0 5%;
+  margin: 0 3%;
+  padding: 0 0px;
 }
 
 .card-receitas {
@@ -118,7 +118,7 @@ h2 {
 .search-box-input {
     position: relative;
     margin: 0px 25px 0px 0px;
-    padding-bottom: 3px;
+    padding: 0px 0px 3px 5px;
     width: 100%; /* Ocupa todo o espaço disponível no contêiner */
     font-size: 1rem;
     transition: .45s;
@@ -149,7 +149,7 @@ h2 {
 .nova-receita-button {
     background-color: #EEB253;
     color: #fff;
-    padding: 10% 10px;
+    padding: 10% 15px;
     border: none;
     border-radius: 25px;
     font-weight: bold;
@@ -157,6 +157,10 @@ h2 {
     transition: background-color 0.3s;
     margin-left: 10px;
     font-size: 0.8rem;
+}
+
+#button{
+  margin-left: 5px;
 }
 
 /* ... Seu CSS do menu lateral ... */
@@ -170,11 +174,6 @@ h2 {
     display: block;
     margin-left: 20%;
 }
-
-
-
-
-
 
 
 

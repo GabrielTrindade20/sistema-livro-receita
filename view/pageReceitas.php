@@ -153,7 +153,7 @@
                 </form>
             </div><!-- Search -->
         
-           <div>
+           <div id="button">
                 <button class="nova-receita-button">Nova Receita</button>
            </div>
         </div>
