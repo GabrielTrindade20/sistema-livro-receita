@@ -8,7 +8,7 @@ include_once('../controller/protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/generalStyles.css">
-    <link rel="stylesheet" href="css/styleHomePag.css">
+    <link rel="stylesheet" href="css/styleHomePage.css">
     <title>Página Principal</title>
 </head>
 <body>
@@ -22,7 +22,7 @@ include_once('../controller/protect.php');
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a>
+            <!-- <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a> -->
         </div>
 
         <div class="links-menu">
@@ -139,11 +139,11 @@ include_once('../controller/protect.php');
                 <form method="post" action="#">
                     <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
                     <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
-                
+                    
                 </form>
             </div><!-- Search -->
         </div><!--Box Busca-->
-
+        
         <div id="sub-titulo">
             <span><hr></span>
             <h2>Acesso Rápido</h2>
