@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --blue: #01093F;
+    --white: #ffffff;
+    --black: #000000;
+    --laranja: #EEB253;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+p{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+h2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: large;
+}
+
+.titulos {
+  display: flex;
+  align-items: center;
+}
+
+.titulos h1 {
+  margin: 0; /* Remova as margens padrão do h1 */
+}
+
+
+.titulos a{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+/*  */
+
+

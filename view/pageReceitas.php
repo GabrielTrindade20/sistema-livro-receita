@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylePageReceitas.css">
+    <link rel="stylesheet" href="css/stylePageRecetas.css">
+    <link rel="stylesheet" href="css/generalStyle.css">
+    
     <title>Página de Receitas</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a>
+            <!-- <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a> -->
         </div>
 
         <div class="links-menu">
@@ -142,16 +144,16 @@
         </div>
 
         <div class="search-container">
-                <div class="search-box">
-                    <form method="post" action="#">
-                        <div class="search-box-input-container">
-                            <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
-                            <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
-                        </div>
-                    </form>
-                </div><!-- Search -->
+            <div class="search-box">
+                <form method="post" action="#">
+                    <div class="search-box-input-container">
+                        <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
+                        <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
+                    </div>
+                </form>
+            </div><!-- Search -->
         
-           <div>
+           <div id="button">
                 <button class="nova-receita-button">Nova Receita</button>
            </div>
         </div>

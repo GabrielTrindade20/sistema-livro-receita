@@ -7,13 +7,13 @@
     --laranja: #EEB253;
 }
 
-*{
-    margin: 0px;
-    padding: 0px;
+* {
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
-p{
+p {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
@@ -24,59 +24,155 @@ a {
     text-decoration: none;
 }
 
-h1{
+h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    font-size: 2rem;
 }
 
-h2{
+h2 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: large;
 }
 
-.titulos {
-  display: flex;
-  align-items: center;
-  width: auto;
-  justify-content: space-between;
-}
-
 .titulos h1 {
-  margin: 0; /* Remova as margens padrão do h1 */
+  margin: 0;
+  font-size: 1.5rem; /* Tamanho inicial do texto */
 }
 
-.conteiner-titulo{
+/* Adicione uma regra de mídia para ajustar o tamanho do h1 em telas menores */
+@media (max-width: 1720px) {
+  .titulos h1 {
+      font-size: 1.5rem; /* Tamanho menor do texto para telas menores */
+  }
+}
+
+.titulos a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.titulos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 2% 0 5%;
+}
+
+@media (max-width: 768px) {
+    .titulos {
+        margin-left: 0; /* Remova o margin-left para centralizar em telas menores */
+    }
+}
+
+.conteiner-titulo {
   display: flex;
-  width: auto;
   align-items: center;
-  float: left;
-  
+  width: 100%;
+  max-width: 50%;
+  margin: 0 3%;
+  padding: 0 0px;
 }
 
 .card-receitas {
-  background-color: #EEB253;
-  border-radius: 20px;
-  width: auto; /* Ajuste o tamanho do card conforme necessário */
-  height: auto;
-  display: flex;
-  padding: 5px 20px;
-  align-items: center;
-  justify-content: center;
-  margin-left: 15px; /* Ajuste a margem conforme necessário */
-}
-.card-receitas a{
-  color: rgb(255, 255, 255);
-  font-size: auto;
-  align-items: stretch;
+    margin-left: 5px;
+    background-color: #EEB253;
+    color: #fff;
+    padding: 2% 2%;
+    margin-left: 0%;
+    text-align: left;
+    border-radius: 50px;
+    margin-left: 10px;
 }
 
+.card-receitas a {
+    font-size: 0.8rem;
+    color: #fff;
 
+}
 
-.titulos a{
-    font-family: 'Poppins', sans-serif;
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2% 0 2% 0;
+}
+
+.search-box {
+    display: flex;
+    height: 30px;
+    color: #000;
+    width: 60%; /* Defina o tamanho desejado */
+    max-width: 200px; /* Defina uma largura máxima para evitar que fique muito largo */
+}
+
+.search-box-input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-box-input {
+    position: relative;
+    margin: 0px 25px 0px 0px;
+    padding: 0px 0px 3px 5px;
+    width: 100%; /* Ocupa todo o espaço disponível no contêiner */
+    font-size: 1rem;
+    transition: .45s;
+    background-color: none;
+    color: #000000;
+    border-radius: 15px;
+}
+
+.search-box-button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
+    background-position: center;
+    background-color: white;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: .3s;
+    border: none;
+    border-radius: 50px;
+}
+
+/* Estilo para o botão "Nova Receita" */
+.nova-receita-button {
+    background-color: #EEB253;
+    color: #fff;
+    padding: 10% 15px;
+    border: none;
+    border-radius: 25px;
     font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    font-size: 0.8rem;
+}
+
+#button{
+  margin-left: 5px;
+}
+
+/* ... Seu CSS do menu lateral ... */
+
+.conteiner-conteudo {
+    width: auto;
+    height: auto;
+    /* Remova o padding-left aqui */
+    padding-top: 2%;
+    text-align: left;
+    display: block;
+    margin-left: 20%;
 }
 
 
@@ -238,14 +334,3 @@ nav{
   }
 }
  
-
-.conteiner-conteudo{
-  width: auto;
-  height: auto;
-  padding-left: 350px;
-  padding-top: 2%;
-  text-align: left;
-  display: block;
-  margin-left: auto;
-}
-
