@@ -36,7 +36,7 @@ include_once('../controller/LoginController.php');
                 <div id="conteiner-dados">
                     <form class="my-form" action="" method="POST"> 
                         <div class="titulo-login">
-                            <h2 class="titulo">Login</h2>
+                            <h2 class="titulo">LOGIN</h2>
                         </div>
 
                         <div class="input-text">

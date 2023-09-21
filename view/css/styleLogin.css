@@ -27,19 +27,18 @@ body{
     position: fixed;
     float: left;
 }
-
-#section-direita{
-    width: 55%;
-    float: right;
-}
 #div-logo{
     margin: auto 15%;
 }
-
 #div-logo img{
     width: 90%;
     margin-top: 12rem;
     margin-bottom: 12rem;
+}
+
+#section-direita{
+    width: 55%;
+    float: right;
 }
 
 /* Notificação */
@@ -114,22 +113,16 @@ body{
 }*/
 
 #conteiner-dados{
-    margin: auto 20% auto 20%;
-    height: 30%;
+    margin: 10% 20% 10% 20%;
     text-align: center;
-    width: 60%;
 }
 
 .my-form{
-    display: flex;
-    flex-direction: column;
     position: relative;
     gap: 16px;
     min-width: 280px;
     max-width: 460px;
-    width: 100%;
     padding: 10px;
-    padding-top: 30%;
 }
 
 .titulo-login{
@@ -169,7 +162,7 @@ body{
 .input-text input{
     font-size: 16px;
     font-weight: 500;
-    max-width: 90%;
+    max-width: 80%;
     width: 100%;
     border: 1px solid;
     height: 20px;
