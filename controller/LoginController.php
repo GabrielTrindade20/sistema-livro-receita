@@ -22,7 +22,7 @@ if (isset($_POST['nome']) && isset($_POST['senha'])) {
             $_SESSION['id'] = $usuario['idLogin'];
             $_SESSION['nome'] = $usuario['nome'];
 
-            header("Location: ../view/homePage.php");
+            header("Location: ../view/homePage1.php");
             //exit(); // interromper o script após o redirecionamento.
         } else {
             $mensagem = "<p>Falha ao logar! Nome ou Senha incorretos. <br>

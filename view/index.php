@@ -1,4 +1,4 @@
-<?php
+<?php 
 include_once('../controller/LoginController.php');
 ?>
 <!DOCTYPE html>
@@ -11,15 +11,15 @@ include_once('../controller/LoginController.php');
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link 
         rel="stylesheet" 
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
+    />
     <title>Login</title>
 </head>
 <body>
-
-    <header>
+    <main class="main-login">
             <section id="section-esquerda">
-                <div id="div-logo" id="section1">
-                    <img src="../view/css/logo.png" alt="logo">
+                <div class="div-logo" id="section1">
+                    <img src="../view/css/logo.png" alt="logo site livro de receitas"> 
                 </div>
             </section>
             
@@ -32,23 +32,25 @@ include_once('../controller/LoginController.php');
                         <?php endif; ?>
                     <div class="notification_progress"></div>
                 </figure>
-                
-                <div id="conteiner-dados">
+                <!-- ---------------------------- -->
+
+                <div id="conteiner-form">
                     <form class="my-form" action="" method="POST"> 
                         <div class="titulo-login">
-                            <h2 class="titulo">LOGIN</h2>
+                            <h1>LOGIN</h1>
                         </div>
 
                         <div class="input-text">
-                            <input type="text" name="nome" id="name" placeholder="Nome" required>
                             <span class="material-symbols-outlined"> person </span>
+                            <input type="text" name="nome" id="name" placeholder="Nome" required>
+                            
                         </div>
-                        <div class="input-text">                            
+                        <div class="input-text">    
+                            <span class="material-symbols-outlined"> lock </span>                        
                             <input type="password" name="senha" id="senha" placeholder="Senha" required>
-                            <span class="material-symbols-outlined"> lock </span>
                         </div>
 
-                        <input type="submit" value="Entrar" class="botao">
+                        <input type="submit" value="Entrar" class="botao-login">
                     </form>                          
                         
                     <div id="redefSenha">
@@ -60,6 +62,6 @@ include_once('../controller/LoginController.php');
                     </div>
                 </div>    
             </section>  
-    </header>
+    </main>
 </body>
 </html>

@@ -1,231 +1,89 @@
-<?php
-include_once('../controller/protect.php');
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Principal</title>
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="css/generalStyles.css">
     <link rel="stylesheet" href="css/styleHomePage.css">
-    <title>Página Principal</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="stylesheet" href="css/styleMenu.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <header class="sidebar-header">
+        <img class="logo-img" src="css/logo.png" />
+      </header>
+      <nav>
+        <button>
+          <span>
+            <i class="material-symbols-outlined"> home </i>
+            <span>Home</span>
+          </span>
+        </button>
+        <button onclick="window.location.href = 'pageReceitas.php'">    
+          <span>
+            <i class="material-symbols-outlined"> restaurant </i>
+            <span>Receitas</span>
+        </span>
+        </button>
+        <button onclick="window.location.href = 'pageLivroReceits.php'">
+          <span>
+            <i class="material-symbols-outlined">
+                menu_book
+            </i>
+            <span>Livro de Receitas</span>
+          </span>
+        </button>
+        <button onclick="window.location.href = 'pageCategoria.php'">
+          <span>
+            <i class="material-symbols-outlined"> category </i>
+            <span>Categorias</span>
+          </span>
+        </button>
+        <button onclick="window.location.href = 'pageDegustacao.php'">
+          <span>
+            <i class="material-symbols-outlined"> bookmark </i>
+            <span>Degustação</span>
+          </span>
+        </button>
+        <button onclick="window.location.href = 'pageCargo.php'">
+          <span>
+            <i class="material-symbols-outlined"> person </i>
+            <span>Cargo</span>
+          </span>
+        </button>
+        <button onclick="window.location.href = 'pageFuncionarios.php'">
+          <span>
+            <i class="material-symbols-outlined"> group </i>
+            <span>Funcionarios</span>
+          </span>
+        </button>
+        <button onclick="window.location.href = 'pageRestaurante.php'">
+          <span>
+            <i class="material-symbols-outlined"> restaurant_menu </i>
+            <span>Restaurantes</span>
+          </span>
+        </button>
+        <button class="user-button" >
+          <span>
+            <i class="material-symbols-outlined"> manage_accounts </i>
+            <span>
+              <span class="fullname"> Joe </span>
+            </span>
+                <a href="../controller/logoutController.php"> 
+                    <i class="material-symbols-outlined"> logout </i>
+                </a>   
+          </span>
+        </button>
+      </nav>
+    </aside>
     
-    <header class="header">
-        <div class="usuario">
-            <div id="usuario"><p>Gabriel Rocha</p></div>
-            <div><img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário"></div>
-        </div>
-    </header>
-
-    <nav class="menu-lateral">
-        <div class="logo">
-            <!-- <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a> -->
-        </div>
-
-        <div class="links-menu">
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="homePage.php">Home</a>
-                </div>
-            </div>
-
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageReceitas.php">Receitas</a>
-                </div>
-            </div>
-
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageLivroReceitas.php">Livro de Receitas</a>
-                </div>
-            </div>
-
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageCategoria.php">Categoria</a>
-                </div>
-            </div>
-
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageDegustacao.php">Degustação</a>
-                </div>
-            </div>
-
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageCargo.php">Cargo</a>
-                </div>
-            </div>
-            
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageFuncionario.php">Funcionários</a>
-                </div>
-            </div>
-
-            <div class="conteiner-menu">
-                <div class="icone-menu">
-                    <img src="./css/imagens/editarAzul.png" alt="">
-                </div>
-
-                <div class="menu">
-                    <a href="pageRestaurante.php">Restaurantes</a>
-                </div>
-            </div>
-            
-        </div>
-        
-        <div class="conteiner-perfil">
-            <div class="perfil">
-                <div>
-                    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário" id="icone-usuario">
-                </div>
-                
-                <div>
-                    <a href="">Gabriel Rocha</a>
-                </div>
-                
-                <div>
-                    <a href="../controller/logoutController.php"><img id="logout" src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/2d7a4f2b3a9cb0a2670d48c5790af5f1f21e1f9c/view/css/iconsSVG/iconLogoout.svg?token=AYIZEWTYADPF36E3ZR7N2M3FBCHZQ" alt="logout"></a>
-                </div>
-            </div>
-        </div>
-
-        <hr class="linha-separadora-menu">
-        
-    </nav>
-
-    <section class="conteiner-conteudo">
-
-        <div class="titulos" id="titulo">
-            <h1>Bem-Vindo</h1>
-        </div>
-
-        <div class="box-busca">
-            <div class="search-box">
-                <form method="post" action="#">
-                    <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
-                    <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
-                    
-                </form>
-            </div><!-- Search -->
-        </div><!--Box Busca-->
-        
-        <div id="sub-titulo">
-            <span><hr></span>
-            <h2>Acesso Rápido</h2>
-            <span><hr></span>
-        </div>
-
-        <div class="cards-conteiner">
-            
-            
-            <div id="cards-conteiner-1">
-                <div>
-                    <a href="pageReceitas.php">
-                        <div class="card">
-                            <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                            <div><a href="pageReceitas.php">Receitas</a></div>
-                        </div>
-                    </a>
-                </div>
-                    
-
-                <div>
-                    <a href="pageLivroReceitas.php">
-                            <div class="card">
-                                <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                                <div><a href="pageLivroReceitas.php">Livros de Receitas</a></div>
-                            </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="pageCategoria.php">
-                        <div class="card">
-                            <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                            <div><a href="pageCategoria.php">Categorias</a></div>
-                        </div>
-                    </a>
-                </div>
-
-                
-                <div>
-                    <a href="pageDegustacao.php">
-                        <div class="card">
-                            <div><img src="css\imagens\Cookbook.png" alt=""></div>
-                            <div><a href="pageDegustacao.php">Categorias</a></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-           
-
-            <div id="cards-conteiner-2">
-                <div>
-                    <a href="pageCargo.php">
-                        <div class="card">
-                            <div><img src="css\imagens\Restaurant.png" alt=""></div>
-                            <div><a href="pageCargo.php">Cargo</a></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="pageFuncionario.php">
-                        <div class="card">
-                            <div><img src="css\imagens\Management.png" alt=""></div>
-                            <div><a href="pageFuncionario.php">Funcionários</a></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="ageRestaurante.php">
-                        <div class="card">
-                            <div><img src="css\imagens\Restaurant.png" alt=""></div>
-                            <div><a href="pageRestaurante.php">Restaurantes</a></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            
-        </div>
-    </section>
-
-</body>
+    
+  </body>
 </html>
