@@ -128,7 +128,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageReceitas.php">
                                 <span class="material-symbols-outlined"> restaurant </span>
-                                Receitas
+                                <span>Receitas</span>
                             </a>
                         </div>
                     </a>
@@ -139,7 +139,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageLivroReceitas.php">
                                 <span class="material-symbols-outlined"> menu_book </span>
-                                Livros de Receitas
+                                <span>Livros de Receitas</span>
                             </a>
                         </div>
                     </a>
@@ -150,7 +150,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageCategoria.php">
                                 <span class="material-symbols-outlined"> category </span>
-                                Categorias
+                                <span>Categorias</span>
                             </a>
                         </div>
                     </a>
@@ -161,7 +161,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageDegustacao.php">
                                 <img src="../view/css/iconsSVG/iconDegustação.svg" alt="">
-                                Categorias
+                                <span>Categorias</span>
                             </a>
                         </div>
                     </a>
@@ -174,7 +174,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageCargo.php">
                                 <span class="material-symbols-outlined"> patient_list </span>
-                                Cargo
+                                <span>Cargo</span>
                             </a>
                         </div>
                     </a>
@@ -185,7 +185,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageFuncionario.php">
                                 <span class="material-symbols-outlined"> group </span>
-                                Funcionários
+                                <span>Funcionários</span>
                             </a>
                         </div>
                     </a>
@@ -196,7 +196,7 @@ include_once('../controller/protect.php');
                         <div class="card">
                             <a href="pageRestaurante.php">
                                 <span class="material-symbols-outlined"> restaurant_menu </span>
-                                Restaurantes
+                                <span>Restaurantes</span>
                             </a>
                         </div>
                     </a>
