@@ -103,26 +103,32 @@
 .search-box-input:-ms-input-placeholder { color: #ffffff; }
 
 .search-box {
+  position: relative;
   width: 100%;
   max-width: 500px; /* Define um valor máximo para o input */
-  display: flex;
   align-items: center; /* Centralize verticalmente */
-  border-radius: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.214);
+  border: 1x solid rgba(0, 0, 0, 0.214);
   height: 30px;
   background-color: aliceblue;
+  border-radius: 30px;
 }
 
 .search-box-input {
   position: absolute;
-  padding: 2px;
-  width: auto;
+  top: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 3px;
+  width: 100%;
+  border-radius: 30px;
   font-size: 1rem;
   transition: .45s;
   background-color: none;
-  color: #000000;
+  color: #ffffff;
   background-color: #EEB253;
   border: none; /* Removi a borda para corresponder ao fundo do .search-box */
+  padding-left: 15px;
 }
 
 input[placeholder] {
@@ -134,19 +140,22 @@ input[placeholder] {
   display: flex;
   width: 38px;
   height: 25px;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
   text-align: left;
-  background-position: right;
-  background-size: 25px;
-  background-repeat: no-repeat;
   margin-left: 10px; /* Alterado para margin-left */
   border: none;
   border-radius: 0px;
   cursor: pointer;
   transition: .3s;
-  opacity: 40%;
+  opacity: 50%;
+  text-align: right;
+  right: -90%;
+  margin-top: 2px;
+  background-color: rgba(255, 255, 255, 0);
+  /* background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
+  background-position: right;
+  background-size: 25px;
+  background-repeat: no-repeat; */
 }
-
 
 
 /* Estilo para o botão "Nova Receita" */

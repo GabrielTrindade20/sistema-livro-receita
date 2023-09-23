@@ -34,7 +34,7 @@ include_once('../controller/protect.php');
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage1.php"><img src="../view/css/logoIcon.png" alt="logo site livro de receitas"> </a> 
+            <a href="homePage1.php"><img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a> 
         </div>
 
         <div class="links-menu">
