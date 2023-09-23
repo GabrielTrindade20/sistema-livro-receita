@@ -20,7 +20,7 @@ include_once('../controller/LoginController.php');
     <main class="main-login">
         <section id="section-esquerda">
             <div class="div-logo">
-                <img src="../view/css/logo.png" alt="logo site livro de receitas"> 
+                <img src="../view/css/img/logo.png" alt="logo site livro de receitas"> 
             </div>
         </section>
             
