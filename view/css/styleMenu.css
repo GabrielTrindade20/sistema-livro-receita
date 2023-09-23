@@ -21,6 +21,10 @@ body {
   background-color: #f5f5f5;
 }
 
+.header {
+  background-color: var(--black);
+}
+
 .menu-lateral {
   position: fixed;
   top: 0;
@@ -101,6 +105,7 @@ body {
 }
 
 .perfil {
+  width: 100%;
   display: flex;
   margin-top: 30%;
   border-top: 1px solid var(--black);
