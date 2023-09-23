@@ -112,8 +112,8 @@ include_once('../controller/protect.php');
                         <span class="material-symbols-outlined"> search </span>
                     </button>                
                 </form>
-            </div><!-- Search -->
-        </div><!--Box Busca-->
+            </div>
+        </div>
         
         <div id="sub-titulo">
             <span><hr></span>
