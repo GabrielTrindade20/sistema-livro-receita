@@ -69,6 +69,16 @@
   padding: 0px 0px 0px 0px;
 }
 
+.card a{
+  color: #ffff;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  display: contents;
+}
+
 .card img{
   width: 30px;
   margin-top: 15px;
@@ -78,15 +88,6 @@
 
 
 
-.card a{
-  color: #ffff;
-  text-align: center;
-  font-size: 15px;
-  font-weight: bold;
-  display: block;
-  align-items: center;
-  text-align: center;
-}
 
 .card p{
   text-align: center;
@@ -109,13 +110,13 @@
 }
 
 /* Chrome, Opera y Safari */
-.search-box-input::-webkit-input-placeholder { color: #ffffff; }
+.search-box-input::-webkit-input-placeholder { color: #000000; }
 
 /* Firefox 19+ */
-.search-box-input::-moz-placeholder { color: #ffffff; }
+.search-box-input::-moz-placeholder { color: #000000; }
 
 /* IE 10+ y Edge */
-.search-box-input:-ms-input-placeholder { color: #ffffff; }
+.search-box-input:-ms-input-placeholder { color: #000000; }
 
 .search-box {
   position: relative;
@@ -126,27 +127,20 @@
   height: 30px;
   background-color: aliceblue;
   border-radius: 30px;
+  color: #000000;
 }
 
 .search-box-input {
   position: absolute;
   top: 0;
-  background: transparent;
-  outline: none;
   padding: 3px;
   width: 100%;
   border-radius: 30px;
   font-size: 1rem;
   transition: .45s;
-  background-color: none;
-  color: #ffffff;
-  background-color: #EEB253;
-  border: 1px solid #000000;
+  border: 1px solid #00000052;
   padding-left: 15px;
-}
-
-input[placeholder] {
-  color: #000000;
+  background-color: transparent;
 }
 
 .search-box-button {
@@ -165,10 +159,6 @@ input[placeholder] {
   right: -90%;
   margin-top: 2px;
   background-color: rgba(255, 255, 255, 0);
-  /* background-image: url('https://cdn-icons-png.flaticon.com/512/149/149852.png');
-  background-position: right;
-  background-size: 25px;
-  background-repeat: no-repeat; */
 }
 
 
