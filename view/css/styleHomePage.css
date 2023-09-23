@@ -27,7 +27,7 @@
   width: auto;
   height: auto;
   padding-left: 350px;
-  padding-top: 100px;
+  padding-top: 90px;
   text-align: left;
   display: block;
   margin-left: auto;
@@ -59,25 +59,39 @@
 .card{
   background-color: #EEB253;
   display: grid;
-  height: 120px;
+  height: 130px;
   margin: 10% 5% 3% 0%;
-  width: 100px;
-  padding: 5px 15px 20px 15px; 
+  width: 110px;
+  /* padding: 5px 15px 20px 15px;  */
   border-radius: 3px;
   box-shadow: 1px 4px 10px #000;
   transition: 0.3s;
+  padding: 0px 0px 0px 0px;
 }
 
 .card img{
-  width: 50%;
+  width: 30px;
   margin-top: 15px;
+  color: #ffffff;
 }
+
+
+
 
 .card a{
   color: #ffff;
   text-align: center;
   font-size: 15px;
   font-weight: bold;
+  display: block;
+  align-items: center;
+  text-align: center;
+}
+
+.card p{
+  text-align: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 /* --------- INPUT PESQUISA ------------------- */
@@ -86,6 +100,7 @@
   display: flex;
   justify-content: center; /* Centralize horizontalmente */
   margin-bottom: 30px;
+  margin-top: 25px;
 }
 
 .search-box-input::placeholder {   

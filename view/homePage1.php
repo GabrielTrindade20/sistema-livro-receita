@@ -131,8 +131,13 @@ include_once('../controller/protect.php');
                     <a href="pageReceitas.php">
                         <div class="card">
                             <a href="pageReceitas.php">
-                                <span class="material-symbols-outlined"> restaurant </span>
-                                Receitas
+                                <div>
+                                    <span class="material-symbols-outlined"> restaurant </span>                                   
+                                </div>
+
+                                <div>
+                                    <p>Receitas</p>
+                                </div>
                             </a>
                         </div>
                     </a>
@@ -142,8 +147,12 @@ include_once('../controller/protect.php');
                     <a href="pageLivroReceitas.php">
                         <div class="card">
                             <a href="pageLivroReceitas.php">
-                                <span class="material-symbols-outlined"> menu_book </span>
-                                Livros de Receitas
+                                <div>
+                                    <span class="material-symbols-outlined"> menu_book </span>
+                                </div>
+                                <div>
+                                    <p>Livros de Receitas</p>
+                                </div>
                             </a>
                         </div>
                     </a>
@@ -153,8 +162,12 @@ include_once('../controller/protect.php');
                     <a href="pageCategoria.php">
                         <div class="card">
                             <a href="pageCategoria.php">
-                                <span class="material-symbols-outlined"> category </span>
-                                Categorias
+                                <div>
+                                    <span class="material-symbols-outlined"> category </span>                                    
+                                </div>
+                                <div>
+                                    <p>Categorias</p>
+                                </div>
                             </a>
                         </div>
                     </a>
@@ -164,8 +177,12 @@ include_once('../controller/protect.php');
                     <a href="pageDegustacao.php">
                         <div class="card">
                             <a href="pageDegustacao.php">
-                                <img src="../view/css/iconsSVG/iconDegustação.svg" alt="">
-                                Categorias
+                                <div>
+                                    <img src="../view/css/iconsSVG/iconDegustação.svg" alt="">                                    
+                                </div>
+                                <div>
+                                    <p>Categorias</p>
+                                </div>
                             </a>
                         </div>
                     </a>
@@ -177,8 +194,12 @@ include_once('../controller/protect.php');
                     <a href="pageCargo.php">
                         <div class="card">
                             <a href="pageCargo.php">
-                                <span class="material-symbols-outlined"> patient_list </span>
-                                Cargo
+                                <div>
+                                    <span class="material-symbols-outlined"> patient_list </span>                                    
+                                </div>
+                                <div>
+                                    <p>Cargo</p>
+                                </div>
                             </a>
                         </div>
                     </a>
@@ -188,8 +209,12 @@ include_once('../controller/protect.php');
                     <a href="pageFuncionario.php">
                         <div class="card">
                             <a href="pageFuncionario.php">
-                                <span class="material-symbols-outlined"> group </span>
-                                Funcionários
+                                <div>
+                                    <span class="material-symbols-outlined"> group </span>                                    
+                                </div>
+                                <div>
+                                    <p>Funcionários</p>
+                                </div>
                             </a>
                         </div>
                     </a>
@@ -199,8 +224,12 @@ include_once('../controller/protect.php');
                     <a href="ageRestaurante.php">
                         <div class="card">
                             <a href="pageRestaurante.php">
-                                <span class="material-symbols-outlined"> restaurant_menu </span>
-                                Restaurantes
+                                <div>
+                                    <span class="material-symbols-outlined"> restaurant_menu </span>                                    
+                                </div>
+                                <div>
+                                    <p>Restaurantes</p>
+                                </div>
                             </a>
                         </div>
                     </a>
