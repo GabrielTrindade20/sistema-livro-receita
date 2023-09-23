@@ -7,9 +7,8 @@ include_once('../controller/protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleMenu.css">
-    <!--<link rel="stylesheet" href="css/generalStyles.css"> -->
     <link rel="stylesheet" href="css/styleHomePage.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link 
         rel="stylesheet" 
@@ -87,7 +86,7 @@ include_once('../controller/protect.php');
 
         <div class="perfil">
             <div class="icon-usuario">
-                <a href="">
+                <a href="pagePerfil.php">
                     <span class="material-symbols-outlined"> person </span>
                     Gabriel Rocha
                 </a>

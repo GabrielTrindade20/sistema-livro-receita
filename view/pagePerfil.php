@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
@@ -10,7 +9,7 @@
         rel="stylesheet" 
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
     />
-    <title>Página de Receitas</title>
+    <title>Perfil</title>
 </head>
 <body>
     <header class="header">
@@ -93,54 +92,6 @@
                 </a>
             </div>
         </div>   
-    </nav>
-
-        <div id="sub-titulo">
-            <a href="">links paginas</a>
-        </div>
-
-    <section class="conteiner-conteudo">
-        
-        <div class="titulos" id="titulo">
-            <div>
-                <h1>Restaurantes</h1>
-            </div>
-
-            <div>
-                <a href=""><img src="css\imagens\Vector.png" alt=""></a>
-            </div>
-        </div>
-        <hr>
-
-
-        <div class="conteiner-table">    
-            <table>
-                <tr id="titulo-cards">
-                    <th id="contato" colspan="">Contato</th>
-                    <th id="telefone" colspan="2">Telefone</th>
-                    <th id="operacao" colspan="3">Operação</th>
-                </tr>
-                
-                <tr>
-                    <td>dsfdfa<td>
-                    <td>(61) 98456-1468<td>
-                    <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
-                </tr>
-
-                <tr>
-                    <td>Dona de Casa<td>
-                    <td>(63) 95165-6815<td>
-                    <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
-                </tr>
-
-                <tr>
-                    <td>Pratos típicos<td>
-                    <td>(64) 96385-4186<td>
-                    <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
-                </tr>
-            </table>
-        </div>
-    </section>
-
+    </nav> 
 </body>
 </html>

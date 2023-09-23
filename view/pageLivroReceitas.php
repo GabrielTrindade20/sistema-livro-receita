@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleMenu.css">
-    <!--<link rel="stylesheet" href="css/generalStyles.css">-->
-    <link rel="stylesheet" href="css/styleHomePage.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link 
         rel="stylesheet" 
@@ -29,14 +27,14 @@
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage1.php"><img src="../view/css/logoIcon.png" alt="logo site livro de receitas"> </a> 
+            <a href="homePage.php"><img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a> 
         </div>
 
         <div class="links-menu">
             <div class="icone-menu">
                 <a href="homePage.php">
                     <span class="material-symbols-outlined"> Home </span>
-                    <span>Receitas</span>
+                    <span>Home</span>
                 </a>             
             </div>
             <div class="icone-menu">
@@ -85,7 +83,7 @@
 
         <div class="perfil">
             <div class="icon-usuario">
-                <a href="">
+                <a href="pagePerfil.php">
                     <span class="material-symbols-outlined"> person </span>
                     Gabriel Rocha
                 </a>
@@ -97,7 +95,6 @@
             </div>
         </div>   
     </nav>
-
 
         <div id="sub-titulo">
             <a href="">links paginas</a>
