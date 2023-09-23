@@ -3,51 +3,109 @@ include_once('../controller/protect.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/generalStyles.css">
-    <link rel="stylesheet" href="css/estiloTable.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
+    <link rel="stylesheet" href="css/styleTable.css">
+    <!--<link rel="stylesheet" href="css/generalStyles.css">-->
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Categorias</title>
 </head>
+
 <body>
-    
-<header class="header">
+    <header class="header">
         <div class="usuario">
-            <div id="usuario"><p>Gabriel Trindade Rocha</p></div>
-            <div id><img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="usuário"></div>
+            <div id="usuario">
+                <a href="">
+                    <span class="material-symbols-outlined"> person </span>
+                    Gabriel Rocha
+                </a>
+            </div>
         </div>
     </header>
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage.php"><img src="./css/imagens/logo.png" alt=""></a>
-        </div>
-        <div class="links-menu" id="a-menu">
-            <a href="homePage.php">Home</a>
-            <a href="pageReceitas.php">Receitas</a>
-            <a href="pageLivroReceitas.php">Livro de Receitas</a>
-            <a href="pageCategoria.php">Categoria</a>
-            <a href="pageDegustacao.php">Degustação</a>
-            <a href="pageCargo.php">Cargo</a>
-            <a href="pageFuncionario.php">Funcionários</a>
-            <a href="pageRestaurante.php">Restaurantes</a>
+            <a href="homePage1.php"><img src="../view/css/logoIcon.png" alt="logo site livro de receitas"> </a>
         </div>
 
-        <div id="perfil">
-            <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/08/02-52.png" alt="">
-            <a href="">Perfil</a>
+        <div class="links-menu">
+            <div class="icone-menu">
+                <a href="homePage.php">
+                    <span class="material-symbols-outlined"> Home </span>
+                    <span>Receitas</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageReceitas.php">
+                    <span class="material-symbols-outlined"> restaurant </span>
+                    <span>Receitas</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageLivroReceitas.php">
+                    <span class="material-symbols-outlined"> menu_book </span>
+                    <span>Livro de Receitas</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageCategoria.php">
+                    <span class="material-symbols-outlined"> category </span>
+                    <span>Categoria</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageDegustacao.php">
+                    <span><img src="../view/css/iconsSVG/iconDegustação.svg" alt=""></span>
+                    <span>Degustação</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageCargo.php">
+                    <span class="material-symbols-outlined"> patient_list </span>
+                    <span>Cargo</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageFuncionario.php">
+                    <span class="material-symbols-outlined"> group </span>
+                    <span>Funcionários</span>
+                </a>
+            </div>
+            <div class="icone-menu">
+                <a href="pageRestaurante.php">
+                    <span class="material-symbols-outlined"> restaurant_menu </span>
+                    <span>Restaurantes</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="perfil">
+            <div class="icon-usuario">
+                <a href="">
+                    <span class="material-symbols-outlined"> person </span>
+                    Gabriel Rocha
+                </a>
+            </div>
+            <div class="icon-logout">
+                <a href="../controller/logoutController.php">
+                    <span class="material-symbols-outlined"> logout </span>
+                </a>
+            </div>
         </div>
     </nav>
 
-        <div id="sub-titulo">
-            <a href="homePage.php">Homepage > </a>
-            <a href="pageCategoria.php">Categoria</a>
-        </div>
+    <div id="sub-titulo">
+        <a href="homePage.php">Homepage > </a>
+        <a href="pageCategoria.php">Categoria</a>
+    </div>
 
     <section class="conteiner-conteudo">
-        
+
         <div class="titulos" id="titulo">
             <div>
                 <h1>Categorias</h1>
@@ -59,13 +117,13 @@ include_once('../controller/protect.php');
         </div>
         <hr>
 
-        <div class="conteiner-table">    
+        <div class="conteiner-table">
             <table>
                 <tr id="titulo-cards">
                     <th id="descricao">Descrição</th>
                     <th id="operacao">Operações</th>
                 </tr>
-                
+
                 <tr>
                     <td>Bolos e Tortas</td>
                     <td><a href="Editar"><img src="css/imagens/deleteAzul.png" alt=""></a><a href=""><img src="css/imagens/editarAzul.png" alt=""></a></td>
@@ -87,4 +145,5 @@ include_once('../controller/protect.php');
     </section>
 
 </body>
+
 </html>

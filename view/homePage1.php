@@ -1,3 +1,9 @@
+<?php
+include_once('../controller/LoginController.php');
+?>
+<?php
+include_once('../controller/protect.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,8 +18,7 @@
         rel="stylesheet" 
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
     />
-    <link rel="stylesheet" href="css/estiloCards.css">
-    <title>Página de Receitas</title>
+    <title>Página Principal</title>
 </head>
 <body>
     <header class="header">
@@ -98,85 +103,112 @@
         </div>   
     </nav>
 
-
-        <div id="sub-titulo">
-            <a href="">links paginas</a>
-        </div>
-
     <section class="conteiner-conteudo">
-        
-        <div class="titulos" id="titulo">
-            <div>
-                <h1>Livro de Receitas</h1>
-            </div>
-
-            <div>
-                <a href=""><img src="css\imagens\Vector.png" alt=""></a>
-            </div>
+        <div class="titulo">
+            <h1>Bem Vindo</h1>
         </div>
-        <hr>
 
-
-        <div class="conteiner-cards">
-        <?php include('../configuration/generate_cards.php');?>
-
-
-
-    
+        <div class="box-busca">
+            <div class="search-box">
+                <form method="post" action="#">
+                    <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
+                    <button class="search-box-button">
+                        <span class="material-symbols-outlined"> search </span>
+                    </button>                
+                </form>
+            </div><!-- Search -->
+        </div><!--Box Busca-->
         
+        <div id="sub-titulo">
+            <span><hr></span>
+            <h2>Acesso Rápido</h2>
+            <span><hr></span>
+        </div>
 
-            <!-- <div class="card">
-                <div><img src="https://static.itdg.com.br/images/1200-630/901f400bf4dd4e6e9e2ab65bcec454d8/354055-original.jpg" alt=""></div>
-                <div class="conteudo-card">
-                    <div class="nomeReceita">
-                        <a href="pageReceitas.php">Receitas de Milho</a>
-                    </div>
-                    <div class="edicaoReceita">
-                        <div><a href=""><img src="css\imagens\editar.png" alt=""></a></div>
-                        <div><a href=""><img src="css\imagens\delete.png" alt=""></a></div>
-                    </div>
+        <div class="cards-conteiner">
+            <div id="cards-conteiner-1">
+                <div>
+                    <a href="pageReceitas.php">
+                        <div class="card">
+                            <a href="pageReceitas.php">
+                                <span class="material-symbols-outlined"> restaurant </span>
+                                Receitas
+                            </a>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="pageLivroReceitas.php">
+                        <div class="card">
+                            <a href="pageLivroReceitas.php">
+                                <span class="material-symbols-outlined"> menu_book </span>
+                                Livros de Receitas
+                            </a>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="pageCategoria.php">
+                        <div class="card">
+                            <a href="pageCategoria.php">
+                                <span class="material-symbols-outlined"> category </span>
+                                Categorias
+                            </a>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="pageDegustacao.php">
+                        <div class="card">
+                            <a href="pageDegustacao.php">
+                                <img src="../view/css/iconsSVG/iconDegustação.svg" alt="">
+                                Categorias
+                            </a>
+                        </div>
+                    </a>
                 </div>
             </div>
 
-            <div class="card">
-                <div><img src="https://cdn.aquelareceita.com.br/recipes/image-1641392334286-1641924644344.png" alt=""></div>
-                <div class="conteudo-card">
-                    <div class="nomeReceita">
-                        <a href="pageReceitas.php">Receitas de Cenoura</a>
-                    </div>
-                    <div class="edicaoReceita">
-                        <div><a href=""><img src="css\imagens\editar.png" alt=""></a></div>
-                        <div><a href=""><img src="css\imagens\delete.png" alt=""></a></div>
-                    </div>
+            <div id="cards-conteiner-2">
+                <div>
+                    <a href="pageCargo.php">
+                        <div class="card">
+                            <a href="pageCargo.php">
+                                <span class="material-symbols-outlined"> patient_list </span>
+                                Cargo
+                            </a>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="pageFuncionario.php">
+                        <div class="card">
+                            <a href="pageFuncionario.php">
+                                <span class="material-symbols-outlined"> group </span>
+                                Funcionários
+                            </a>
+                        </div>
+                    </a>
+                </div>
+
+                <div>
+                    <a href="ageRestaurante.php">
+                        <div class="card">
+                            <a href="pageRestaurante.php">
+                                <span class="material-symbols-outlined"> restaurant_menu </span>
+                                Restaurantes
+                            </a>
+                        </div>
+                    </a>
                 </div>
             </div>
-
-            <div class="card">
-                <div><img src="" alt=""></div>
-                <div class="conteudo-card">
-                    <div class="nomeReceita">
-                        <a href="pageReceitas.php">Receitas de Limão</a>
-                    </div>
-                    <div class="edicaoReceita">
-                        <div><a href=""><img src="css\imagens\editar.png" alt=""></a></div>
-                        <div><a href=""><img src="css\imagens\delete.png" alt=""></a></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div><img src="https://static.itdg.com.br/images/1200-630/901f400bf4dd4e6e9e2ab65bcec454d8/354055-original.jpg" alt=""></div>
-                <div class="conteudo-card">
-                    <div class="nomeReceita">
-                        <a href="pageReceitas.php">Receitas de Milho</a>
-                    </div>
-                    <div class="edicaoReceita">
-                        <div><a href=""><img src="css\imagens\editar.png" alt=""></a></div>
-                        <div><a href=""><img src="css\imagens\delete.png" alt=""></a></div>
-                    </div>
-                </div>
-            </div> -->
+            
         </div>
     </section>
+
 </body>
 </html>
