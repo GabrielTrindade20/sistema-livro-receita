@@ -131,7 +131,6 @@
 .search-box-input {
   position: absolute;
   top: 0;
-  border: none;
   background: transparent;
   outline: none;
   padding: 3px;
@@ -142,7 +141,7 @@
   background-color: none;
   color: #ffffff;
   background-color: #EEB253;
-  border: none; /* Removi a borda para corresponder ao fundo do .search-box */
+  border: 1px solid #000000;
   padding-left: 15px;
 }
 
