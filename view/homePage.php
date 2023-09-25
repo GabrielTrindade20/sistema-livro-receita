@@ -1,11 +1,19 @@
+<?php
+include_once('../controller/protect.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/generalStyles.css">
     <link rel="stylesheet" href="css/styleHomePage.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link 
+        rel="stylesheet" 
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
+    />
     <title>Página Principal</title>
 </head>
 <body>
@@ -81,11 +89,6 @@
                 <a href="pagePerfil.php">
                     <span class="material-symbols-outlined"> person </span>
                     Gabriel Rocha
-                </a>
-            </div>
-            <div class="icon-logout">
-                <a href="../controller/logoutController.php">
-                    <span class="material-symbols-outlined"> logout </span>
                 </a>
             </div>
         </div>   
