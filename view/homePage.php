@@ -7,7 +7,7 @@ include_once('../controller/protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleHomePage.css">
+    <link rel="stylesheet" href="css/styleHomePag.css">
     <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link 
@@ -155,7 +155,7 @@ include_once('../controller/protect.php');
                     <a href="pageDegustacao.php">
                         <div class="card">
                             <a href="pageDegustacao.php">
-                                <img src="../view/css/iconsSVG/iconDegustação.svg" alt="">
+                                <img src="../view/css/iconsSVG/iconDegustação.svg" alt="" width="" height="25px">
                                 <span>Categorias</span>
                             </a>
                         </div>
