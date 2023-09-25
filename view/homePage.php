@@ -8,7 +8,7 @@ include_once('../controller/protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleHomePag.css">
-    <link rel="stylesheet" href="css/styleMenu.css">
+    <link rel="stylesheet" href="css/styleMen.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link 
         rel="stylesheet" 
@@ -85,10 +85,10 @@ include_once('../controller/protect.php');
         </div>
 
         <div class="perfil">
-            <div class="icon-usuario">
+            <div class="usuario-perfil">
                 <a href="pagePerfil.php">
                     <span class="material-symbols-outlined"> person </span>
-                    Gabriel Rocha
+                    <span>Gabriel Rocha</span>
                 </a>
             </div>
         </div>   
