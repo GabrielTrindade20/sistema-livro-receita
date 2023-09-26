@@ -106,11 +106,11 @@ include_once('../controller/protect.php');
     <div class="titulos" id="titulo">
         <div class="conteiner-titulo">
             <div>
-                <h1>Lista de Receitas</h1>
+                <h1>Lista de Categorias</h1>
             </div>
 
             <div class="info-receitas">
-                <a href="">(10) Receitas</a>
+                <a href="">(10) Categorias</a>
             </div>
         </div>
 

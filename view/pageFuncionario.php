@@ -105,11 +105,11 @@
         <div class="titulos" id="titulo">
             <div class="conteiner-titulo">
                 <div>
-                    <h1>Lista de Receitas</h1>
+                    <h1>Lista de Funcionários</h1>
                 </div>
 
                 <div class="info-receitas">
-                    <a href="">(10) Receitas</a>
+                    <a href="">(10) Funcionários</a>
                 </div>
             </div>
 
