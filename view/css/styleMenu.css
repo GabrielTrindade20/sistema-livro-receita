@@ -21,9 +21,41 @@ body {
   background-color: #f5f5f5;
 }
 
+section{
+  margin-right: 15px;
+}
+
 .header {
   background-color: var(--black);
+  padding: 5px 15px; /* Adicionar algum espaço interno para o cabeçalho */
 }
+
+.usuario{
+  text-align: right;
+  margin-top: 3px;
+  align-items: center;
+}
+
+.usuario-name{
+  position: relative;
+  top: -8px;
+}
+
+.usuario a {
+  text-decoration: none; /* Remover a decoração de link */
+  text-align: right; /* Alinhar verticalmente os elementos filhos */
+  padding: 10px; /* Adicionar algum espaço interno para o link */
+  border-radius: 5px; /* Adicionar borda arredondada */
+  color: #fff; /* Definir a cor do texto no link */
+  font-size: 1.1rem;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.usuario a .material-symbols-outlined {
+  font-size: 30px;
+  margin-right: 5px; /* Adicionar espaço entre o ícone e o nome de usuário */
+}
+
 
 .menu-lateral {
   position: fixed;
@@ -37,7 +69,7 @@ body {
   width: 250px;
   height: 100%;
   gap: 30px;
-  padding: 35px 10px 30px 10px;
+  padding: 35px 10px 30px 0px;
   background: var(--primary);
   
 }
@@ -85,6 +117,8 @@ body {
 .links-menu {
   width: 100%;
   margin-top: 30px;
+  margin-left: 10px;
+  text-align: left;
 }
 
 .icone-menu:hover {
@@ -103,9 +137,15 @@ body {
 }
 
 .perfil {
-  width: 100%;
+  position: absolute;
   margin-top: 30%;
   border-top: 1px solid var(--black);  
   position: absolute;
   bottom: 15px;
+  width: 100%;
+  padding-top: -10px;
+  text-align: left;
 }
+
+
+
