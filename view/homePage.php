@@ -91,9 +91,6 @@ include_once('../controller/protect.php');
                 <a href="../controller/logoutController.php">
                     <span class="material-symbols-outlined"> logout </span>
                 </a>
-                <a href="../controller/logoutController.php">
-                    <span class="material-symbols-outlined"> logout </span>
-                </a>
             </div>
         </div>
     </nav>
