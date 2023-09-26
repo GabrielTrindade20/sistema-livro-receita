@@ -27,7 +27,35 @@ section{
 
 .header {
   background-color: var(--black);
+  padding: 5px 15px; /* Adicionar algum espaço interno para o cabeçalho */
 }
+
+.usuario{
+  text-align: right;
+  margin-top: 3px;
+  align-items: center;
+}
+
+.usuario-name{
+  position: relative;
+  top: -8px;
+}
+
+.usuario a {
+  text-decoration: none; /* Remover a decoração de link */
+  text-align: right; /* Alinhar verticalmente os elementos filhos */
+  padding: 10px; /* Adicionar algum espaço interno para o link */
+  border-radius: 5px; /* Adicionar borda arredondada */
+  color: #fff; /* Definir a cor do texto no link */
+  font-size: 1.1rem;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.usuario a .material-symbols-outlined {
+  font-size: 30px;
+  margin-right: 5px; /* Adicionar espaço entre o ícone e o nome de usuário */
+}
+
 
 .menu-lateral {
   position: fixed;

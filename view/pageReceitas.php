@@ -16,16 +16,16 @@
 </head>
 
 <body>
+    
     <header class="header">
         <div class="usuario">
-            <div id="usuario">
-                <a href="">
-                    <span class="material-symbols-outlined"> person </span>
-                    Gabriel Rocha
-                </a>
-            </div>
+            <a href="">
+                <span class="usuario-name">Gabriel Rocha</span>
+                <span class="material-symbols-outlined"> person </span>
+            </a>
         </div>
     </header>
+
 
     <nav class="menu-lateral">
         <div class="logo">

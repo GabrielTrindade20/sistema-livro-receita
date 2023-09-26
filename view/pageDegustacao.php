@@ -18,12 +18,10 @@
 <body>
     <header class="header">
         <div class="usuario">
-            <div id="usuario">
-                <a href="">
-                    <span class="material-symbols-outlined"> person </span>
-                    Gabriel Rocha
-                </a>
-            </div>
+            <a href="">
+                <span class="usuario-name">Gabriel Rocha</span>
+                <span class="material-symbols-outlined"> person </span>
+            </a>
         </div>
     </header>
 
@@ -166,7 +164,7 @@
                                 alt=""></a>
                     </td>
                 </tr>
-                
+
                 <tr class="odd-row">
                     <td class="select-column">
                         <a href=""><input type="checkbox"></a>

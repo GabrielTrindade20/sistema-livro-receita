@@ -30,13 +30,12 @@
     /* Estilos para telas menores */
 @media (max-width: 1280px) {
     
+    
     .conteiner-conteudo{
         margin-left: 300px;
-        width: 65%;
+        width: 70%;
     }
 
-    table {
-    }
     
     /* Redefina as larguras das colunas para telas menores */
     th, td {
@@ -45,7 +44,7 @@
     }
 
     /* Esconda a coluna de seleção em telas menores, se necessário */
-    .select-column {
+    /* .select-column {
         display: none;
-    }
+    } */
 }

@@ -3,6 +3,7 @@ include_once('../controller/protect.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,27 +11,24 @@ include_once('../controller/protect.php');
     <link rel="stylesheet" href="css/styleHomePage.css">
     <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
-    <link 
-        rel="stylesheet" 
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
-    />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página Principal</title>
 </head>
+
 <body>
     <header class="header">
         <div class="usuario">
-            <div id="usuario">
-                <a href="">
-                    <span class="material-symbols-outlined"> person </span>
-                    Gabriel Rocha
-                </a>
-            </div>
+            <a href="">
+                <span class="usuario-name">Gabriel Rocha</span>
+                <span class="material-symbols-outlined"> person </span>
+            </a>
         </div>
     </header>
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage.php"><img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a> 
+            <a href="homePage.php"><img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a>
         </div>
 
         <div class="links-menu">
@@ -38,50 +36,50 @@ include_once('../controller/protect.php');
                 <a href="homePage.php">
                     <span class="material-symbols-outlined"> Home </span>
                     <span>Home</span>
-                </a>             
+                </a>
             </div>
             <div class="icone-menu">
                 <a href="pageReceitas.php">
                     <span class="material-symbols-outlined"> restaurant </span>
                     <span>Receitas</span>
-                </a>           
+                </a>
             </div>
             <div class="icone-menu">
                 <a href="pageLivroReceitas.php">
                     <span class="material-symbols-outlined"> menu_book </span>
                     <span>Livro de Receitas</span>
-                </a>        
+                </a>
             </div>
             <div class="icone-menu">
                 <a href="pageCategoria.php">
                     <span class="material-symbols-outlined"> category </span>
                     <span>Categoria</span>
-                </a>           
+                </a>
             </div>
             <div class="icone-menu">
                 <a href="pageDegustacao.php">
                     <span><img src="../view/css/iconsSVG/iconDegustação.svg" alt=""></span>
                     <span>Degustação</span>
-                </a>          
+                </a>
             </div>
             <div class="icone-menu">
                 <a href="pageCargo.php">
                     <span class="material-symbols-outlined"> patient_list </span>
                     <span>Cargo</span>
-                </a>         
+                </a>
             </div>
-            <div class="icone-menu">                
+            <div class="icone-menu">
                 <a href="pageFuncionario.php">
                     <span class="material-symbols-outlined"> group </span>
                     <span>Funcionários</span>
-                </a>         
+                </a>
             </div>
-            <div class="icone-menu">              
+            <div class="icone-menu">
                 <a href="pageRestaurante.php">
                     <span class="material-symbols-outlined"> restaurant_menu </span>
                     <span>Restaurantes</span>
-                </a>         
-            </div>            
+                </a>
+            </div>
         </div>
 
         <div class="perfil">
@@ -94,7 +92,7 @@ include_once('../controller/protect.php');
                     <span class="material-symbols-outlined"> logout </span>
                 </a>
             </div>
-        </div>   
+        </div>
     </nav>
 
     <section class="conteiner-conteudo">
@@ -108,15 +106,19 @@ include_once('../controller/protect.php');
                     <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
                     <button class="search-box-button">
                         <span class="material-symbols-outlined"> search </span>
-                    </button>                
+                    </button>
                 </form>
             </div>
         </div>
-        
+
         <div id="sub-titulo">
-            <span><hr></span>
+            <span>
+                <hr>
+            </span>
             <h2>Acesso Rápido</h2>
-            <span><hr></span>
+            <span>
+                <hr>
+            </span>
         </div>
 
         <div class="cards-conteiner">
@@ -200,9 +202,10 @@ include_once('../controller/protect.php');
                     </a>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
 </body>
+
 </html>
