@@ -46,19 +46,3 @@ th, td {
     text-decoration: none;
 }
 
-/* Estilos para telas menores */
-@media (max-width: 768px) {
-    table {
-        font-size: 14px; /* Reduza o tamanho da fonte */
-    }
-
-    /* Redefina as larguras das colunas para telas menores */
-    th, td {
-        width: auto; /* Volte para a largura automática */
-    }
-
-    /* Esconda a coluna de seleção em telas menores, se necessário */
-    .select-column {
-        display: none;
-    }
-}

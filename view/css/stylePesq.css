@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+
 :root {
   --blue: #01093F;
   --white: #ffffff;
@@ -159,7 +160,9 @@ h2 {
     font-size: 0.8rem;
 }
 
-#button {
+.button {
   margin-left: 5px;
   margin-right: 10px;
 }
+
+

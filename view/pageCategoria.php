@@ -11,6 +11,7 @@ include_once('../controller/protect.php');
     <link rel="stylesheet" href="css/stylePesq.css">
     <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="stylesheet" href="css/styleTable.css">
+    <link rel="stylesheet" href="css/styleResponsivo.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -124,7 +125,7 @@ include_once('../controller/protect.php');
                 </form>
             </div>
 
-            <div id="button">
+            <div class="button-nova">
                 <button class="nova-receita-button">Nova Receita</button>
             </div>
         </div><!-- Search -->

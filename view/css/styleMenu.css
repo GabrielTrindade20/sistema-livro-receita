@@ -21,6 +21,10 @@ body {
   background-color: #f5f5f5;
 }
 
+section{
+  margin-right: 15px;
+}
+
 .header {
   background-color: var(--black);
 }
