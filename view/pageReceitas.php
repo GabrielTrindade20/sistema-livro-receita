@@ -85,10 +85,8 @@
             <div class="icon-usuario">
                 <a href="pagePerfil.php">
                     <span class="material-symbols-outlined"> person </span>
-                    Gabriel Rocha
+                    <span class="name">Gabriel Rocha</span>
                 </a>
-            </div>
-            <div class="icon-logout">
                 <a href="../controller/logoutController.php">
                     <span class="material-symbols-outlined"> logout </span>
                 </a>
@@ -122,7 +120,7 @@
                         </div>
                     </form>
                 </div>
-                
+
                 <div id="button">
                         <button class="nova-receita-button">Nova Receita</button>
                 </div>

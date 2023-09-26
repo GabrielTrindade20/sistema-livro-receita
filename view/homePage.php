@@ -85,10 +85,13 @@ include_once('../controller/protect.php');
         </div>
 
         <div class="perfil">
-            <div class="usuario-perfil">
+            <div class="icon-usuario">
                 <a href="pagePerfil.php">
                     <span class="material-symbols-outlined"> person </span>
-                    <span>Gabriel Rocha</span>
+                    <span class="name">Gabriel Rocha</span>
+                </a>
+                <a href="../controller/logoutController.php">
+                    <span class="material-symbols-outlined"> logout </span>
                 </a>
             </div>
         </div>   
