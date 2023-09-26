@@ -21,15 +21,19 @@
 th, td {
     padding: 5px;
     text-align: left;
-    border-bottom: 1px solid #D9D9D9;
-    background-color: #d9d9d959; /* Cor de fundo com 20% de opacidade */
+    background-color: #d9d9d9a4; /* Cor de fundo com 20% de opacidade */
 }
 
-/* Estilos para linhas ímpares (brancas) */
-tr:nth-child(odd) {
-    background-color: #fff;
+/* Estilize as células de linhas pares */
+.even-row td {
+    background-color: #d9d9d93f; /* Cor de fundo para linhas pares */
 }
-
+  
+  /* Estilize as células de linhas ímpares */
+.odd-row td {
+    background-color: #d9d9d9a4; /* Cor de fundo para linhas ímpares */
+}
+  
 /* Estilos para a coluna de seleção */
 .select-column {
     width: 50px;

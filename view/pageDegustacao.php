@@ -145,7 +145,49 @@
             </thead>
             <tbody>
                 <!-- Exemplo de uma linha de dados -->
-                <tr>
+                <tr class="even-row">
+                    <td class="select-column">
+                        <a href=""><input type="checkbox"></a>
+                    </td>
+                    <td>Nome do Prato</td>
+                    <td>Categoria A</td>
+                    <td>Nome do Cozinheiro</td>
+                    <td>01/09/2023</td>
+                    <td class="operacao">
+                        <a class="operation-link" href="#"><img
+                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWW27IOOUCCUNAGFSVDFBOLJ6"
+                                alt=""></a>
+                        <a class="operation-link" href="#"><img
+                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWRHLDUUFHQS4ZSOKCLFBOLH6"
+                                alt=""></a>
+                        <a class="operation-link" href="#"><img
+                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWSXHUGY3BQDV4HKILTFBOLFY"
+                                alt=""></a>
+                    </td>
+                </tr>
+                
+                <tr class="odd-row">
+                    <td class="select-column">
+                        <a href=""><input type="checkbox"></a>
+                    </td>
+                    <td>Nome do Prato</td>
+                    <td>Categoria A</td>
+                    <td>Nome do Cozinheiro</td>
+                    <td>01/09/2023</td>
+                    <td class="operacao">
+                        <a class="operation-link" href="#"><img
+                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWW27IOOUCCUNAGFSVDFBOLJ6"
+                                alt=""></a>
+                        <a class="operation-link" href="#"><img
+                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWRHLDUUFHQS4ZSOKCLFBOLH6"
+                                alt=""></a>
+                        <a class="operation-link" href="#"><img
+                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWSXHUGY3BQDV4HKILTFBOLFY"
+                                alt=""></a>
+                    </td>
+                </tr>
+
+                <tr class="even-row">
                     <td class="select-column">
                         <a href=""><input type="checkbox"></a>
                     </td>
