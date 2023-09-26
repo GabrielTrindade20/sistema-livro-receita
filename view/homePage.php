@@ -90,6 +90,9 @@ include_once('../controller/protect.php');
                     <span class="material-symbols-outlined"> person </span>
                     Gabriel Rocha
                 </a>
+                <a href="../controller/logoutController.php">
+                    <span class="material-symbols-outlined"> logout </span>
+                </a>
             </div>
         </div>   
     </nav>
