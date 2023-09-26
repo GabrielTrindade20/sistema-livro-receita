@@ -36,10 +36,9 @@ h2 {
 }
 
 .conteiner-pesquisa {
-  background-color: #01093F;
   width: auto;
   height: auto;
-  padding-left: 350px;
+  padding-left: 250px;
   padding-top: 90px;
   text-align: left;
   display: block;
@@ -52,13 +51,6 @@ h2 {
   /* Tamanho inicial do texto */
 }
 
-/* Adicione uma regra de mídia para ajustar o tamanho do h1 em telas menores */
-@media (max-width: 1200px) {
-  .titulos h1 {
-      font-size: 1.5rem; /* Tamanho menor do texto para telas menores */
-  }
-}
-
 .titulos a {
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
@@ -67,16 +59,8 @@ h2 {
 .titulos {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 2% 0 5%;
-}
-
-@media (max-width: 768px) {
-    .titulos {
-        margin-left: 0; /* Remova o margin-left para centralizar em telas menores */
-    }
+  justify-content: space-between; /* Distribui os elementos igualmente no espaço disponível */
+  padding: 0px 15px 0px 0px;
 }
 
 .conteiner-titulo {
@@ -88,7 +72,7 @@ h2 {
   padding: 0 0px;
 }
 
-.card-receitas {
+.info-receitas {
   margin-left: 5px;
   background-color: #EEB253;
   color: #fff;
@@ -99,7 +83,7 @@ h2 {
   margin-left: 10px;
 }
 
-.card-receitas a {
+.info-receitas a {
   font-size: 0.8rem;
   color: #fff;
 
@@ -115,13 +99,15 @@ h2 {
 }
 
 .search-box {
+  width: auto;
+  max-width: 500px; /* Define um valor máximo para o input */
   display: flex;
+  justify-content: center; /* Centralize horizontalmente */
+  align-items: center; /* Centralize verticalmente */
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.214);
   height: 30px;
-  color: #000;
-  width: 60%;
-  /* Defina o tamanho desejado */
-  max-width: 200px;
-  /* Defina uma largura máxima para evitar que fique muito largo */
+  background-color: aliceblue;
 }
 
 .search-box-input-container {

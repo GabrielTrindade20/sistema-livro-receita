@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylePage.css">
+    <link rel="stylesheet" href="css/stylePesq.css">
     <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link 
@@ -108,7 +108,7 @@
                     <h1>Lista de Receitas</h1>
                 </div>
 
-                <div class="card-receitas">
+                <div class="info-receitas">
                     <a href="">(10) Receitas</a>
                 </div>
             </div>
@@ -122,11 +122,12 @@
                         </div>
                     </form>
                 </div>
+                
+                <div id="button">
+                        <button class="nova-receita-button">Nova Receita</button>
+                </div>
             </div><!-- Search -->
             
-            <div id="button">
-                    <button class="nova-receita-button">Nova Receita</button>
-            </div>
 
         </div>
     </section> 
