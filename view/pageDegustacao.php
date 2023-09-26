@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylePesq.css">
     <link rel="stylesheet" href="css/styleMenu.css">
@@ -10,7 +11,7 @@
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Degustação</title>
+    <title>Página de Receitas</title>
 </head>
 
 <body>
@@ -94,6 +95,10 @@
         </div>
     </nav>
 
+    <div id="sub-titulo">
+        <a href="">links paginas</a>
+    </div>
+
     <section class="conteiner-pesquisa">
 
         <div class="titulos" id="titulo">
@@ -164,6 +169,7 @@
             </tbody>
         </table>
     </section>
+
 </body>
 
 </html>
