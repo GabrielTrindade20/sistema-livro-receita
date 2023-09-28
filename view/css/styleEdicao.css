@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@200;300;400&display=swap');
+
+:root {
+    --primary: #EEB253;
+    --primary-hover: #ff8b61;
+    --text: #BE783C;
+    --erro: #c62a2594;
+    --white: white;
+    --black: black;
+}
+
+.conteiner-pesquisa {
+    width: auto;
+    height: auto;
+    padding-left: 250px;
+    padding-top: 50px;
+    text-align: left;
+    display: block;
+    margin-left: auto;
+}
