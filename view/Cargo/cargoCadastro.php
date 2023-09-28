@@ -48,9 +48,9 @@
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="../pageCategoria.php">
+                <a href="../pageCargo.php">
                     <span class="material-symbols-outlined"> category </span>
-                    <span>Categoria</span>
+                    <span>Cargo</span>
                 </a>
             </div>
             <div class="icone-menu">
@@ -127,6 +127,45 @@
 
 
     <section class="conteiner-conteudo">
+        <table border="1">
+            <tr>
+                <th>id</th>
+                <th>Cargo</th>
+                <th colspan="2">Ações</th>
+            </tr>
+            
+            <?php foreach ($cargos as $cargo): ?>
+                <tr>
+                    <td>
+                        <?php echo $cargo["idCargo"]; ?>
+                    </td>
+                    <td>
+                        <?php echo $cargo["descricao"]; ?>
+                    </td>
+                    <td>
+                        <a href="exclusao.php?id=<?php echo $cargo["idCargo"]; ?>">
+                            <img src="../view/css/iconsSVG/iconCargo.svg" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="formAlteracao.php?id=<?php echo $cargo["idCargo"]; ?>">
+                            <img src="../view/css/iconsSVG/iconCargo.svg" />
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+
+        <?php if (isset($mensagem)): ?>
+            <div class="mensagem">
+                <?php echo $mensagem; ?>
+            </div>
+        <?php endif; ?>
+
+        <br>
+        <a href="cadastro.php">Cadastrar</a>
+        <br>
+        <a href="">Menu Principal</a>
 
     </section>
 
