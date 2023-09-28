@@ -123,7 +123,9 @@
                 </div>
 
                 <div class="button-nova">
-                    <button class="nova-receita-button">Nova Receita</button>
+                    <a href="../CRUD-Categoria/view/pageCategoria.php">
+                        <button class="nova-receita-button">Nova Receita</button>
+                    </a>
                 </div>
             </div><!-- Search -->
 
