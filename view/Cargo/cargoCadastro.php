@@ -50,7 +50,7 @@
             <div class="icone-menu">
                 <a href="../pageCargo.php">
                     <span class="material-symbols-outlined"> category </span>
-                    <span>Cargo</span>
+                    <span>Categoria</span>
                 </a>
             </div>
             <div class="icone-menu">
@@ -127,42 +127,26 @@
 
 
     <section class="conteiner-conteudo">
-        <table border="1">
-            <tr>
-                <th>id</th>
-                <th>Cargo</th>
-                <th colspan="2">Ações</th>
-            </tr>
-            <?php foreach ($cargos as $cargo): ?>
-                <tr>
-                    <td>
-                        <?php echo $cargo["idCargo"]; ?>
-                    </td>
-                    <td>
-                        <?php echo $cargo["descricao"]; ?>
-                    </td>
-                    <td>
-                        <a href="exclusao.php?id=<?php echo $cargo["idCargo"]; ?>">
-                        </a>
-                    </td>
-                    <td>
-                        <a href="formAlteracao.php?id=<?php echo $cargo["idCargo"]; ?>">
-                        </a>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
+        <h1>Cadastro de Cargo</h1>
+
+        <!-- Formulário de Cadastro -->
+        <form method="POST" action="../../controller/controllerCadastro/processar_cadastro.php">
+            <label for="nome">Nome do Cargo:</label>
+            <input type="text" id="nome" name="nome" required>
+            <br>
+
+            <!-- Botão para salvar o cargo -->
+            <button type="submit" name="salvar">Salvar</button>
+
+            <!-- Botão para cancelar e voltar à página principal -->
+            <a href="pageCargos.php">Cancelar</a>
+        </form>
 
         <?php if (isset($mensagem)): ?>
             <div class="mensagem">
                 <?php echo $mensagem; ?>
             </div>
         <?php endif; ?>
-
-        <br>
-        <a href="cadastro.php">Cadastrar</a>
-        <br>
-        <a href="">Menu Principal</a>
 
     </section>
 

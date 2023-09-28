@@ -1,65 +1,65 @@
 <?php
-include_once('../configuration/connect.php');
+$mensagem = ''; // Defina a variável com um valor padrão
 
-class cargoModel {
+class CargoModel
+{
+    private $conexao;
 
-    private $link;
-
-    public function __construct($link)
+    public function __construct($conexao)
     {
-        $this->link = $link;
+        $this->conexao = $conexao;
     }
 
-    public function create($object)
+    public function criarCargo($cargo)
     {
+        $sql = "INSERT INTO cargo (cargo) VALUES ('$cargo')";
+        return mysqli_query($this->conexao, $sql);
+    }
 
-    } // fim create
-
-    public function read()
+    public function listarCargos()
     {
-        $query = "SELECT idCargo, descricao FROM cargo;";
-        $cargos = array();
+        $sql = "SELECT * FROM cargo";
+        $resultado = mysqli_query($this->conexao, $sql);
+        $cargos = [];
 
-        if ($result = mysqli_query($this->link, $query)) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $cargos[] = $row;
-            }
-            mysqli_free_result($result);
+        while ($row = mysqli_fetch_assoc($resultado)) {
+            $cargos[] = $row;
         }
 
         return $cargos;
-    } // fim read
-
-    public function update($id, $descricao)
-    {
-        $query = "UPDATE cargo SET descricao = '$descricao' WHERE idCargo = '$id';";
-        return mysqli_query($this->link, $query);
-    } // fim upadate
-
-    public function delete($param)
-    {
-
-    } // fim delete
-
-    function recuperaCargo($id)
-    {
-
-        global $link;
-        // lista cursos já cadastrados
-        $query = "SELECT idCargo, descricao
-                    FROM cargo
-                    WHERE idCargo = '$id';";
-        if ($result = mysqli_query($link, $query)) {
-            // busca os dados lidos do banco de dados
-            while ($row = mysqli_fetch_assoc($result)) {
-                return $row;
-            }
-
-            // libera a área de memória onde está o resultado
-            mysqli_free_result($result);
-        }
     }
 
+    public function atualizarCargo($id, $novocargo)
+    {
+        $sql = "UPDATE cargos SET cargo = '$novocargo' WHERE id = $id";
+        return mysqli_query($this->conexao, $sql);
+    }
+
+    public function excluirCargo($id)
+    {
+        $sql = "DELETE FROM cargos WHERE id = $id";
+        return mysqli_query($this->conexao, $sql);
+    }
 }
 
+// Verifique se o formulário foi enviado
+if (isset($_POST['salvar'])) {
+    // Obtenha a descrição do cargo do formulário
+    $descricaoCargo = $_POST['nome'];
+
+    // Verifique se a descrição do cargo não está vazia
+    if (empty($descricaoCargo)) {
+        $mensagem = 'Por favor, preencha a descrição do cargo.';
+    } else {
+        // Prepare e execute a consulta SQL para inserir o novo cargo
+        $sql = "INSERT INTO cargo (cargo) VALUES ('$descricaoCargo')";
+        $resultado = mysqli_query($link, $sql);
+
+        if ($resultado) {
+            $mensagem = 'Cargo cadastrado com sucesso!';
+        } else {
+            $mensagem = 'Erro ao cadastrar o cargo.';
+        }
+    }
+}
 ?>

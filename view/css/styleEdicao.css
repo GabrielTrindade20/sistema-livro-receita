@@ -9,12 +9,8 @@
     --black: black;
 }
 
-.conteiner-pesquisa {
-    width: auto;
-    height: auto;
-    padding-left: 250px;
+.conteiner-conteudo{
+    padding-left: 350px;
     padding-top: 50px;
-    text-align: left;
-    display: block;
-    margin-left: auto;
+
 }

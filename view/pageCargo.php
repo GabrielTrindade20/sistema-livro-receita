@@ -1,3 +1,13 @@
+<?php
+include_once('../configuration/connect.php');
+include_once('../model/cargoModel.php');
+
+$cargoModel = new CargoModel($link);
+$cargos = $cargoModel->listarCargos();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -124,7 +134,7 @@
 
                 <div class="button-nova">
                     <a href="./Cargo/cargoCadastro.php">
-                        <button class="nova-receita-button">Nova Receita</button>
+                        <button class="nova-receita-button">Novo Cargo</button>
                     </a>
                 </div>
             </div><!-- Search -->
@@ -139,35 +149,28 @@
                 <tr>
                     <th class="select-column">-</th>
                     <th>Nome</th>
-                    <th>Categoria</th>
-                    <th>Cozinheiro</th>
-                    <th>Data de Criação</th>
                     <th class="operacao">Operações</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Exemplo de uma linha de dados -->
-                <tr>
-                    <td class="select-column">
-                        <a href=""><input type="checkbox"></a>
-                    </td>
-                    <td>Nome do Prato</td>
-                    <td>Categoria A</td>
-                    <td>Nome do Cozinheiro</td>
-                    <td>01/09/2023</td>
-                    <td class="operacao">
-                        <a class="operation-link" href="#"><img
-                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWW27IOOUCCUNAGFSVDFBOLJ6"
-                                alt=""></a>
-                        <a class="operation-link" href="#"><img
-                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWRHLDUUFHQS4ZSOKCLFBOLH6"
-                                alt=""></a>
-                        <a class="operation-link" href="#"><img
-                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWSXHUGY3BQDV4HKILTFBOLFY"
-                                alt=""></a>
-                    </td>
-                </tr>
-                <!-- Adicione mais linhas de dados conforme necessário -->
+                <?php foreach ($cargos as $cargo): ?>
+                    <tr>
+                        <td class="select-column">
+                            <a href=""><input type="checkbox"></a>
+                        </td>
+                        <td>
+                            <?php echo $cargo['descricao']; ?>
+                        </td>
+                        <td class="operacao">
+                            <a class="operation-link editar-cargo" href="#" data-cargo-id="<?php echo $cargo['id']; ?>"><img
+                                    src="caminho_para_o_seu_icone_de_editar" alt="Editar"></a>
+                            <a class="operation-link excluir-cargo" href="#"
+                                data-cargo-id="<?php echo $cargo['id']; ?>"><img src="caminho_para_o_seu_icone_de_excluir"
+                                    alt="Excluir"></a>
+                        </td>
+
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </section>
