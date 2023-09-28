@@ -23,7 +23,7 @@
         mysqli_close($link);
     ?>  
     <br>
-    <a href="../view/pageCargo.php">Ver Cargo</a>
+    <a href="../pageCargo.php">Ver Cargo</a>
  
 </body>
 </html>

@@ -117,7 +117,7 @@
 
                 <div class="button-nova">
                     <a href="./Cargo/cargoCadastro.php">
-                        <button class="nova-receita-button">Nova Receita</button>
+                        <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
             </div><!-- Search -->
@@ -133,7 +133,6 @@
                 <th>Cargo</th>
                 <th colspan="2">Ações</th>
             </tr>
-            
             <?php foreach ($cargos as $cargo): ?>
                 <tr>
                     <td>
@@ -144,12 +143,10 @@
                     </td>
                     <td>
                         <a href="exclusao.php?id=<?php echo $cargo["idCargo"]; ?>">
-                            <img src="../view/css/iconsSVG/iconCargo.svg" />
                         </a>
                     </td>
                     <td>
                         <a href="formAlteracao.php?id=<?php echo $cargo["idCargo"]; ?>">
-                            <img src="../view/css/iconsSVG/iconCargo.svg" />
                         </a>
                     </td>
                 </tr>
