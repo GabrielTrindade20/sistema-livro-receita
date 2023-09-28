@@ -1,8 +1,7 @@
 <?php
 include_once('../configuration/connect.php');
 
-class cargoModel
-{
+class cargoModel {
 
     private $link;
 
@@ -18,7 +17,7 @@ class cargoModel
 
     public function read()
     {
-        $query = "SELECT idCargo, descricao FROM Cargo;";
+        $query = "SELECT idCargo, descricao FROM cargo;";
         $cargos = array();
 
         if ($result = mysqli_query($this->link, $query)) {
@@ -33,7 +32,7 @@ class cargoModel
 
     public function update($id, $descricao)
     {
-        $query = "UPDATE Cargo SET descricao = '$descricao' WHERE idCargo = '$id';";
+        $query = "UPDATE cargo SET descricao = '$descricao' WHERE idCargo = '$id';";
         return mysqli_query($this->link, $query);
     } // fim upadate
 
@@ -48,7 +47,7 @@ class cargoModel
         global $link;
         // lista cursos já cadastrados
         $query = "SELECT idCargo, descricao
-                    FROM Cargo
+                    FROM cargo
                     WHERE idCargo = '$id';";
         if ($result = mysqli_query($link, $query)) {
             // busca os dados lidos do banco de dados
