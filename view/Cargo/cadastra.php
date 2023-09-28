@@ -11,7 +11,7 @@
 $descricao = $_GET["descricao"];
     
 include_once('../configuration/connect.php');
-    $query =   "INSERT INTO Categoria 
+    $query =   "INSERT INTO Cargo 
                 (descricao) 
                 VALUE
                 ('$descricao');";
@@ -23,7 +23,7 @@ include_once('../configuration/connect.php');
     mysqli_close($link);
 ?>  
  <br>
- <a href="pageCategoria.php">Ver categoria cadastrados</a>
+ <a href="pageCargo.php">Ver cargo cadastrados</a>
  
  </body>
 </html>

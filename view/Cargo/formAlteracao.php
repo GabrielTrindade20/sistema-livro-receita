@@ -1,15 +1,15 @@
 <?php
 include_once "../configuration/connect.php";
-include_once "../controller/categoriaController.php";
+include_once "../controller/cargoController.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Categoria</title>
+    <title>Cargo</title>
     <meta charset="utf-8">
 </head>
 <body>
-	<h1>Atualizar Categoria</h1>
+	<h1>Atualizar Cargo</h1>
 
     <?php
         if (isset($mensagem)) {
@@ -18,19 +18,19 @@ include_once "../controller/categoriaController.php";
 
         if (!empty($al)) {
     ?>
-        <form action="../controller/categoriaController.php" method="POST">
+        <form action="../controller/cargoController.php" method="POST">
             <input type="hidden" name="action" value="atualizar">
-            <input type="hidden" name="idCategoria" value="<?php echo $al["idCategoria"];?>">
-            <label for="idCategoria">
+            <input type="hidden" name="idCargo" value="<?php echo $al["idCargo"];?>">
+            <label for="idCargo">
                 Nome:
             </label>
-            <input type="text" name="descricao" id="idCategoria" value="<?php echo $al["descricao"];?>">
+            <input type="text" name="descricao" id="idCargo" value="<?php echo $al["descricao"];?>">
             <br>
             <input type="submit" value="Ok">
         </form>
     <?php
         }
     ?>
-    <a href="../view/pageCategoria.php">Voltar para a lista de categorias</a>
+    <a href="../view/pageCargo.php">Voltar para a lista de cargos</a>
 </body>
 </html>

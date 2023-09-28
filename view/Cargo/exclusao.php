@@ -2,18 +2,18 @@
 <!-- cadastro.html -->
 <html>
 <head>
-<title>Categoria - Exclusão</title>
+<title>Cargo - Exclusão</title>
 <meta charset="utf-8">
 </head>
 <body>
     <?php 
         // exclusao.php
-        // efetua a exclusão da categoria com o id informado.
+        // efetua a exclusão da cargo com o id informado.
         $id = $_GET["id"];
         
         include_once('../configuration/connect.php');
 
-        $query = "DELETE FROM Categoria WHERE idCategoria='$id';";
+        $query = "DELETE FROM Cargo WHERE idCargo='$id';";
         
         if ($result = mysqli_query($link, $query)) {
             echo "Exclusão efetuada com sucesso";
@@ -23,7 +23,7 @@
         mysqli_close($link);
     ?>  
     <br>
-    <a href="../view/pageCategoria.php">Ver Categoria</a>
+    <a href="../view/pageCargo.php">Ver Cargo</a>
  
 </body>
 </html>

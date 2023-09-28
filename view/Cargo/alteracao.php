@@ -2,20 +2,20 @@
 <!-- alteracao.php -->
 <html>
 <head>
-    <title>Categoria - Alteração</title>
+    <title>Cargo - Alteração</title>
     <meta charset="utf-8">
 </head>
 <body>
     <?php 
-        // efetua alteração da categoria informado em formAlteracao.php
-        $id = $_GET["idCategoria"];
+        // efetua alteração da cargo informado em formAlteracao.php
+        $id = $_GET["idCargo"];
         $descricao = $_GET["descricao"];
         
         include_once "../configuration/connect.php";
 
-        $query =   "UPDATE Categoria 
-                    SET descricao = '$descricao', idCategoria = '$id'
-                    WHERE idCategoria = '$id';";
+        $query =   "UPDATE Cargo 
+                    SET descricao = '$descricao', idCargo = '$id'
+                    WHERE idCargo = '$id';";
         // echo $query.'<br>';
         if ($result = mysqli_query($link, $query)) {
             echo "Alteração efetuada com sucesso";
@@ -27,7 +27,7 @@
         mysqli_close($link);
     ?>  
     <br>
-    <a href="../view/pageCategoria.php">Ver Categoria cadastradas</a>
+    <a href="../view/pageCargo.php">Ver Cargo cadastradas</a>
  
  </body>
 </html>
