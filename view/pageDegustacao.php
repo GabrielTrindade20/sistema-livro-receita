@@ -121,9 +121,9 @@
                     </form>
                 </div>
 
-                <div class="button-nova">
+                <a href="./Degustacao/degustacaoCadastro.php">
                     <button class="nova-receita-button">Nova Receita</button>
-                </div>
+                </a>
             </div><!-- Search -->
 
 
