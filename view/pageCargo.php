@@ -162,7 +162,7 @@ $cargos = $cargoModel->listarCargos();
                             <?php echo $cargo['descricao']; ?>
                         </td>
                         <td class="operacao">
-                            <!-- <a href="../model/modelCargo/atualizar_cadastro.php?idCargo=<?php echo $cargo['idCargo']; ?>">Editar</a> -->
+                            <a href="../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">Editar</a>
 
                             <form method="POST" action="../model/modelCargo/excluir_cargo.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">

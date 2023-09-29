@@ -29,11 +29,27 @@ class CargoModel
         return $cargos;
     }
 
-    public function atualizarCargo($id, $novoNome)
+    public function obterCargoPorID($id)
     {
-        $sql = "UPDATE cargo SET nome = '$novoNome' WHERE id = $id";
+        $sql = "SELECT * FROM cargo WHERE idCargo = $id";
+        $resultado = mysqli_query($this->conexao, $sql);
+
+        if ($resultado) {
+            return mysqli_fetch_assoc($resultado);
+        } else {
+            return null; // Retornar null em caso de erro na consulta
+        }
+    }
+
+    public function atualizarCargo($id, $descricao)
+    {
+        $sql = "UPDATE cargo SET descricao = '$descricao' WHERE idCargo = $id";
         return mysqli_query($this->conexao, $sql);
     }
+
+
+
+
 
     public function excluirCargo($id)
     {
