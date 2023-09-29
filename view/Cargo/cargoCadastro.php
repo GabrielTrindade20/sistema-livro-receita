@@ -132,21 +132,30 @@ include_once('../../model/modelCargo/cargoModel.php');
 
 
     <section class="conteiner-conteudo">
-        <h1>Cadastro de Cargo</h1>
+        <div>
+            <h1>Editar Cargo</h1>
+        </div>
+        <div class="conteiner-abas">
 
-        <!-- Formulário de Cadastro -->
-        <form method="POST" action="../../controller/controllerCadastro/cargoController.php">
-            <label for="nome">Nome do Cargo:</label>
-            <input type="text" id="nome" name="nome" required>
-            <br>
+            <h2>Nome do Cargo</h2>
+            <!-- Formulário de Cadastro -->
+            <form method="POST" action="../../controller/controllerCadastro/cargoController.php">
 
-            <!-- Botão para salvar o cargo -->
-            <button type="submit" name="salvar">Salvar</button>
+                <div class="conteiner-dados">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <br>
 
-            <!-- Botão para cancelar e voltar à página principal -->
-            <a href="pageCargos.php">Cancelar</a>
-        </form>
+                <div class="conteiner-operacoes">
+                    <!-- Botão para salvar o cargo -->
+                    <button type="submit" name="salvar">Salvar</button>
 
+                    <!-- Botão para cancelar e voltar à página principal -->
+                    <a href="../view/Cargo/pageCargo.php">Cancelar</a>
+                </div>
+            </form>
+        </div>
 
     </section>
 

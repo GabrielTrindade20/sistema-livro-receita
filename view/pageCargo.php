@@ -133,7 +133,7 @@ $cargos = $cargoModel->listarCargos();
                 </div>
 
                 <div class="button-nova">
-                    <a href="./Cargo/cargoCadastro.php">
+                    <a href="Cargo/cargoCadastro.php">
                         <button class="nova-receita-button">Novo Cargo</button>
                     </a>
                 </div>
