@@ -1,6 +1,6 @@
 <?php
 include_once('../configuration/connect.php');
-include_once('../model/cargoModel.php');
+include_once('../model/modelCargo/cargoModel.php');
 
 $cargoModel = new CargoModel($link);
 $cargos = $cargoModel->listarCargos();
@@ -162,11 +162,14 @@ $cargos = $cargoModel->listarCargos();
                             <?php echo $cargo['descricao']; ?>
                         </td>
                         <td class="operacao">
-                            <a class="operation-link editar-cargo" href="#" data-cargo-id="<?php echo $cargo['id']; ?>"><img
-                                    src="caminho_para_o_seu_icone_de_editar" alt="Editar"></a>
-                            <a class="operation-link excluir-cargo" href="#"
-                                data-cargo-id="<?php echo $cargo['id']; ?>"><img src="caminho_para_o_seu_icone_de_excluir"
-                                    alt="Excluir"></a>
+                            <!-- <a class="operation-link editar-cargo" href="#" data-cargo-id="<?php echo $cargo['id']; ?>"><img
+                                    src="" alt="Editar"></a> -->
+                            <form method="POST" action="../model/modelCargo/excluir_cargo.php">
+                                <input type="hidden" name="id" value="<?php echo $cargo['idCargo']; ?>">
+                                <button type="submit" name="excluir">Excluir</button>
+                            </form>
+
+
                         </td>
 
                     </tr>

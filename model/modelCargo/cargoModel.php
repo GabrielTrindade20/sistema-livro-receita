@@ -37,7 +37,7 @@ class CargoModel
 
     public function excluirCargo($id)
     {
-        $sql = "DELETE FROM cargos WHERE id = $id";
+        $sql = "DELETE FROM cargo WHERE idCargo = $id";
         return mysqli_query($this->conexao, $sql);
     }
 }
