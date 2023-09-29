@@ -10,9 +10,9 @@ class CargoModel
         $this->conexao = $conexao;
     }
 
-    public function criarCargo($cargo)
+    public function criarCargo($nome)
     {
-        $sql = "INSERT INTO cargo (cargo) VALUES ('$cargo')";
+        $sql = "INSERT INTO cargo (nome) VALUES ('$nome')";
         return mysqli_query($this->conexao, $sql);
     }
 
@@ -29,9 +29,9 @@ class CargoModel
         return $cargos;
     }
 
-    public function atualizarCargo($id, $novocargo)
+    public function atualizarCargo($id, $novoNome)
     {
-        $sql = "UPDATE cargos SET cargo = '$novocargo' WHERE id = $id";
+        $sql = "UPDATE cargo SET nome = '$novoNome' WHERE id = $id";
         return mysqli_query($this->conexao, $sql);
     }
 
@@ -52,14 +52,17 @@ if (isset($_POST['salvar'])) {
         $mensagem = 'Por favor, preencha a descrição do cargo.';
     } else {
         // Prepare e execute a consulta SQL para inserir o novo cargo
-        $sql = "INSERT INTO cargo (cargo) VALUES ('$descricaoCargo')";
+        $sql = "INSERT INTO cargo (descricao) VALUES ('$descricaoCargo')";
         $resultado = mysqli_query($link, $sql);
 
         if ($resultado) {
             $mensagem = 'Cargo cadastrado com sucesso!';
+            header("Location: ../../view/pageCargo.php?mensagem=" . urlencode($mensagem));
+            exit();
         } else {
             $mensagem = 'Erro ao cadastrar o cargo.';
         }
     }
 }
+
 ?>

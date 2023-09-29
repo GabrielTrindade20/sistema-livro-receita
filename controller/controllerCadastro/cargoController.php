@@ -1,6 +1,6 @@
 <?php
-include_once('../configuration/connect.php');
-include('CargoModel.php'); // Inclua o modelo de cargo
+include_once('../../configuration/connect.php');
+include_once('../../model/modelCargo/cargoModel.php');// Inclua o modelo de cargo
 
 $cargoModel = new CargoModel($conexao); // Crie uma instância do modelo de cargo
 
@@ -10,11 +10,11 @@ if (isset($_POST['salvar'])) {
 
     if ($resultado) {
         $mensagem = 'Cargo cadastrado com sucesso!';
+        header("Location: pageCargo.php?mensagem=" . urlencode($mensagem)); // Redirecione de volta para a página de cadastro com a mensagem
     } else {
         $mensagem = 'Erro ao cadastrar o cargo.';
     }
 
-    header("Location: pageCargo.php?mensagem=" . urlencode($mensagem)); // Redirecione de volta para a página de cadastro com a mensagem
     exit();
 }
 ?>

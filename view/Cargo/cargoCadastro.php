@@ -1,3 +1,8 @@
+<?php
+include_once('../../configuration/connect.php');
+include_once('../../model/modelCargo/cargoModel.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -116,7 +121,7 @@
                 </div>
 
                 <div class="button-nova">
-                    <a href="./Cargo/cargoCadastro.php">
+                    <a href="../Cargo/cargoCadastro.php">
                         <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
@@ -130,7 +135,7 @@
         <h1>Cadastro de Cargo</h1>
 
         <!-- Formulário de Cadastro -->
-        <form method="POST" action="../../controller/controllerCadastro/processar_cadastro.php">
+        <form method="POST" action="../../controller/controllerCadastro/cargoController.php">
             <label for="nome">Nome do Cargo:</label>
             <input type="text" id="nome" name="nome" required>
             <br>
@@ -142,11 +147,6 @@
             <a href="pageCargos.php">Cancelar</a>
         </form>
 
-        <?php if (isset($mensagem)): ?>
-            <div class="mensagem">
-                <?php echo $mensagem; ?>
-            </div>
-        <?php endif; ?>
 
     </section>
 

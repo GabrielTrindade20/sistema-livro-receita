@@ -1,10 +1,10 @@
 <?php
 include_once('../../configuration/connect.php');
-include_once('../modelCargo/cargoModel.php');
+include_once('cargoModel.php');
 
 // Verifique se o ID do cargo foi enviado via POST
-if (isset($_POST['id'])) {
-    $cargoID = $_POST['id'];
+if (isset($_POST['idCargo'])) {
+    $cargoID = $_POST['idCargo'];
 
     // Crie uma instância do modelo CargoModel
     $cargoModel = new CargoModel($link);
