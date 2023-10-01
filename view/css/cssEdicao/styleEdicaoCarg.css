@@ -61,19 +61,25 @@
 .conteiner-operacoes button {
     position: absolute;
     width: 90px;
-    padding: 8px;
+    height: 33px;
+    padding: 5px;
     justify-content: space-between;
     background-color: #F0C3AA;
     right: 0px;
     top: -34px;
     border-radius: 10px 10px 0px 0px;
     border: none;
+    font-size: 1rem;
+}
+
+.button:hover{
+    cursor: pointer;
 }
 
 .conteiner-operacoes a {
     position: absolute;
     width: 100px;
-    height: 35px;
+    height: 33px;
     padding: 5px;
     justify-content: space-between;
     background-color: #F0C3AA;

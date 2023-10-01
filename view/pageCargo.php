@@ -4,6 +4,7 @@ include_once('../model/modelCargo/cargoModel.php');
 
 $cargoModel = new CargoModel($link);
 $cargos = $cargoModel->listarCargos();
+$numCargos = count($cargos);
 
 ?>
 
@@ -19,7 +20,7 @@ $cargos = $cargoModel->listarCargos();
     <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="stylesheet" href="css/styleTabl.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="css/styleResponsivo.css">
+    <link rel="stylesheet" href="css/styleResponsiv.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página de Receitas</title>
@@ -118,7 +119,9 @@ $cargos = $cargoModel->listarCargos();
                 </div>
 
                 <div class="info-receitas">
-                    <a href="">(3) Cargos</a>
+                    <a href="">
+                        <?php echo "($numCargos) Cargos"; ?>
+                    </a>
                 </div>
             </div>
 
@@ -148,13 +151,13 @@ $cargos = $cargoModel->listarCargos();
             <thead>
                 <tr>
                     <th class="select-column">-</th>
-                    <th>Nome</th>
-                    <th class="operacao">Operações</th>
+                    <th class="nome-col">Nome</th>
+                    <th class="operacao-col">Operações</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($cargos as $cargo): ?>
-                    <tr>
+                <?php foreach ($cargos as $index => $cargo): ?>
+                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
                         <td class="select-column">
                             <a href=""><input type="checkbox"></a>
                         </td>
@@ -162,7 +165,9 @@ $cargos = $cargoModel->listarCargos();
                             <?php echo $cargo['descricao']; ?>
                         </td>
                         <td class="operation-link">
-                            <a href="../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">Editar</a>
+                            <a href="../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
+                                <img src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/7b024902f00e717afd9ad667878149fc35228181/view/css/iconsSVG/iconEditar.svg?token=AYIZEWT7X7YW7PFF6VVHX6TFDGA2I" alt="editar">
+                            </a>
 
                             <!-- <form method="POST" action="../model/modelCargo/cargoEdicao.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
@@ -172,7 +177,9 @@ $cargos = $cargoModel->listarCargos();
 
                             <form method="POST" action="../model/modelCargo/excluir_cargo.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
-                                <button type="submit" name="excluir">Excluir</button>
+                                <button type="submit" name="excluir" class="button">
+                                    <img src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/7b024902f00e717afd9ad667878149fc35228181/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWQ4XLMRL6VMB6ORUQLFDGA34" alt="excluir">
+                                </button>
                             </form>
                         </td>
 

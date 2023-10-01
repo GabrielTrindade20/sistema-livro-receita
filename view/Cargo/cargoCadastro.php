@@ -100,7 +100,7 @@ include_once('../../model/modelCargo/cargoModel.php');
 
     <section class="conteiner-conteudo">
         <div>
-            <h1>Editar Cargo</h1>
+            <h1>Cadastrar Cargo</h1>
         </div>
 
         <div class="conteiner-abas">
@@ -116,7 +116,7 @@ include_once('../../model/modelCargo/cargoModel.php');
 
                 <div class="conteiner-operacoes">
                     <!-- Botão para salvar o cargo -->
-                    <button type="submit" name="salvar">Salvar</button>
+                    <button type="submit" name="salvar" class="button">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
                     <a href="../pageCargo.php">Cancelar</a>
