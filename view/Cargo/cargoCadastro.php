@@ -10,7 +10,7 @@ include_once('../../model/modelCargo/cargoModel.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleEdicao.css">
+    <link rel="stylesheet" href="../css/styleEdica.css">
     <link rel="stylesheet" href="../css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
@@ -97,46 +97,13 @@ include_once('../../model/modelCargo/cargoModel.php');
         </div>
     </nav>
 
-    <section class="conteiner-pesquisa">
-
-        <div class="titulos" id="titulo">
-            <div class="conteiner-titulo">
-                <div>
-                    <h1>Informações</h1>
-                </div>
-
-                <div class="info-receitas">
-                    <a href="">(3) Cargos</a>
-                </div>
-            </div>
-
-            <div class="search-container">
-                <div class="search-box">
-                    <form method="post" action="#">
-                        <div class="search-box-input-container">
-                            <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
-                            <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="button-nova">
-                    <a href="../Cargo/cargoCadastro.php">
-                        <button class="nova-receita-button">Cadastrar</button>
-                    </a>
-                </div>
-            </div><!-- Search -->
-        </div>
-    </section>
-
-
 
     <section class="conteiner-conteudo">
         <div>
             <h1>Editar Cargo</h1>
         </div>
-        <div class="conteiner-abas">
 
+        <div class="conteiner-abas">
             <h2>Nome do Cargo</h2>
             <!-- Formulário de Cadastro -->
             <form method="POST" action="../../controller/controllerCadastro/cargoController.php">
@@ -152,7 +119,7 @@ include_once('../../model/modelCargo/cargoModel.php');
                     <button type="submit" name="salvar">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../view/Cargo/pageCargo.php">Cancelar</a>
+                    <a href="../pageCargo.php">Cancelar</a>
                 </div>
             </form>
         </div>

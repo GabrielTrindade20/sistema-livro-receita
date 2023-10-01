@@ -38,13 +38,14 @@ if (isset($_GET['idCargo'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../view/css/styleEdicao.css">
     <link rel="stylesheet" href="../../view/css/styleMenu.css">
+    <link rel="stylesheet" href="../../view/css/cssEdicao/styleEdicaoCargo.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página Principal</title>
 </head>
+
 
 <body>
     <header class="header">
@@ -131,20 +132,23 @@ if (isset($_GET['idCargo'])) {
         <div>
             <h1>Editar Cargo</h1>
         </div>
+
         <div class="conteiner-abas">
             <h2>Nome do Cargo</h2>
             <form method="POST" action="atualizar_cargo.php">
-                <div class="caonteiner-dados">
+
+                <div class="conteiner-dados">
                     <label for="nome">Nome do Cargo:</label>
                     <input type="text" id="descricao" name="descricao"
                         value="<?php echo isset($descricaoCargo) ? $descricaoCargo : ''; ?>" required>
                 </div>
-<br>
+                <br>
 
                 <div class="conteiner-operacoes">
                     <input type="hidden" name="idCargo" value="<?php echo $idCargo; ?>">
                     <button type="submit" name="editar">Editar</button>
-                    <a href="pageCargo.php">Cancelar</a>
+                    
+                    <a href="../../view/pageCargo.php">Cancelar</a>
                 </div>
             </form>
         </div>

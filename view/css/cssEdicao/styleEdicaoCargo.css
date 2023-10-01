@@ -11,14 +11,16 @@
     --black: black;
 }
 
-.conteiner-conteudo {
-    margin-left: 280px;
+.container-conteudo {
+    margin-left: 300px;
+    margin-top: 100px;
 }
 
 .conteiner-abas {
-    background-color: aqua;
+    width: 90%;
 }
-.conteiner-abas h2{
+
+.conteiner-abas h2 {
     z-index: 1;
     position: absolute;
     top: 220px;
