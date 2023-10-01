@@ -95,8 +95,9 @@ include_once('../controller/protect.php');
     </div>
 </nav>
 
-<div id="sub-titulo">
+<div class="sub-titulo">
     <a href="homePage.php">Homepage > </a>
+    >
     <a href="pageCategoria.php">Categoria</a>
 </div>
 
