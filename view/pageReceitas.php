@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    
+
     <header class="header">
         <div class="usuario">
             <a href="">
@@ -124,7 +124,9 @@
                 </div>
 
                 <div class="button-nova">
-                    <button class="nova-receita-button">Nova Receita</button>
+                    <a href="./Receitas/receitaCadastro.php">
+                        <button class="nova-receita-button">Nova Receita</button>
+                    </a>
                 </div>
             </div><!-- Search -->
 
