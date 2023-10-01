@@ -166,7 +166,7 @@ $numCargos = count($cargos);
                         </td>
                         <td class="operation-link">
                             <a href="../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
-                                <img src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/7b024902f00e717afd9ad667878149fc35228181/view/css/iconsSVG/iconEditar.svg?token=AYIZEWT7X7YW7PFF6VVHX6TFDGA2I" alt="editar">
+                                <img src="https://snz04pap002files.storage.live.com/y4m4-w_bDj25YrJN1L7ZcJhkuuzwPAluhLVfsCTxYJHZ-yLdvMQIzPR0KYV2ed70KJtFUL-WXP3LsaMUPLN9OKPPUQWhG_-6JWf2IqhR6AhEk4N8OG9X33jIK1wXhv9Q5ZIRY66yld3hjdSi29usXzRXN3w7eEdT_xaTIeHJoGAlxdAUIFHf-zVSS457EfXzn4N060oSD5MZdkuWf2f7eIfbK_VhTJwUQz3-bKXc1hRyBM?encodeFailures=1&width=56&height=56" alt="editar">
                             </a>
 
                             <!-- <form method="POST" action="../model/modelCargo/cargoEdicao.php">
@@ -178,7 +178,7 @@ $numCargos = count($cargos);
                             <form method="POST" action="../model/modelCargo/excluir_cargo.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
                                 <button type="submit" name="excluir" class="button">
-                                    <img src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/7b024902f00e717afd9ad667878149fc35228181/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWQ4XLMRL6VMB6ORUQLFDGA34" alt="excluir">
+                                    <img src="https://snz04pap002files.storage.live.com/y4ma1A6iNXOMgaNxs1BJHyqwEYHyyDhP-6oGnCFW5XhQFD0JdbvhbrHNGEetirDJa_w6YVwv4S2aeaIqn3eXJP-lJ34NHv8OGOMvPMV757xs4YzQEnzo3SZFuvwOquua0yYZ8FKzYhKwuyK2_47VqZernBMvrA7Jmr8PK58LjsaECEpJNz4ZlOIaJoboYVL1g9CugVtGsrGKxnjD8L2pLb2BHfURd5_D8tfphcBoTsfbIc?encodeFailures=1&width=47&height=56" alt="excluir">
                                 </button>
                             </form>
                         </td>

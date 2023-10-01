@@ -94,3 +94,7 @@ td:nth-child(3) {
 .button:hover{
     cursor: pointer;
 }
+
+.operation-link form button> img, a>img{
+    width: 20px;
+}

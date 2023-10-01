@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleMenu.css">
+    <link rel="stylesheet" href="css/stylePesq.css">
+    <link rel="stylesheet" href="css/styleResponsivo.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -89,6 +91,22 @@
             </div>
         </div>
     </nav>
+
+    <section class="conteiner-pesquisa">
+
+        <div class="titulos" id="titulo">
+            <div class="conteiner-titulo">
+                <div>
+                    <h1>Perfil</h1>
+                </div>
+            </div>
+        </section>
+        
+        <hr>
+
+    <section class="conteiner-conteudo">
+        
+    </section>
 </body>
 
 </html>
