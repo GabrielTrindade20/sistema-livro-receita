@@ -17,7 +17,7 @@ $cargos = $cargoModel->listarCargos();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylePesq.css">
     <link rel="stylesheet" href="css/styleMenu.css">
-    <link rel="stylesheet" href="css/styleTable.css">
+    <link rel="stylesheet" href="css/styleTabl.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="css/styleResponsivo.css">
     <link rel="stylesheet"
@@ -161,15 +161,19 @@ $cargos = $cargoModel->listarCargos();
                         <td>
                             <?php echo $cargo['descricao']; ?>
                         </td>
-                        <td class="operacao">
+                        <td class="operation-link">
                             <a href="../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">Editar</a>
+
+                            <!-- <form method="POST" action="../model/modelCargo/cargoEdicao.php">
+                                <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
+                                <button type="submit" name="editar">Editar</button>
+                            </form> -->
+
 
                             <form method="POST" action="../model/modelCargo/excluir_cargo.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
                                 <button type="submit" name="excluir">Excluir</button>
                             </form>
-
-
                         </td>
 
                     </tr>

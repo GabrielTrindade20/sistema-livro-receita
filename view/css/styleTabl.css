@@ -43,7 +43,16 @@ th, td {
 
 /* Estilos para os links de operações */
 .operation-link {
-    margin-right: 5px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: end;
 }
 
+.operation-link a {
+    margin-right: 10px;
+}
+
+.conteiner-operacoes{
+    cursor: pointer;
+}
