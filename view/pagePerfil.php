@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleMenu.css">
-    <link rel="stylesheet" href="css/stylePesq.css">
+    <link rel="stylesheet" href="css/stylePerfil.css">
     <link rel="stylesheet" href="css/styleResponsivo.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
@@ -100,12 +100,27 @@
                     <h1>Perfil</h1>
                 </div>
             </div>
-        </section>
-        
-        <hr>
+    </section>
+    <hr>
 
     <section class="conteiner-conteudo">
-        
+        <div class="usuario-log">
+            <span class="material-symbols-outlined"> person </span>
+            <p>Gabriel Rocha</p>
+        </div>
+
+        <div>
+            <label for="nome">nome</label>
+            <input type="text" name="" id="">
+        </div>
+
+        <div>
+
+        </div>
+
+        <div>
+
+        </div>
     </section>
 </body>
 

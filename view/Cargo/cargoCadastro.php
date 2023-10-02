@@ -106,7 +106,7 @@ include_once('../../model/modelCargo/cargoModel.php');
         <div class="conteiner-abas">
             <h2>Nome do Cargo</h2>
             <!-- Formulário de Cadastro -->
-            <form method="POST" action="../../controller/controllerCadastro/cargoController.php">
+            <form method="POST" action="../../controller/controllerCargo/cargoController.php">
 
                 <div class="conteiner-dados">
                     <label for="nome">Nome:</label>
