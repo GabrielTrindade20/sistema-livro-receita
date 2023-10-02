@@ -1,22 +1,22 @@
 <?php
 include_once('../controller/protect.php');
+include_once('../controller/categoriaController.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylePesq.css">
-    <link rel="stylesheet" href="css/styleMenu.css">
-    <link rel="stylesheet" href="css/styleTable.css">
-    <link rel="stylesheet" href="css/styleResponsivo.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Categorias</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/stylePesq.css">
+        <link rel="stylesheet" href="css/styleMenu.css">
+        <link rel="stylesheet" href="css/styleTabl.css">
+        <link rel="stylesheet" href="css/styleResponsivo.css">
+        <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <title>Categorias</title>
+    </head>
 <header class="header">
     <div class="usuario">
         <a href="">
@@ -95,9 +95,8 @@ include_once('../controller/protect.php');
     </div>
 </nav>
 
-<div class="sub-titulo">
+<div id="sub-titulo">
     <a href="homePage.php">Homepage > </a>
-    >
     <a href="pageCategoria.php">Categoria</a>
 </div>
 
@@ -130,8 +129,6 @@ include_once('../controller/protect.php');
                 </a>
             </div>
         </div><!-- Search -->
-
-
     </div>
 </section>
 
@@ -140,35 +137,32 @@ include_once('../controller/protect.php');
         <thead>
             <tr>
                 <th class="select-column">-</th>
-                <th>Nome</th>
-                <th>Categoria</th>
-                <th>Cozinheiro</th>
-                <th>Data de Criação</th>
+                <th>Categorias</th>
                 <th class="operacao">Operações</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Exemplo de uma linha de dados -->
-            <tr>
-                <td class="select-column">
-                    <a href=""><input type="checkbox"></a>
-                </td>
-                <td>Nome do Prato</td>
-                <td>Categoria A</td>
-                <td>Nome do Cozinheiro</td>
-                <td>01/09/2023</td>
-                <td class="operacao">
-                    <a class="operation-link" href="#"><img
-                            src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWW27IOOUCCUNAGFSVDFBOLJ6"
-                            alt=""></a>
-                    <a class="operation-link" href="#"><img
-                            src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWRHLDUUFHQS4ZSOKCLFBOLH6"
-                            alt=""></a>
-                    <a class="operation-link" href="#"><img
-                            src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWSXHUGY3BQDV4HKILTFBOLFY"
-                            alt=""></a>
-                </td>
-            </tr>
+            <!-- Tabela de categoria -->
+            <?php foreach ($categorias as $index => $categoria): ?>
+                <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                    <td class="select-column">
+                        <a href=""><input type="checkbox"></a>
+                    </td>
+                    <td>
+                        <?php echo $categoria['descricao']; ?>
+                    </td>
+                    <td>
+                        <a href="exclusao.php?id=<?php echo $categoria["idCategoria"]; ?>">
+                            <img src="../view/css/iconsSVG/iconEditar.png"/>
+                        </a>
+                    </td>
+                    <td>
+                        <button type="submit" name="excluir" class="button">
+                            <img src="../view/css/iconsSVG/iconExcluir.png"/>
+                        </button> 
+                    </td>
+                </tr>
+            <?php endforeach; ?>
             <!-- Adicione mais linhas de dados conforme necessário -->
         </tbody>
     </table>

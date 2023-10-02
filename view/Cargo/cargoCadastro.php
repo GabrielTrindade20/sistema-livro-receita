@@ -99,33 +99,28 @@ include_once('../../model/modelCargo/cargoModel.php');
 
 
     <section class="conteiner-conteudo">
-        <div>
-            <h1>Cadastrar Cargo</h1>
-        </div>
+        <?php
+            if (isset($mensagem)) {
+                echo '<div class="mensagem">' . $mensagem . '</div>';
+            }
 
-        <div class="conteiner-abas">
-            <h2>Nome do Cargo</h2>
-            <!-- Formulário de Cadastro -->
-            <form method="POST" action="../../controller/controllerCadastro/cargoController.php">
-
-                <div class="conteiner-dados">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
-                </div>
+            if (!empty($al)) {
+        ?>
+            <form action="../controller/categoriaController.php" method="POST">
+                <input type="hidden" name="action" value="atualizar">
+                <input type="hidden" name="idCategoria" value="<?php echo $al["idCategoria"];?>">
+                <label for="idCategoria">
+                    Nome:
+                </label>
+                <input type="text" name="descricao" id="idCategoria" value="<?php echo $al["descricao"];?>">
                 <br>
-
-                <div class="conteiner-operacoes">
-                    <!-- Botão para salvar o cargo -->
-                    <button type="submit" name="salvar" class="button">Salvar</button>
-
-                    <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../pageCargo.php">Cancelar</a>
-                </div>
+                <input type="submit" value="Ok">
             </form>
-        </div>
-
+        <?php
+            }
+        ?>
+        <a href="../view/pageCategoria.php">Voltar para a lista de categorias</a>
     </section>
 
 </body>
-
 </html>

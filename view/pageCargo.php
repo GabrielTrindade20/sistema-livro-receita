@@ -141,8 +141,6 @@ $numCargos = count($cargos);
                     </a>
                 </div>
             </div><!-- Search -->
-
-
         </div>
     </section>
 

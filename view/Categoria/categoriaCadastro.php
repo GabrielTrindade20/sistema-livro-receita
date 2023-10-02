@@ -93,9 +93,32 @@
     </nav>
 
     <section class="conteiner-conteudo">
-        
+        <div>
+            <h1>Cadastrar Cargo</h1>
+        </div>
+
+        <div class="conteiner-abas">
+            <h2>Nome da Categoria</h2>
+            <!-- Formulário de Cadastro -->
+            <form method="POST" action="../../controller/cargoController.php">
+
+                <div class="conteiner-dados">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                <br>
+
+                <div class="conteiner-operacoes">
+                    <!-- Botão para salvar o cargo -->
+                    <button type="submit" name="salvar" class="button">Salvar</button>
+
+                    <!-- Botão para cancelar e voltar à página principal -->
+                    <a href="../pageCargo.php">Cancelar</a>
+                </div>
+            </form>
+        </div>
+
     </section>
 
 </body>
-
 </html>
