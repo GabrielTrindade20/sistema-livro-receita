@@ -1,6 +1,6 @@
 <?php
-include_once('../../configuration/connect.php');
-include_once('../../model/categoriaModel.php');
+include_once('../configuration/connect.php');
+include_once('../model/categoriaModel.php');
 
 $categoriaModel = new categoriaModel($link);
 
@@ -14,7 +14,7 @@ elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_PO
     
     if ($categoriaModel->update($id, $descricao)) {
         $mensagem = "Alteração efetuada com sucesso";
-        include("../view/formAlteracao.php"); // Inclua a página de alteração novamente para exibir a mensagem
+        include("../view/pageCategoria.php"); // Inclua a página de alteração novamente para exibir a mensagem
         //header("refresh: 2; url=../view/pageCategoria.php"); // Redireciona para a lista de categorias após 2 segundos
     } else {
         $mensagem = "Erro ao atualizar a categoria: " . mysqli_error($link);

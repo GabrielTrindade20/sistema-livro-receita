@@ -1,6 +1,10 @@
 <?php
-include_once('../controller/protect.php');
-include_once('../controller/categoriaController.php');
+if (file_exists('../controller/categoriaController.php')) {
+    include_once('../controller/categoriaController.php');
+} else {
+    echo "O arquivo categoriaController.php não foi encontrado.";
+}
+
 ?>
 
 <!DOCTYPE html>

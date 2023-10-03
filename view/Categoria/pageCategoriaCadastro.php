@@ -1,6 +1,5 @@
 <?php
-include_once('../../controller/categoriaController.php');
-include_once('../../controller/categoriaController.php');
+include_once('../../controller/protect.php');
 ?>
 
 <!DOCTYPE html>
