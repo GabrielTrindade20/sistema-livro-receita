@@ -104,7 +104,7 @@ include_once('../../controller/protect.php');
 
                 <div class="conteiner-dados">
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <input type="text" id="nome" name="descricao" required>
                 </div>
                 <br>
 

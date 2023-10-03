@@ -1,28 +1,42 @@
 <?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+
 include_once('../configuration/connect.php');
 include_once('../model/categoriaModel.php');
 
 $categoriaModel = new categoriaModel($link);
 
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
-    $id = $_GET["id"];
-    $al = $categoriaModel->recuperaCategoria($id);
-} 
-elseif ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "atualizar") {
-    $id = $_POST["idCategoria"];
+ 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
+{
     $descricao = $_POST["descricao"];
     
-    if ($categoriaModel->update($id, $descricao)) {
-        $mensagem = "Alteração efetuada com sucesso";
-        include("../view/pageCategoria.php"); // Inclua a página de alteração novamente para exibir a mensagem
-        //header("refresh: 2; url=../view/pageCategoria.php"); // Redireciona para a lista de categorias após 2 segundos
-    } else {
-        $mensagem = "Erro ao atualizar a categoria: " . mysqli_error($link);
+    if(!empty($descricao)){
+        $categoriaModel->validar_campos($descricao);
+
+        if (!empty($categoriaModel->getErros())) {
+            // Há erros, armazene-os na sessão
+            $_SESSION["erros"] = $categoriaModel->getErros();
+            header("Location: ../view/pageCategoria.php");
+            exit();
+        } else {
+            // Não há erros, salve no banco de dados
+            if ($categoriaModel->create($descricao)) {
+                $_SESSION["sucesso"] = $categoriaModel->getSucesso();
+            } else {
+                $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
+            }
+            header("Location: ../view/pageCategoria.php");
+            exit();
+        }
     }
-    
+
     mysqli_close($link);
 }
-else {
+else 
+{
     $categorias = $categoriaModel->read();
     mysqli_close($link);
 }

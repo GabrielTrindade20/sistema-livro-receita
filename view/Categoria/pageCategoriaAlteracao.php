@@ -1,21 +1,31 @@
 <?php
 include_once('../../configuration/connect.php');
-include_once('../../model/modelCargo/cargoModel.php');
+include_once('../../controller/protect.php');
+include_once('../../model/categoriaModel.php');
+
+if (isset($_GET['idCategoria'])) {
+    $idCategoria = $_GET['idCategoria'];
+    $categoriaModel = new categoriaModel($link);
+    $recuperar = $categoriaModel->recuperaCategoria($idCategoria);
+
+    if ($recuperar) {
+        $descricao = $recuperar['descricao'];
+    } 
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleEdica.css">
+    <link rel="stylesheet" href="../css/styleHomePage.css">
     <link rel="stylesheet" href="../css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Página Principal</title>
+    <title>Categoria</title>
 </head>
 
 <body>
@@ -53,7 +63,7 @@ include_once('../../model/modelCargo/cargoModel.php');
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="../pageCargo.php">
+                <a href="../pageCategoria.php">
                     <span class="material-symbols-outlined"> category </span>
                     <span>Categoria</span>
                 </a>
@@ -97,29 +107,30 @@ include_once('../../model/modelCargo/cargoModel.php');
         </div>
     </nav>
 
-
     <section class="conteiner-conteudo">
-        <?php
-            if (isset($mensagem)) {
-                echo '<div class="mensagem">' . $mensagem . '</div>';
-            }
+        <h1 class="titulo">Categoria</h1>
 
-            if (!empty($al)) {
-        ?>
-            <form action="../controller/categoriaController.php" method="POST">
-                <input type="hidden" name="action" value="atualizar">
-                <input type="hidden" name="idCategoria" value="<?php echo $al["idCategoria"];?>">
-                <label for="idCategoria">
-                    Nome:
-                </label>
-                <input type="text" name="descricao" id="idCategoria" value="<?php echo $al["descricao"];?>">
+        <div class="conteiner-abas">
+            <!-- Formulário de Alteraçao -->
+            <form method="POST" action="">
+
+                <div class="conteiner-dados">
+                    <input type="hidden" name="idCategoria" value="<?php echo $recuperar["idCategoria"];?>">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="descricao" value="<?php echo isset($descricao) ? $descricao : ''; ?>" required>
+                </div>
                 <br>
-                <input type="submit" value="Ok">
+
+                <div class="conteiner-operacoes">
+                    <!-- Botão para salvar o cargo -->
+                    <button type="submit" name="alterar" class="button">Salvar</button>
+
+                    <!-- Botão para cancelar e voltar à página principal -->
+                    <a href="../pageCategoria.php">Cancelar</a>
+                </div>
             </form>
-        <?php
-            }
-        ?>
-        <a href="../view/pageCategoria.php">Voltar para a lista de categorias</a>
+        </div>
+        
     </section>
 
 </body>

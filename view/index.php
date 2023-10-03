@@ -26,6 +26,7 @@ include_once('../controller/LoginController.php');
             
         <section id="section-direita"> 
             <!-- Notificação de erro ao logar -->
+            <?php if (isset($mensagem)): ?>
             <figure class="notification" >
                 <div class="notification_body">
                     <?php if (isset($mensagem)): ?>
@@ -33,6 +34,7 @@ include_once('../controller/LoginController.php');
                     <?php endif; ?>
                 <div class="notification_progress"></div>
             </figure>
+            <?php endif; ?>
             <!-- ---------------------------- -->
 
             <div id="conteiner-form">

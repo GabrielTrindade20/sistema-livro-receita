@@ -18,7 +18,7 @@ $numCargos = count($cargos);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/stylePesq.css">
     <link rel="stylesheet" href="css/styleMenu.css">
-    <link rel="stylesheet" href="css/styleTabl.css">
+    <link rel="stylesheet" href="css/styleTable.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="css/styleResponsiv.css">
     <link rel="stylesheet"
