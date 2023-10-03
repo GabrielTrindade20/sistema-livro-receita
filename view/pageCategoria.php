@@ -1,5 +1,4 @@
 <?php
-include_once('../configuration/connect.php');
 include_once('../controller/protect.php');
 include_once('../controller/categoriaController.php');
 ?>

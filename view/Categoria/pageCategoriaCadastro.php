@@ -1,5 +1,6 @@
 <?php
 include_once('../../controller/categoriaController.php');
+include_once('../../controller/categoriaController.php');
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +101,7 @@ include_once('../../controller/categoriaController.php');
 
         <div class="conteiner-abas">
             <!-- Formulário de Cadastro -->
-            <form method="POST" action="../../controller/cargoController.php">
+            <form method="POST" action="../../controller/categoriaController.php">
 
                 <div class="conteiner-dados">
                     <label for="nome">Nome:</label>
@@ -113,7 +114,7 @@ include_once('../../controller/categoriaController.php');
                     <button type="submit" name="salvar" class="button">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../pageCargo.php">Cancelar</a>
+                    <a href="../pageCategoria.php">Cancelar</a>
                 </div>
             </form>
         </div>
