@@ -69,7 +69,7 @@ $numCargos = count($cargos);
             </div>
             <div class="icone-menu">
                 <a href="pageDegustacao.php">
-                    <span><img src="../view/css/iconsSVG/iconDegustação.svg" alt=""></span>
+                    <span><img src="../view/css/iconsSVG/iconDegustação.png" alt=""></span>
                     <span>Degustação</span>
                 </a>
             </div>
