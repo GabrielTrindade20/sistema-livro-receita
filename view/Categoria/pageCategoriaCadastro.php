@@ -1,6 +1,9 @@
+<?php
+include_once('../../controller/categoriaController.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +13,7 @@
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Página Principal</title>
+    <title>Categoria</title>
 </head>
 
 <body>
@@ -93,12 +96,9 @@
     </nav>
 
     <section class="conteiner-conteudo">
-        <div>
-            <h1>Cadastrar Cargo</h1>
-        </div>
+        <h1 class="titulo">Categoria</h1>
 
         <div class="conteiner-abas">
-            <h2>Nome da Categoria</h2>
             <!-- Formulário de Cadastro -->
             <form method="POST" action="../../controller/cargoController.php">
 

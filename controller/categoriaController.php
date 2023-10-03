@@ -1,8 +1,8 @@
 <?php
-include_once('../configuration/connect.php');
-include_once('../model/categoriaModel.php');
+include_once('../../configuration/connect.php');
+include_once('../../model/categoriaModel.php');
 
-$categoriaModel = new CategoriaModel($link);
+$categoriaModel = new categoriaModel($link);
 
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["id"])) {
     $id = $_GET["id"];

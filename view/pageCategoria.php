@@ -1,22 +1,24 @@
 <?php
+include_once('../configuration/connect.php');
 include_once('../controller/protect.php');
 include_once('../controller/categoriaController.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/stylePesq.css">
-        <link rel="stylesheet" href="css/styleMenu.css">
-        <link rel="stylesheet" href="css/styleTabl.css">
-        <link rel="stylesheet" href="css/styleResponsivo.css">
-        <link rel="icon" href="css/iconsSVG/iconReceita.svg">
-        <link rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-        <title>Categorias</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylePesq.css">
+    <link rel="stylesheet" href="css/styleMenu.css">
+    <link rel="stylesheet" href="css/styleTable.css">
+    <link rel="stylesheet" href="css/styleResponsivo.css">
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Categorias</title>
+</head>
 <header class="header">
     <div class="usuario">
         <a href="">
@@ -28,7 +30,9 @@ include_once('../controller/categoriaController.php');
 
 <nav class="menu-lateral">
     <div class="logo">
-        <a href="homePage.php"><img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a>
+        <a href="homePage.php">
+            <img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> 
+        </a>
     </div>
 
     <div class="links-menu">
@@ -95,7 +99,7 @@ include_once('../controller/categoriaController.php');
     </div>
 </nav>
 
-<div id="sub-titulo">
+<div class="paginação">
     <a href="homePage.php">Homepage > </a>
     <a href="pageCategoria.php">Categoria</a>
 </div>
@@ -124,7 +128,7 @@ include_once('../controller/categoriaController.php');
             </div>
 
             <div class="button-nova">
-                <a href="./Categoria/categoriaCadastro.php">
+                <a href="./Categoria/pageCategoriaCadastro.php">
                     <button class="nova-receita-button">Nova Receita</button>
                 </a>
             </div>
@@ -153,12 +157,12 @@ include_once('../controller/categoriaController.php');
                     </td>
                     <td>
                         <a href="exclusao.php?id=<?php echo $categoria["idCategoria"]; ?>">
-                            <img src="../view/css/iconsSVG/iconEditar.png"/>
+                            <span class="material-symbols-outlined"> edit </span>
                         </a>
                     </td>
                     <td>
                         <button type="submit" name="excluir" class="button">
-                            <img src="../view/css/iconsSVG/iconExcluir.png"/>
+                            <span class="material-symbols-outlined"> delete </span>
                         </button> 
                     </td>
                 </tr>
