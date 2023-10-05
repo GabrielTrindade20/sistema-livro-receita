@@ -1,6 +1,7 @@
 <?php
 include_once('../../configuration/connect.php');
 include_once('cargoModel.php');
+include_once('../../controller/protectSubFolders.php');
 
 $mensagem = '';
 

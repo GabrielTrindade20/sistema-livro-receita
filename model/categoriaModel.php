@@ -87,6 +87,7 @@ class categoriaModel {
         $query =   "SELECT idCategoria, descricao
                     FROM categoria
                     WHERE idCategoria = '$id';";
+
         $resultado = mysqli_query($this->link, $query);
 
         if ($resultado) {
@@ -94,7 +95,7 @@ class categoriaModel {
         } else {
             return null; // Retornar null em caso de erro na consulta
         }
-    }
+    }// fim de recuperar
 
 }
 ?>

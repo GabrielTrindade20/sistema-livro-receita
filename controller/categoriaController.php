@@ -39,6 +39,9 @@ else
 {
     $categorias = $categoriaModel->read();
     mysqli_close($link);
+
+    // Contar quandas linhas tem na tabela
+    $countCategorias = count($categorias); 
 }
 
 ?>
