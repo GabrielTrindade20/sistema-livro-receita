@@ -17,7 +17,7 @@ include_once('../../model/modelCargo/cargoModel.php');
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página Principal</title>
 </head>
-
+<span class="material-symbols-outlined"> delete </span>
 <body>
     <header class="header">
         <div class="usuario">

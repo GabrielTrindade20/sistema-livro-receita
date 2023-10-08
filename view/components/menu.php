@@ -3,7 +3,7 @@
 <header class="header">
     <div class="usuario">
         <a href="">
-            <span class="usuario-name">Gabriel Rocha</span>
+            <span class="usuario-name"> <?php echo $_SESSION['nome']; ?> </span>
             <span class="material-symbols-outlined"> person </span>
         </a>
     </div>
@@ -71,7 +71,7 @@
         <div class="icon-usuario">
             <a href="pagePerfil.php">
                 <span class="material-symbols-outlined"> person </span>
-                <span class="name">Gabriel Rocha</span>
+                <span class="name"> <?php echo $_SESSION['nome']; ?> </span>
             </a>
             <a href="../controller/logoutController.php">
                 <span class="material-symbols-outlined"> logout </span>
