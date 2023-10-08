@@ -109,9 +109,10 @@ include_once('../controller/categoriaController.php');
                             </a>
                         </td>
                         <td>
-                            <button type="submit" name="excluir" class="button">
+                            <a href="../controller/categoriaController.php?acao=excluir&idCategoria=
+                                        <?php echo $categoria['idCategoria']; ?>" class="button">
                                 <span class="material-symbols-outlined"> delete </span>
-                            </button> 
+                            </a> 
                         </td>
                     </tr>
                 <?php endforeach; ?>

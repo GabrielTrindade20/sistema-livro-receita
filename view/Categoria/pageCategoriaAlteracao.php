@@ -39,15 +39,13 @@ if (isset($_GET['idCategoria'])) {
 
         <div class="conteiner-abas">
             <!-- Formulário de Alteraçao -->
-            <form method="POST" action="">
-
+            <form method="POST" action="../../controller/categoriaController.php">
                 <div class="conteiner-dados">
                     <input type="hidden" name="idCategoria" value="<?php echo $recuperar["idCategoria"];?>">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="descricao" value="<?php echo isset($descricao) ? $descricao : ''; ?>" required>
                 </div>
                 <br>
-
                 <div class="conteiner-operacoes">
                     <!-- Botão para salvar o cargo -->
                     <button type="submit" name="alterar" class="button">Salvar</button>
@@ -56,8 +54,7 @@ if (isset($_GET['idCategoria'])) {
                     <a href="../pageCategoria.php">Cancelar</a>
                 </div>
             </form>
-        </div>
-        
+        </div>   
     </section>
 
 </body>
