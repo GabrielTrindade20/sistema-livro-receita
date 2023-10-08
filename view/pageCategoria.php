@@ -25,7 +25,7 @@ include_once('../controller/categoriaController.php');
     <title>Categorias</title>
 </head>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('menu.php');?>
+    <?php require_once('./components/menu.php');?>
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
