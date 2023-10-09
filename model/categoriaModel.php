@@ -80,15 +80,11 @@ class categoriaModel {
                     SET descricao = ? 
                     WHERE idCategoria = ?";
 
-        // Preparar a declaração
         $stmt = $this->link->prepare($query);
 
-        // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
-            // Vincular os parâmetros da declaração com os valores
             $stmt->bind_param("ss", $descricao, $id);
 
-            // Executar a declaração preparada
             if ($stmt->execute()) {
                 $this->sucesso[] = "Atualização efetuada com sucesso!";
                 return true;
@@ -96,13 +92,12 @@ class categoriaModel {
                 $this->erros[] = "Erro ao atualizar: " . $stmt->error;
             }
 
-            // Fechar a declaração preparada
             $stmt->close();
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
 
-        return false; // Retorna falso em caso de erro
+        return false;
     }// fim update
 
     public function delete( $id )
@@ -111,15 +106,11 @@ class categoriaModel {
                     FROM Categoria 
                     WHERE idCategoria = ?";
 
-        // Preparar a declaração
         $stmt = $this->link->prepare($query);
 
-        // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
-            // Vincular os parâmetros da declaração com os valores
             $stmt->bind_param("i", $id);
 
-            // Executar a declaração preparada
             if ($stmt->execute()) {
                 $this->sucesso[] = "Exclusão efetuada com sucesso!";
                 return true;
@@ -127,16 +118,16 @@ class categoriaModel {
                 $this->erros[] = "Erro ao excluir: " . $stmt->error;
             }
 
-            // Fechar a declaração preparada
             $stmt->close();
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
 
-        return false; // Retorna falso em caso de erro
+        return false; 
     }// fim delete
 
-    public function recuperaCategoria($id){
+    public function recuperaCategoria($id)
+    {
         // lista cursos já cadastrados
         $query =   "SELECT idCategoria, descricao
                     FROM categoria
@@ -150,6 +141,5 @@ class categoriaModel {
             return null; // Retornar null em caso de erro na consulta
         }
     }// fim de recuperar
-
 }
 ?>

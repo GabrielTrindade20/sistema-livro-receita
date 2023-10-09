@@ -1,5 +1,5 @@
 <?php
-include_once('../../controller/protect.php');
+include_once('../../../controller/protect.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,9 +8,8 @@ include_once('../../controller/protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleHomePage.css">
-    <link rel="stylesheet" href="../css/styleMenu.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../../css/styleEdica.css">
+    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Categoria</title>
@@ -18,7 +17,7 @@ include_once('../../controller/protect.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menuSubFolders.php'); ?>  
+    <?php require_once('../../components/menuSubFolders.php'); ?>  
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Categoria</h1>
@@ -38,7 +37,7 @@ include_once('../../controller/protect.php');
                     <button type="submit" name="salvar" class="button">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../pageCategoria.php">Cancelar</a>
+                    <a href="../../pages/pageCategoria.php">Cancelar</a>
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 <?php
-include_once('../../controller/protectSubFolders.php');
-include_once('../../configuration/connect.php');
-include_once('../../model/categoriaModel.php');
+include_once('../../../controller/protect.php');
+include_once('../../../configuration/connect.php');
+include_once('../../../model/categoriaModel.php');
 
 if (isset($_GET['idCategoria'])) {
     $idCategoria = $_GET['idCategoria'];
@@ -23,8 +23,8 @@ if (isset($_GET['idCategoria'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleHomePage.css">
-    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../../css/styleEdica.css">
+    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Categoria</title>
@@ -32,14 +32,14 @@ if (isset($_GET['idCategoria'])) {
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menuSubFolders.php'); ?>  
+    <?php require_once('../../components/menuSubFolders.php'); ?>  
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Categoria</h1>
 
         <div class="conteiner-abas">
             <!-- Formulário de Alteraçao -->
-            <form method="POST" action="../../controller/categoriaController.php">
+            <form method="POST" action="../../../controller/categoriaController.php">
                 <div class="conteiner-dados">
                     <input type="hidden" name="idCategoria" value="<?php echo $recuperar["idCategoria"];?>">
                     <label for="nome">Nome:</label>

@@ -1,5 +1,5 @@
 <?php
-include_once('../controller/protect.php');
+include_once('../../controller/protect.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -20,7 +20,7 @@ include_once('../controller/protect.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('./components/menu.php');?>
+    <?php require_once('../components/menu.php');?>
 
     <div id="sub-titulo">
         <a href="">links paginas</a>

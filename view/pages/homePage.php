@@ -1,5 +1,5 @@
 <?php
-include_once('../controller/protect.php');
+include_once('../../controller/protect.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -8,8 +8,8 @@ include_once('../controller/protect.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleHomePage.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../css/styleHomePage.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página Principal</title>
@@ -17,7 +17,7 @@ include_once('../controller/protect.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../view/components/menu.php');?>
+    <?php require_once('../components/menu.php');?>
 
     <section class="conteiner-conteudo">
         <div class="titulo">
@@ -84,7 +84,7 @@ include_once('../controller/protect.php');
                     <a href="pageDegustacao.php">
                         <div class="card">
                             <a href="pageDegustacao.php">
-                                <img src="../view/css/iconsSVG/iconDegustação.svg" alt="" width="" height="25px">
+                                <img src="../css/iconsSVG/iconDegustação.svg" alt="" width="" height="25px">
                                 <span>Categorias</span>
                             </a>
                         </div>

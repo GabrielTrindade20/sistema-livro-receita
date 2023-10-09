@@ -2,9 +2,8 @@
 if(!isset($_SESSION)) {
     session_start();
 }
-
-include_once('../controller/protect.php');
-include_once('../controller/categoriaController.php');
+include_once('../../controller/protect.php');
+include_once('../../controller/categoriaController.php');
 ?>
 
 <!DOCTYPE html>
@@ -14,18 +13,17 @@ include_once('../controller/categoriaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/stylePesq.css">
-    <!-- <link rel="stylesheet" href="css/styleMenu.css"> -->
-    <link rel="stylesheet" href="css/styleTable.css">
-    <link rel="stylesheet" href="css/styleResponsivo.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../css/stylePesq.css">
+    <link rel="stylesheet" href="../css/styleTable.css">
+    <link rel="stylesheet" href="../css/styleResponsivo.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <title>Categorias</title>
 </head>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('./components/menu.php');?>
+    <?php require_once('../components/menu.php');?>
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
@@ -104,12 +102,12 @@ include_once('../controller/categoriaController.php');
                             <?php echo $categoria['descricao']; ?>
                         </td>
                         <td>
-                            <a href="./Categoria/pageCategoriaAlteracao.php?idCategoria=<?php echo $categoria['idCategoria']; ?>">
+                            <a href="../Categoria/pageCategoriaAlteracao.php?idCategoria=<?php echo $categoria['idCategoria']; ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
                         </td>
                         <td>
-                            <a href="../controller/categoriaController.php?acao=excluir&idCategoria=
+                            <a href="../../controller/categoriaController.php?acao=excluir&idCategoria=
                                         <?php echo $categoria['idCategoria']; ?>" class="button">
                                 <span class="material-symbols-outlined"> delete </span>
                             </a> 

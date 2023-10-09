@@ -1,8 +1,8 @@
 <?php
-include_once('../controller/protect.php');
+include_once('../../controller/protect.php');
 
-include_once('../configuration/connect.php');
-include_once('../model/modelCargo/cargoModel.php');
+include_once('../../configuration/connect.php');
+include_once('../../model/modelCargo/cargoModel.php');
 
 $cargoModel = new CargoModel($link);
 $cargos = $cargoModel->listarCargos();
@@ -16,11 +16,10 @@ $numCargos = count($cargos);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/stylePesq.css">
-    <link rel="stylesheet" href="css/styleMenu.css">
-    <link rel="stylesheet" href="css/styleTable.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="css/styleResponsiv.css">
+    <link rel="stylesheet" href="../css/stylePesq.css">
+    <link rel="stylesheet" href="../css/styleTable.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../css/styleResponsiv.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página de Receitas</title>
@@ -28,7 +27,7 @@ $numCargos = count($cargos);
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('./components/menu.php');?>
+    <?php require_once('../components/menu.php');?>
 
     <div id="sub-titulo">
         <a href="">links paginas</a>
@@ -85,7 +84,7 @@ $numCargos = count($cargos);
                             <?php echo $cargo['descricao']; ?>
                         </td>
                         <td class="operation-link">
-                            <a href="../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
+                            <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
                                 <span class="material-symbols-outlined"> edit </span>    
                             </a>
 
@@ -95,7 +94,7 @@ $numCargos = count($cargos);
                             </form> -->
 
 
-                            <form method="POST" action="../model/modelCargo/excluir_cargo.php">
+                            <form method="POST" action="../../model/modelCargo/excluir_cargo.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
                                 <button type="submit" name="excluir" class="button">
                                     <span class="material-symbols-outlined"> delete </span>

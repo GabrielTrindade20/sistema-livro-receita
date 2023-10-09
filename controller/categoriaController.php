@@ -3,8 +3,8 @@ if(!isset($_SESSION)) {
     session_start();
 }
 
-include_once('../configuration/connect.php');
-include_once('../model/categoriaModel.php');
+include_once('../../configuration/connect.php');
+include_once('../../model/categoriaModel.php');
 
 $categoriaModel = new categoriaModel($link);
 
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
         if (!empty($categoriaModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $categoriaModel->getErros();
-            header("Location: ../view/pageCategoria.php");
+            header("Location: ../view/pages/pageCategoria.php");
             exit();
         } else {
             // Não há erros, salve no banco de dados
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
             }
-            header("Location: ../view/pageCategoria.php");
+            header("Location: ../view/pages/pageCategoria.php");
             exit();
         }
     }
@@ -49,7 +49,7 @@ elseif (isset($_POST['alterar'])) {
         if (!empty($categoriaModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $categoriaModel->getErros();
-            header("Location: ../view/pageCategoria.php");
+            header("Location: ../view/pages/pageCategoria.php");
             exit();
         }
         else {
@@ -58,7 +58,7 @@ elseif (isset($_POST['alterar'])) {
             } else {
                 $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
             }
-            header("Location: ../view/pageCategoria.php");
+            header("Location: ../view/pages/pageCategoria.php");
             exit();
         }
     }
@@ -77,7 +77,7 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
         $_SESSION["erros"] = ["ID de categoria não especificado."];
     }
 
-    header("Location: ../view/pageCategoria.php");
+    header("Location: ../view/pages/pageCategoria.php");
     exit();
 }
 // RETORNAR DADOS SALVOS
