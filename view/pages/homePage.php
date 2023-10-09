@@ -9,7 +9,6 @@ include_once('../controller/protect.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styleHomePage.css">
-    <link rel="stylesheet" href="css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -18,7 +17,7 @@ include_once('../controller/protect.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('./components/menu.php');?>
+    <?php require_once('../view/components/menu.php');?>
 
     <section class="conteiner-conteudo">
         <div class="titulo">

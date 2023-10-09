@@ -56,7 +56,6 @@ section{
   margin-right: 5px; /* Adicionar espaço entre o ícone e o nome de usuário */
 }
 
-
 .menu-lateral {
   position: fixed;
   top: 0;
@@ -136,7 +135,7 @@ section{
 }
 
 .perfil {
-  margin-top: 30%;
+  margin-top: 20%;
   border-top: 1px solid var(--black); 
   width: 100%;
   text-align: left;
