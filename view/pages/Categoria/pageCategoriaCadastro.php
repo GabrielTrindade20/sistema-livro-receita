@@ -24,7 +24,7 @@ include_once('../../../controller/protect.php');
 
         <div class="conteiner-abas">
             <!-- Formulário de Cadastro -->
-            <form method="POST" action="../../controller/categoriaController.php">
+            <form method="POST" action="../../../controller/categoriaController.php">
 
                 <div class="conteiner-dados">
                     <label for="nome">Nome:</label>

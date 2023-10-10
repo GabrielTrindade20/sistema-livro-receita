@@ -21,6 +21,25 @@ include_once('../../controller/categoriaController.php');
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <title>Categorias</title>
+
+    <script>
+        function confirmarExclusao(idCategoria) {
+            var confirmacao = confirm("Tem certeza de que deseja excluir esta categoria?");
+
+            if (confirmacao) {
+                // Se o usuário confirmar a exclusão, redirecione para o script de exclusão com o ID
+                window.location.href = "../../controller/categoriaController.php?acao=excluir&idCategoria=" + idCategoria;
+            } else {
+                // Se o usuário cancelar, não faça nada
+            }
+        }
+        function confirmarExclusaoCheckbox() {
+            if (confirm("Tem certeza de que deseja excluir as categorias selecionadas?")) {
+                document.forms["excluirSelect"].submit();
+            }
+        }
+    </script>
+
 </head>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../components/menu.php');?>
@@ -83,39 +102,42 @@ include_once('../../controller/categoriaController.php');
     </section>
 
     <section class="conteiner-conteudo">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="select-column">-</th>
-                    <th>Categorias</th>
-                    <th class="operacao">Operações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Tabela de categoria -->
-                <?php foreach ($categorias as $index => $categoria): ?>
-                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                        <td class="select-column">
-                            <a href=""><input type="checkbox"></a>
-                        </td>
-                        <td>
-                            <?php echo $categoria['descricao']; ?>
-                        </td>
-                        <td>
-                            <a href="../Categoria/pageCategoriaAlteracao.php?idCategoria=<?php echo $categoria['idCategoria']; ?>">
-                                <span class="material-symbols-outlined"> edit </span>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="../../controller/categoriaController.php?acao=excluir&idCategoria=
-                                        <?php echo $categoria['idCategoria']; ?>" class="button">
-                                <span class="material-symbols-outlined"> delete </span>
-                            </a> 
-                        </td>
+        <button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
+
+        <form id="excluirSelect" action="../../controller/categoriaController.php?acao=excluirSelecionados" method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="select-column">-</th>
+                        <th>Categorias</th>
+                        <th class="operacao">Operações</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <!-- Tabela de categoria -->
+                    <?php foreach ($categorias as $index => $categoria): ?>
+                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                            <td class="select-column">
+                                <input type="checkbox" name="checkbox[]" value="<?php echo $categoria['idCategoria']; ?>">
+                            </td>
+                            <td>
+                                <?php echo $categoria['descricao']; ?>
+                            </td>
+                            <td>
+                                <a href="../pages/Categoria/pageCategoriaAlteracao.php?idCategoria=<?php echo $categoria['idCategoria']; ?>">
+                                    <span class="material-symbols-outlined"> edit </span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" onclick="confirmarExclusao(<?php echo $categoria['idCategoria']; ?>);" class="button">
+                                    <span class="material-symbols-outlined"> delete </span>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </form>
     </section>
 </body>
 </html>

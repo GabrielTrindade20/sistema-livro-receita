@@ -3,8 +3,8 @@ if(!isset($_SESSION)) {
     session_start();
 }
 
-include_once('../../configuration/connect.php');
-include_once('../../model/categoriaModel.php');
+include_once(__DIR__ .'../../configuration/connect.php');
+include_once(__DIR__ .'../../model/categoriaModel.php');
 
 $categoriaModel = new categoriaModel($link);
 
@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
             exit();
         }
     }
-
     mysqli_close($link);
 }
 // Vem da page de ALTERAÇÃO 
@@ -79,6 +78,28 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
 
     header("Location: ../view/pages/pageCategoria.php");
     exit();
+}
+elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){ 
+    if(isset($_POST['checkbox']) && is_array($_POST['checkbox'])) {
+        // Loop através dos IDs das categorias selecionadas
+        foreach ($_POST['checkbox'] as $idCategoria) {
+            // Verificar se o ID da categoria é válido (por exemplo, um número inteiro positivo)
+            if (is_numeric($idCategoria) && $idCategoria > 0) {
+                if ($categoriaModel->delete($idCategoria)) {
+                    // A categoria foi excluída com sucesso
+                    $_SESSION["sucesso"] = ["Categorias excluídas com sucesso."];
+                } else {
+                    // Houve um erro na exclusão
+                    $_SESSION["erros"] = ["Erro ao excluir a categoria com ID $idCategoria."];
+                }
+            } else {
+                // O ID da categoria não é válido
+                $_SESSION["erros"] = ["ID de categoria inválido: $idCategoria."];
+            }
+        }
+        header("Location: ../view/pages/pageCategoria.php");
+        exit();
+    }
 }
 // RETORNAR DADOS SALVOS
 else 
