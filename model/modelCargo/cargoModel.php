@@ -12,7 +12,7 @@ class CargoModel
 
     public function criarCargo($nome)
     {
-        $sql = "INSERT INTO cargo (nome) VALUES ('$nome')";
+        $sql = "INSERT INTO cargo (descricao) VALUES ('$nome')";
         return mysqli_query($this->conexao, $sql);
     }
 

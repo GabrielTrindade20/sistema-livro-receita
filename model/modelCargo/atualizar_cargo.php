@@ -24,7 +24,7 @@ if (isset($_POST['editar'])) {
 
         if ($atualizado) {
             $mensagem = 'Cargo atualizado com sucesso!';
-            header("Location: ../../view/pageCargo.php?mensagem=" . urlencode($mensagem));
+            header("Location: ../../view/pages/pageCargo.php?mensagem=" . urlencode($mensagem));
             exit();
         } else {
             $mensagem = 'Erro ao atualizar o cargo.';
