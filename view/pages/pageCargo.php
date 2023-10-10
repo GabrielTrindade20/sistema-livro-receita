@@ -5,13 +5,13 @@ include_once('../../configuration/connect.php');
 include_once('../../model/modelCargo/cargoModel.php');
 
 $cargoModel = new CargoModel($link);
-$cargos = $cargoModel->listarCargos();
+$cargos = $cargoModel->read(); // Use o método read() para listar os cargos
 $numCargos = count($cargos);
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,11 +23,30 @@ $numCargos = count($cargos);
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página de Receitas</title>
+
+    <script>
+        function confirmarExclusao(idCargo) {
+            var confirmacao = confirm("Tem certeza de que deseja excluir esta cargo?");
+
+            if (confirmacao) {
+                // Se o usuário confirmar a exclusão, redirecione para o script de exclusão com o ID
+                window.location.href = "../../controller/controllerCargo/cargoController.php?acao=excluir&idCargo=" + idCargo;
+            } else {
+                // Se o usuário cancelar, não faça nada
+            }
+        }
+        function confirmarExclusaoCheckbox() {
+            if (confirm("Tem certeza de que deseja excluir as cargos selecionadas?")) {
+                document.forms["excluirSelect"].submit();
+            }
+        }
+    </script>
+
 </head>
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php'); ?>
 
     <div id="sub-titulo">
         <a href="">links paginas</a>
@@ -70,37 +89,44 @@ $numCargos = count($cargos);
             <thead>
                 <tr>
                     <th class="select-column">-</th>
-                    <th class="nome-col">Nome</th>
-                    <th class="operacao-col">Operações</th>
+                    <th class="nome-col" colspan="2">Nome</th>
+                    <th class="operacao-col" colspan="2">Operações</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($cargos as $index => $cargo): ?>
                     <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
                         <td class="select-column">
-                            <a href=""><input type="checkbox"></a>
+                            <input type="checkbox" name="checkbox[]" value="<?php echo $cargo['idCargo']; ?>">
                         </td>
-                        <td>
+                        <td colspan="2">
                             <?php echo $cargo['descricao']; ?>
                         </td>
-                        <td class="operation-link">
+                        <td colspan="2">
                             <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
-                                <span class="material-symbols-outlined"> edit </span>    
+                                <span class="material-symbols-outlined"> edit </span>
                             </a>
 
-                            <!-- <form method="POST" action="../model/modelCargo/cargoEdicao.php">
-                                <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
-                                <button type="submit" name="editar">Editar</button>
-                            </form> -->
+                            <a href="#" onclick="confirmarExclusao(<?php echo $cargo['idCargo']; ?>);" class="button">
+                                <span class="material-symbols-outlined"> delete </span>
+                            </a>
+                        </td>
 
+
+
+                        <!-- <td class="operation-link">
+                            <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
+                                <span class="material-symbols-outlined" style="background-color: none;"> edit </span>    
+                            </a>
 
                             <form method="POST" action="../../model/modelCargo/excluir_cargo.php">
                                 <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
                                 <button type="submit" name="excluir" class="button">
-                                    <span class="material-symbols-outlined"> delete </span>
+                                    <span class="material-symbols-outlined" style="background-color: <?php echo ($index % 2 == 0) ? "#d9d9d93f" : "#d9d9d9a4" ?>;"> 
+                                        delete </span>
                                 </button>
                             </form>
-                        </td>
+                        </td> -->
 
                     </tr>
                 <?php endforeach; ?>

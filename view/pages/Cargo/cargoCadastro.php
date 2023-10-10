@@ -17,9 +17,10 @@ $path = '../../components/menuSubFolders.php';
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página Principal</title>
 </head>
+
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once($path) ?>  
+    <?php require_once($path) ?>
 
 
     <section class="conteiner-conteudo">
@@ -30,11 +31,11 @@ $path = '../../components/menuSubFolders.php';
         <div class="conteiner-abas">
             <h2>Nome do Cargo</h2>
             <!-- Formulário de Cadastro -->
-            <form method="POST" action="../../../controller/controllerCargo/cargoController.php">
+            <form action="../../../controller/controllerCargo/cargoController.php" method="POST">
 
                 <div class="conteiner-dados">
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <label for="descricao">Nome:</label> <!-- Altere o "for" e o "id" para "descricao" -->
+                    <input type="text" id="descricao" name="descricao" required> <!-- Altere "name" para "descricao" -->
                 </div>
                 <br>
 
@@ -46,8 +47,10 @@ $path = '../../components/menuSubFolders.php';
                     <a href="../../pages/pageCargo.php">Cancelar</a>
                 </div>
             </form>
+
         </div>
 
     </section>
 </body>
+
 </html>

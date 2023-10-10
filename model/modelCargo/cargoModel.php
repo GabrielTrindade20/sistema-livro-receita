@@ -1,84 +1,145 @@
 <?php
-$mensagem = ''; // Defina a variável com um valor padrão
 
-class CargoModel
-{
-    private $conexao;
+class cargoModel {
+    private $link;
+    private $erros = array();
+    private $sucesso = array();
 
-    public function __construct($conexao)
-    {
-        $this->conexao = $conexao;
+    public function __construct($link) {
+        $this->link = $link;
     }
 
-    public function criarCargo($nome)
-    {
-        $sql = "INSERT INTO cargo (descricao) VALUES ('$nome')";
-        return mysqli_query($this->conexao, $sql);
+    public function getErros() {
+        return $this->erros;
+    }
+    
+    public function getSucesso() {
+        return $this->sucesso;
     }
 
-    public function listarCargos()
-    {
-        $sql = "SELECT * FROM cargo";
-        $resultado = mysqli_query($this->conexao, $sql);
-        $cargos = [];
+    public function validar_campos($descricao) {
+        if (!empty($descricao)) {
+            $descricao = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+            return $descricao;
+        } else {
+            $this->erros[] = "Por gentileza, preencha todos os campos.";
+            return false;
+        }
+    }//fim validar campos
 
-        while ($row = mysqli_fetch_assoc($resultado)) {
-            $cargos[] = $row;
+    public function create( $descricao )
+    {
+        $query =   "INSERT INTO Cargo 
+                    (descricao) 
+                    VALUE
+                    (?);";
+
+         // * Preparar a declaração
+         $stmt = $this->link->prepare($query);
+
+         // Verificar se a preparação da declaração foi bem-sucedida
+         if ($stmt) {
+             // Vincular os parâmetros da declaração com os valores
+             $stmt->bind_param("s", $descricao);
+ 
+             // Executar a declaração preparada
+             if ($stmt->execute()) {
+                 $this->sucesso[] = "Cadastro efetuado com sucesso!";
+                 return true;
+             } else {
+                 $this->erros[] = "Erro ao salvar: " . $stmt->error;
+             }
+             // Fechar a declaração preparada
+             $stmt->close();
+         } else {
+             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+         }
+    }// fim create
+    
+    public function read( )
+    {
+        $query = "SELECT idCargo, descricao FROM Cargo;";
+        $cargos = array();
+
+        if ($result = mysqli_query($this->link, $query)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $cargos[] = $row;
+            }
+            mysqli_free_result($result);
         }
 
         return $cargos;
-    }
-
-    public function obterCargoPorID($id)
+    }// fim read
+    
+    public function update( $id, $descricao )
     {
-        $sql = "SELECT * FROM cargo WHERE idCargo = $id";
-        $resultado = mysqli_query($this->conexao, $sql);
+        /*$query = "UPDATE Cargo SET descricao = '$descricao' WHERE idCargo = '$id';";
+        return mysqli_query($this->link, $query);*/
+
+        $query =   "UPDATE Cargo 
+                    SET descricao = ? 
+                    WHERE idCargo = ?";
+
+        $stmt = $this->link->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("ss", $descricao, $id);
+
+            if ($stmt->execute()) {
+                $this->sucesso[] = "Atualização efetuada com sucesso!";
+                return true;
+            } else {
+                $this->erros[] = "Erro ao atualizar: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+
+        return false;
+    }// fim update
+
+    public function delete( $id )
+    {
+        $query =   "DELETE 
+                    FROM Cargo 
+                    WHERE idCargo = ?";
+
+        $stmt = $this->link->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("i", $id);
+
+            if ($stmt->execute()) {
+                $this->sucesso[] = "Exclusão efetuada com sucesso!";
+                return true;
+            } else {
+                $this->erros[] = "Erro ao excluir: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+
+        return false; 
+    }// fim delete
+
+    public function recuperaCargo($id)
+    {
+        // lista cursos já cadastrados
+        $query =   "SELECT idCargo, descricao
+                    FROM cargo
+                    WHERE idCargo = '$id';";
+
+        $resultado = mysqli_query($this->link, $query);
 
         if ($resultado) {
             return mysqli_fetch_assoc($resultado);
         } else {
             return null; // Retornar null em caso de erro na consulta
         }
-    }
-
-    public function atualizarCargo($id, $descricao)
-    {
-        $sql = "UPDATE cargo SET descricao = '$descricao' WHERE idCargo = $id";
-        return mysqli_query($this->conexao, $sql);
-    }
-
-
-
-
-
-    public function excluirCargo($id)
-    {
-        $sql = "DELETE FROM cargo WHERE idCargo = $id";
-        return mysqli_query($this->conexao, $sql);
-    }
+    }// fim de recuperar
 }
-
-// Verifique se o formulário foi enviado
-if (isset($_POST['salvar'])) {
-    // Obtenha a descrição do cargo do formulário
-    $descricaoCargo = $_POST['nome'];
-
-    // Verifique se a descrição do cargo não está vazia
-    if (empty($descricaoCargo)) {
-        $mensagem = 'Por favor, preencha a descrição do cargo.';
-    } else {
-        // Prepare e execute a consulta SQL para inserir o novo cargo
-        $sql = "INSERT INTO cargo (descricao) VALUES ('$descricaoCargo')";
-        $resultado = mysqli_query($link, $sql);
-
-        if ($resultado) {
-            $mensagem = 'Cargo cadastrado com sucesso!';
-            header("Location: ../../view/pages/pageCargo.php?mensagem=" . urlencode($mensagem));
-            exit();
-        } else {
-            $mensagem = 'Erro ao cadastrar o cargo.';
-        }
-    }
-}
-
 ?>
