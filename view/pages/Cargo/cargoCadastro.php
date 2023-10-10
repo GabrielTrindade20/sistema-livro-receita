@@ -1,7 +1,7 @@
 <?php
 include_once('../../../configuration/connect.php');
 include_once('../../../model/modelCargo/cargoModel.php');
-$path = '../../components/menuSubFolders.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@ $path = '../../components/menuSubFolders.php';
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once($path) ?>
+    <?php require_once('../../../view/components/menuSubFolders2.php') ?>
 
 
     <section class="conteiner-conteudo">

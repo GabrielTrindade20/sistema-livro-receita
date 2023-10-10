@@ -17,56 +17,56 @@ if(!isset($_SESSION)) {
 
 <nav class="menu-lateral">
     <div class="logo">
-        <a href="../../../pages/homePage.php">
+        <a href="../../../../pages/homePage.php">
             <img src="../../css/img/logoIcon.png" alt="logo site livro de receitas"> 
         </a>
     </div>
 
     <div class="links-menu">
         <div class="icone-menu">
-            <a href="../../view/view/pages/homePage.php">
+            <a href="../../../view/pages/homePage.php">
                 <span class="material-symbols-outlined"> Home </span>
                 <span>Home</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageReceitas.php">
+            <a href="../../../view/pages/pageReceitas.php">
                 <span class="material-symbols-outlined"> restaurant </span>
                 <span>Receitas</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageLivroReceitas.php">
+            <a href="../../../view/pages/pageLivroReceitas.php">
                 <span class="material-symbols-outlined"> menu_book </span>
                 <span>Livro de Receitas</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageCategoria.php">
+            <a href="../../../view/pages/pageCategoria.php">
                 <span class="material-symbols-outlined"> category </span>
                 <span>Categoria</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageDegustacao.php">
+            <a href="../../../view/pages/pageDegustacao.php">
                 <span><img src="../../css/iconsSVG/iconDegustação.svg" alt=""></span>
                 <span>Degustação</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageCargo.php">
+            <a href="../../../view/pages/pageCargo.php">
                 <span class="material-symbols-outlined"> patient_list </span>
                 <span>Cargo</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageFuncionario.php">
+            <a href="../../../view/pages/pageFuncionario.php">
                 <span class="material-symbols-outlined"> group </span>
                 <span>Funcionários</span>
             </a>
         </div>
         <div class="icone-menu">
-            <a href="../../view/pages/pageRestaurante.php">
+            <a href="../../../view/pages/pageRestaurante.php">
                 <span class="material-symbols-outlined"> restaurant_menu </span>
                 <span>Restaurantes</span>
             </a>
