@@ -19,7 +19,7 @@ $numCargos = count($cargos);
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleTable.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="../css/styleResponsiv.css">
+    <link rel="stylesheet" href="../css/styleResponsivo.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página de Receitas</title>
