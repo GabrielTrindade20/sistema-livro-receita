@@ -89,8 +89,8 @@ $numCargos = count($cargos);
             <thead>
                 <tr>
                     <th class="select-column">-</th>
-                    <th class="nome-col" colspan="2">Nome</th>
-                    <th class="operacao-col" colspan="2">Operações</th>
+                    <th class="nome-col" >Nome</th>
+                    <th class="operacao-col" >Operações</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,10 +99,10 @@ $numCargos = count($cargos);
                         <td class="select-column">
                             <input type="checkbox" name="checkbox[]" value="<?php echo $cargo['idCargo']; ?>">
                         </td>
-                        <td colspan="2">
+                        <td >
                             <?php echo $cargo['descricao']; ?>
                         </td>
-                        <td colspan="2">
+                        <td >
                             <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
@@ -111,23 +111,6 @@ $numCargos = count($cargos);
                                 <span class="material-symbols-outlined"> delete </span>
                             </a>
                         </td>
-
-
-
-                        <!-- <td class="operation-link">
-                            <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
-                                <span class="material-symbols-outlined" style="background-color: none;"> edit </span>    
-                            </a>
-
-                            <form method="POST" action="../../model/modelCargo/excluir_cargo.php">
-                                <input type="hidden" name="idCargo" value="<?php echo $cargo['idCargo']; ?>">
-                                <button type="submit" name="excluir" class="button">
-                                    <span class="material-symbols-outlined" style="background-color: <?php echo ($index % 2 == 0) ? "#d9d9d93f" : "#d9d9d9a4" ?>;"> 
-                                        delete </span>
-                                </button>
-                            </form>
-                        </td> -->
-
                     </tr>
                 <?php endforeach; ?>
             </tbody>

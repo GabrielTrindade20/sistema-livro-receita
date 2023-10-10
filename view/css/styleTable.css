@@ -4,9 +4,7 @@
 
 /* Estilos para a tabela em telas maiores */
 .table {
-    width: 85%;
-    table-layout: fixed;
-    /* Define a largura das colunas como fixa */
+    width: 90%;
     border-collapse: collapse;
     /* Colapso de borda para evitar espaços entre células */
 
@@ -43,7 +41,7 @@ td {
 /* Estilos para a coluna "Nome" (3/4 da largura) */
 th:nth-child(2),
 td:nth-child(2) {
-    width: 75%;
+    width: auto;
     /* 3/4 da largura */
 }
 

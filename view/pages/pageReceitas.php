@@ -20,7 +20,7 @@ include_once('../../controller/protect.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php'); ?>
 
 
     <div id="sub-titulo">
@@ -70,7 +70,7 @@ include_once('../../controller/protect.php');
                     <th>Categoria</th>
                     <th>Cozinheiro</th>
                     <th>Data de Criação</th>
-                    <th class="operacao">Operações</th>
+                    <th class="operacao-col" colspan="2">Operações</th>
                 </tr>
             </thead>
             <tbody>
@@ -83,16 +83,14 @@ include_once('../../controller/protect.php');
                     <td>Categoria A</td>
                     <td>Nome do Cozinheiro</td>
                     <td>01/09/2023</td>
-                    <td class="operacao">
-                        <a class="operation-link" href="#"><img
-                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWW27IOOUCCUNAGFSVDFBOLJ6"
-                                alt=""></a>
-                        <a class="operation-link" href="#"><img
-                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconEditar.svg?token=AYIZEWRHLDUUFHQS4ZSOKCLFBOLH6"
-                                alt=""></a>
-                        <a class="operation-link" href="#"><img
-                                src="https://raw.githubusercontent.com/GabrielTrindade20/Projeto-Livro-Receta/def45286c13478eb83fe1770d80c5ae2246514ca/view/css/iconsSVG/iconExcluir.svg?token=AYIZEWSXHUGY3BQDV4HKILTFBOLFY"
-                                alt=""></a>
+                    <td colspan="2">
+                        <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
+                            <span class="material-symbols-outlined"> edit </span>
+                        </a>
+
+                        <a href="#" onclick="confirmarExclusao(<?php echo $cargo['idCargo']; ?>);" class="button">
+                            <span class="material-symbols-outlined"> delete </span>
+                        </a>
                     </td>
                 </tr>
                 <!-- Adicione mais linhas de dados conforme necessário -->
