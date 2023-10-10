@@ -73,7 +73,7 @@ if (isset($_POST['salvar'])) {
 
         if ($resultado) {
             $mensagem = 'Cargo cadastrado com sucesso!';
-            header("Location: ../../view/pageCargo.php?mensagem=" . urlencode($mensagem));
+            header("Location: ../../view/pages/pageCargo.php?mensagem=" . urlencode($mensagem));
             exit();
         } else {
             $mensagem = 'Erro ao cadastrar o cargo.';
