@@ -89,8 +89,8 @@ $numCargos = count($cargos);
             <thead>
                 <tr>
                     <th class="select-column">-</th>
-                    <th class="nome-col" >Nome</th>
-                    <th class="operacao-col" >Operações</th>
+                    <th class="nome-col" colspan="3">Nome</th>
+                    <th class="operacao-col">Operações</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,10 +99,10 @@ $numCargos = count($cargos);
                         <td class="select-column">
                             <input type="checkbox" name="checkbox[]" value="<?php echo $cargo['idCargo']; ?>">
                         </td>
-                        <td >
+                        <td colspan="3">
                             <?php echo $cargo['descricao']; ?>
                         </td>
-                        <td >
+                        <td class="td-operacao">
                             <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
                                 <span class="material-symbols-outlined"> edit </span>
                             </a>
