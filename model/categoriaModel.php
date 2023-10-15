@@ -141,5 +141,39 @@ class categoriaModel {
             return null; // Retornar null em caso de erro na consulta
         }
     }// fim de recuperar
-}
+
+    public function search($descricao)
+    {
+        $query = "SELECT * FROM categoria WHERE descricao LIKE ?";
+        $stmt = $this->link->prepare($query);
+
+        if ($stmt) {
+            $descricao = "%" . $descricao . "%"; // Adicione curingas à descrição
+            $stmt->bind_param("s", $descricao);
+
+            if ($stmt->execute()) {
+                $result = $stmt->get_result(); // Obter o conjunto de resultados
+
+                // Você pode iterar pelos resultados da seguinte maneira:
+                // while ($row = $result->fetch_assoc()) {
+                //     // Processar cada linha do resultado aqui
+                // }
+                
+                // Se você deseja retornar os resultados como um array, você pode fazer algo como:
+                $resultsArray = $result->fetch_all(MYSQLI_ASSOC);
+                
+                $stmt->close();
+                
+                return $resultsArray;
+            } else {
+                $this->erros[] = "Erro ao pesquisar: " . $stmt->error;
+            }
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+        
+        return false;
+    }
+
+}// fim class
 ?>

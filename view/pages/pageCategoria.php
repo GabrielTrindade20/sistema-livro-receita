@@ -18,7 +18,8 @@ include_once('../../controller/categoriaController.php');
     <link rel="stylesheet" href="../css/styleResponsivo.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
+    />
     
     <title>Categorias</title>
 
@@ -62,21 +63,20 @@ include_once('../../controller/categoriaController.php');
             </div>
 
             <div class="search-container">
+                <!-- Search -->
                 <div class="search-box">
-                    <form method="post" action="#">
-                        <div class="search-box-input-container">
-                            <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
-                            <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
-                        </div>
+                    <form method="POST" action="">
+                        <input type="text" class="search-box-input" name="busca" placeholder="Pesquisar">
+                        <input name="sendPesqCategoria" type="submit" class="">
                     </form>
                 </div>
-
+                <!-- Criar -->
                 <div class="button-nova">
                     <a href="./Categoria/pageCategoriaCadastro.php">
                         <button class="nova-receita-button">Nova Receita</button>
                     </a>
                 </div>
-            </div><!-- Search -->
+            </div>
         </div>
 
         <!-- Notificação de erro ou não -->
