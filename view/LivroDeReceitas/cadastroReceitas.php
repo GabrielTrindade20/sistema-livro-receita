@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleMenu.css">
-    <link rel="stylesheet" href="css/stylePerfil.css">
-    <link rel="stylesheet" href="css/styleResponsivo.css">
+    <link rel="stylesheet" href="../css/styleHomePage.css">
+    <link rel="stylesheet" href="../css/styleMenu.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Perfil</title>
+    <title>Página Principal</title>
 </head>
 
 <body>
@@ -25,54 +25,54 @@
 
     <nav class="menu-lateral">
         <div class="logo">
-            <a href="homePage.php"><img src="../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a>
+            <a href="homePage.php"><img src="../../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a>
         </div>
 
         <div class="links-menu">
             <div class="icone-menu">
-                <a href="homePage.php">
+                <a href="../homePage.php">
                     <span class="material-symbols-outlined"> Home </span>
                     <span>Home</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageReceitas.php">
+                <a href="../pageReceitas.php">
                     <span class="material-symbols-outlined"> restaurant </span>
                     <span>Receitas</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageLivroReceitas.php">
+                <a href="../pageLivroReceitas.php">
                     <span class="material-symbols-outlined"> menu_book </span>
                     <span>Livro de Receitas</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageCategoria.php">
+                <a href="../pageCategoria.php">
                     <span class="material-symbols-outlined"> category </span>
                     <span>Categoria</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageDegustacao.php">
-                    <span><img src="../view/css/iconsSVG/iconDegustação.svg" alt=""></span>
+                <a href="../pageDegustacao.php">
+                    <span><img src="../../view/css/iconsSVG/iconDegustação.svg" alt=""></span>
                     <span>Degustação</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageCargo.php">
+                <a href="../pageCargo.php">
                     <span class="material-symbols-outlined"> patient_list </span>
                     <span>Cargo</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageFuncionario.php">
+                <a href="../pageFuncionario.php">
                     <span class="material-symbols-outlined"> group </span>
                     <span>Funcionários</span>
                 </a>
             </div>
             <div class="icone-menu">
-                <a href="pageRestaurante.php">
+                <a href="../pageRestaurante.php">
                     <span class="material-symbols-outlined"> restaurant_menu </span>
                     <span>Restaurantes</span>
                 </a>
@@ -85,43 +85,17 @@
                     <span class="material-symbols-outlined"> person </span>
                     <span class="name">Gabriel Rocha</span>
                 </a>
-                <a href="../controller/logoutController.php">
+                <a href="./../../controller/logoutController.php">
                     <span class="material-symbols-outlined"> logout </span>
                 </a>
             </div>
         </div>
     </nav>
 
-    <section class="conteiner-pesquisa">
-
-        <div class="titulos" id="titulo">
-            <div class="conteiner-titulo">
-                <div>
-                    <h1>Perfil</h1>
-                </div>
-            </div>
-    </section>
-    <hr>
-
     <section class="conteiner-conteudo">
-        <div class="usuario-log">
-            <span class="material-symbols-outlined"> person </span>
-            <p>Gabriel Rocha</p>
-        </div>
-
-        <div>
-            <label for="nome">nome</label>
-            <input type="text" name="" id="">
-        </div>
-
-        <div>
-
-        </div>
-
-        <div>
-
-        </div>
+        
     </section>
+
 </body>
 
 </html>

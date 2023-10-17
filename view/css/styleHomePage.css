@@ -69,23 +69,18 @@
   padding: 0px 0px 0px 0px;
 }
 
-.card a{
-  color: #ffff;
-  text-align: center;
-  font-size: 15px;
-  font-weight: bold;
-  align-items: center;
-  text-align: center;
-  display: contents;
+.card a>span{
+  display: block;
+  margin-bottom: 15px;
 }
+
+
 
 .card img{
   width: 30px;
   margin-top: 15px;
   color: #ffffff;
 }
-
-
 
 
 
@@ -125,7 +120,7 @@
   align-items: center; /* Centralize verticalmente */
   border: 1x solid rgba(0, 0, 0, 0.214);
   height: 30px;
-  background-color: aliceblue;
+  background-color: rgb(255, 255, 255);
   border-radius: 30px;
   color: #000000;
 }
