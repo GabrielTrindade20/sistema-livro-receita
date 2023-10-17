@@ -42,7 +42,7 @@ td {
 /* Estilos para a coluna "Nome" (3/4 da largura) */
 th:nth-child(2),
 td:nth-child(2) {
-    background-color: rgb(8, 0, 66);
+    background-color: #d9d9d93f;
     width: auto;
     /* 3/4 da largura */
 }
@@ -50,7 +50,7 @@ td:nth-child(2) {
 /* Estilos para a coluna "Operação" (1/4 da largura) */
 th:nth-child(3),
 td:nth-child(3) {
-    background-color: rgb(0, 120, 4);
+    background-color: #d9d9d9a4;
     text-align: center;
     /* Alinhe o conteúdo à direita */
     justify-content: space-evenly;
