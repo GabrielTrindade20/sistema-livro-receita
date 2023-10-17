@@ -69,7 +69,7 @@ $numCargos = count($cargos);
             </div>
             <div class="icone-menu">
                 <a href="pageDegustacao.php">
-                    <span><img src="../view/css/iconsSVG/iconDegustação.png" alt=""></span>
+                    <span><img src="https://cdn-icons-png.flaticon.com/512/10509/10509407.png" width="25px" alt=""></span>
                     <span>Degustação</span>
                 </a>
             </div>
