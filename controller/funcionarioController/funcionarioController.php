@@ -1,6 +1,6 @@
 <?php
 include_once('../../configuration/connect.php');
-include_once('../../model/modelFuncionarios/funcionarioModel.php'); 
+include_once('../../model/modelFuncionario/funcionarioModel.php'); 
 
 $funcionarioModel = new funcionarioModel($conexao);
 
