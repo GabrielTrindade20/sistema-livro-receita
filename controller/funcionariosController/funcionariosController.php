@@ -1,8 +1,8 @@
 <?php
 include_once('../../configuration/connect.php');
-include_once('../../model/modelFuncionarios/funcionariosmodel.php'); 
+include_once('../../model/modelFuncionarios/funcionariosModel.php'); 
 
-$funcionarioModel = new FuncionarioModel($conexao);
+$funcionarioModel = new funcionariosModel($conexao);
 
 if (isset($_POST['salvar'])) {
     $nome = $_POST['nome'];
