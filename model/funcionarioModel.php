@@ -24,7 +24,7 @@ class funcionarioModel {
             $data_ingresso = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             $salario = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             $nome_fantasia = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
-            $cargo = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+            //$cargo = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             return array($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo);
         } else {
             $this->erros[] = "Por gentileza, preencha todos os campos.";
@@ -37,7 +37,7 @@ class funcionarioModel {
         $query =   "INSERT INTO funcionario
                     (rg, nome, data_ingresso, salario, nome_fantasia, idCargo)
                     VALUE
-                    (?, ?, ? , ?, ?, ?);";
+                    (?, ?, ?, ?, ?, ?);";
 
         // * Preparar a declaração
         $stmt = $this->link->prepare($query);
@@ -45,7 +45,7 @@ class funcionarioModel {
         // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
             // Vincular os parâmetros da declaração com os valores
-            $stmt->bind_param("s,s,s,s,s,s", $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo );
+            $stmt->bind_param("sssssi", $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo );
 
             // Executar a declaração preparada
             if ($stmt->execute()) {
@@ -78,17 +78,21 @@ class funcionarioModel {
         return $funcionarios;
     }// fim read
 
-    /* TERMINAR
     public function update( $id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo )
     {
-        $query =   "UPDATE Categoria 
-                    SET descricao = ? 
-                    WHERE idCategoria = ?";
+        $query =   "UPDATE funcionario 
+                    SET rg = ?,
+                    nome = ?,
+                    data_ingresso = ?,
+                    salario = ?,
+                    nome_fantasia = ?,
+                    idCargo = ?
+                    WHERE idFuncionario = ?";
 
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("ss", $id);
+            $stmt->bind_param("sssssii", $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo, $id);
 
             if ($stmt->execute()) {
                 $this->sucesso[] = "Atualização efetuada com sucesso!";
@@ -104,7 +108,7 @@ class funcionarioModel {
 
         return false;
     }// fim update
-*/
+
     public function delete( $id )
     {
         $query =   "DELETE 
@@ -130,13 +134,13 @@ class funcionarioModel {
 
         return false; 
     }// fim delete
-/*
+
     public function recuperaFuncionario($id)
     {
         // lista cursos já cadastrados
-        $query =   "SELECT idCategoria, descricao
-                    FROM categoria
-                    WHERE idCategoria = '$id';";
+        $query =   "SELECT idFuncionario, rg, nome, data_ingresso, salario, nome_fantasia, idCargo
+                    FROM funcionario
+                    WHERE idFuncionario = '$id';";
 
         $resultado = mysqli_query($this->link, $query);
 
@@ -178,7 +182,9 @@ class funcionarioModel {
         }
         
         return false;
-    }*/
+    }
+
+    
 
 }// fim class
 ?>

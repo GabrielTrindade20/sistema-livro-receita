@@ -10,25 +10,25 @@ $funcionarioModel = new funcionarioModel($link);
 
 // PESQUISAR
 //$sendPesqCategria = filter_input( )
-/*
+
 // SALVAR 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
 {
     $rg = $_POST["rg"];
-    $nome = $_POST["rg"];
-    $rg = $_POST["rg"];
-    $rg = $_POST["rg"];
-    $rg = $_POST["rg"];
-    $rg = $_POST["rg"];
+    $nome = $_POST["nome"];
+    $data_ingresso = $_POST["data_ingresso"];
+    $salario = $_POST["salario"];
+    $nome_fantasia = $_POST["nome_fantasia"];
+    $cargo = $_POST["idCargo"];
     
-    if(empty($descricao)){
+    if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($cargo)){
         $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo );
     }
     else {
         if (!empty($funcionarioModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $funcionarioModel->getErros();
-            header("Location: ../view/pages/pageCategoria.php");
+            header("Location: ../view/pages/pageFuncionario.php");
             exit();
         } else {
             // Não há erros, salve no banco de dados
@@ -45,27 +45,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
 }
 // Vem da page de ALTERAÇÃO 
 elseif (isset($_POST['alterar'])) {
-    $idCategoria = $_POST['idCategoria'];
-    $novaDescricao = $_POST['descricao']; 
+    $idFuncionario = $_POST['idFuncionario'];
+    $rg_novo = $_POST["rg"];
+    $nome_novo = $_POST["nome"];
+    $data_ingresso_novo = $_POST["data_ingresso"];
+    $salario_novo = $_POST["salario"];
+    $nome_fantasia_novo = $_POST["nome_fantasia"];
+    $cargo_novo = $_POST["idCargo"];
 
     // Verifique se a descrição não está vazia
-    if (empty($novaDescricao)) {
-        $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo );
+    if (empty($rg_novo) && empty($nome_novo) && empty($data_ingresso_novo) && empty($salario_novo) && empty($nome_fantasia_novo) && empty($cargo_novo)) {
+        $funcionarioModel->validar_campos( $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $cargo_novo );
     } else {
         // Verificar se a erro
         if (!empty($funcionarioModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $funcionarioModel->getErros();
-            header("Location: ../view/pages/pageCategoria.php");
+            header("Location: ../view/pages/pageFuncionario.php");
             exit();
         }
         else {
-            if ($atualizado = $funcionarioModel->update($idCategoria, $novaDescricao)) {
+            if ($atualizado = $funcionarioModel->update( $idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $cargo_novo )) {
                 $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
             } else {
                 $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
             }
-            header("Location: ../view/pages/pageCategoria.php");
+            header("Location: ../view/pages/pageFuncionario.php");
             exit();
         }
     }
@@ -84,7 +89,7 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
         $_SESSION["erros"] = ["ID de categoria não especificado."];
     }
 
-    header("Location: ../view/pages/pageCategoria.php");
+    header("Location: ../view/pages/pageFuncionario.php");
     exit();
 }
 elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){ 
@@ -111,13 +116,13 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){
 }
 // RETORNAR DADOS SALVOS
 else 
-{*/
+{
     $funcionarios = $funcionarioModel->read();
     mysqli_close($link);
 
     // Contar quandas linhas tem na tabela
-    $countFuncinarios = count($funcionarios); 
-//}
+    $countFuncionarios = count($funcionarios); 
+}
 
 
 ?>

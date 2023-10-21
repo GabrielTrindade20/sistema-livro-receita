@@ -20,7 +20,7 @@ include_once('../../controller/funcionarioController.php');
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
     />
     
-    <title>Funcinário</title>
+    <title>Funcionário</title>
 
     <script>
         function confirmarExclusao(idFuncionario) {
@@ -53,11 +53,11 @@ include_once('../../controller/funcionarioController.php');
         <div class="titulos" id="titulo">
             <div class="conteiner-titulo">
                 <div>
-                    <h1>Lista de Funcinários</h1>
+                    <h1>Lista de Funcionários</h1>
                 </div>
 
                 <div class="info-receitas">
-                    <?php echo "(" . $countFuncionarios. ") Funcinários"; ?>
+                    <?php echo "(" . $countFuncionarios. ") Funcionários"; ?>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@ include_once('../../controller/funcionarioController.php');
                 </div>
                 <!-- Criar -->
                 <div class="button-nova">
-                    <a href="./Funcinario/pageFuncinarioCadastro.php">
+                    <a href="./Funcionario/pageFuncionarioCadastro.php">
                         <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
@@ -109,12 +109,12 @@ include_once('../../controller/funcionarioController.php');
                     <tr>
                         <th class="select-column">-</th>
                         <th>RG</th>
-                        <th>Nome</th>
-                        <th>Data Ingresso</th>
-                        <th>Salário</th>
-                        <th>Nome fantasia</th>
-                        <th>Cargo</th>
-                        <th class="operacao">Operações</th>
+                        <th>NOME</th>
+                        <th>DATA INGRESSO</th>
+                        <th>SALÁRIO</th>
+                        <th>NOME FANTASIA</th>
+                        <th>CARGO</th>
+                        <th class="operacao" colspan="2">OPERAÇÔES</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -131,10 +131,10 @@ include_once('../../controller/funcionarioController.php');
                                 <?php echo $funcionario['nome']; ?>
                             </td>
                             <td>
-                                <?php echo $funcionario['data_ingresso']; ?>
+                                <?php echo $funcionario['data_ingresso'] = implode("/",array_reverse(explode("-", $funcionario['data_ingresso']))); ?>
                             </td>
                             <td>
-                                <?php echo $funcionario['salario']; ?>
+                                <?php echo 'R$' . $funcionario['salario']; ?>
                             </td>
                             <td>
                                 <?php echo $funcionario['nome_fantasia']; ?>
@@ -143,12 +143,12 @@ include_once('../../controller/funcionarioController.php');
                                 <?php echo $funcionario['cargo']; ?>
                             </td>
                             <td>
-                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idfuncionario']; ?>">
+                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" onclick="confirmarExclusao(<?php echo $funcionario['idfuncionario']; ?>);" class="button">
+                                <a href="#" onclick="confirmarExclusao(<?php echo $funcionario['idFuncionario']; ?>);" class="button">
                                     <span class="material-symbols-outlined"> delete </span>
                                 </a>
                             </td>
