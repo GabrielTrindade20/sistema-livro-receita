@@ -77,16 +77,16 @@ elseif (isset($_POST['alterar'])) {
 }
 // EXCLUIR
 elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
-    if (isset($_GET['idCategoria'])) {
-        $idCategoria = $_GET['idCategoria'];
+    if (isset($_GET['idFuncionario'])) {
+        $idFuncionario = $_GET['idFuncionario'];
 
-        if ($funcionarioModel->delete($idCategoria)) {
+        if ($funcionarioModel->delete($idFuncionario)) {
             $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
         } else {
             $_SESSION["erros"] = ["Erro ao excluir no banco de dados."];
         }
     } else {
-        $_SESSION["erros"] = ["ID de categoria não especificado."];
+        $_SESSION["erros"] = ["ID de funcionario não especificado."];
     }
 
     header("Location: ../view/pages/pageFuncionario.php");
@@ -95,19 +95,19 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
 elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){ 
     if(isset($_POST['checkbox']) && is_array($_POST['checkbox'])) {
         // Loop através dos IDs das categorias selecionadas
-        foreach ($_POST['checkbox'] as $idCategoria) {
+        foreach ($_POST['checkbox'] as $idFuncionario) {
             // Verificar se o ID da categoria é válido (por exemplo, um número inteiro positivo)
-            if (is_numeric($idCategoria) && $idCategoria > 0) {
-                if ($funcionarioModel->delete($idCategoria)) {
+            if (is_numeric($idFuncionario) && $idFuncionario > 0) {
+                if ($funcionarioModel->delete($idFuncionario)) {
                     // A categoria foi excluída com sucesso
                     $_SESSION["sucesso"] = ["Categorias excluídas com sucesso."];
                 } else {
                     // Houve um erro na exclusão
-                    $_SESSION["erros"] = ["Erro ao excluir a categoria com ID $idCategoria."];
+                    $_SESSION["erros"] = ["Erro ao excluir a categoria com ID $idFuncionario."];
                 }
             } else {
                 // O ID da categoria não é válido
-                $_SESSION["erros"] = ["ID de categoria inválido: $idCategoria."];
+                $_SESSION["erros"] = ["ID de categoria inválido: $idFuncionario."];
             }
         }
         header("Location: ../view/pages/pageCategoria.php");

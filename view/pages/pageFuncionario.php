@@ -101,7 +101,7 @@ include_once('../../controller/funcionarioController.php');
     </section>
 
     <section class="conteiner-conteudo">
-        <button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
+        <button onclick="confirmarExclusaoCheckbox()" align="right">Excluir Selecionados</button>
 
         <form id="excluirSelect" action="../../controller/funcinarioController.php?acao=excluirSelecionados" method="post">
             <table class="table" border="1" align="right">
