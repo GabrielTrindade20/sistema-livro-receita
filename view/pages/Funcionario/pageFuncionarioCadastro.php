@@ -29,29 +29,19 @@ include_once('../../../controller/protect.php');
                 <div class="conteiner-dados">
                     <label for="rg">RG:</label>
                     <input type="text" id="rg" name="rg" required>
-                </div>
-                
-                <div class="conteiner-dados">
+
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" required>
-                </div>
-                
-                <div class="conteiner-dados">
+
                     <label for="data_ingresso">Data Ingresso:</label>
                     <input type="date" id="data_ingresso" name="data_ingresso" required>
-                </div>
-                
-                <div class="conteiner-dados">
+
                     <label for="salario">Salário:</label>
                     <input type="text" id="salario" name="salario" required>
-                </div>
-                
-                <div class="conteiner-dados">
+
                     <label for="nome_fantasia">Nome Fantasia:</label>
                     <input type="text" id="nome_fantasia" name="nome_fantasia" required>
-                </div>
-                
-                <div class="conteiner-dados">
+
                     <label for="cargo">Cargo:</label>
                     <?php 
                         include_once('../../../configuration/connect.php');

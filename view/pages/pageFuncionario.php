@@ -114,6 +114,7 @@ include_once('../../controller/funcionarioController.php');
                         <th>SALÁRIO</th>
                         <th>NOME FANTASIA</th>
                         <th>CARGO</th>
+                        <th>STATUS</th>
                         <th class="operacao" colspan="2">OPERAÇÔES</th>
                     </tr>
                 </thead>
@@ -141,6 +142,17 @@ include_once('../../controller/funcionarioController.php');
                             </td>
                             <td>
                                 <?php echo $funcionario['cargo']; ?>
+                            </td>
+                            <td>
+                                <?php  
+                                    if ($funcionario['status'] == '0') {
+                                        echo 'Ativo';
+                                    } elseif ($funcionario['status'] == '1') {
+                                        echo 'Inativo';
+                                    } else {
+                                        echo 'Desconhecido';
+                                    } 
+                                ?>
                             </td>
                             <td>
                                 <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">

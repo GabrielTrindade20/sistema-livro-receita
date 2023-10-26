@@ -14,6 +14,7 @@ if (isset($_GET['idFuncionario'])) {
         $data_ingresso = $recuperar["data_ingresso"];
         $salario = $recuperar["salario"];
         $nome_fantasia = $recuperar["nome_fantasia"];
+        $status = $recuperar["status"];
         $cargo = $recuperar["idCargo"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
@@ -61,6 +62,13 @@ if (isset($_GET['idFuncionario'])) {
 
                     <label for="nome_fantasia">Nome Fantasia:</label>
                     <input type="text" id="nome_fantasia" name="nome_fantasia" required value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
+
+                    <p>Status:</p>                   
+                    <input type="radio" id="ativo" name="status" value="0" <?php echo ($status === '0') ? 'checked' : ''; ?>>
+                    <label for="ativo">Ativo</label>
+                   
+                    <input type="radio" id="inativo" name="status" value="1"  <?php echo ($status === '1') ? 'checked' : ''; ?>>
+                    <label for="inativo">Inativo</label> <br>
 
                     <label for="cargo">Cargo:</label>
                     <?php 

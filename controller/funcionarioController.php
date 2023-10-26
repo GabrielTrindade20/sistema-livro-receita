@@ -19,10 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
     $data_ingresso = $_POST["data_ingresso"];
     $salario = $_POST["salario"];
     $nome_fantasia = $_POST["nome_fantasia"];
+    $status = 0; // 0 - ativo 
     $cargo = $_POST["idCargo"];
     
-    if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($cargo)){
-        $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo );
+    if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($status) && empty($cargo)){
+        $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo );
     }
     else {
         if (!empty($funcionarioModel->getErros())) {
@@ -32,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
             exit();
         } else {
             // Não há erros, salve no banco de dados
-            if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $cargo )) {
+            if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo )) {
                 $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
@@ -51,11 +52,12 @@ elseif (isset($_POST['alterar'])) {
     $data_ingresso_novo = $_POST["data_ingresso"];
     $salario_novo = $_POST["salario"];
     $nome_fantasia_novo = $_POST["nome_fantasia"];
+    $status_novo = $_POST["status"];
     $cargo_novo = $_POST["idCargo"];
 
     // Verifique se a descrição não está vazia
-    if (empty($rg_novo) && empty($nome_novo) && empty($data_ingresso_novo) && empty($salario_novo) && empty($nome_fantasia_novo) && empty($cargo_novo)) {
-        $funcionarioModel->validar_campos( $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $cargo_novo );
+    if (empty($rg_novo) && empty($nome_novo) && empty($data_ingresso_novo) && empty($salario_novo) && empty($nome_fantasia_novo) && empty($status_novo) && empty($cargo_novo)) {
+        $funcionarioModel->validar_campos( $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $status_novo, $cargo_novo );
     } else {
         // Verificar se a erro
         if (!empty($funcionarioModel->getErros())) {
@@ -65,7 +67,7 @@ elseif (isset($_POST['alterar'])) {
             exit();
         }
         else {
-            if ($atualizado = $funcionarioModel->update( $idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $cargo_novo )) {
+            if ($atualizado = $funcionarioModel->update( $idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $status_novo, $cargo_novo )) {
                 $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
             } else {
                 $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
