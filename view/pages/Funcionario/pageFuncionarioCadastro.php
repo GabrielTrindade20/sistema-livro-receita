@@ -1,5 +1,9 @@
 <?php
 include_once('../../../controller/protect.php');
+
+
+include_once('../../../configuration/connect.php');
+include '../../../model/funcoes.php';
 ?>
 
 <!DOCTYPE html>
@@ -44,20 +48,28 @@ include_once('../../../controller/protect.php');
 
                     <label for="cargo">Cargo:</label>
                     <?php 
-                        include_once('../../../configuration/connect.php');
-                        include '../../../model/funcoes.php';
 
                         monta_select_cargo();
-                    ?>
-                </div>
-                
+                    ?> <br>
 
+                    <label for="restaurante">Restaurante:</label>
+                    <?php 
+                        monta_select_restaurante();
+                    ?> <br>
+                    
+                    <label for="restaurante">Data de Início</label>
+                    <input type="date" name="data_inicio"> <br>
+
+                    <label for="restaurante">Data de Fim</label>
+                    <input type="date" name="data_fim" >
+                </div>
+ 
                 <div class="conteiner-operacoes">
                     <!-- Botão para salvar o cargo -->
                     <button type="submit" name="salvar" class="button">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../../pages/pageCategoria.php">Cancelar</a>
+                    <a href="../../pages/pageFuncionario.php">Cancelar</a>
                 </div>
             </form>
         </div>

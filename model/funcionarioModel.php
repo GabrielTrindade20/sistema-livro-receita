@@ -111,19 +111,19 @@ class funcionarioModel {
         return false;
     }// fim update
 
-    public function delete( $id )
+    public function status_inativo( $id, $status )
     {
-        $query =   "DELETE 
-                    FROM funcionario 
+        $query =   "UPDATE funcionario 
+                    SET status = ?
                     WHERE idFuncionario = ?";
 
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("i", $id);
+            $stmt->bind_param("si", $status, $id);
 
             if ($stmt->execute()) {
-                $this->sucesso[] = "Exclusão efetuada com sucesso!";
+                $this->sucesso[] = "Inativo, atualizado efetuada com sucesso!";
                 return true;
             } else {
                 $this->erros[] = "Erro ao excluir: " . $stmt->error;

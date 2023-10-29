@@ -5,8 +5,10 @@ if(!isset($_SESSION)) {
 
 include_once(__DIR__ .'../../configuration/connect.php');
 include_once(__DIR__ .'../../model/funcionarioModel.php');
+include_once(__DIR__ .'../../model/referenciaModel.php');
 
 $funcionarioModel = new funcionarioModel($link);
+$referenciaModel = new referenciaModel($link);
 
 // PESQUISAR
 //$sendPesqCategria = filter_input( )
@@ -21,6 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
     $nome_fantasia = $_POST["nome_fantasia"];
     $status = 0; // 0 - ativo 
     $cargo = $_POST["idCargo"];
+    $idRestaurante = $_POST['idRestaurante']; // ID do restaurante
+    $data_inicio = $_POST['data_inicio']; 
+    $data_fim = $_POST['data_fim'];
     
     if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($status) && empty($cargo)){
         $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo );
@@ -34,7 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
         } else {
             // Não há erros, salve no banco de dados
             if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo )) {
-                $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
+                $idFuncionario = mysqli_insert_id($link);
+
+                if ($referenciaModel->create( $idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
+                    $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
+                } else {
+                    $_SESSION["erros"] = ["Erro ao associar restaurante ao funcionário: " . $referenciaModel->getErros()];
+                }
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
             }
@@ -77,15 +88,15 @@ elseif (isset($_POST['alterar'])) {
         }
     }
 }
-// EXCLUIR
-elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
+// INATIVO
+elseif (isset($_GET['acao']) && $_GET['acao'] === 'inativo') {
     if (isset($_GET['idFuncionario'])) {
         $idFuncionario = $_GET['idFuncionario'];
 
-        if ($funcionarioModel->delete($idFuncionario)) {
+        if ($funcionarioModel->status_inativo($idFuncionario, 1)) {
             $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
         } else {
-            $_SESSION["erros"] = ["Erro ao excluir no banco de dados."];
+            $_SESSION["erros"] = ["Erro ao atualizar no banco de dados."];
         }
     } else {
         $_SESSION["erros"] = ["ID de funcionario não especificado."];
@@ -94,13 +105,13 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
     header("Location: ../view/pages/pageFuncionario.php");
     exit();
 }
-elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){ 
+elseif(isset($_GET['acao']) && $_GET['acao'] === 'inativosSelecionados'){ 
     if(isset($_POST['checkbox']) && is_array($_POST['checkbox'])) {
         // Loop através dos IDs das categorias selecionadas
         foreach ($_POST['checkbox'] as $idFuncionario) {
             // Verificar se o ID da categoria é válido (por exemplo, um número inteiro positivo)
             if (is_numeric($idFuncionario) && $idFuncionario > 0) {
-                if ($funcionarioModel->delete($idFuncionario)) {
+                if ($funcionarioModel->status_inativo($idFuncionario, 1)) {
                     // A categoria foi excluída com sucesso
                     $_SESSION["sucesso"] = ["Categorias excluídas com sucesso."];
                 } else {
@@ -116,6 +127,7 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){
         exit();
     }
 }
+
 // RETORNAR DADOS SALVOS
 else 
 {

@@ -23,26 +23,92 @@ include_once('../../controller/funcionarioController.php');
     <title>Funcionário</title>
 
     <script>
-        function confirmarExclusao(idFuncionario) {
-            var confirmacao = confirm("Tem certeza de que deseja excluir esta funcionário ?");
-
-            if (confirmacao) {
-                // Se o usuário confirmar a exclusão, redirecione para o script de exclusão com o ID
-                window.location.href = "../../controller/funcionarioController.php?acao=excluir&idFuncionario=" + idFuncionario;
-            } else {
-                // Se o usuário cancelar, não faça nada
-            }
-        }
-        function confirmarExclusaoCheckbox() {
+        function confirmarExclusaoCheckbox2() {
             if (confirm("Tem certeza de que deseja excluir as funcionarios selecionadas?")) {
                 document.forms["excluirSelect"].submit();
             }
         }
+
+        function confirmarInativo(idFuncionario) {
+            var confirmacao = confirm("Tem certeza de que deseja colocar o funcionário como inativo?");
+
+            if (confirmacao) {
+                // Fazer uma solicitação AJAX para atualizar o status do funcionário
+                var url = "../../controller/funcionarioController.php?acao=inativo&idFuncionario=" + idFuncionario;
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("GET", url, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Atualizar o status na tabela na página atual
+                        var rows = document.querySelectorAll('.funcionario-row[data-id="' + idFuncionario + '"]');
+                        for (var i = 0; i < rows.length; i++) {
+                            var cells = rows[i].getElementsByTagName('td');
+                            if (cells.length > 7) { // Verifica se há pelo menos 8 colunas (a coluna de status é a 8ª)
+                                cells[7].textContent = 'Inativo';
+                            }
+                        }
+                        alert("Funcionário marcado como inativo.");
+                    }
+                };
+
+                xhr.send();
+            }
+        }
+
+        function confirmarExclusaoCheckbox() {
+            var checkboxes = document.querySelectorAll('input[name="checkbox[]"]:checked');
+            var ids = [];
+
+            checkboxes.forEach(function(checkbox) {
+                ids.push(checkbox.value);
+            });
+
+            if (ids.length === 0) {
+                alert("Nenhum funcionário selecionado.");
+                return;
+            }
+
+            var confirmacao = confirm("Tem certeza de que deseja colocar os funcionários como inativos?");
+
+            if (confirmacao) {
+                // Fazer uma solicitação AJAX para atualizar o status dos funcionários selecionados
+                var url = "../../controller/funcionarioController.php?acao=inativosSelecionados";
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+
+                ids.forEach(function(id) {
+                    formData.append("checkbox[]", id);
+                });
+
+                xhr.open("POST", url, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Atualizar o status na tabela na página atual
+                        ids.forEach(function(id) {
+                            var rows = document.querySelectorAll('.funcionario-row[data-id="' + id + '"]');
+                            for (var i = 0; i < rows.length; i++) {
+                                var cells = rows[i].getElementsByTagName('td');
+                                if (cells.length > 7) { // Verifica se há pelo menos 8 colunas (a coluna de status é a 8ª)
+                                    cells[7].textContent = 'Inativo';
+                                }
+                            }
+                        });
+                        alert("Funcionários marcados como inativos.");
+                    }
+                };
+
+                xhr.send(formData);
+            }
+        }
+
     </script>
 
 </head>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <?php //require_once('../components/menu.php');?>
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
@@ -101,9 +167,9 @@ include_once('../../controller/funcionarioController.php');
     </section>
 
     <section class="conteiner-conteudo">
-        <button onclick="confirmarExclusaoCheckbox()" align="right">Excluir Selecionados</button>
+        <button onclick="confirmarExclusaoCheckbox()" align="rigt">Inativo Selecionados</button>
 
-        <form id="excluirSelect" action="../../controller/funcinarioController.php?acao=excluirSelecionados" method="post">
+        <form id="excluirSelect" action="../../controller/funcinarioController.php?acao=inativosSelecionados" method="post">
             <table class="table" border="1" align="right">
                 <thead>
                     <tr>
@@ -121,7 +187,7 @@ include_once('../../controller/funcionarioController.php');
                 <tbody>
                     <!-- Tabela de funcionario -->
                     <?php foreach ($funcionarios as $index => $funcionario): ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?> funcionario-row" data-id="<?php echo $funcionario['idFuncionario']; ?>">
                             <td class="select-column">
                                 <input type="checkbox" name="checkbox[]" value="<?php echo $funcionario['idFuncionario']; ?>">
                             </td>
@@ -160,7 +226,7 @@ include_once('../../controller/funcionarioController.php');
                                 </a>
                             </td>
                             <td>
-                                <a href="#" onclick="confirmarExclusao(<?php echo $funcionario['idFuncionario']; ?>);" class="button">
+                                <a href="#" onclick="confirmarInativo(<?php echo $funcionario['idFuncionario']; ?>);" class="button">
                                     <span class="material-symbols-outlined"> delete </span>
                                 </a>
                             </td>
