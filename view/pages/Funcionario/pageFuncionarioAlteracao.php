@@ -16,6 +16,8 @@ if (isset($_GET['idFuncionario'])) {
         $nome_fantasia = $recuperar["nome_fantasia"];
         $status = $recuperar["status"];
         $cargo = $recuperar["idCargo"];
+        $data_inicio = $recuperar["data_inicio"];
+        $data_fim = $recuperar["data_fim"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();
@@ -77,6 +79,18 @@ if (isset($_GET['idFuncionario'])) {
 
                         monta_select_cargo2($cargo);
                     ?>
+                    <br>
+
+                    <label for="restaurante">Restaurante:</label>
+                    <?php 
+                        monta_select_restaurante2();
+                    ?> <br>
+                    
+                    <label for="restaurante">Data de Início</label>
+                    <input type="date" name="data_inicio" value="<?php echo isset(data_inicio) ? $data_fim : ''; ?>"> <br>
+
+                    <label for="restaurante">Data de Fim</label>
+                    <input type="date" name="data_fim" value="<?php echo isset(data_fim) ? $data_fim : ''; ?>">
                 </div>
                 <br>
                 <div class="conteiner-operacoes">
