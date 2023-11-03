@@ -66,6 +66,7 @@ $numCargos = count($cargos);
     </section>
 
     <section class="conteiner-conteudo">
+        
         <table class="table">
             <thead>
                 <tr>
