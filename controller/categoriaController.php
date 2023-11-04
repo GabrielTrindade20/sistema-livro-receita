@@ -8,6 +8,9 @@ include_once(__DIR__ .'../../model/categoriaModel.php');
 
 $categoriaModel = new categoriaModel($link);
 
+// PESQUISAR
+//$sendPesqCategria = filter_input( )
+
 // SALVAR 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
 {
