@@ -142,28 +142,19 @@ class categoriaModel {
         }
     }// fim de recuperar
 
-    public function search($descricao)
+    public function pesquisar($pesquisa)
     {
-        $query = "SELECT * FROM categoria WHERE descricao LIKE ?";
+        $query = "SELECT * FROM categoria WHERE descricao LIKE ? LIMIT 3";
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $descricao = "%" . $descricao . "%"; // Adicione curingas à descrição
+            $descricao = "%" . $pesquisa . "%";
             $stmt->bind_param("s", $descricao);
 
             if ($stmt->execute()) {
-                $result = $stmt->get_result(); // Obter o conjunto de resultados
-
-                // Você pode iterar pelos resultados da seguinte maneira:
-                // while ($row = $result->fetch_assoc()) {
-                //     // Processar cada linha do resultado aqui
-                // }
-                
-                // Se você deseja retornar os resultados como um array, você pode fazer algo como:
+                $result = $stmt->get_result();
                 $resultsArray = $result->fetch_all(MYSQLI_ASSOC);
-                
                 $stmt->close();
-                
                 return $resultsArray;
             } else {
                 $this->erros[] = "Erro ao pesquisar: " . $stmt->error;
@@ -171,9 +162,10 @@ class categoriaModel {
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
-        
+
         return false;
     }
+}
 
-}// fim class
+// fim class
 ?>
