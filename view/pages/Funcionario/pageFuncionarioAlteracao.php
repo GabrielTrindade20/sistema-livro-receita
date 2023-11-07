@@ -14,7 +14,7 @@ if (isset($_GET['idFuncionario'])) {
         $data_ingresso = $recuperar["data_ingresso"];
         $salario = $recuperar["salario"];
         $nome_fantasia = $recuperar["nome_fantasia"];
-        $status = $recuperar["status"];
+        $situacao = $recuperar["situacao"];
         $cargo = $recuperar["idCargo"];
         $data_inicio = $recuperar["data_inicio"];
         $data_fim = $recuperar["data_fim"];
@@ -27,6 +27,7 @@ if (isset($_GET['idFuncionario'])) {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,7 +41,7 @@ if (isset($_GET['idFuncionario'])) {
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders.php'); ?>  
+    <?php require_once('../../components/menuSubFolders.php'); ?>
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Funcionário</h1>
@@ -49,7 +50,9 @@ if (isset($_GET['idFuncionario'])) {
             <!-- Formulário de Alteraçao -->
             <form method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados">
-                    <input type="hidden" name="idFuncionario" value="<?php echo $recuperar["idFuncionario"];?>">
+                    <!-- <input type="hidden" name="idFuncionario" value="<?php echo $recuperar["idFuncionario"]; ?>"> -->
+                    <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
+
                     <label for="rg">RG:</label>
                     <input type="text" id="rg" name="rg" required value="<?php echo isset($rg) ? $rg : ''; ?>">
 
@@ -57,40 +60,44 @@ if (isset($_GET['idFuncionario'])) {
                     <input type="text" id="nome" name="nome" required value="<?php echo isset($nome) ? $nome : ''; ?>">
 
                     <label for="data_ingresso">Data Ingresso:</label>
-                    <input type="date" id="data_ingresso" name="data_ingresso" required value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
+                    <input type="date" id="data_ingresso" name="data_ingresso" required
+                        value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
 
                     <label for="salario">Salário:</label>
-                    <input type="text" id="salario" name="salario" required value="<?php echo isset($salario) ? $salario : ''; ?>">
+                    <input type="text" id="salario" name="salario" required
+                        value="<?php echo isset($salario) ? $salario : ''; ?>">
 
                     <label for="nome_fantasia">Nome Fantasia:</label>
-                    <input type="text" id="nome_fantasia" name="nome_fantasia" required value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
+                    <input type="text" id="nome_fantasia" name="nome_fantasia" required
+                        value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
 
-                    <p>Status:</p>                   
-                    <input type="radio" id="ativo" name="status" value="0" <?php echo ($status === '0') ? 'checked' : ''; ?>>
+                    <p>situação:</p>
+                    <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
                     <label for="ativo">Ativo</label>
-                   
-                    <input type="radio" id="inativo" name="status" value="1"  <?php echo ($status === '1') ? 'checked' : ''; ?>>
+
+                    <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
                     <label for="inativo">Inativo</label> <br>
 
                     <label for="cargo">Cargo:</label>
-                    <?php 
-                        include_once('../../../configuration/connect.php');
-                        include '../../../model/funcoes.php';
+                    <?php
+                    include_once('../../../configuration/connect.php');
+                    include '../../../model/funcoes.php';
 
-                        monta_select_cargo2($cargo);
+                    monta_select_cargo2($cargo);
                     ?>
                     <br>
 
                     <label for="restaurante">Restaurante:</label>
-                    <?php 
-                        monta_select_restaurante2();
+                    <?php
+                    monta_select_restaurante();
                     ?> <br>
-                    
+
                     <label for="restaurante">Data de Início</label>
-                    <input type="date" name="data_inicio" value="<?php echo isset(data_inicio) ? $data_fim : ''; ?>"> <br>
+                    <input type="date" name="data_inicio" value="<?php echo isset($data_inicio) ? $data_inicio : ''; ?>"> <br>
 
                     <label for="restaurante">Data de Fim</label>
-                    <input type="date" name="data_fim" value="<?php echo isset(data_fim) ? $data_fim : ''; ?>">
+                    <input type="date" name="data_fim" value="<?php echo isset($data_fim) ? $data_fim : ''; ?>">
+
                 </div>
                 <br>
                 <div class="conteiner-operacoes">
@@ -101,8 +108,9 @@ if (isset($_GET['idFuncionario'])) {
                     <a href="../pageFuncionario.php">Cancelar</a>
                 </div>
             </form>
-        </div>   
+        </div>
     </section>
 
 </body>
+
 </html>
