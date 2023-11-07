@@ -55,31 +55,53 @@ class referenciaModel {
          }
     }// fim create
     
-    public function read( )
+    public function read($idFuncionario)
     {
-        $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim FROM referencia;";
-        $referencia = array();
+        $query =   "SELECT r.idFuncionario, r.data_inicio, r.data_fim, rr.nome AS restaurante
+                    FROM referencia r
+                    JOIN Restaurante rr ON r.idRestaurante = rr.idRestaurante
+                    WHERE r.idFuncionario = ?;";
 
-        if ($result = mysqli_query($this->link, $query)) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $referencia[] = $row;
+        $referencias = array();
+
+        // * Preparar a declaração
+        $stmt = $this->link->prepare($query);
+
+        // Verificar se a preparação da declaração foi bem-sucedida
+        if ($stmt) {
+            // Vincular o parâmetro da declaração com o valor
+            $stmt->bind_param("i", $idFuncionario);
+
+            // Executar a declaração preparada
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $referencias[] = $row;
+                }
+                $result->free();
+            } else {
+                $this->erros[] = "Erro ao consultar: " . $stmt->error;
             }
-            mysqli_free_result($result);
+
+            // Fechar a declaração preparada
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
 
-        return $referencia;
-    }// fim read
+        return $referencias;
+    }
     
     public function update( $idFuncionario, $idRestaurante, $data_inicio, $data_fim )
     {
-        $query =   "UPDATE restaurante 
-                    SET nome = ?, contato = ?
-                    WHERE idRestaurante = ?";
+        $query =   "UPDATE referencia 
+                    SET idRestaurante = ?, data_inicio = ?, data_fim = ?
+                    WHERE idFuncionario = ?;";
 
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("iiss", $idFuncionario, $idRestaurante, $data_inicio, $data_fim);
+            $stmt->bind_param("issi", $idRestaurante, $data_inicio, $data_fim, $idFuncionario);
 
             if ($stmt->execute()) {
                 $this->sucesso[] = "Atualização efetuada com sucesso!";
@@ -140,14 +162,20 @@ class referenciaModel {
         }
     }// fim de recuperar
 
-    public function pesquisarRestaurantesPorNome($termo_pesquisa) {
-        $sql = "SELECT * FROM restaurantes WHERE nome LIKE :termo";
-        $stmt = $this->link->prepare($sql);
-        $termo_pesquisa = "%" . $termo_pesquisa . "%";
-        $stmt->bindParam(':termo', $termo_pesquisa);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
+    public function pegarUltimoIdFuncionario()
+    {
+        $sql = "SELECT * FROM funcionario  
+                WHERE idFuncionario = (select max(idFuncionario) from funcionario);";
+    
+        $result = mysqli_query($this->link, $sql);
+    
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['AUTO_INCREMENT'];
+        } else {
+            return false; // Ou qualquer outro valor que indique um erro
+        }
+    }    
 
 
 }// fim class

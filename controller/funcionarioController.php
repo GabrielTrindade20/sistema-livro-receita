@@ -8,10 +8,6 @@ include_once(__DIR__ .'../../model/funcionarioModel.php');
 include_once(__DIR__ .'../../model/referenciaModel.php');
 
 $funcionarioModel = new funcionarioModel($link);
-$referenciaModel = new referenciaModel($link);
-
-// PESQUISAR
-//$sendPesqCategria = filter_input( )
 
 // SALVAR 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
@@ -23,9 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
     $nome_fantasia = $_POST["nome_fantasia"];
     $status = 0; // 0 - ativo 
     $cargo = $_POST["idCargo"];
-    $idRestaurante = $_POST['idRestaurante']; // ID do restaurante
-    $data_inicio = $_POST['data_inicio']; 
-    $data_fim = $_POST['data_fim'];
     
     if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($status) && empty($cargo)){
         $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo );
@@ -34,22 +27,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
         if (!empty($funcionarioModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $funcionarioModel->getErros();
-            header("Location: ../view/pages/pageFuncionario.php");
+            header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
             exit();
         } else {
-            // Não há erros, salve no banco de dados
+            // Depois de inserir os dados no banco de dados com sucesso
             if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo )) {
-                $idFuncionario = mysqli_insert_id($link);
-
-                if ($referenciaModel->create( $idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
-                    $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
-                } else {
-                    $_SESSION["erros"] = ["Erro ao associar restaurante ao funcionário: " . $referenciaModel->getErros()];
-                }
+                $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
+                
+                // Salvar os valores dos campos do formulário nas variáveis de sessão
+                $_SESSION["rg"] = $rg;
+                $_SESSION["nome"] = $nome;
+                $_SESSION["data_ingresso"] = $data_ingresso;
+                $_SESSION["salario"] = $salario;
+                $_SESSION["nome_fantasia"] = $nome_fantasia;
+                $_SESSION["cargo"] = $cargo;
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
             }
-            header("Location: ../view/pages/pageFuncionario.php");
+
+            // Redirecionar
+            header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
             exit();
         }
     }
