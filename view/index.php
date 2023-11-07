@@ -1,5 +1,5 @@
 <?php 
-include_once('../controller/LoginController.php');
+include_once('../controller/loginController.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -27,11 +27,28 @@ include_once('../controller/LoginController.php');
         <section id="section-direita"> 
             <!-- Notificação de erro ao logar -->
             <?php if (isset($mensagem)): ?>
+<<<<<<< HEAD
                 <figure class="notification" >
                     <div class="notification_body">
                         <div><?php echo $mensagem; ?></div>
                     <div class="notification_progress"></div>
                 </figure>
+=======
+            <figure class="notification" >
+                <div class="notification_body">
+                    <?php if (isset($mensagem)): ?>
+                        <div><?php echo $mensagem; ?></div>
+                    <?php endif; ?>
+                <div class="notification_progress"></div>
+            </figure>
+
+                <figure class="notification" >
+                    <div class="notification_body">
+                        <div><?php echo $mensagem; ?></div>
+                    <div class="notification_progress"></div>
+                </figure>
+
+>>>>>>> 4c2471915089a73b6128d2aaa44b8279bbe453a8
             <?php endif; ?>
             <!-- ---------------------------- -->
 

@@ -1,6 +1,6 @@
 <?php
 
-class categoriaModel {
+class restauranteModel {
     private $link;
     private $erros = array();
     private $sucesso = array();
@@ -17,22 +17,23 @@ class categoriaModel {
         return $this->sucesso;
     }
 
-    public function validar_campos($descricao) {
-        if (!empty($descricao)) {
-            $descricao = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
-            return $descricao;
+    public function validar_campos($nome, $contato) {
+        if (!empty($nome) && !empty($contato)) {
+            $nome = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+            $contato = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+            return array($nome, $contato);
         } else {
             $this->erros[] = "Por gentileza, preencha todos os campos.";
             return false;
         }
     }//fim validar campos
 
-    public function create( $descricao )
+    public function create( $nome, $contato )
     {
-        $query =   "INSERT INTO Categoria 
-                    (descricao) 
+        $query =   "INSERT INTO restaurante 
+                    (nome, contato) 
                     VALUE
-                    (?);";
+                    (?,?);";
 
          // * Preparar a declaração
          $stmt = $this->link->prepare($query);
@@ -40,7 +41,7 @@ class categoriaModel {
          // Verificar se a preparação da declaração foi bem-sucedida
          if ($stmt) {
              // Vincular os parâmetros da declaração com os valores
-             $stmt->bind_param("s", $descricao);
+             $stmt->bind_param("ss", $nome, $contato);
  
              // Executar a declaração preparada
              if ($stmt->execute()) {
@@ -58,32 +59,29 @@ class categoriaModel {
     
     public function read( )
     {
-        $query = "SELECT idCategoria, descricao FROM Categoria;";
-        $categorias = array();
+        $query = "SELECT idRestaurante, nome, contato FROM restaurante;";
+        $restaurantes = array();
 
         if ($result = mysqli_query($this->link, $query)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $categorias[] = $row;
+                $restaurantes[] = $row;
             }
             mysqli_free_result($result);
         }
 
-        return $categorias;
+        return $restaurantes;
     }// fim read
     
-    public function update( $id, $descricao )
+    public function update( $id, $nome, $contato )
     {
-        /*$query = "UPDATE Categoria SET descricao = '$descricao' WHERE idCategoria = '$id';";
-        return mysqli_query($this->link, $query);*/
-
-        $query =   "UPDATE Categoria 
-                    SET descricao = ? 
-                    WHERE idCategoria = ?";
+        $query =   "UPDATE restaurante 
+                    SET nome = ?, contato = ?
+                    WHERE idRestaurante = ?";
 
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("ss", $descricao, $id);
+            $stmt->bind_param("ssi", $nome, $contato, $id);
 
             if ($stmt->execute()) {
                 $this->sucesso[] = "Atualização efetuada com sucesso!";
@@ -103,8 +101,8 @@ class categoriaModel {
     public function delete( $id )
     {
         $query =   "DELETE 
-                    FROM Categoria 
-                    WHERE idCategoria = ?";
+                    FROM restaurante 
+                    WHERE idRestaurante = ?";
 
         $stmt = $this->link->prepare($query);
 
@@ -126,12 +124,12 @@ class categoriaModel {
         return false; 
     }// fim delete
 
-    public function recuperaCategoria($id)
+    public function recuperaRestaurante( $id )
     {
         // lista cursos já cadastrados
-        $query =   "SELECT idCategoria, descricao
-                    FROM categoria
-                    WHERE idCategoria = '$id';";
+        $query =   "SELECT idRestaurante, nome, contato
+                    FROM restaurante
+                    WHERE idRestaurante = '$id';";
 
         $resultado = mysqli_query($this->link, $query);
 
@@ -142,19 +140,29 @@ class categoriaModel {
         }
     }// fim de recuperar
 
-    public function pesquisar($pesquisa)
+    /*
+    public function search($descricao)
     {
-        $query = "SELECT * FROM categoria WHERE descricao LIKE ? LIMIT 3";
+        $query = "SELECT * FROM categoria WHERE descricao LIKE ?";
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $descricao = "%" . $pesquisa . "%";
+            $descricao = "%" . $descricao . "%"; // Adicione curingas à descrição
             $stmt->bind_param("s", $descricao);
 
             if ($stmt->execute()) {
-                $result = $stmt->get_result();
+                $result = $stmt->get_result(); // Obter o conjunto de resultados
+
+                // Você pode iterar pelos resultados da seguinte maneira:
+                // while ($row = $result->fetch_assoc()) {
+                //     // Processar cada linha do resultado aqui
+                // }
+                
+                // Se você deseja retornar os resultados como um array, você pode fazer algo como:
                 $resultsArray = $result->fetch_all(MYSQLI_ASSOC);
+                
                 $stmt->close();
+                
                 return $resultsArray;
             } else {
                 $this->erros[] = "Erro ao pesquisar: " . $stmt->error;
@@ -162,10 +170,9 @@ class categoriaModel {
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
-
+        
         return false;
-    }
-}
+    }*/
 
-// fim class
+}// fim class
 ?>
