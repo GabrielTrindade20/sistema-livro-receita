@@ -5,9 +5,7 @@ if(!isset($_SESSION)) {
 include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcoes.php');
-//include_once('../../../controller/referenciaController.php');
 include_once('../../../controller/referenciaPesquisarController.php');
-
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +52,7 @@ include_once('../../../controller/referenciaPesquisarController.php');
                 }
             ?>
         </div>
+
         <div class="conteiner-abas">
             <!-- Formulário de Cadastro Funcionario -->
             <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
@@ -129,7 +128,7 @@ include_once('../../../controller/referenciaPesquisarController.php');
         <div class="form-referencia">
             <form method="POST" action="#" onsubmit="adicionarRestaurante(event)">
                 <div>
-                    <input type="hidden" name="idRestaurante">
+                    <input type="hidden" name="idRestaurante" id="idRestaurante">
                     <label for="restaurante">Restaurante</label>
                     <input type="text" name="restaurante" id="restaurante">
                     <br>
@@ -161,10 +160,12 @@ include_once('../../../controller/referenciaPesquisarController.php');
                     <!-- Gerando de acordo com o que foi cadastrado -->
                 </tbody>
             </table>
+
+            <button id="salvar-todos" name="salvar_referencia" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
+        
+            <br>
         </div>
 
-        <button id="salvar-todos" onclick="salvarTodos()">Salvar Todos</button>
-        <br>
     </section>
 </body>
 <script>
@@ -188,7 +189,6 @@ include_once('../../../controller/referenciaPesquisarController.php');
         xhr.send();
     }
 
-    
     // formatar data para DD/MM/YYYY
     function formatarData(data) {
         var dataPartes = data.split('-'); // Divide a data em ano, mês e dia
@@ -245,9 +245,9 @@ include_once('../../../controller/referenciaPesquisarController.php');
     // adicionar um novo ou editado cadastrado
     function adicionarRestaurante(event) {
         event.preventDefault(); // Evita a recarga da página
-
-        var restaurante = document.getElementById('restaurante').value;
+        
         var idRestaurante = document.getElementById('idRestaurante').value;
+        var restaurante = document.getElementById('restaurante').value;
         var dataInicio = formatarData(document.getElementById('data_inicio').value);
         var dataFim = formatarData(document.getElementById('data_fim').value);
 
@@ -258,32 +258,34 @@ include_once('../../../controller/referenciaPesquisarController.php');
             alert("Preencha todos os campos antes de salvar.");
             return;
         }
-
-        if (indiceEditando !== -1) {
+        else {
+            if (indiceEditando !== -1) {
             // Se um registro estiver sendo editado, atualize a linha existente
             var row = table2.rows[indiceEditando];
+            row.cells[0].innerHTML = idRestaurante;
             row.cells[1].innerHTML = restaurante;
             row.cells[2].innerHTML = dataInicio;
             row.cells[3].innerHTML = dataFim;
 
             // Reinicie o índice de edição
             indiceEditando = -1;
-        } else {
-            // Caso contrário, adicione uma nova linha
-            var newRow = table2.insertRow(-1); // Insere a linha no final da tabela
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            var cell3 = newRow.insertCell(2);
-            var cell4 = newRow.insertCell(3);
-            var cell5 = newRow.insertCell(4);
-            var cell6 = newRow.insertCell(5);
+            } else {
+                // Caso contrário, adicione uma nova linha
+                var newRow = table2.insertRow(-1); // Insere a linha no final da tabela
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                var cell3 = newRow.insertCell(2);
+                var cell4 = newRow.insertCell(3);
+                var cell5 = newRow.insertCell(4);
+                var cell6 = newRow.insertCell(5);
 
-            cell1.innerHTML = idRestaurante;
-            cell2.innerHTML = restaurante;
-            cell3.innerHTML = dataInicio;
-            cell4.innerHTML = dataFim;
-            cell5.innerHTML = '<button class="remover-restaurante" data-nome="' + restaurante + '">Remover</button>';
-            cell6.innerHTML = '<button class="editar-restaurante" data-nome="' + restaurante + '">Editar</button>';
+                cell1.innerHTML = idRestaurante;
+                cell2.innerHTML = restaurante;
+                cell3.innerHTML = dataInicio;
+                cell4.innerHTML = dataFim;
+                cell5.innerHTML = '<button class="remover-restaurante" data-nome="' + restaurante + '">Remover</button>';
+                cell6.innerHTML = '<button class="editar-restaurante" data-nome="' + restaurante + '">Editar</button>';
+            }
         }
 
         // Limpe os campos do formulário
@@ -321,14 +323,16 @@ include_once('../../../controller/referenciaPesquisarController.php');
         }
     });
 
-    function salvarDadosNoBanco() {
+    function passarReferenciaParaPHP() {
+        console.log('Chamando salvarDadosNoBanco');
+
         var table2 = document.getElementById('table2');
         var data = [];
 
-        for (var i = 0; i < table2.rows.length; i++) {
-            var idRestaurante = table2.rows[i].cells[1].innerHTML;
-            var dataInicio = table2.rows[i].cells[3].innerHTML;
-            var dataFim = table2.rows[i].cells[4].innerHTML;
+        for (var i = 1; i < table2.rows.length; i++) {
+            var idRestaurante = table2.rows[i].cells[0].innerHTML;
+            var dataInicio = formatarDataParaInput(table2.rows[i].cells[2].innerHTML);
+            var dataFim = formatarDataParaInput(table2.rows[i].cells[3].innerHTML);
 
             data.push({
                 idRestaurante: idRestaurante,
@@ -336,6 +340,8 @@ include_once('../../../controller/referenciaPesquisarController.php');
                 data_fim: dataFim
             });
         }
+
+        console.log('Dados a serem enviados: ', data);
 
         // Envie os dados para o servidor
         fetch('../../../controller/referenciaController.php', {
@@ -347,15 +353,11 @@ include_once('../../../controller/referenciaPesquisarController.php');
         })
         .then(response => response.json())
         .then(data => {
-            // Faça algo com a resposta do servidor, se necessário
+            console.log('Dados a serem enviados: ', data);
         })
         .catch(error => {
             console.error('Erro ao enviar os dados para o servidor: ', error);
         });
     }
-
-
-
-
 </script>
 </html>

@@ -9,39 +9,41 @@ include_once(__DIR__ .'../../model/referenciaModel.php');
 $referenciaModel = new referenciaModel($link);
 
 // SALVAR 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar_restaurante"])) 
-{   
-    $idRestaurante = $_POST['idRestaurante'];
-    $data_inicio = $_POST['data_inicio'];
-    $data_fim = $_POST['data_fim'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $data = json_decode(file_get_contents("php://input"), true);
 
-    // Chame a função para obter o próximo ID do funcionário
     $idFuncionario = $referenciaModel->pegarUltimoIdFuncionario();
+    
+    $sucessos = [];
+    $erros = [];
 
-    if ($idFuncionario !== false) 
-    {
-        if(empty($ $idFuncionario) && empty($idRestaurante) && empty($data_inicio) && empty($data_fim)) {
-            $referenciaModel->validar_campos($data_inicio, $data_fim);
-        }
-        else {
-            if (!empty($referenciaModel->getErros())) {
-                // Há erros, armazene-os na sessão
-                $_SESSION["erros"] = $referenciaModel->getErros();
-                header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
-                exit();
+    foreach ($data as $item) {
+        $idRestaurante = $item["idRestaurante"];
+        $dataInicio = $item["data_inicio"];
+        $dataFim = $item["data_fim"];
+
+        // Valide os campos
+        if (empty($idRestaurante) || empty($dataInicio) || empty($dataFim)) {
+            $erros[] = "Campos obrigatórios não preenchidos.";
+        } else {
+            // Faça a validação específica, se necessário
+
+            // Salve os dados no banco de dados
+            if ($referenciaModel->create($idFuncionario, $idRestaurante, $dataInicio, $dataFim)) {
+                $sucessos[] = "Dados salvos com sucesso.";
             } else {
-                // Não há erros, salve no banco de dados
-                if ($referenciaModel->create( $idFuncionario, $idRestaurante, $data_inicio, $data_fim )) {
-                    $_SESSION["sucesso"] = $referenciaModel->getSucesso();
-                } else {
-                    $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
-                }
-                header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
-                exit();
+                $erros[] = "Erro ao salvar no banco de dados.";
             }
-        }   
+        }
     }
-    mysqli_close($link);
+
+    $resposta = [
+        "sucessos" => $sucessos,
+        "erros" => $erros,
+    ];
+
+    header("Content-Type: application/json");
+    echo json_encode($resposta);
 }
 // Vem da page de ALTERAÇÃO 
 elseif (isset($_POST['alterar'])) {
