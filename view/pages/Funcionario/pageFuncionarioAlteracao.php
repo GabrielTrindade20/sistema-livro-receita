@@ -83,8 +83,9 @@ if (isset($_GET['idFuncionario'])) {
 
                     <label for="restaurante">Restaurante:</label>
                     <?php 
-                        monta_select_restaurante2();
-                    ?> <br>
+                        monta_select_restaurante();
+                    ?> 
+                    <br>
                     
                     <label for="restaurante">Data de Início</label>
                     <input type="date" name="data_inicio" value="<?php echo isset(data_inicio) ? $data_fim : ''; ?>"> <br>
