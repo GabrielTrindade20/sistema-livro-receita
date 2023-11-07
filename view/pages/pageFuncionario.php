@@ -4,6 +4,14 @@ if(!isset($_SESSION)) {
 }
 include_once('../../controller/protect.php');
 include_once('../../controller/funcionarioController.php');
+
+// Limpe as variáveis de sessão 
+unset($_SESSION['rg']);
+unset($_SESSION['nome']);
+unset($_SESSION['data_ingresso']);
+unset($_SESSION['salario']);
+unset($_SESSION['nome_fantasia']);
+unset($_SESSION['cargo']);
 ?>
 
 <!DOCTYPE html>
@@ -172,7 +180,7 @@ include_once('../../controller/funcionarioController.php');
     <section class="conteiner-conteudo">
         <button onclick="confirmarExclusaoCheckbox()" align="rigt">Inativo Selecionados</button>
 
-        <form id="excluirSelect" action="../../controller/funcinarioController.php?acao=inativosSelecionados" method="post">
+        <form id="excluirSelect" action="../../controller/funcionarioController.php?acao=inativosSelecionados" method="post">
             <table class="table" border="1" align="right">
                 <thead>
                     <tr>

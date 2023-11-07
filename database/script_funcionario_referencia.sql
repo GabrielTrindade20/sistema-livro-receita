@@ -52,15 +52,42 @@ VALUES
 -- Inserir associações funcionário-restaurante fictícias
 INSERT INTO referencia (idFuncionario, idRestaurante, data_inicio, data_fim)
 VALUES
-(1, 1, '2023-01-15', NULL),
+(1, 1, '2023-01-15', '2023-04-30'),
 (2, 2, '2023-02-20', '2023-04-30'),
-(3, 3, '2023-03-10', NULL);
+(3, 3, '2023-03-10', '2023-04-30'),
+(5, 3, '2023-03-10', '2023-04-30'),
+(7, 1, '2023-03-10', '2023-04-30'),
+(7, 2, '2023-03-10', '2023-04-30');
 
-/*DELETE 
+DELETE 
 FROM referencia 
-WHERE idFuncionario = 3 AND
-idRestaurante = 3;*/
+WHERE idFuncionario = 8 AND
+idRestaurante = 3;
+
+UPDATE referencia 
+SET idRestaurante = 2, data_inicio = '2023-05-30', data_fim = '2023-10-30'
+WHERE idFuncionario = 5;
 
 select * from referencia;
 
 SELECT * FROM restaurante WHERE nome LIKE '%a';
+
+SELECT idFuncionario, idRestaurante, data_inicio, data_fim 
+FROM referencia
+WHERE idFuncionario = 7;
+
+SELECT r.idFuncionario, r.data_inicio, r.data_fim, rr.nome AS restaurante
+FROM referencia r
+JOIN Restaurante rr ON r.idRestaurante = rr.idRestaurante
+WHERE idFuncionario = 7;
+
+SHOW TABLE STATUS LIKE 'referencia';
+
+SELECT AUTO_INCREMENT
+FROM information_schema.tables
+WHERE table_name = 'funcionario' AND table_schema = DATABASE();
+
+SELECT idCargo, descricao FROM cargo;
+
+SELECT * FROM funcionario  
+WHERE idFuncionario = (select max(idFuncionario) from funcionario);
