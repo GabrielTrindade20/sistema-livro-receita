@@ -36,7 +36,7 @@ CREATE TABLE referencia
 
 
 -- Inserir funcionários fictícios
-INSERT INTO funcionario (rg, nome, data_ingresso, salario, nome_fantasia, status, idCargo)
+INSERT INTO funcionario (rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo)
 VALUES
 ('123456789', 'João Silva', '2023-01-15', 3000.00, 'Jão', '0', 1),
 ('987654321', 'Maria Souza', '2023-02-20', 2800.00, 'Souza', '0', 2),
@@ -54,10 +54,7 @@ INSERT INTO referencia (idFuncionario, idRestaurante, data_inicio, data_fim)
 VALUES
 (1, 1, '2023-01-15', '2023-04-30'),
 (2, 2, '2023-02-20', '2023-04-30'),
-(3, 3, '2023-03-10', '2023-04-30'),
-(5, 3, '2023-03-10', '2023-04-30'),
-(7, 1, '2023-03-10', '2023-04-30'),
-(7, 2, '2023-03-10', '2023-04-30');
+(3, 3, '2023-03-10', '2023-04-30');
 
 DELETE 
 FROM referencia 
