@@ -6,6 +6,7 @@ include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcoes.php');
 include_once('../../../controller/referenciaPesquisarController.php');
+include_once('../../../controller/referenciaController.php');
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,8 @@ include_once('../../../controller/referenciaPesquisarController.php');
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Funcionário</title>
 </head>
@@ -174,7 +177,6 @@ include_once('../../../controller/referenciaPesquisarController.php');
 
             <br>
         </div>
-
     </section>
 </body>
 
@@ -369,6 +371,8 @@ include_once('../../../controller/referenciaPesquisarController.php');
                 console.error('Erro ao enviar os dados para o servidor:', error);
             });
     }
+
+
 </script>
 
 </html>

@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
 
                 // Salvar os valores dos campos do formulário nas variáveis de sessão
                 $_SESSION["rg"] = $rg;
-                $_SESSION["nome"] = $nome;
+                $_SESSION["nomeF"] = $nome;
                 $_SESSION["data_ingresso"] = $data_ingresso;
                 $_SESSION["salario"] = $salario;
                 $_SESSION["nome_fantasia"] = $nome_fantasia;
