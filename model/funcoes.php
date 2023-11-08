@@ -14,7 +14,7 @@ function monta_select_cargo(){
             $id = $row["idCargo"];
             $cargo = $row["descricao"];
             echo "<option value=\"$id\">";
-            echo  $cargo . '</option>';
+            echo  $cargo . "</option>";
             }
             echo "</select>";
             
@@ -34,14 +34,14 @@ function monta_select_cargo2($idCargo){
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row["idCargo"];
             $cargo = $row["descricao"];
-                    echo $idCargo." == ".$id." <br>";
+                    echo $idCargo." == " .$id. " <br>";
                     if ($idCargo == $id) {
                         $selected = 'selected';
                     } else {
                         $selected = '';
                     }
             echo "<option value=\"$id\" $selected>";
-            echo  $cargo . '</option>';
+            echo  $cargo . "</option>";
             }
             echo "</select>";
             
