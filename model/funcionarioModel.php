@@ -117,27 +117,29 @@ class funcionarioModel {
         $query =   "UPDATE funcionario 
                     SET situacao = ?
                     WHERE idFuncionario = ?";
-
+    
         $stmt = $this->link->prepare($query);
-
+    
         if ($stmt) {
             $stmt->bind_param("si", $situacao, $id);
-
+    
             if ($stmt->execute()) {
-                $this->sucesso[] = "Inativo, atualizado efetuada com sucesso!";
+                $this->sucesso[] = "Inativo, atualização efetuada com sucesso!";
                 return true;
             } else {
                 $this->erros[] = "Erro ao excluir: " . $stmt->error;
             }
-
+    
             $stmt->close();
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
-
+    
         return false; 
-    }// fim delete
-
+    }
+    
+    }
+    
     public function recuperaFuncionario($id)
     {
         // lista cursos já cadastrados
