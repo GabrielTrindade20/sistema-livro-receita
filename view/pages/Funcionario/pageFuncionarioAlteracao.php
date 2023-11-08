@@ -9,10 +9,10 @@ if (isset($_GET['idFuncionario'])) {
     $funcionarioModel = new funcionarioModel($link);
     $recuperar = $funcionarioModel->recuperaFuncionario($idFuncionario);
     
-    $referenciaModel = new referenciaModel($link);
-    $recuperarReferencia = $referenciaModel->validar_campos($data_inicio, $data_fim);
+    // $referenciaModel = new referenciaModel($link);
+    // $recuperarReferencia = $referenciaModel->recuperaReferencia($idFuncionario, $idRestaurante);
 
-    if ($recuperar && $recuperarReferencia) {
+if ($recuperar /*&& $recuperarReferencia}*/) {
         $rg = $recuperar["rg"];
         $nome = $recuperar["nome"];
         $data_ingresso = $recuperar["data_ingresso"];
@@ -20,8 +20,8 @@ if (isset($_GET['idFuncionario'])) {
         $nome_fantasia = $recuperar["nome_fantasia"];
         $situacao = $recuperar["situacao"];
         $cargo = $recuperar["idCargo"];
-        $data_inicio = $recuperarReferencia["data_inicio"];
-        $data_fim = $recuperarReferencia["data_fim"];
+        // $data_inicio = $recuperarReferencia["data_inicio"];
+        // $data_fim = $recuperarReferencia["data_fim"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();
@@ -75,12 +75,12 @@ if (isset($_GET['idFuncionario'])) {
                     <input type="text" id="nome_fantasia" name="nome_fantasia" required
                         value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
 
-                    <p>situação:</p>
-                    <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
+                    <p>Situação:</p>
                     <label for="ativo">Ativo</label>
+                    <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
 
+                    <label for="inativo">Inativo</label>
                     <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
-                    <label for="inativo">Inativo</label> <br>
 
                     <label for="cargo">Cargo:</label>
                     <?php

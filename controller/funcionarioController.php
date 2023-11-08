@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
                 $_SESSION["data_ingresso"] = $data_ingresso;
                 $_SESSION["salario"] = $salario;
                 $_SESSION["nome_fantasia"] = $nome_fantasia;
+                $_SESSION['0'] = $situacao;
                 $_SESSION["cargo"] = $cargo;
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
@@ -60,7 +61,7 @@ elseif (isset($_POST['alterar'])) {
     $data_ingresso_novo = $_POST["data_ingresso"];
     $salario_novo = $_POST["salario"];
     $nome_fantasia_novo = $_POST["nome_fantasia"];
-    $situacao_novo = $_POST["situ$situacao"];
+    $situacao_novo = $_POST["situacao"];
     $cargo_novo = $_POST["idCargo"];
 
     // Verifique se a descrição não está vazia
