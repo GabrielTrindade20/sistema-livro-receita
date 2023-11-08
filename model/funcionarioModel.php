@@ -62,21 +62,22 @@ class funcionarioModel {
         }
     }// fim create
     
-    public function read( )
-    {
-        $query =   "SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo
-                    FROM funcionario f
-                    JOIN Cargo c ON f.idCargo = c.idCargo;";
-        $funcionarios = array();
+    public function read()
+{
+    $query =   "SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo
+                FROM funcionario f
+                JOIN Cargo c ON f.idCargo = c.idCargo;";
+    $funcionarios = array();
 
-        if ($result = mysqli_query($this->link, $query)) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                $funcionarios[] = $row;
-            }
-            mysqli_free_result($result);
+    if ($result = mysqli_query($this->link, $query)) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $funcionarios[] = $row;
         }
+        mysqli_free_result($result);
+    }
 
-        return $funcionarios;
+    return $funcionarios;
+}
     }// fim read
 
     public function update( $id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo )
