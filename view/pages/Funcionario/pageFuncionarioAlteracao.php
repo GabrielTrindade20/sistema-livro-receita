@@ -2,13 +2,17 @@
 include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcionarioModel.php');
+include_once('../../../model/referenciaModel.php');
 
 if (isset($_GET['idFuncionario'])) {
     $idFuncionario = $_GET['idFuncionario'];
     $funcionarioModel = new funcionarioModel($link);
     $recuperar = $funcionarioModel->recuperaFuncionario($idFuncionario);
+    
+    $referenciaModel = new referenciaModel($link);
+    $recuperarReferencia = $referenciaModel->validar_campos($data_inicio, $data_fim);
 
-    if ($recuperar) {
+    if ($recuperar && $recuperarReferencia) {
         $rg = $recuperar["rg"];
         $nome = $recuperar["nome"];
         $data_ingresso = $recuperar["data_ingresso"];
@@ -16,8 +20,8 @@ if (isset($_GET['idFuncionario'])) {
         $nome_fantasia = $recuperar["nome_fantasia"];
         $situacao = $recuperar["situacao"];
         $cargo = $recuperar["idCargo"];
-        $data_inicio = $recuperar["data_inicio"];
-        $data_fim = $recuperar["data_fim"];
+        $data_inicio = $recuperarReferencia["data_inicio"];
+        $data_fim = $recuperarReferencia["data_fim"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();

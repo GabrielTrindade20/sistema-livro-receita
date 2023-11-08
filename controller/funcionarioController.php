@@ -17,11 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
     $data_ingresso = $_POST["data_ingresso"];
     $salario = $_POST["salario"];
     $nome_fantasia = $_POST["nome_fantasia"];
-    $status = 0; // 0 - ativo 
+    $situacao = 0; // 0 - ativo 
     $cargo = $_POST["idCargo"];
     
-    if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($status) && empty($cargo)){
-        $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo );
+    if(empty($rg) && empty($nome) && empty($data_ingresso) && empty($salario) && empty($nome_fantasia) && empty($situacao) && empty($cargo)){
+        $funcionarioModel->validar_campos($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo );
     }
     else {
         if (!empty($funcionarioModel->getErros())) {
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
             exit();
         } else {
             // Depois de inserir os dados no banco de dados com sucesso
-            if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo )) {
+            if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo )) {
                 $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
                 
                 // Salvar os valores dos campos do formulário nas variáveis de sessão
@@ -60,12 +60,12 @@ elseif (isset($_POST['alterar'])) {
     $data_ingresso_novo = $_POST["data_ingresso"];
     $salario_novo = $_POST["salario"];
     $nome_fantasia_novo = $_POST["nome_fantasia"];
-    $status_novo = $_POST["status"];
+    $situacao_novo = $_POST["situ$situacao"];
     $cargo_novo = $_POST["idCargo"];
 
     // Verifique se a descrição não está vazia
-    if (empty($rg_novo) && empty($nome_novo) && empty($data_ingresso_novo) && empty($salario_novo) && empty($nome_fantasia_novo) && empty($status_novo) && empty($cargo_novo)) {
-        $funcionarioModel->validar_campos( $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $status_novo, $cargo_novo );
+    if (empty($rg_novo) && empty($nome_novo) && empty($data_ingresso_novo) && empty($salario_novo) && empty($nome_fantasia_novo) && empty($situacao_novo) && empty($cargo_novo)) {
+        $funcionarioModel->validar_campos( $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $situacao_novo, $cargo_novo );
     } else {
         // Verificar se a erro
         if (!empty($funcionarioModel->getErros())) {
@@ -75,7 +75,7 @@ elseif (isset($_POST['alterar'])) {
             exit();
         }
         else {
-            if ($atualizado = $funcionarioModel->update( $idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $status_novo, $cargo_novo )) {
+            if ($atualizado = $funcionarioModel->update( $idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $situacao_novo, $cargo_novo )) {
                 $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
             } else {
                 $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
@@ -90,7 +90,7 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'inativo') {
     if (isset($_GET['idFuncionario'])) {
         $idFuncionario = $_GET['idFuncionario'];
 
-        if ($funcionarioModel->status_inativo($idFuncionario, 1)) {
+        if ($funcionarioModel->$situacao_inativo($idFuncionario, 1)) {
             $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
         } else {
             $_SESSION["erros"] = ["Erro ao atualizar no banco de dados."];
@@ -108,7 +108,7 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'inativosSelecionados'){
         foreach ($_POST['checkbox'] as $idFuncionario) {
             // Verificar se o ID da categoria é válido (por exemplo, um número inteiro positivo)
             if (is_numeric($idFuncionario) && $idFuncionario > 0) {
-                if ($funcionarioModel->status_inativo($idFuncionario, 1)) {
+                if ($funcionarioModel->$situacao_inativo($idFuncionario, 1)) {
                     // A categoria foi excluída com sucesso
                     $_SESSION["sucesso"] = ["Categorias excluídas com sucesso."];
                 } else {
