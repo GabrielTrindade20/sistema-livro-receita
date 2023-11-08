@@ -9,14 +9,11 @@ include_once(__DIR__ .'../../model/referenciaModel.php');
 $referenciaModel = new referenciaModel($link);
 
 // SALVAR 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $data = json_decode(file_get_contents("php://input"), true);
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['salvar_referencia'])) {
+    $data = json_decode($_POST["data"], true); // Decodifica os dados JSON em um array associativo
 
     $idFuncionario = $referenciaModel->pegarUltimoIdFuncionario();
     
-    $sucessos = [];
-    $erros = [];
-
     foreach ($data as $item) {
         $idRestaurante = $item["idRestaurante"];
         $dataInicio = $item["data_inicio"];
@@ -24,26 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Valide os campos
         if (empty($idRestaurante) || empty($dataInicio) || empty($dataFim)) {
-            $erros[] = "Campos obrigatórios não preenchidos.";
+            $_SESSION["erros"] = "Campos obrigatórios não preenchidos.";
         } else {
-            // Faça a validação específica, se necessário
-
             // Salve os dados no banco de dados
             if ($referenciaModel->create($idFuncionario, $idRestaurante, $dataInicio, $dataFim)) {
-                $sucessos[] = "Dados salvos com sucesso.";
+                $_SESSION["sucesso"] = "Dados salvos com sucesso.";
             } else {
-                $erros[] = "Erro ao salvar no banco de dados.";
+                $_SESSION["erros"] = "Erro ao salvar no banco de dados.";
             }
+            header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
         }
     }
-
-    $resposta = [
-        "sucessos" => $sucessos,
-        "erros" => $erros,
-    ];
-
-    header("Content-Type: application/json");
-    echo json_encode($resposta);
 }
 // Vem da page de ALTERAÇÃO 
 elseif (isset($_POST['alterar'])) {

@@ -164,14 +164,14 @@ class referenciaModel {
 
     public function pegarUltimoIdFuncionario()
     {
-        $sql = "SELECT * FROM funcionario  
+        $sql = "SELECT idFuncionario FROM funcionario  
                 WHERE idFuncionario = (select max(idFuncionario) from funcionario);";
     
         $result = mysqli_query($this->link, $sql);
     
         if ($result) {
             $row = mysqli_fetch_assoc($result);
-            return $row['AUTO_INCREMENT'];
+            return $row['idFuncionario'];
         } else {
             return false; // Ou qualquer outro valor que indique um erro
         }

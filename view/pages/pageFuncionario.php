@@ -7,6 +7,7 @@ include_once('../../controller/funcionarioController.php');
 
 // Limpe as variáveis de sessão 
 unset($_SESSION['rg']);
+unset($_SESSION['nomeF']);
 unset($_SESSION['data_ingresso']);
 unset($_SESSION['salario']);
 unset($_SESSION['nome_fantasia']);

@@ -6,6 +6,7 @@ include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcoes.php');
 include_once('../../../controller/referenciaPesquisarController.php');
+include_once('../../../controller/referenciaController.php');
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +19,8 @@ include_once('../../../controller/referenciaPesquisarController.php');
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Funcionário</title>
 </head>
@@ -61,7 +64,7 @@ include_once('../../../controller/referenciaPesquisarController.php');
                     <input type="text" id="rg" name="rg" value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
 
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
+                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nomeF']) ? $_SESSION['nomeF'] : ''; ?>" required>
 
                     <label for="data_ingresso">Data Ingresso:</label>
                     <input type="date" id="data_ingresso" name="data_ingresso" value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>" required>
@@ -161,11 +164,10 @@ include_once('../../../controller/referenciaPesquisarController.php');
                 </tbody>
             </table>
 
-            <button id="salvar-todos" name="salvar_referencia" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
+            <button id="salvar-todos" value="salvar_referencia" name="salvar_referencia" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
         
             <br>
         </div>
-
     </section>
 </body>
 <script>
@@ -341,23 +343,22 @@ include_once('../../../controller/referenciaPesquisarController.php');
             });
         }
 
-        console.log('Dados a serem enviados: ', data);
-
-        // Envie os dados para o servidor
-        fetch('../../../controller/referenciaController.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
+        console.log(JSON.stringify(data));
+        // Fazer a requisição AJAX para enviar os dados para o PHP
+        $.ajax({
+            type: "POST",
+            url: "../../../controller/referenciaController.php",
+            data: JSON.stringify({ data: data }), // Serializa os dados como JSON
+            success: function(response) {
+                console.log("response"); // Mensagem de confirmação do PHP
+                // Faça o que for necessário após o salvamento bem-sucedido
             },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Dados a serem enviados: ', data);
-        })
-        .catch(error => {
-            console.error('Erro ao enviar os dados para o servidor: ', error);
+            error: function() {
+                console.log('Erro ao enviar os dados para o PHP');
+            }
         });
     }
+
+
 </script>
 </html>
