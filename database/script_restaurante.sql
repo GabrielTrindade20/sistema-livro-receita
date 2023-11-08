@@ -21,9 +21,10 @@ value
 insert into restaurante
 (nome, contato)
 value
-("BeeHouse","Miro");
+('Restaurante D', '666-555-5555');
 
-select nome,contato from restaurante;
+
+select * from restaurante;
 
 UPDATE restaurante 
 SET nome = 'BeeHouse',
