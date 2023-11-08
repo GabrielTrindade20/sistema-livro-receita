@@ -41,7 +41,7 @@ if (isset($_GET['idFuncionario'])) {
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders.php'); ?>
+    <!-- <?php require_once('../../components/menuSubFolders.php'); ?> -->
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Funcionário</h1>
@@ -89,7 +89,7 @@ if (isset($_GET['idFuncionario'])) {
 
                     <label for="restaurante">Restaurante:</label>
                     <?php 
-                        monta_select_restaurante2();
+                        monta_select_restaurante();
                     ?> <br>
                     
                     <label for="restaurante">Data de Início</label>

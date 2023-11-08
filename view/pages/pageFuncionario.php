@@ -190,7 +190,7 @@ unset($_SESSION['cargo']);
                         <th>SALÁRIO</th>
                         <th>NOME FANTASIA</th>
                         <th>CARGO</th>
-                        <th>STATUS</th>
+                        <th>SITUAÇÃO</th>
                         <th class="operacao" colspan="2">OPERAÇÔES</th>
                     </tr>
                 </thead>
@@ -221,9 +221,9 @@ unset($_SESSION['cargo']);
                             </td>
                             <td>
                                 <?php  
-                                    if ($funcionario['status'] == '0') {
+                                    if ($funcionario['situacao'] == '0') {
                                         echo 'Ativo';
-                                    } elseif ($funcionario['status'] == '1') {
+                                    } elseif ($funcionario['situacao'] == '1') {
                                         echo 'Inativo';
                                     } else {
                                         echo 'Desconhecido';

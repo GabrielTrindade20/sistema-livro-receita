@@ -36,7 +36,7 @@ class funcionarioModel {
     public function create( $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo )
     {
         $query =   "INSERT INTO funcionario
-                    (rg, nome, data_ingresso, salario, nome_fantasia, status, idCargo)
+                    (rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo)
                     VALUE
                     (?, ?, ?, ?, ?, ?, ?);";
 
@@ -46,7 +46,7 @@ class funcionarioModel {
         // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
             // Vincular os parâmetros da declaração com os valores
-            $stmt->bind_param("ssssssi", $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $status, $cargo );
+            $stmt->bind_param("ssssssi", $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo );
 
             // Executar a declaração preparada
             if ($stmt->execute()) {
