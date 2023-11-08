@@ -9,8 +9,6 @@ if (isset($_GET['idFuncionario'])) {
     $funcionarioModel = new funcionarioModel($link);
     $recuperar = $funcionarioModel->recuperaFuncionario($idFuncionario);
     
-    // $referenciaModel = new referenciaModel($link);
-    // $recuperarReferencia = $referenciaModel->recuperaReferencia($idFuncionario, $idRestaurante);
 
 if ($recuperar /*&& $recuperarReferencia}*/) {
         $rg = $recuperar["rg"];
@@ -20,8 +18,6 @@ if ($recuperar /*&& $recuperarReferencia}*/) {
         $nome_fantasia = $recuperar["nome_fantasia"];
         $situacao = $recuperar["situacao"];
         $cargo = $recuperar["idCargo"];
-        // $data_inicio = $recuperarReferencia["data_inicio"];
-        // $data_fim = $recuperarReferencia["data_fim"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();
