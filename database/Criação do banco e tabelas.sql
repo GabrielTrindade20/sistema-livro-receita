@@ -27,7 +27,7 @@ create table funcionario
 	data_ingresso date not null,
 	salario decimal(9,2) not null comment "Este é o salario do meliante",
 	nome_fantasia varchar(25),
-	status ENUM('0', '1') NOT NULL, -- Valores possíveis: '0' (ativo) e '1' (inativo)
+	situacao ENUM('0', '1') NOT NULL, -- Valores possíveis: '0' (ativo) e '1' (inativo)
 	idCargo smallint not null,
 	primary key(idFuncionario),
 	foreign key(idCargo) references Cargo (idCargo)

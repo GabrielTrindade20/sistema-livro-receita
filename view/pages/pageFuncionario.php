@@ -20,6 +20,9 @@ unset($_SESSION['cargo']);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylePesq.css">
+    <link rel="stylesheet" href="../css/styleTable.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
 
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
@@ -116,7 +119,7 @@ unset($_SESSION['cargo']);
 
 </head>
     <!-- Menu lateral - vem de outra página -->
-    <?php //require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php');?>
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
@@ -188,7 +191,7 @@ unset($_SESSION['cargo']);
                         <th>SALÁRIO</th>
                         <th>NOME FANTASIA</th>
                         <th>CARGO</th>
-                        <th>STATUS</th>
+                        <th>SITUAÇÃO</th>
                         <th class="operacao" colspan="2">OPERAÇÔES</th>
                     </tr>
                 </thead>
@@ -219,9 +222,9 @@ unset($_SESSION['cargo']);
                             </td>
                             <td>
                                 <?php  
-                                    if ($funcionario['status'] == '0') {
+                                    if ($funcionario['situacao'] == '0') {
                                         echo 'Ativo';
-                                    } elseif ($funcionario['status'] == '1') {
+                                    } elseif ($funcionario['situacao'] == '1') {
                                         echo 'Inativo';
                                     } else {
                                         echo 'Desconhecido';

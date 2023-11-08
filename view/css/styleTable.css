@@ -4,9 +4,7 @@
 
 /* Estilos para a tabela em telas maiores */
 .table {
-    width: 85%;
-    table-layout: fixed;
-    /* Define a largura das colunas como fixa */
+    width: 90%;
     border-collapse: collapse;
     /* Colapso de borda para evitar espaços entre células */
 
@@ -40,20 +38,24 @@ td {
     text-align: center;
 }
 
+
 /* Estilos para a coluna "Nome" (3/4 da largura) */
 th:nth-child(2),
 td:nth-child(2) {
-    width: 75%;
+    background-color: #d9d9d93f;
+    width: auto;
     /* 3/4 da largura */
 }
 
 /* Estilos para a coluna "Operação" (1/4 da largura) */
 th:nth-child(3),
 td:nth-child(3) {
+    background-color: #d9d9d9a4;
     text-align: center;
     /* Alinhe o conteúdo à direita */
     justify-content: space-evenly;
 }
+
 
 /* Estilos para os links de operações */
 .operation-link {

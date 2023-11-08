@@ -12,6 +12,15 @@ include_once('../../controller/restauranteController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylePesq.css">
+    <link rel="stylesheet" href="../css/styleTable.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../css/styleResponsivo.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Página de Receitas</title>
+</head>
 
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleTable.css">
