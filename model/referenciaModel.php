@@ -150,7 +150,7 @@ class referenciaModel
         return false;
     } // fim delete
 
-    public function recuperaRestaurante($idFuncionario, $idRestaurante)
+    public function recuperaReferencia($idFuncionario, $idRestaurante)
     {
         // lista cursos já cadastrados
         $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim
