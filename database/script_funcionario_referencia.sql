@@ -88,3 +88,16 @@ SELECT idCargo, descricao FROM cargo;
 
 SELECT * FROM funcionario  
 WHERE idFuncionario = (select max(idFuncionario) from funcionario);
+
+SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo, 
+r.restaurante as restaurante, r.data_inicio as restaurante, r.data_fim as restaurante
+FROM funcionario f
+JOIN Cargo c ON f.idCargo = c.idCargo
+JOIN restaurante r ON f.idCargo = c.idCargo;
+
+SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+FROM funcionario
+INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+WHERE funcionario.idFuncionario = 4;
+

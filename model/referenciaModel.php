@@ -150,13 +150,14 @@ class referenciaModel
         return false;
     } // fim delete
 
-    public function recuperaReferencia($idFuncionario, $idRestaurante)
+    public function recuperaReferencia($idFuncionario)
     {
         // lista cursos já cadastrados
-        $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim
-                    FROM referencia
-                    WHERE idFuncionario = '$idFuncionario'
-                    AND idRestaurante = '$idRestaurante';";
+        $query =   "SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+                    FROM funcionario
+                    INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+                    INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+                    WHERE funcionario.idFuncionario = '$idFuncionario';";
 
         $resultado = mysqli_query($this->link, $query);
 
