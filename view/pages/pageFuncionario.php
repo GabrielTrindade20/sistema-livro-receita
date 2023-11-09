@@ -29,45 +29,7 @@ unset($_SESSION['cargo']);
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
     />
-    <style>
-        .search-box {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box-input-container {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-        }
-
-        .search-box-input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const searchBoxInput = document.querySelector(".search-box-input");
-
-            searchBoxInput.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    event.preventDefault(); // Impede que o formulário seja enviado
-                    // Adicione aqui a função que você deseja executar ao pressionar "Enter"
-                    realizarPesquisa();
-                }
-            });
-        });
-
-        function realizarPesquisa() {
-            // Coloque aqui o código para realizar a pesquisa
-            alert("Pesquisa realizada"); // Exemplo: mostrar um alerta
-        }
-    </script>
-</head>
+    
     <title>Funcionário</title>
 </head>
 <body>
