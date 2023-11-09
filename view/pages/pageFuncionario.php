@@ -23,6 +23,7 @@ unset($_SESSION['cargo']);
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleTable.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
