@@ -155,26 +155,6 @@ include_once('../../../controller/referenciaController.php');
             </form>
         </div>
 
-        <div class="conteiner-dados centralizado">
-        <style>
-  .centralizado {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 600px; 
-  }
-
-  .centralizado label {
-    text-align: center;
-  }
-
-  .centralizado input {
-    width: 100%;
-  }
-</style>
-
-
         <div>
             <h3>Restaurantes Cadastrados</h3>
 
