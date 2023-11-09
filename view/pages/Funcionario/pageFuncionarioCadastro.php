@@ -1,15 +1,17 @@
 <?php
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcoes.php');
 include_once('../../../controller/referenciaPesquisarController.php');
+include_once('../../../controller/referenciaController.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,13 +20,15 @@ include_once('../../../controller/referenciaPesquisarController.php');
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Funcionário</title>
 </head>
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php //require_once('../../components/menuSubFolders.php'); ?>  
+    <?php //require_once('../../components/menuSubFolders.php'); ?>
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Funcionário</h1>
@@ -35,21 +39,21 @@ include_once('../../../controller/referenciaPesquisarController.php');
         <!-- Notificação de erro ou não -->
         <div class="mensagens">
             <?php
-                if (isset($_SESSION["erros"])) {
-                    $erros = $_SESSION["erros"];
-                    // Exibir as mensagens de erro
-                    foreach ($erros as $erro) {
-                        echo $erro . "<br>";
-                    }
-                    // Limpar as mensagens de erro da sessão
-                    unset($_SESSION["erros"]);
-                } elseif (isset($_SESSION["sucesso"])) {
-                    $sucessos = $_SESSION["sucesso"];
-                    foreach ($sucessos as $sucesso) {
-                        echo $sucesso. "<br>";
-                    }
-                    unset($_SESSION["sucesso"]);
+            if (isset($_SESSION["erros"])) {
+                $erros = $_SESSION["erros"];
+                // Exibir as mensagens de erro
+                foreach ($erros as $erro) {
+                    echo $erro . "<br>";
                 }
+                // Limpar as mensagens de erro da sessão
+                unset($_SESSION["erros"]);
+            } elseif (isset($_SESSION["sucesso"])) {
+                $sucessos = $_SESSION["sucesso"];
+                foreach ($sucessos as $sucesso) {
+                    echo $sucesso . "<br>";
+                }
+                unset($_SESSION["sucesso"]);
+            }
             ?>
         </div>
 
@@ -58,32 +62,39 @@ include_once('../../../controller/referenciaPesquisarController.php');
             <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados">
                     <label for="rg">RG:</label>
-                    <input type="text" id="rg" name="rg" value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
+                    <input type="text" id="rg" name="rg"
+                        value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
 
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
+                    <input type="text" id="nome" name="nome"
+                        value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
 
                     <label for="data_ingresso">Data Ingresso:</label>
-                    <input type="date" id="data_ingresso" name="data_ingresso" value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>" required>
+                    <input type="date" id="data_ingresso" name="data_ingresso"
+                        value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
+                        required>
 
                     <label for="salario">Salário:</label>
-                    <input type="text" id="salario" name="salario" value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
+                    <input type="text" id="salario" name="salario"
+                        value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
 
                     <label for="nome_fantasia">Nome Fantasia:</label>
-                    <input type="text" id="nome_fantasia" name="nome_fantasia" value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>" required>
+                    <input type="text" id="nome_fantasia" name="nome_fantasia"
+                        value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
+                        required>
 
                     <label for="cargo">Cargo:</label>
 
-                    <?php 
-                        monta_select_cargo(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
-                    ?>  <br>
+                    <?php
+                    monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
+                    ?> <br>
                 </div>
- 
+
                 <div class="">
                     <!-- Botão para salvar o funcionario -->
                     <button type="submit" name="salvar" class="button">Salvar</button>
                 </div>
-            </form>                
+            </form>
         </div>
     </section>
 
@@ -91,8 +102,8 @@ include_once('../../../controller/referenciaPesquisarController.php');
         <div class="box-search">
             <h2>Cadastro de Restaurante<h2>
 
-            <input type="search" name="pesquisar" id="pesquisarReferencia" placeholder="Pesquisar"> 
-            <button onclick="searchData()" >pesquisar</button>
+                    <input type="search" name="pesquisar" id="pesquisarReferencia" placeholder="Pesquisar">
+                    <button onclick="searchData()">pesquisar</button>
         </div>
 
         <div align="right">
@@ -117,7 +128,8 @@ include_once('../../../controller/referenciaPesquisarController.php');
                                 <?php echo $restaurante['contato']; ?>
                             </td>
                             <td>
-                                <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>" data-id="<?php echo $restaurante['idRestaurante'];?>" > Adicionar + </button>
+                                <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>"
+                                    data-id="<?php echo $restaurante['idRestaurante']; ?>"> Adicionar + </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -133,10 +145,10 @@ include_once('../../../controller/referenciaPesquisarController.php');
                     <input type="text" name="restaurante" id="restaurante">
                     <br>
                     <label for="restaurante">Data de Início</label>
-                    <input type="date" name="data_inicio" id="data_inicio"> 
+                    <input type="date" name="data_inicio" id="data_inicio">
                     <br>
                     <label for="restaurante">Data de Fim</label>
-                    <input type="date" name="data_fim" id="data_fim"> 
+                    <input type="date" name="data_fim" id="data_fim">
                 </div>
 
                 <button type="submit" name="salvar_restaurante" class="salvar-edicao">Salvar restaurante</button>
@@ -162,12 +174,12 @@ include_once('../../../controller/referenciaPesquisarController.php');
             </table>
 
             <button id="salvar-todos" name="salvar_referencia" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
-        
+
             <br>
         </div>
-
     </section>
 </body>
+
 <script>
     var search = document.getElementById('pesquisarReferencia');
     var indiceEditando = -1;
@@ -178,7 +190,7 @@ include_once('../../../controller/referenciaPesquisarController.php');
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'pagePesquisaReferencia.php?search=' + searchTerm, true);
 
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (xhr.status == 200) {
                 // Atualize a tabela com os resultados da pesquisa
                 var table1 = document.getElementById('table1');
@@ -204,7 +216,7 @@ include_once('../../../controller/referenciaPesquisarController.php');
             return partesData[2] + '-' + partesData[1] + '-' + partesData[0];
         }
         return ''; // Retorno vazio se o formato estiver incorreto
-    } 
+    }
 
     // pegar nome e id de restaurante e colocar no form
     document.addEventListener('DOMContentLoaded', function () {
@@ -229,10 +241,10 @@ include_once('../../../controller/referenciaPesquisarController.php');
     document.addEventListener('click', function (event) {
         if (event.target && event.target.classList.contains('remover-restaurante')) {
             var nomeRestaurante = event.target.getAttribute('data-nome');
-        var idLinha = event.target.getAttribute('data-id'); // Recupere o valor do atributo "data-id" para identificar a linha
+            var idLinha = event.target.getAttribute('data-id'); // Recupere o valor do atributo "data-id" para identificar a linha
 
-        // Encontre a linha que está sendo editada com base no "idLinha"
-        var linhaEditada = document.querySelector('tr[data-id="' + idLinha + '"]');
+            // Encontre a linha que está sendo editada com base no "idLinha"
+            var linhaEditada = document.querySelector('tr[data-id="' + idLinha + '"]');
 
             // Encontre o elemento pai da linha (tr) e remova-o
             var row = event.target.closest('tr');
@@ -245,7 +257,7 @@ include_once('../../../controller/referenciaPesquisarController.php');
     // adicionar um novo ou editado cadastrado
     function adicionarRestaurante(event) {
         event.preventDefault(); // Evita a recarga da página
-        
+
         var idRestaurante = document.getElementById('idRestaurante').value;
         var restaurante = document.getElementById('restaurante').value;
         var dataInicio = formatarData(document.getElementById('data_inicio').value);
@@ -260,15 +272,15 @@ include_once('../../../controller/referenciaPesquisarController.php');
         }
         else {
             if (indiceEditando !== -1) {
-            // Se um registro estiver sendo editado, atualize a linha existente
-            var row = table2.rows[indiceEditando];
-            row.cells[0].innerHTML = idRestaurante;
-            row.cells[1].innerHTML = restaurante;
-            row.cells[2].innerHTML = dataInicio;
-            row.cells[3].innerHTML = dataFim;
+                // Se um registro estiver sendo editado, atualize a linha existente
+                var row = table2.rows[indiceEditando];
+                row.cells[0].innerHTML = idRestaurante;
+                row.cells[1].innerHTML = restaurante;
+                row.cells[2].innerHTML = dataInicio;
+                row.cells[3].innerHTML = dataFim;
 
-            // Reinicie o índice de edição
-            indiceEditando = -1;
+                // Reinicie o índice de edição
+                indiceEditando = -1;
             } else {
                 // Caso contrário, adicione uma nova linha
                 var newRow = table2.insertRow(-1); // Insere a linha no final da tabela
@@ -351,13 +363,16 @@ include_once('../../../controller/referenciaPesquisarController.php');
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Dados a serem enviados: ', data);
-        })
-        .catch(error => {
-            console.error('Erro ao enviar os dados para o servidor: ', error);
-        });
+            .then(response => response.text())
+            .then(data => {
+                console.log('Resposta do servidor:', data);
+            })
+            .catch(error => {
+                console.error('Erro ao enviar os dados para o servidor:', error);
+            });
     }
+
+
 </script>
+
 </html>

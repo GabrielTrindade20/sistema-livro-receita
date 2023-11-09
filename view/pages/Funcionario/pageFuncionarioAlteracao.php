@@ -2,13 +2,15 @@
 include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcionarioModel.php');
+include_once('../../../model/referenciaModel.php');
 
 if (isset($_GET['idFuncionario'])) {
     $idFuncionario = $_GET['idFuncionario'];
     $funcionarioModel = new funcionarioModel($link);
     $recuperar = $funcionarioModel->recuperaFuncionario($idFuncionario);
+    
 
-    if ($recuperar) {
+if ($recuperar /*&& $recuperarReferencia}*/) {
         $rg = $recuperar["rg"];
         $nome = $recuperar["nome"];
         $data_ingresso = $recuperar["data_ingresso"];
@@ -16,8 +18,6 @@ if (isset($_GET['idFuncionario'])) {
         $nome_fantasia = $recuperar["nome_fantasia"];
         $situacao = $recuperar["situacao"];
         $cargo = $recuperar["idCargo"];
-        $data_inicio = $recuperar["data_inicio"];
-        $data_fim = $recuperar["data_fim"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();
@@ -41,7 +41,7 @@ if (isset($_GET['idFuncionario'])) {
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders.php'); ?>
+    <!-- <?php require_once('../../components/menuSubFolders.php'); ?> -->
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Funcionário</h1>
@@ -71,12 +71,12 @@ if (isset($_GET['idFuncionario'])) {
                     <input type="text" id="nome_fantasia" name="nome_fantasia" required
                         value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
 
-                    <p>situação:</p>
-                    <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
+                    <p>Situação:</p>
                     <label for="ativo">Ativo</label>
+                    <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
 
+                    <label for="inativo">Inativo</label>
                     <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
-                    <label for="inativo">Inativo</label> <br>
 
                     <label for="cargo">Cargo:</label>
                     <?php
@@ -89,15 +89,22 @@ if (isset($_GET['idFuncionario'])) {
 
                     <label for="restaurante">Restaurante:</label>
                     <?php 
-                        monta_select_restaurante2();
+                        monta_select_restaurante();
                     ?> <br>
                     
                     <label for="restaurante">Data de Início</label>
+<<<<<<< HEAD
+                    <input type="date" name="data_inicio" value="<?php echo isset($data_inicio) ? $data_fim : ''; ?>"> <br>
+
+                    <label for="restaurante">Data de Fim</label>
+                    <input type="date" name="data_fim" value="<?php echo isset($data_fim) ? $data_fim : ''; ?>">
+=======
                     <input type="date" name="data_inicio" value="<?php echo isset($data_inicio) ? $data_inicio : ''; ?>"> <br>
 
                     <label for="restaurante">Data de Fim</label>
                     <input type="date" name="data_fim" value="<?php echo isset($data_fim) ? $data_fim : ''; ?>">
 
+>>>>>>> 5bbd1f95396c52a0df45e5b4ce007e8e0fce1a9d
                 </div>
                 <br>
                 <div class="conteiner-operacoes">
