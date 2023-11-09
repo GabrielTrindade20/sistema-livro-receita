@@ -29,34 +29,7 @@ unset($_SESSION['cargo']);
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
     />
-    <style>
-        .search-box {
-            display: flex;
-            align-items: center;
-        }
-
-        .search-box-input-container {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-        }
-
-        .search-box-input {
-            width: 100%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .search-box-button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-    </style>
+    
     <title>Funcionário</title>
 </head>
 <body>
