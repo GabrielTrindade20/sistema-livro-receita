@@ -68,6 +68,8 @@ unset($_SESSION['cargo']);
                 </div>
             </div>
         </div>
+
+        <button onclick="confirmarExclusaoCheckbox()" align="right">Inativar Selecionados</button>
     </section>
 
     <section class="conteiner-conteudo">
