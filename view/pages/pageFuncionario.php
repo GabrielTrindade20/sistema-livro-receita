@@ -74,7 +74,7 @@ unset($_SESSION['cargo']);
 
     <section class="conteiner-conteudo">
         <form id="excluirSelect" action="../../controller/funcionarioController.php?acao=inativosSelecionados" method="post">
-            <table class="table" border="1" align="right">
+            <table class="table center-table" border="1">
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
