@@ -55,11 +55,13 @@ unset($_SESSION['cargo']);
             <div class="search-container">
                 <!-- Search -->
                 <div class="search-box">
-                    <form method="POST" action="">
-                        <input type="text" class="search-box-input" name="busca" placeholder="Pesquisar">
-                        <button type="submit" class="search-box-button">Enviar</button>
-                    </form>
-                </div>
+    <form method="POST" action="">
+        <div class="search-box-input-container">
+            <input type="text" class="search-box-input" name="busca" placeholder="Pesquisar">
+            <button type="submit" class="search-box-button">Enviar</button>
+        </div>
+    </form>
+</div>
                 <!-- Criar -->
                 <div class="button-nova">
                     <a href="./Funcionario/pageFuncionarioCadastro.php">
