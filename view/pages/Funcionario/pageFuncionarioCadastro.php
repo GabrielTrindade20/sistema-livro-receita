@@ -17,10 +17,15 @@ include_once('../../../controller/referenciaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styleEdica.css">
-    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../../css/stylePesq.css">
+    <link rel="stylesheet" href="../../css/styleTable.css">
+    <link rel="stylesheet" href="../../css/styleResponsivo.css">
+    <link rel="stylesheet" href="../../css/styleMenu.css">
+    <link rel="stylesheet" href="../../css/styleFuncionarioCadastro.css">
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Funcionário</title>
@@ -28,156 +33,79 @@ include_once('../../../controller/referenciaController.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php //require_once('../../components/menuSubFolders.php'); ?>
+    <?php require_once('../../components/menu.php'); ?>
 
     <section class="conteiner-conteudo">
-        <h1 class="titulo">Funcionário</h1>
-
-        <!-- Botão para cancelar e voltar à página principal -->
-        <a href="../../pages/pageFuncionario.php">Sair</a>
-
-        <!-- Notificação de erro ou não -->
-        <div class="mensagens">
-            <?php
-            if (isset($_SESSION["erros"])) {
-                $erros = $_SESSION["erros"];
-                // Exibir as mensagens de erro
-                foreach ($erros as $erro) {
-                    echo $erro . "<br>";
-                }
-                // Limpar as mensagens de erro da sessão
-                unset($_SESSION["erros"]);
-            } elseif (isset($_SESSION["sucesso"])) {
-                $sucessos = $_SESSION["sucesso"];
-                foreach ($sucessos as $sucesso) {
-                    echo $sucesso . "<br>";
-                }
-                unset($_SESSION["sucesso"]);
-            }
-            ?>
+        <div>
+            <h1>Informações</h1>
         </div>
 
         <div class="conteiner-abas">
-            <!-- Formulário de Cadastro Funcionario -->
-            <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
-                <div class="conteiner-dados">
-                    <label for="rg">RG:</label>
-                    <input type="text" id="rg" name="rg"
-                        value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
-
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome"
-                        value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
-
-                    <label for="data_ingresso">Data Ingresso:</label>
-                    <input type="date" id="data_ingresso" name="data_ingresso"
-                        value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
-                        required>
-
-                    <label for="salario">Salário:</label>
-                    <input type="text" id="salario" name="salario"
-                        value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
-
-                    <label for="nome_fantasia">Nome Fantasia:</label>
-                    <input type="text" id="nome_fantasia" name="nome_fantasia"
-                        value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
-                        required>
-
-                    <label for="cargo">Cargo:</label>
-
-                    <?php
-                    monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
-                    ?> <br>
+            <!-- Formulário de Cadastro -->
+            <div class="title-container">
+                <h2>Funcionário</h2>
+            </div>
+            <form method="POST" action="../../controller/controllerCargo/cargoController.php">
+                <div class="form-row-container">
+                    <div class="form-field">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome"
+                            value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Nome Fantasia:</label>
+                        <input type="text" id="nome_fantasia" name="nome_fantasia"
+                            value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
+                            required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Restaurante:</label>
+                        <?php
+                        monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
+                        ?>
+                    </div>
+                </div>
+                <div class="form-row-container">
+                    <div class="form-field">
+                        <label for="nome">RG:</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Salário:</label>
+                        <input type="text" id="salario" name="salario"
+                            value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
+                    </div>
+                </div>
+                <div class="form-row-container">
+                    <div class="form-field">
+                        <label for="nome">Cargo:</label>
+                        <?php
+                        monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
+                        ?>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Data de Ingresso:</label>
+                        <input type="date" id="data_ingresso" name="data_ingresso"
+                            value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
+                            required>
+                    </div>
                 </div>
 
-                <div class="">
-                    <!-- Botão para salvar o funcionario -->
+                <br>
+
+                <div class="conteiner-operacoes">
+                    <!-- Botão para salvar o cargo -->
                     <button type="submit" name="salvar" class="button">Salvar</button>
+
+                    <!-- Botão para cancelar e voltar à página principal -->
+                    <a href="../pageCargo.php">Cancelar</a>
                 </div>
             </form>
         </div>
+
     </section>
 
-    <section class="conteiner-referencia" align="right">
-        <div class="box-search">
-            <h2>Cadastro de Restaurante<h2>
 
-                    <input type="search" name="pesquisar" id="pesquisarReferencia" placeholder="Pesquisar">
-                    <button onclick="searchData()">pesquisar</button>
-        </div>
-
-        <div align="right">
-            <h3>Restaurantes</h3>
-
-            <table class="table" id="table1" border="1">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Contato</th>
-                        <th>Operações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Tabela de restaurantes -->
-                    <?php foreach ($restaurantes as $index => $restaurante): ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                            <td>
-                                <?php echo $restaurante['nome']; ?>
-                            </td>
-                            <td>
-                                <?php echo $restaurante['contato']; ?>
-                            </td>
-                            <td>
-                                <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>"
-                                    data-id="<?php echo $restaurante['idRestaurante']; ?>"> Adicionar + </button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <div class="form-referencia">
-            <form method="POST" action="#" onsubmit="adicionarRestaurante(event)">
-                <div>
-                    <input type="hidden" name="idRestaurante" id="idRestaurante">
-                    <label for="restaurante">Restaurante</label>
-                    <input type="text" name="restaurante" id="restaurante">
-                    <br>
-                    <label for="restaurante">Data de Início</label>
-                    <input type="date" name="data_inicio" id="data_inicio">
-                    <br>
-                    <label for="restaurante">Data de Fim</label>
-                    <input type="date" name="data_fim" id="data_fim">
-                </div>
-
-                <button type="submit" name="salvar_restaurante" class="salvar-edicao">Salvar restaurante</button>
-            </form>
-        </div>
-
-        <div>
-            <h3>Restaurantes Cadastrados</h3>
-
-            <table class="table" id="table2" border="1" align="right">
-                <thead>
-                    <tr>
-                        <th class="select-column">-</th>
-                        <th>NOME</th>
-                        <th>DATA INÍCIO</th>
-                        <th>DATA FIM</th>
-                        <th class="operacao" colspan="2">OPERAÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Gerando de acordo com o que foi cadastrado -->
-                </tbody>
-            </table>
-
-            <button id="salvar-todos" name="salvar_referencia" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
-
-            <br>
-        </div>
-    </section>
 </body>
 
 <script>

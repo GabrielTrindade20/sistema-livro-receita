@@ -1,5 +1,5 @@
 <?php
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 include_once('../../controller/protect.php');
@@ -16,6 +16,7 @@ unset($_SESSION['cargo']);
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,14 +28,22 @@ unset($_SESSION['cargo']);
     <link rel="stylesheet" href="../css/styleResponsivo.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
-    />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
+    <script>
+        function confirmarExclusaoCheckbox() {
+            if (confirm("Tem certeza de que deseja inativar os funcionários selecionados?")) {
+                document.forms["inativarSelecionados"].submit();
+            }
+        }
+    </script>
+
     <title>Funcionário</title>
 </head>
+
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php'); ?>
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
@@ -49,20 +58,20 @@ unset($_SESSION['cargo']);
                 </div>
 
                 <div class="info-receitas">
-                    <?php echo "(" . $countFuncionarios. ") Funcionários"; ?>
+                    <?php echo "(" . $countFuncionarios . ") Funcionários"; ?>
                 </div>
             </div>
 
             <div class="search-container">
                 <!-- Search -->
                 <div class="search-box">
-    <form method="POST" action="">
-        <div class="search-box-input-container">
-            <input type="text" class="search-box-input" name="busca" placeholder="Pesquisar">
-            <button type="submit" class="search-box-button">Enviar</button>
-        </div>
-    </form>
-</div>
+                    <form method="POST" action="">
+                        <div class="search-box-input-container">
+                            <input type="text" class="search-box-input" name="busca" placeholder="Pesquisar">
+                            <button type="submit" class="search-box-button">Enviar</button>
+                        </div>
+                    </form>
+                </div>
                 <!-- Criar -->
                 <div class="button-nova">
                     <a href="./Funcionario/pageFuncionarioCadastro.php">
@@ -76,8 +85,9 @@ unset($_SESSION['cargo']);
     </section>
 
     <section class="conteiner-conteudo">
-        <form id="excluirSelect" action="../../controller/funcionarioController.php?acao=inativosSelecionados" method="post">
-            <table class="table center-table" border="1">
+        <form id="inativarSelecionados" action="../../controller/funcionarioController.php?acao=inativosSelecionados"
+            method="post">
+            <table class="table center-table" style="margin-bottom: 5rem" border="1">
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
@@ -94,9 +104,11 @@ unset($_SESSION['cargo']);
                 <tbody>
                     <!-- Tabela de funcionario -->
                     <?php foreach ($funcionarios as $index => $funcionario): ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?> funcionario-row" data-id="<?php echo $funcionario['idFuncionario']; ?>">
+                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?> funcionario-row"
+                            data-id="<?php echo $funcionario['idFuncionario']; ?>">
                             <td class="select-column">
-                                <input type="checkbox" name="checkbox[]" value="<?php echo $funcionario['idFuncionario']; ?>">
+                                <input type="checkbox" name="checkbox[]"
+                                    value="<?php echo $funcionario['idFuncionario']; ?>">
                             </td>
                             <td>
                                 <?php echo $funcionario['rg']; ?>
@@ -105,7 +117,7 @@ unset($_SESSION['cargo']);
                                 <?php echo $funcionario['nome']; ?>
                             </td>
                             <td>
-                                <?php echo $funcionario['data_ingresso'] = implode("/",array_reverse(explode("-", $funcionario['data_ingresso']))); ?>
+                                <?php echo $funcionario['data_ingresso'] = implode("/", array_reverse(explode("-", $funcionario['data_ingresso']))); ?>
                             </td>
                             <td>
                                 <?php echo 'R$' . $funcionario['salario']; ?>
@@ -117,23 +129,25 @@ unset($_SESSION['cargo']);
                                 <?php echo $funcionario['cargo']; ?>
                             </td>
                             <td>
-                                <?php  
-                                    if ($funcionario['situacao'] == '0') {
-                                        echo 'Ativo';
-                                    } elseif ($funcionario['situacao'] == '1') {
-                                        echo 'Inativo';
-                                    } else {
-                                        echo 'Desconhecido';
-                                    } 
+                                <?php
+                                if ($funcionario['situacao'] == '0') {
+                                    echo 'Ativo';
+                                } elseif ($funcionario['situacao'] == '1') {
+                                    echo 'Inativo';
+                                } else {
+                                    echo 'Desconhecido';
+                                }
                                 ?>
                             </td>
                             <td>
-                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
+                                <a
+                                    href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
                             </td>
                             <td>
-                                <a href="#" onclick="confirmarInativo(<?php echo $funcionario['idFuncionario']; ?>);" class="button">
+                                <a href="#" onclick="confirmarInativo(<?php echo $funcionario['idFuncionario']; ?>);"
+                                    class="button">
                                     <span class="material-symbols-outlined"> delete </span>
                                 </a>
                             </td>
@@ -144,4 +158,5 @@ unset($_SESSION['cargo']);
         </form>
     </section>
 </body>
+
 </html>

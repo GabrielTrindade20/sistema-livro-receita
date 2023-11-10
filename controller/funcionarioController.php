@@ -88,7 +88,7 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'inativo') {
     if (isset($_GET['idFuncionario'])) {
         $idFuncionario = $_GET['idFuncionario'];
 
-        if ($funcionarioModel->$situacao_inativo($idFuncionario, 1)) {
+        if ($funcionarioModel->situacao_inativo($idFuncionario, 1)) {
             $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
         } else {
             $_SESSION["erros"] = ["Erro ao atualizar no banco de dados."];
@@ -105,19 +105,19 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'inativo') {
         foreach ($_POST['checkbox'] as $idFuncionario) {
             // Verificar se o ID da categoria é válido (por exemplo, um número inteiro positivo)
             if (is_numeric($idFuncionario) && $idFuncionario > 0) {
-                if ($funcionarioModel->$situacao_inativo($idFuncionario, 1)) {
+                if ($funcionarioModel->situacao_inativo($idFuncionario, 1)) {
                     // A categoria foi excluída com sucesso
-                    $_SESSION["sucesso"] = ["Categorias excluídas com sucesso."];
+                    $_SESSION["sucesso"] = ["Funcionário cadastrado com sucesso."];
                 } else {
                     // Houve um erro na exclusão
-                    $_SESSION["erros"] = ["Erro ao excluir a categoria com ID $idFuncionario."];
+                    $_SESSION["erros"] = ["Erro ao excluir o funcionário com ID $idFuncionario."];
                 }
             } else {
                 // O ID da categoria não é válido
-                $_SESSION["erros"] = ["ID de categoria inválido: $idFuncionario."];
+                $_SESSION["erros"] = ["ID de funcionário inválido: $idFuncionario."];
             }
         }
-        header("Location: ../view/pages/pageCategoria.php");
+        header("Location: ../view/pages/pageFuncionario.php");
         exit();
     }
 }
