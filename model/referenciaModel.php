@@ -152,8 +152,7 @@ class referenciaModel
 
     public function recuperaReferencia($idFuncionario)
     {
-        // lista cursos já cadastrados
-        $query =   "SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+        $query =   "SELECT funcionario.idFuncionario, restaurante.idRestaurante, restaurante.nome, referencia.data_inicio, referencia.data_fim
                     FROM funcionario
                     INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
                     INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
@@ -162,9 +161,13 @@ class referenciaModel
         $resultado = mysqli_query($this->link, $query);
 
         if ($resultado) {
-            return mysqli_fetch_assoc($resultado);
+            $dados = array();
+            while ($linha = mysqli_fetch_assoc($resultado)) {
+                $dados[] = $linha;
+            }
+            return $dados;
         } else {
-            return null; // Retornar null em caso de erro na consulta
+            return array(); // Retornar null em caso de erro na consulta
         }
     } // fim de recuperar
 

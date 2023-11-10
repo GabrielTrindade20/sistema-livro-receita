@@ -232,7 +232,7 @@ unset($_SESSION['cargo']);
                                 ?>
                             </td>
                             <td>
-                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
+                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>&acao=alteracao">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
                             </td>

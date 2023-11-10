@@ -26,8 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (empty($idRestaurante) || empty($dataInicio) || empty($dataFim)) {
             $erros[] = "Campos obrigatórios não preenchidos.";
         } else {
-            // Faça a validação específica, se necessário
-
             // Salve os dados no banco de dados
             if ($referenciaModel->create($idFuncionario, $idRestaurante, $dataInicio, $dataFim)) {
                 $sucessos[] = "Dados salvos com sucesso.";
@@ -44,34 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     header("Content-Type: application/json");
     echo json_encode($resposta);
+    exit;
 }
-// Vem da page de ALTERAÇÃO 
-elseif (isset($_POST['alterar'])) {
-    $idRestauranteNovo = $_POST['idRestaurante'];
-    $nova_data_inicio = $_POST['data_inicio'];
-    $nova_data_fim = $_POST['data_fim'];
-
-    // Verifique se a descrição não está vazia
-    if (empty($data_inicio) && empty( $data_fim)) {
-        $referenciaModel->validar_campos( $data_inicio, $data_fim);
-    } else {
-        // Verificar se a erro
-        if (!empty($referenciaModel->getErros())) {
-            // Há erros, armazene-os na sessão
-            $_SESSION["erros"] = $referenciaModel->getErros();
-            header("Location: ../view/pages/pageFuncionarioAlteracao.php");
-            exit();
-        }
-        else {
-            if ($atualizado = $referenciaModel->update($idFuncionario, $idRestauranteNovo, $nova_data_inicio, $nova_data_fim)) {
-                $_SESSION["sucesso"] = $referenciaModel->getSucesso();
-            } else {
-                $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
-            }
-            header("Location: ../view/pages/pageFuncionarioAlteracao.php");
-            exit();
-        }
-    }
+// RECUPERA OS DADOS E MOSTRA NA TABELA 
+elseif (isset($_GET['acao']) && $_GET['acao'] === 'alteracao' && $_SERVER["REQUEST_METHOD"] === "GET") {
+    $idFuncionario = $_GET["idFuncionario"];
+    
+    // recuperar dados para a alteração 
+    $recuperar_referencia = $referenciaModel->recuperaReferencia($idFuncionario);
 }
 // EXCLUIR
 elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
@@ -115,6 +93,7 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){
 // RETORNAR DADOS SALVOS
 else 
 {
+
 }
 
 

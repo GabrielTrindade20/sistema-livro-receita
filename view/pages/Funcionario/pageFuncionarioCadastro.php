@@ -67,7 +67,7 @@ include_once('../../../controller/referenciaController.php');
 
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome"
-                        value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
+                        value="<?php echo isset($_SESSION['nome_funcionario']) ? $_SESSION['nome_funcionario'] : ''; ?>" required>
 
                     <label for="data_ingresso">Data Ingresso:</label>
                     <input type="date" id="data_ingresso" name="data_ingresso"
