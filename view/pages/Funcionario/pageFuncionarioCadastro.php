@@ -45,7 +45,7 @@ include_once('../../../controller/referenciaController.php');
             <div class="title-container">
                 <h2>Funcionário</h2>
             </div>
-            <form method="POST" action="../../controller/controllerCargo/cargoController.php">
+            <for../../cm method="POST" action="ontroller/controllerCargo/cargoController.php">
                 <div class="form-row-container">
                     <div class="form-field">
                         <label for="nome">Nome:</label>
@@ -80,7 +80,7 @@ include_once('../../../controller/referenciaController.php');
                     <div class="form-field">
                         <label for="nome">Cargo:</label>
                         <?php
-                        monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
+                        monta_select_cargo2(isset($_SESSION['funcionario']) ? $_SESSION['funcionario'] : '');
                         ?>
                     </div>
                     <div class="form-field">
@@ -94,11 +94,11 @@ include_once('../../../controller/referenciaController.php');
                 <br>
 
                 <div class="conteiner-operacoes">
-                    <!-- Botão para salvar o cargo -->
+                    <!-- Botão para salvar o funcionário -->
                     <button type="submit" name="salvar" class="button">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../pageCargo.php">Cancelar</a>
+                    <a href="../pageFuncionario.php">Cancelar</a>
                 </div>
             </form>
         </div>
