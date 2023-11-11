@@ -5,7 +5,7 @@ include_once('../../../model/funcionarioModel.php');
 include_once('../../../model/referenciaModel.php');
 
 include_once('../../../controller/referenciaPesquisarController.php');
-include_once('../../../controller/referenciaController.php');
+include_once('../../../controller/referenciaControllerEditar.php');
 
 if (isset($_GET['idFuncionario'])) {
     $idFuncionario = $_GET['idFuncionario'];
@@ -142,9 +142,8 @@ if (isset($_GET['idFuncionario'])) {
         </div>
 
         <div class="box-form-referencia">
-            <form method="POST" action="#" onsubmit="adicionarRestaurante(event)">
+            <form id="form2" method="POST" action="../../../controller/referenciaControllerEditar.php" data-idFuncionario="<?php echo $idFuncionario; ?>" >
                 <div class="form-input">
-                <input type="hidden" name="acao" id="acao" value="inserir">
                     <input type="hidden" name="idFuncionario" id="idFuncionario" value="<?php echo $idFuncionario; ?>">
                     <input type="hidden" name="idRestaurante" id="idRestaurante">
                     <label for="restaurante">Restaurante</label>
@@ -158,7 +157,7 @@ if (isset($_GET['idFuncionario'])) {
                 </div>
 
                 <div class="box-button">
-                    <button type="submit" name="salvar_restaurante_novo" class="salvar-edicao-nova">Salvar restaurante</button>
+                    <button type="submit" name="salvar_restaurante_novo" value="salvar_restaurante_novo" class="salvar-edicao-nova" id="btn-salvar-restaurante">Salvar restaurante</button>
                 </div>
             </form>
         </div>
@@ -178,43 +177,28 @@ if (isset($_GET['idFuncionario'])) {
                     </tr>
                 </thead>
                 <tbody>
-                     <!-- Tabela de restaurantes csdastrado -->
-                    <?php foreach ($recuperar_referencia as $index => $referencia): ?>
-                        <tr  class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                    <!-- Tabela de restaurantes csdastrado -->
+                    <?php foreach ($dados_referencia as $referencia) : ?>
+                        <tr>
+                            <td></td>
+                            <td><?php echo $referencia['idRestaurante']; ?></td>
+                            <td><?php echo $referencia['nome']; ?></td>
+                            <td><?php echo $referencia['data_inicio']; ?></td>
+                            <td><?php echo $referencia['data_fim']; ?></td>
                             <td>
-                                <?php echo $referencia['idFuncionario']; ?>
-                            </td>
                             <td>
-                                <?php echo $referencia['idRestaurante']; ?>
+                                <a onclick="" class="remover-restaurante" href="pageFuncionarioAlteracao.php?idFuncionario=<?php echo $idFuncionario; ?>&idRestaurante=<?php echo  $referencia['idRestaurante']; ?>&acao=delete"> Remover </a>
+                                <button class="editar-restaurante" > Editar </button>
                             </td>
-                            <td>
-                                <?php echo $referencia['nome']; ?>
-                            </td>
-                            <td>
-                                <?php echo $referencia['data_inicio']  = implode("/",array_reverse(explode("-", $referencia['data_inicio']))); ?>
-                            </td>
-                            <td>
-                                <?php echo $referencia['data_fim']  = implode("/",array_reverse(explode("-", $referencia['data_fim'])));?>
-                            </td>
-                            <td>
-                                <button class="remover-restaurante" data-nome="<?php echo $referencia['nome']; ?>"
-                                    data-id="<?php echo $referencia['idRestaurante']; ?>"> Remover </button>
-                            </td>
-                            <td>
-                                <button class="editar-restaurante" data-nome="<?php echo $referencia['nome']; ?>" 
-                                    data-indice="<?php echo $index; ?>"  data-id="<?php echo $referencia['idRestaurante']; ?>"> Editar </button>
-                            </td>
+                            
                         </tr>
-                    <?php  endforeach; echo "CERO:". $index;?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
-
-            <div class="box-button">
-                <button id="salvar-todos" name="alterar_refe" onclick="passarNovaReferenciaParaPHP()">Salvar Todos</button>
-            </div>
         </div>
     </section>
 
-    <script src="../../js/funcionarioAlteracao.js"></script>
+    <script src="../../js/funcioanrioAlteracao2.js"></script>
 </body>
+
 </html>

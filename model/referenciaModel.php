@@ -185,7 +185,4 @@ class referenciaModel
             return false; // Ou qualquer outro valor que indique um erro
         }
     }
-
-
 } // fim class
-?>

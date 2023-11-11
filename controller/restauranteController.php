@@ -8,8 +8,6 @@ include_once(__DIR__ .'../../model/restauranteModel.php');
 
 $restauranteModel = new restauranteModel($link);
 
-// PESQUISAR
-
 // SALVAR 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
 {
