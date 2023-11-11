@@ -8,12 +8,12 @@ include_once(__DIR__ .'../../model/referenciaModel.php');
 
 $referenciaModel = new referenciaModel($link);
 
-// SALVAR 
+// SALVAR E ALTERAR
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data = json_decode(file_get_contents("php://input"), true);
 
     $idFuncionario = $referenciaModel->pegarUltimoIdFuncionario();
-    
+
     $sucessos = [];
     $erros = [];
 
@@ -21,16 +21,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $idRestaurante = $item["idRestaurante"];
         $dataInicio = $item["data_inicio"];
         $dataFim = $item["data_fim"];
+        $isNewRow = isset($item["isNewRow"]) ? $item["isNewRow"] : false;
 
         // Valide os campos
         if (empty($idRestaurante) || empty($dataInicio) || empty($dataFim)) {
             $erros[] = "Campos obrigatórios não preenchidos.";
         } else {
-            // Salve os dados no banco de dados
-            if ($referenciaModel->create($idFuncionario, $idRestaurante, $dataInicio, $dataFim)) {
-                $sucessos[] = "Dados salvos com sucesso.";
+            // Decide se é uma inserção ou atualização com base na existência do idFuncionario
+            if ($isNewRow) {
+                // Inserção
+                if ($referenciaModel->create($idFuncionario, $idRestaurante, $dataInicio, $dataFim)) {
+                    $sucessos[] = "Dados salvos com sucesso.";
+                } else {
+                    $erros[] = "Erro ao salvar no banco de dados.";
+                }
             } else {
-                $erros[] = "Erro ao salvar no banco de dados.";
+                // Atualização
+                $idFuncionario = $item["idFuncionario"];
+                if ($referenciaModel->update($idFuncionario, $idRestaurante, $dataInicio, $dataFim)) {
+                    $sucessos[] = "Dados atualizados com sucesso.";
+                } else {
+                    $erros[] = "Erro ao atualizar no banco de dados.";
+                }
             }
         }
     }
@@ -44,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     echo json_encode($resposta);
     exit;
 }
-// RECUPERA OS DADOS E MOSTRA NA TABELA 
+// RECUPERA OS DADOS E MOSTRA NA TABELA - PEGAR OS DADOS ATUALIZADOS
 elseif (isset($_GET['acao']) && $_GET['acao'] === 'alteracao' && $_SERVER["REQUEST_METHOD"] === "GET") {
     $idFuncionario = $_GET["idFuncionario"];
     
@@ -95,6 +107,3 @@ else
 {
 
 }
-
-
-?>

@@ -148,7 +148,7 @@ unset($_SESSION['cargo']);
                 </div>
                 <!-- Criar -->
                 <div class="button-nova">
-                    <a href="./Funcionario/pageFuncionarioCadastro.php">
+                    <a href="./Funcionario/pageFuncionarioCadastro.php?acao=cadastro">
                         <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
