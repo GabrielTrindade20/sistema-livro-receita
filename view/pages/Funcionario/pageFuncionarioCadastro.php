@@ -86,7 +86,7 @@ include_once('../../../controller/referenciaController.php');
                     <label for="cargo">Cargo:</label>
 
                     <?php
-                    monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
+                    monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
                     ?> <br>
                 </div>
 
