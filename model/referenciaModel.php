@@ -101,12 +101,12 @@ class referenciaModel
     {
         $query = "UPDATE referencia 
               SET idRestaurante = ?, data_inicio = ?, data_fim = ?
-              WHERE idFuncionario = ?;";
+              WHERE idFuncionario = ? AND idRestaurante= ?;";
 
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("issi", $idRestaurante, $data_inicio, $data_fim, $idFuncionario);
+            $stmt->bind_param("issii", $idRestaurante, $data_inicio, $data_fim, $idFuncionario, $idRestaurante);
 
             if ($stmt->execute()) {
                 $this->sucesso[] = "Atualização efetuada com sucesso!";

@@ -144,6 +144,7 @@ if (isset($_GET['idFuncionario'])) {
         <div class="box-form-referencia">
             <form id="form2" method="POST" action="../../../controller/referenciaControllerEditar.php" data-idFuncionario="<?php echo $idFuncionario; ?>" >
                 <div class="form-input">
+                    <input type="hidden" name="acao" id="acao" value="salvar"> 
                     <input type="hidden" name="idFuncionario" id="idFuncionario" value="<?php echo $idFuncionario; ?>">
                     <input type="hidden" name="idRestaurante" id="idRestaurante">
                     <label for="restaurante">Restaurante</label>
@@ -180,15 +181,16 @@ if (isset($_GET['idFuncionario'])) {
                     <!-- Tabela de restaurantes csdastrado -->
                     <?php foreach ($dados_referencia as $referencia) : ?>
                         <tr>
-                            <td></td>
+                            <td><?php echo $referencia['idFuncionario']; ?></td>
                             <td><?php echo $referencia['idRestaurante']; ?></td>
                             <td><?php echo $referencia['nome']; ?></td>
-                            <td><?php echo $referencia['data_inicio']; ?></td>
-                            <td><?php echo $referencia['data_fim']; ?></td>
+                            <td><?php echo $referencia['data_inicio'] = implode("/",array_reverse(explode("-", $referencia['data_inicio']))); ; ?></td>
+                            <td><?php echo $referencia['data_fim'] = implode("/",array_reverse(explode("-", $referencia['data_fim']))); ; ?></td>
                             <td>
                             <td>
                                 <a onclick="" class="remover-restaurante" href="pageFuncionarioAlteracao.php?idFuncionario=<?php echo $idFuncionario; ?>&idRestaurante=<?php echo  $referencia['idRestaurante']; ?>&acao=delete"> Remover </a>
-                                <button class="editar-restaurante" > Editar </button>
+                                <a onclick="editarRestaurante(<?php echo $referencia['idRestaurante']; ?>, '<?php echo $referencia['nome']; ?>', '<?php echo $referencia['data_inicio']; ?>', '<?php echo $referencia['data_fim']; ?>')"
+                                href="#" class="editar-restaurante"  id="btn-salvar-restaurante"> Editar </a>
                             </td>
                             
                         </tr>
