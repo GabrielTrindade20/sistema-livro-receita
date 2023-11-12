@@ -33,7 +33,7 @@ include_once('../../../controller/referenciaController.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menu.php'); ?>
+    <?php require_once('../../components/menuSubFolders2.php'); ?>
 
     <section class="conteiner-conteudo">
         <div>
@@ -45,8 +45,8 @@ include_once('../../../controller/referenciaController.php');
             <div class="title-container">
                 <h2>Funcionário</h2>
             </div>
-            <for../../cm method="POST" action="ontroller/controllerCargo/cargoController.php">
-                <div class="form-row-container">
+            <form method="POST" action="../../controller/funcionarioController/funcionarioController.php">
+                 <div class="form-row-container">
                     <div class="form-field">
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome"
