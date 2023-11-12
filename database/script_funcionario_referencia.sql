@@ -45,16 +45,15 @@ VALUES
 -- Inserir restaurantes fictícios
 INSERT INTO restaurante (nome, contato)
 VALUES
-('Restaurante A', '123-456-7890'),
-('Restaurante B', '987-654-3210'),
-('Restaurante C', '555-555-5555');
+('Restaurante d', '123-456-7890'),
+('Restaurante f', '987-654-3210'),
+('Restaurante g', '555-555-5555');
 
 -- Inserir associações funcionário-restaurante fictícias
 INSERT INTO referencia (idFuncionario, idRestaurante, data_inicio, data_fim)
 VALUES
-(1, 1, '2023-01-15', '2023-04-30'),
-(2, 2, '2023-02-20', '2023-04-30'),
-(3, 3, '2023-03-10', '2023-04-30');
+(5, 1, '2023-01-15', '2023-04-30'),
+(5, 2, '2023-02-20', '2023-04-30');
 
 DELETE 
 FROM referencia 
@@ -62,8 +61,8 @@ WHERE idFuncionario = 8 AND
 idRestaurante = 3;
 
 UPDATE referencia 
-SET idRestaurante = 2, data_inicio = '2023-05-30', data_fim = '2023-10-30'
-WHERE idFuncionario = 5;
+SET idRestaurante = 3, data_inicio = '2023-05-20', data_fim = '2023-12-30'
+WHERE idFuncionario = 8 AND idRestaurante = 2;
 
 select * from referencia;
 
@@ -89,15 +88,16 @@ SELECT idCargo, descricao FROM cargo;
 SELECT * FROM funcionario  
 WHERE idFuncionario = (select max(idFuncionario) from funcionario);
 
-SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo, 
-r.restaurante as restaurante, r.data_inicio as restaurante, r.data_fim as restaurante
-FROM funcionario f
-JOIN Cargo c ON f.idCargo = c.idCargo
-JOIN restaurante r ON f.idCargo = c.idCargo;
-
-SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+SELECT funcionario.idFuncionario, restaurante.idRestaurante, restaurante.nome, referencia.data_inicio, referencia.data_fim
 FROM funcionario
 INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
-INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
-WHERE funcionario.idFuncionario = 4;
+INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante;
 
+SELECT COUNT(*) FROM referencia WHERE idRestaurante = 4 AND idFuncionario = 5;
+
+delete from referencia where idFuncionario = 8 and idRestaurante = 6;
+select * from referencia;
+
+UPDATE referencia 
+              SET idRestaurante = ?, data_inicio = ?, data_fim = ?
+              WHERE idFuncionario = ? AND idRestaurante= ?;

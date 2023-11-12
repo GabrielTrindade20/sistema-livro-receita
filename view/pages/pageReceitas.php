@@ -22,25 +22,6 @@ include_once('../../controller/receitaController.php');
     />
     
     <title>Receitas</title>
-
-    <script>
-        function confirmarExclusao(idReceita) {
-            var confirmacao = confirm("Tem certeza de que deseja excluir esta categoria?");
-
-            if (confirmacao) {
-                // Se o usuário confirmar a exclusão, redirecione para o script de exclusão com o ID
-                window.location.href = "../../controller/receitaController.php?acao=excluir&idReceita=" + idReceita;
-            } else {
-                // Se o usuário cancelar, não faça nada
-            }
-        }
-        function confirmarExclusaoCheckbox() {
-            if (confirm("Tem certeza de que deseja excluir as receitas selecionadas?")) {
-                document.forms["excluirSelect"].submit();
-            }
-        }
-    </script>
-
 </head>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../components/menu.php'); ?>
@@ -72,7 +53,7 @@ include_once('../../controller/receitaController.php');
                 </div>
                 <!-- Criar -->
                 <div class="button-nova">
-                    <a href="./Receitas/receitaCadastro.php">
+                    <a href="./Receitas/pageReceitaCadastro.php">
                         <button class="nova-receita-button">Nova Receita</button>
                     </a>
                 </div>

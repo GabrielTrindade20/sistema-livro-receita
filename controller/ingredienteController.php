@@ -8,9 +8,6 @@ include_once(__DIR__ .'../../model/ingredienteModel.php');
 
 $ingredienteModel = new ingredienteModel($link);
 
-// PESQUISAR
-//$sendPesqCategria = filter_input( )
-
 // SALVAR INGREDIENTE
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
 {
