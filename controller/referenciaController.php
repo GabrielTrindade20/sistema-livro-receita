@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
                 header("Location: ../view/pages/Restaurante/pageRestauranteCadastro.php");
                 exit();
             } else {
-                $_SESSION["sucesso"] = $referenciaModel->verificaNao;
+                $_SESSION["sucesso"] = "Cadastrado com sucesso";
 
                 // Salve os dados no banco de dados
                 if ($referenciaModel->create($idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
@@ -65,5 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
     }
 }
 
+
+
 // RETORNAR DADOS SALVOS
 $referencias = $referenciaModel->leitura();
+
+$count_referencias = count($referencias);
+

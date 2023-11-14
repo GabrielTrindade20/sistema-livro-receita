@@ -94,7 +94,7 @@ include_once('../../../controller/restauranteController.php');
 
                 unset($_SESSION["erros"]);
             } elseif (isset($_SESSION["sucesso"])) {
-                $sucessos = $_SESSION["sucesso"];
+                $sucesso = $_SESSION["sucesso"];
                 echo $sucesso . "<br>";
 
                 unset($_SESSION["sucesso"]);
@@ -132,40 +132,3 @@ include_once('../../../controller/restauranteController.php');
 </body>
 
 </html>
-
-
-<!-- <div class="box-form-table">
-            <h3>Restaurantes Cadastrados</h3>
-
-            <table class="table" id="table2" border="1" align="right">
-                <thead>
-                    <tr>
-                        <th class="select-column">-</th>
-                        <th class="select-column">-</th>
-                        <th>NOME</th>
-                        <th>DATA INÍCIO</th>
-                        <th>DATA FIM</th>
-                        <th class="operacao" colspan="2">OPERAÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <?php foreach ($dados_referencia as $referencia) : ?>
-                        <tr>
-                            <td><?php echo $referencia['idFuncionario']; ?></td>
-                            <td><?php echo $referencia['idRestaurante']; ?></td>
-                            <td><?php echo $referencia['nome']; ?></td>
-                            <td><?php echo $referencia['data_inicio'] = implode("/", array_reverse(explode("-", $referencia['data_inicio'])));; ?></td>
-                            <td><?php echo $referencia['data_fim'] = implode("/", array_reverse(explode("-", $referencia['data_fim'])));; ?></td>
-                            <td>
-                            <td>
-                                <a onclick="" class="remover-restaurante" href="pageFuncionarioAlteracao.php?idFuncionario=<?php echo $idFuncionario; ?>&idRestaurante=<?php echo  $referencia['idRestaurante']; ?>&acao=delete"> Remover </a>
-                                <a onclick="editarRestaurante(<?php echo $referencia['idRestaurante']; ?>, '<?php echo $referencia['nome']; ?>', '<?php echo $referencia['data_inicio']; ?>', '<?php echo $referencia['data_fim']; ?>')"
-                                href="#" class="editar-restaurante"  id="btn-salvar-restaurante"> Editar </a>
-                            </td>
-
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div> -->

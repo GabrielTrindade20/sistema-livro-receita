@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
                     $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
                 }
                 header("Location: ../view/pages/Restaurante/cadastrarRestaurante.php");
-                exit();  echo " erro";
+                exit(); 
                 
             }
         }
@@ -66,6 +66,7 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'delete') {
         $_SESSION["erros"] = ["ID de restaurante não especificado."];
     }
 }
+
 
 $restaurantes = $restauranteModel->read();
 

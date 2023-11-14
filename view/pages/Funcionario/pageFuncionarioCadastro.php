@@ -65,7 +65,7 @@ include_once('../../../controller/referenciaController.php');
                     <input type="text" id="rg" name="rg" value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
 
                     <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome_funcionario']) ? $_SESSION['nome_funcionario'] : ''; ?>" required>
+                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome_funcionarioF']) ? $_SESSION['nome_funcionarioF'] : ''; ?>" required>
 
                     <label for="data_ingresso">Data Ingresso:</label>
                     <input type="date" id="data_ingresso" name="data_ingresso" value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>" required>
@@ -91,86 +91,6 @@ include_once('../../../controller/referenciaController.php');
         </div>
     </section>
 
-    <!-- Cadastro de restarurante que um funcionario ja trabalhou -->
-    <section class="conteiner-referencia" align="right">
-        <div class="box-search">
-            <h2>Cadastro de Restaurante<h2>
-
-            <input type="search" name="pesquisar" id="pesquisarReferencia" placeholder="Pesquisar">
-            <button onclick="searchData()">pesquisar</button>
-        </div>
-
-        <div align="right">
-            <h3>Restaurantes</h3>
-
-            <table class="table" id="table1" border="1">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Contato</th>
-                        <th>Operações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Tabela de restaurantes -->
-                    <?php foreach ($restaurantes as $index => $restaurante) : ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                            <td>
-                                <?php echo $restaurante['nome']; ?>
-                            </td>
-                            <td>
-                                <?php echo $restaurante['contato']; ?>
-                            </td>
-                            <td>
-                                <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>" data-id="<?php echo $restaurante['idRestaurante']; ?>"> Adicionar + </button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <div class="form-referencia">
-            <form method="POST" action="#" onsubmit="adicionarRestaurante(event)">
-                <div>
-                    <input type="hidden" name="idRestaurante" id="idRestaurante">
-                    <label for="restaurante">Restaurante</label>
-                    <input type="text" name="restaurante" id="restaurante">
-                    <br>
-                    <label for="restaurante">Data de Início</label>
-                    <input type="date" name="data_inicio" id="data_inicio">
-                    <br>
-                    <label for="restaurante">Data de Fim</label>
-                    <input type="date" name="data_fim" id="data_fim">
-                </div>
-
-                <button type="submit" name="salvar_restaurante" class="salvar-edicao">Salvar restaurante</button>
-            </form>
-        </div>
-
-        <div>
-            <h3>Restaurantes Cadastrados</h3>
-
-            <table class="table" id="table2" border="1" align="right">
-                <thead>
-                    <tr>
-                        <th class="select-column">-</th>
-                        <th>NOME</th>
-                        <th>DATA INÍCIO</th>
-                        <th>DATA FIM</th>
-                        <th class="operacao" colspan="2">OPERAÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Gerando de acordo com o que foi cadastrado -->
-                </tbody>
-            </table>
-
-            <button id="salvar-todos" name="salvar_referencia" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
-
-            <br>
-        </div>
-    </section>
 </body>
 
 <script>
