@@ -5,9 +5,8 @@ function adicionarFuncionario(idFuncionario, nome ) {
     // Altere o valor do campo "acao" para "atualizar"
     document.getElementById('acao').value = 'atualizar';
     
-    console.log('idIngrediente:', idIngrediente);
+    console.log('idIngrediente:', idFuncionario);
     console.log('nome_ingrediente:', nome);
-    console.log('descricao:', descricao);
     
     // Adicione um evento de clique ao botão de salvar para chamar a função de atualização
     document.getElementById('btn-salvar-ingrediente').addEventListener('click', function (event) {
@@ -24,7 +23,7 @@ function atualizarIngrediente() {
 
     // Realize uma solicitação AJAX para o script PHP de atualização
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '../../controller/ingredienteController.php', true);
+    xhr.open('POST', '../../controller/referenciaControllerEditar.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -35,9 +34,6 @@ function atualizarIngrediente() {
     xhr.send('idIngrediente=' + idIngrediente + '&nome_ingrediente=' + nome_ingrediente + '&descricao=' + descricao);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    
-});
 
 document.addEventListener('DOMContentLoaded', function () {
     // Adicione um ouvinte de evento de clique ao documento

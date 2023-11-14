@@ -132,9 +132,9 @@ include_once('../../controller/referenciaController.php');
                                 <a href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario']; ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
-                                <a href="#" onclick="confirmarExclusao(<?php echo $referencia['idFuncionario']; ?>);" class="button">
+                                a href="#" onclick="confirmarExclusao(<?php echo $referencia['idFuncionario']; ?>);" class="button">
                                     <span class="material-symbols-outlined"> delete </span>
-                                </a>
+                                </a><
                             </td>
                         </tr>
                     <?php endforeach; ?>
