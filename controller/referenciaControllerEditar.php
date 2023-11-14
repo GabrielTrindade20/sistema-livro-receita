@@ -18,18 +18,18 @@ var_dump($idFuncionario, $idRestaurante, $data_inicio, $data_fim);
         // Se o idRestaurante estiver presente, execute a lógica de atualização
         if (!empty($idRestaurante)) {
             if ($referenciaModel->update($idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
-                // Redirecione para a página desejada após a atualização
-                header("Location: ../view/pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=$idFuncionario&acao=alteracao");
+                $_SESSION["sucessoE"] = "Atualizado";
+                header("Location: ../view/pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=$idFuncionario");
                 exit(); // Certifique-se de encerrar o script após o redirecionamento
             } else {
-                echo "Erro na atualização";
+                $_SESSION["errosE"] =  "Erro na atualização";
             }
         }
     } elseif ($acao === "salvar") {
         // Salve os dados no banco de dados
         if ($referenciaModel->create($idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
-            // Redirecione para a página desejada
-            header("Location: ../view/pages/Receitas/pageRestauranteCadastro.php?idFuncionario=$idFuncionario&acao=alteracao");
+            $_SESSION["sucessoE"] = "Cadastrado";
+            header("Location: ../view/pages/Restaurante/pageRestauranteAlteracao.phpidFuncionario=$idFuncionario");
             exit(); // Certifique-se de encerrar o script após o redirecionamento
 
         } else {
@@ -40,14 +40,19 @@ var_dump($idFuncionario, $idRestaurante, $data_inicio, $data_fim);
     }
 }
 
-// DELETE
-if (isset($_GET['acao']) && $_GET['acao'] == 'delete') {
-    $idFuncionario = $_GET["idFuncionario"];
-    $idRestaurante = $_GET["idRestaurante"];
+// EXCLUIR
+if (isset($_GET['acao']) && $_GET['acao'] === 'delete') {
+    if (isset($_GET['idFuncionario'])&&isset($_GET['idRestaurante'])) {
+        $idRestaurante = $_GET['idRestaurante'];
+        $idFuncionario = $_GET['idFuncionario'];
 
-    $referenciaModel->delete($idFuncionario, $idRestaurante);
+        if ($referenciaModel->delete($idFuncionario,$idRestaurante)) {
+            $_SESSION["sucessoE"] = "Deletado";
+        } else {
+            $_SESSION["errosE"] = "Erro ao excluir no banco de dados.";
+        }
+    } else {
+        $_SESSION["errosE"] = "ID não especificado.";
+    }
 }
 
-// // READ
-// $idFuncionario = $_GET["idFuncionario"];
-// $dados_referencia = $referenciaModel->recuperaReferencia($idFuncionario);
