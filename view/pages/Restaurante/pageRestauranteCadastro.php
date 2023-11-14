@@ -19,8 +19,8 @@ include_once('../../../controller/restauranteController.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders.php'); ?>
-
+    <?php require_once('../../components/menuSubFolders2.php'); ?>
+    
     <section class="conteiner" align="right">
         <!-- Botão para cancelar e voltar à página principal -->
         <a href="../pageRestaurante.php">Cancelar</a>
