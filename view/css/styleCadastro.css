@@ -6,6 +6,9 @@
     gap: 1rem;
     margin-bottom: 1rem;
 }
+.form-row-container input{
+    width: 100%;
+}
 
 .form-row-container:nth-child(3) {
     gap: 2.9rem

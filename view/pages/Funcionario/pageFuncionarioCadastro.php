@@ -21,7 +21,7 @@ include_once('../../../controller/referenciaController.php');
     <link rel="stylesheet" href="../../css/styleTable.css">
     <link rel="stylesheet" href="../../css/styleResponsivo.css">
     <link rel="stylesheet" href="../../css/styleMenu.css">
-    <link rel="stylesheet" href="../../css/styleFuncionarioCadastro.css">
+    <link rel="stylesheet" href="../../css/styleCadastro.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -45,8 +45,9 @@ include_once('../../../controller/referenciaController.php');
             <div class="title-container">
                 <h2>Funcionário</h2>
             </div>
-            <form method="POST" action="../../controller/funcionarioController/funcionarioController.php">
-                 <div class="form-row-container">
+
+            <form method="POST" action="../../../controller/controllerFuncionario/funcionarioController.php">
+                <div class="form-row-container">
                     <div class="form-field">
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome"
@@ -59,7 +60,7 @@ include_once('../../../controller/referenciaController.php');
                             required>
                     </div>
                     <div class="form-field">
-                        <label for="nome">Restaurante:</label>
+                        <label for="nome">Cargo:</label>
                         <?php
                         monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
                         ?>
@@ -68,21 +69,21 @@ include_once('../../../controller/referenciaController.php');
                 <div class="form-row-container">
                     <div class="form-field">
                         <label for="nome">RG:</label>
-                        <input type="text" id="nome" name="nome" required>
+                        <input type="text" id="rg" name="rg" required>
                     </div>
                     <div class="form-field">
                         <label for="nome">Salário:</label>
                         <input type="text" id="salario" name="salario"
                             value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
                     </div>
-                </div>
-                <div class="form-row-container">
                     <div class="form-field">
-                        <label for="nome">Cargo:</label>
+                        <label for="nome">Restaurante:</label>
                         <?php
-                        monta_select_cargo2(isset($_SESSION['funcionario']) ? $_SESSION['funcionario'] : '');
+                        monta_select_restaurante(isset($_SESSION['idRestaurante']) ? $_SESSION['idRestaurante'] : '');
                         ?>
                     </div>
+                </div>
+                <div class="form-row-container">
                     <div class="form-field">
                         <label for="nome">Data de Ingresso:</label>
                         <input type="date" id="data_ingresso" name="data_ingresso"
@@ -90,15 +91,14 @@ include_once('../../../controller/referenciaController.php');
                             required>
                     </div>
                 </div>
-
                 <br>
-
-                <div class="conteiner-operacoes">
-                    <!-- Botão para salvar o funcionário -->
-                    <button type="submit" name="salvar" class="button">Salvar</button>
-
-                    <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../pageFuncionario.php">Cancelar</a>
+                <div class="form-row-container">
+                    <div class="conteiner-operacoes">
+                        <!-- Botão para salvar o funcionário -->
+                        <button type="submit" name="salvar" class="button">Salvar</button>
+                        <!-- Botão para cancelar e voltar à página principal -->
+                        <a href="../pageFuncionario.php">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>

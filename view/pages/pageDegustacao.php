@@ -1,5 +1,6 @@
 <?php
 include_once('../../controller/protect.php');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -17,9 +18,10 @@ include_once('../../controller/protect.php');
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página de Receitas</title>
 </head>
+
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php'); ?>
 
     <div id="sub-titulo">
         <a href="">links paginas</a>
@@ -34,7 +36,9 @@ include_once('../../controller/protect.php');
                 </div>
 
                 <div class="info-receitas">
-                    <a href="">(10) Receitas</a>
+                    <a href="#">
+                        <!-- <?php echo "(" . $countDegustacao . ") Degustação"; ?> -->
+                    </a>
                 </div>
             </div>
 

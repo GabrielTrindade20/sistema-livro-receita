@@ -3,9 +3,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once(__DIR__ . '../../configuration/connect.php');
-include_once(__DIR__ . '../../model/funcionarioModel.php');
-include_once(__DIR__ . '../../model/referenciaModel.php');
+include_once(__DIR__ . '../../../configuration/connect.php');
+include_once(__DIR__ . '../../../model/funcionarioModel.php');
+include_once(__DIR__ . '../../../model/referenciaModel.php');
 
 $funcionarioModel = new funcionarioModel($link);
 
@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
             }
 
             // Redirecionar
-            header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
+            header("Location: ../../view/pages/pageFuncionario.php");
             exit();
         }
     }
