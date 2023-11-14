@@ -200,7 +200,7 @@ if (isset($_GET['idFuncionario'])) {
         </div>
     </section>
 
-    <script src="../../js/funcioanrioAlteracao2.js"></script>
+    <script src="../../js/funcioanrioAlteracao.js"></script>
 </body>
 
 </html>

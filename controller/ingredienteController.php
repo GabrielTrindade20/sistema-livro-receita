@@ -9,32 +9,52 @@ include_once(__DIR__ .'../../model/ingredienteModel.php');
 $ingredienteModel = new ingredienteModel($link);
 
 // SALVAR INGREDIENTE
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) 
 {
+    $idIngrediente = $_POST["idIngrediente"];
+    $nome_ingrediente = $_POST["nome_ingrediente"];
     $descricao = $_POST["descricao"];
     
-    if(empty($descricao)){
-        $ingredienteModel->validar_campos($descricao);
-    }
-    else {
-        if (!empty($ingredienteModel->getErros())) {
-            // Há erros, armazene-os na sessão
-            $_SESSION["erros"] = $ingredienteModel->getErros();
-            header("Location: ../view/pages/Receitas/receitaCadastro.php");
-            exit();
-        } else {
-            // Não há erros, salve no banco de dados
-            if ($ingredienteModel->create($descricao)) {
-                $_SESSION["sucesso"] = $ingredienteModel->getSucesso();
+    $acao = $_POST["acao"];
+
+    var_dump($acao, $idIngrediente, $nome_ingrediente,$descricao) ;
+    if ($acao === "atualizar") {
+        if (!empty($idIngrediente)) {
+            if ($ingredienteModel->update($idIngrediente, $nome_ingrediente, $descricao)) {
+                // Redirecione para a página desejada após a atualização
+                header("Location: ../view/pages/Receitas/pageReceitaIngreMedida.php");
+                exit(); // encerrar o script após o redirecionamento
+                echo " atualizando";
             } else {
-                $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
+                echo "Erro na atualização";
             }
-            header("Location: ../view/pages/Receitas/receitaCadastro.php");
-            exit();
         }
+    } elseif ($acao === "salvar") {
+        // Salve os dados no banco de dados
+        if ($ingredienteModel->create($nome_ingrediente, $descricao )) {
+            // Redirecione para a página desejada
+            header("Location: ../view/pages/Receitas/pageReceitaIngreMedida.php");
+            exit(); 
+            echo " salvo";
+
+        } else {
+            echo " erro";
+        }
+    } else {
+        echo  "erro";
     }
-    mysqli_close($link);
 }
 
+
+// DELETE
+if (isset($_GET['acao']) && $_GET['acao'] == 'delete') {
+    $idIngrediente = $_GET["idIngrediente"];
+
+    $ingredienteModel->delete($idIngrediente);
+}
+
+
+// READ
+$dados_ingredientes = $ingredienteModel->read();
 
 ?>

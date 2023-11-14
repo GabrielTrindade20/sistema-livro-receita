@@ -8,36 +8,48 @@ include_once(__DIR__ .'../../model/medidaModel.php');
 
 $medidaModel = new medidaModel($link);
 
-// PESQUISAR
-//$sendPesqCategria = filter_input( )
-
 // SALVAR MEDIDA
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acaoM"])) 
 {
-    $descricao = $_POST["descricao"];
+    $idMedida = $_POST["idMedida"];
+    $medida = $_POST["medida"];
     
-    if(empty($descricao)){
-        $medidaModel->validar_campos($descricao);
-    }
-    else {
-        if (!empty($medidaModel->getErros())) {
-            // Há erros, armazene-os na sessão
-            $_SESSION["erros"] = $medidaModel->getErros();
-            header("Location: ../view/pages/Receitas/receitaCadastro.php");
-            exit();
-        } else {
-            // Não há erros, salve no banco de dados
-            if ($medidaModel->create($descricao)) {
-                $_SESSION["sucesso"] = $medidaModel->getSucesso();
+    $acao = $_POST["acaoM"];
+
+    if ($acao === "atualizarM") {
+        if (!empty($idMedida)) {
+            if ($medidaModel->update($idMedida, $medida)) {
+                // Redirecione para a página desejada após a atualização
+                header("Location: ../view/pages/Receitas/pageReceitaIngreMedida.php");
+                exit(); // encerrar o script após o redirecionamento
             } else {
-                $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
+                echo "Erro na atualização";
             }
-            header("Location: ../view/pages/Receitas/receitaCadastro.php");
-            exit();
         }
+    } elseif ($acao === "salvarM") {
+        // Salve os dados no banco de dados
+        if ($medidaModel->create($medida)) {
+            // Redirecione para a página desejada
+            header("Location: ../view/pages/Receitas/pageReceitaIngreMedida.php");
+            exit(); 
+
+        } else {
+            echo " erro";
+        }
+    } else {
+        echo  "erro";
     }
-    mysqli_close($link);
 }
 
 
+// DELETE
+if (isset($_GET['acao']) && $_GET['acao'] == 'deleteM') {
+    $idMedida = $_GET["idMedida"];
+
+    $medidaModel->delete($idMedida);
+}
+
+
+// READ
+$dados_medidas = $medidaModel->read();
 ?>

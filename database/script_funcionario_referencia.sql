@@ -97,7 +97,3 @@ SELECT COUNT(*) FROM referencia WHERE idRestaurante = 4 AND idFuncionario = 5;
 
 delete from referencia where idFuncionario = 8 and idRestaurante = 6;
 select * from referencia;
-
-UPDATE referencia 
-              SET idRestaurante = ?, data_inicio = ?, data_fim = ?
-              WHERE idFuncionario = ? AND idRestaurante= ?;

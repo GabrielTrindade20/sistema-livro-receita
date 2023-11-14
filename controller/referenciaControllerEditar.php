@@ -46,15 +46,6 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'delete') {
     $referenciaModel->delete($idFuncionario, $idRestaurante);
 }
 
-// ATUALIZAR
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $idFuncionario = $_POST["idFuncionario"];
-    $idRestaurante = $_POST["idRestaurante"];
-    $data_inicio = $_POST["data_inicio"];
-    $data_fim = $_POST["data_fim"];
-}
-
-
 // READ
 $idFuncionario = $_GET["idFuncionario"];
 $dados_referencia = $referenciaModel->recuperaReferencia($idFuncionario);

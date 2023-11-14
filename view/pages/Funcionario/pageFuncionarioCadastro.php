@@ -27,7 +27,7 @@ include_once('../../../controller/referenciaController.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders.php'); ?>
+    <?php require_once('../../components/menuSubFolders2.php'); ?>
 
     <!-- Cadastro do funcionario -->
     <section class="conteiner-conteudo">

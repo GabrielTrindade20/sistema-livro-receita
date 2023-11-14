@@ -105,7 +105,7 @@ include_once('../../controller/receitaController.php');
                                 <?php echo $categoria['descricao']; ?>
                             </td>
                             <td>
-                                <a href="../pages/Categoria/pageCategoriaAlteracao.php?idCategoria=<?php echo $categoria['idCategoria']; ?>">
+                                <a href="../pages/CategoriaReceitas/pageReceitaIngreMedida.php?idCategoria=<?php echo $categoria['idCategoria']; ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
                             </td>

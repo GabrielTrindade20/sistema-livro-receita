@@ -1,6 +1,5 @@
 <?php
 include_once('../../../controller/protect.php');
-
 include_once('../../../configuration/connect.php');
 include '../../../model/funcoes.php';
 include_once('../../../controller/receitaController.php');
@@ -16,7 +15,7 @@ include_once('../../../controller/receitaController.php');
     <link rel="stylesheet" href="../css/styleHomePage.css">
     <link rel="stylesheet" href="../css/styleMenu.css">
     <!-- <link rel="stylesheet" href="../../css/styleEdica.css"> -->
-    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Receita Cadastro</title>
 </head>
@@ -56,29 +55,24 @@ include_once('../../../controller/receitaController.php');
         <div class="conteiner-abas">
             <form method="POST" action="../../../controller/receitaController.php">
                 <div class="box-foto">
-                    <input type="file" accept="image/*" />
+                    <label for="foto_receita">Foto da Receita</label>
+                    <input type="file" accept="image/*" name="foto_receita">
                 </div>
                 <div class="conteiner-dados">
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
                     <br>
-                    <label for="categoria">Categoria</label>
-                    <?php monta_select_categoria(); ?>
-                    <br>
                     <label for="data_criacao">Data de Criação</label>
                     <input type="date" id="data_criacao" name="data_criacao" required>
                     <br>
-                    <label for="cozinheiro">Cozinheiro</label>
-                    <?php monta_select_cozinheiro(); ?>
-                    <br>
-                    <label for="quantidade">Quantidade de Porções</label>
-                    <input type="number" id="quantidade" name="quantidade" required>
+                    <label for="qtd_porcao">Quantidade de Porções</label>
+                    <input type="number" id="qtd_porcao" name="qtd_porcao" required>
                     <br>
                     <label for="degustador">Degustador</label>
-                    <?php monta_select_degustador(); ?>
+                        <?php monta_select_degustador(); ?>
                     <br>
-                    <label for="nota">Nota</label>
-                    <input type="number" id="nota" name="nota">
+                    <label for="nota_degustacao">Nota</label>
+                    <input type="number" id="nota_degustacao" name="nota_degustacao">
                     <br>
                     <label for="data_degustacao">Data de Degustação</label>
                     <input type="date" id="data_degustacao" name="data_degustacao">
@@ -89,6 +83,16 @@ include_once('../../../controller/receitaController.php');
                     <input type="radio" id="nao" name="ind_inedita" value="N">
                     <label for="nao">Não</label><br>
                     <br>
+                    <label for="cozinheiro">Cozinheiro</label>
+                    <?php monta_select_cozinheiro(); ?>
+                    <br>
+                    <label for="categoria">Categoria</label>
+                        <?php monta_select_categoria(); ?>
+                    <br>
+                    <div class="box-text-area">
+                        <h3 class="titulo">Modo de Preparo</h3>
+                        <textarea name="modo_preparo" id="" rows="15" cols="50" maxlength="4000"></textarea>
+                    </div>
                     <div class="conteiner-operacoes">
                         <button type="submit" name="salvar" class="button">Salvar</button>
                     </div>
@@ -98,69 +102,50 @@ include_once('../../../controller/receitaController.php');
 
     <!-- Cadastro medida ingrediente -->
     <section align="right">
-
-        <div>
-            <h1 class="titulo">Medida</h1>
-            <!-- Formulário de Cadastro -->
-            <form method="POST" action="../../../controller/medidaController.php">
-                <div class="conteiner-dados">
-                    <label for="medida">Medida:</label>
-                    <input type="text" id="medida" name="medida" required>
-                </div>
-                <br>
-
-                <div>
-                    <button type="submit" name="salvar_medida">Salvar</button>
-                </div>
-            </form>
-        </div>
-
-        <div>
-            <h3>Ingrediente</h3>
-            <!-- Formulário de Cadastro ingrediente-->
-            <form method="POST" action="../../../controller/ingredienteController.php">
-
-                <div class="conteiner-dados">
-                    <label for="nome">ingrediente:</label>
-                    <input type="text" id="nome" name="descricao" required>
-                </div>
-                <br>
-
-                <div class="conteiner-operacoes">
-                    <button type="submit" name="salvar_ingredientes" class="button">Salvar</button>
-                </div>
-            </form>
-        </div>
-
         <div>
             <!-- Medidas Cadastra -->
             <h3>Ingrediente Medidas Cadastradas</h3>
 
-            <table class="table" id="table" border="1" align="right">
-                <thead>
-                    <tr>
-                        <th class="select-column">-</th>
-                        <th>Medida</th>
-                        <th>Ingrediente</th>
-                        <th class="operacao" colspan="2">OPERAÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Gerando de acordo com o que foi cadastrado -->
-                </tbody>
-            </table>
+            <form action="" method="post">
+                <label for="cadas_ingrediente">Ingrediente</label>
+                <input type="text">
+                <label for="cadas_ingrediente">Medidas</label>
+                <input type="text">
+                <label for="cadas_ingrediente">Quantidade</label>
+                <input type="number">
 
-            <button id="salvar-todos" name="salvar_medidas" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
-            <br>
+                <button type="submit">Salvar</button>
+            </form>
+
+            <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a></div>
+
+            <div class="table-lista">
+                <h3>Lista de Ingredientes</h3>
+                <table class="table" id="table" border="1" align="right">
+                    <thead>
+                        <tr>
+                            <th class="select-column">-</th>
+                            <th>Medida</th>
+                            <th>Ingrediente</th>
+                            <th class="operacao" colspan="2">OPERAÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Gerando de acordo com o que foi cadastrado -->
+                    </tbody>
+                </table>
+
+                <button id="salvar-todos" name="salvar_medidas" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
+                <br>
+            </div>
+
         </div>
     </section>
 
     <section align="right">
-        <h1 class="titulo">Modo de Preparo</h1>
+        
 
-        <div class="box-text-area">
-            <textarea name="" id="" rows="15" cols="50" maxlength="4000"></textarea>
-        </div>
+        
     </section>
 
 </body>

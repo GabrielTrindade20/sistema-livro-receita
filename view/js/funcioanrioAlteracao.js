@@ -100,7 +100,6 @@ function atualizarRestaurante() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            // Lide com a resposta, se necessário
             console.log(xhr.responseText);
         }
     };
