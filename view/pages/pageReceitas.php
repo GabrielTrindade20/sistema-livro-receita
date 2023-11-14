@@ -39,7 +39,7 @@ include_once('../../controller/receitaController.php');
                 </div>
 
                 <div class="info-receitas">
-                    <?php echo "(" . $countReceitas . ") Receitas"; ?>
+                    <!-- <?php echo "(" . $countReceitas . ") Receitas"; ?> -->
                 </div>
             </div>
 
@@ -90,13 +90,13 @@ include_once('../../controller/receitaController.php');
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
-                        <th>Categorias</th>
+                        <th>Receita</th>
                         <th class="operacao">Operações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Tabela de categoria -->
-                    <?php foreach ($categorias as $index => $categoria): ?>
+                    <!-- <?php foreach ($categorias as $index => $categoria): ?>
                         <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
                             <td class="select-column">
                                 <input type="checkbox" name="checkbox[]" value="<?php echo $categoria['idCategoria']; ?>">
@@ -115,7 +115,7 @@ include_once('../../controller/receitaController.php');
                                 </a>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endforeach; ?> -->
                 </tbody>
             </table>
         </form>

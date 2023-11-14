@@ -106,10 +106,6 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){
 else 
 {
     $restaurantes = $restauranteModel->read();
-    mysqli_close($link);
-
-    // Contar quandas linhas tem na tabela
-    $countRestaurante = count($restaurantes); 
 }
 
 

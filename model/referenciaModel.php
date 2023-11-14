@@ -185,4 +185,23 @@ class referenciaModel
             return false; // Ou qualquer outro valor que indique um erro
         }
     }
+
+    public function leitura( )
+    {
+        $query = "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes, referencia.data_inicio, referencia.data_fim
+        FROM funcionario
+        INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+        INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante;";
+  
+        $referencias = array();
+        if ($resultados = mysqli_query($this->link, $query)) {
+            while ($row = mysqli_fetch_assoc($resultados)) {
+                $referencias[] = $row;
+            }
+            mysqli_free_result($resultados);
+        }
+
+        return $referencias;
+    }// fim read
+    
 } // fim class

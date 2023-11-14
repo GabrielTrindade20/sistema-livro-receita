@@ -130,7 +130,6 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'inativosSelecionados'){
 else 
 {
     $funcionarios = $funcionarioModel->read();
-    mysqli_close($link);
 
     // Contar quandas linhas tem na tabela
     $countFuncionarios = count($funcionarios); 
