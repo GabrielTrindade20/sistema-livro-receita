@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+  --blue: #01093F;
+  --white: #ffffff;
+  --black: #000000;
+  --laranja: #EEB253;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+a {
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: large;
+}
+
+.conteiner-pesquisa {
+  width: auto;
+  height: auto;
+  padding-left: 250px;
+  padding-top: 50px;
+  text-align: left;
+  display: block;
+  margin-left: auto;
+}
+
+
+.titulos h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  /* Tamanho inicial do texto */
+}
+
+.titulos a {
+  font-family: 'Poppins', sans-serif;
+}
+
+.titulos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribui os elementos igualmente no espaço disponível */
+  padding: 0px 15px 0px 0px;
+}
+
+.conteiner-titulo {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 50%;
+  margin: 0 3%;
+  padding: 0 0px;
+}
+
+.info-receitas {
+  margin-left: 5px;
+  background-color: #EEB253;
+  color: #fff;
+  padding: 2% 2%;
+  margin-left: 0%;
+  text-align: left;
+  border-radius: 50px;
+  margin-left: 10px;
+}
+
+.info-receitas a {
+  font-size: 0.8rem;
+  color: #fff;
+
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2% 0 2% 0;
+}
+
+.search-box {
+  width: auto;
+  max-width: 500px; /* Define um valor máximo para o input */
+  display: flex;
+  justify-content: center; /* Centralize horizontalmente */
+  align-items: center; /* Centralize verticalmente */
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.214);
+  height: 30px;
+  background-color: aliceblue;
+}
+
+.search-box-input-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-box-input {
+  position: relative;
+  margin: 0px 25px 0px 0px;
+  padding: 0px 0px 3px 5px;
+  width: 100%;
+  /* Ocupa todo o espaço disponível no contêiner */
+  font-size: 1rem;
+  transition: .45s;
+  background-color: none;
+  color: #000000;
+  border-radius: 15px;
+}
+
+.search-box-button {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-color: white;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: .3s;
+  border: none;
+  border-radius: 50px;
+}
+
+/* Estilo para o botão "Nova Receita" */
+
+.nova-receita-button {
+    background-color: #EEB253;
+    color: #fff;
+    padding: 10% 15px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    font-size: 0.8rem;
+}
+
+.button {
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+
