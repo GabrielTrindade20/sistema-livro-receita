@@ -20,7 +20,7 @@ include_once('../../../controller/restauranteController.php');
 <body>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
-    
+
     <section class="conteiner" align="right">
         <!-- Botão para cancelar e voltar à página principal -->
         <a href="../pageRestaurante.php">Cancelar</a>
@@ -75,7 +75,7 @@ include_once('../../../controller/restauranteController.php');
                                 <?php echo $restaurante['contato']; ?>
                             </td>
                             <td>
-                                <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>" data-id="<?php echo $restaurante['idRestaurante']; ?>"> Adicionar + </button>
+                                <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>" data-idR="<?php echo $restaurante['idRestaurante']; ?>"> Adicionar + </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -103,7 +103,7 @@ include_once('../../../controller/restauranteController.php');
         </div>
 
         <div class="box-form-referencia">
-            <form id="form2" method="POST" action="../../../controller/referenciaController.php">
+            <form id="form" method="POST" action="../../../controller/referenciaController.php">
                 <div class="form-input">
                     <input type="hidden" name="acao" id="acao" value="salvar">
                     <input type="hidden" name="idFuncionario" id="idFuncionario" value="">
@@ -128,7 +128,6 @@ include_once('../../../controller/restauranteController.php');
         </div>
     </section>
 
-    <script src="../../js/referencia.js"></script>
+    <script src="../../js/referencia2.js"></script>
 </body>
-
 </html>

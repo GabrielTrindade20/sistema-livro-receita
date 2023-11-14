@@ -18,22 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
     $acao = $_POST["acao"];
 
     var_dump($acao, $idFuncionario, $idRestaurante, $data_inicio, $data_fim);
-    if ($acao === "atualizar") {
-        if (!empty($idFuncionario) && !empty($idRestaurante) && !empty($data_inicio) && !empty($data_fim)) {
-            if ($referenciaModel->update($idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
-                // Redirecione para a página desejada após a atualização
-                header("Location: ../view/pages/Receitas/pageReceitaIngreMedida.php");
-                exit(); // encerrar o script após o redirecionamento
-                $_SESSION["sucesso"] = "Atualizando";
-            } else {
-                $_SESSION["erros"] = "Erro na atualização";
-            }
-        } else {
-            $_SESSION["erros"] = "Preenchar todos os campos.";
-            header("Location: ../view/pages/Restaurante/pageRestauranteCadastro.php");
-            exit();
-        }
-    } elseif ($acao === "salvar") {
+    if ($acao === "salvar") {
         if (!empty($idFuncionario) && !empty($idRestaurante) && !empty($data_inicio) && !empty($data_fim)) {
             $referenciaModel->verificarExisteBanco($idFuncionario, $idRestaurante);
 
