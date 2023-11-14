@@ -14,7 +14,7 @@ function monta_select_cargo(){
             $id = $row["idCargo"];
             $cargo = $row["descricao"];
             echo "<option value=\"$id\">";
-            echo  $cargo . '</option>';
+            echo  $cargo . "</option>";
             }
             echo "</select>";
             
@@ -34,14 +34,14 @@ function monta_select_cargo2($idCargo){
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row["idCargo"];
             $cargo = $row["descricao"];
-                    echo $idCargo." == ".$id." <br>";
+                    echo $idCargo." == " .$id. " <br>";
                     if ($idCargo == $id) {
                         $selected = 'selected';
                     } else {
                         $selected = '';
                     }
             echo "<option value=\"$id\" $selected>";
-            echo  $cargo . '</option>';
+            echo  $cargo . "</option>";
             }
             echo "</select>";
             
@@ -73,28 +73,6 @@ function monta_select_restaurante(){
     }
 }// fim monta_select_restaurante
 
-function monta_select_medida(){
-
-    global $link;
-    
-    // lista medidas já cadastrados
-    $query = "SELECT idMedida, descricao FROM Medida;";
-    if ($result = mysqli_query($link, $query)) {
-        echo "<select name=\"idMedida\">";
-        echo "<option selected disabled hidden> Selecionar Medida</option>";
-        // busca os dados lidos do banco de dados
-        while ($row = mysqli_fetch_assoc($result)) {
-            $id = $row["idMedida"];
-            $medida = $row["descricao"];
-            echo "<option value=\"$id\">";
-            echo  $medida . '</option>';
-            }
-            echo "</select>";
-            
-        // libera a área de memória onde está o resultado
-        mysqli_free_result($result);
-    }
-}// fim monta_select_medida
 
 function monta_select_categoria(){
 
@@ -119,6 +97,29 @@ function monta_select_categoria(){
     }
 }// fim monta_select_categoria
 
+function monta_select_medida(){
+
+    global $link;
+    
+    // lista medidas já cadastrados
+    $query = "SELECT idMedida, descricao FROM Medida;";
+    if ($result = mysqli_query($link, $query)) {
+        echo "<select name=\"idMedida\">";
+        echo "<option selected disabled hidden> Selecionar Medida</option>";
+        // busca os dados lidos do banco de dados
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row["idMedida"];
+            $medida = $row["descricao"];
+            echo "<option value=\"$id\">";
+            echo  $medida . '</option>';
+            }
+            echo "</select>";
+            
+        // libera a área de memória onde está o resultado
+        mysqli_free_result($result);
+    }
+}// fim monta_select_medida
+
 function monta_select_Ingrediente(){
 
     global $link;
@@ -134,6 +135,58 @@ function monta_select_Ingrediente(){
             $ingrediente = $row["descricao"];
             echo "<option value=\"$id\">";
             echo  $ingrediente . '</option>';
+            }
+            echo "</select>";
+            
+        // libera a área de memória onde está o resultado
+        mysqli_free_result($result);
+    }
+}// fim monta_select_Ingrediente
+
+function monta_select_degustador(){
+    global $link;
+
+    // lista degustador já cadastrados
+    $query =   "SELECT f.idFuncionario, f.nome, c.descricao AS cargo
+                FROM funcionario f
+                JOIN Cargo c ON f.idCargo = c.idCargo
+                WHERE c.descricao = 'Desgustador';";
+
+    if ($result = mysqli_query($link, $query)) {
+        echo "<select name=\"idFuncionario\">";
+        echo "<option selected disabled hidden> Selecionar Degustador</option>";
+        // busca os dados lidos do banco de dados
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row["idFuncionario"];
+            $nome_degustador = $row["nome"];
+            echo "<option value=\"$id\">";
+            echo  $nome_degustador . "</option>";
+            }
+            echo "</select>";
+            
+        // libera a área de memória onde está o resultado
+        mysqli_free_result($result);
+    }
+}// fim monta_select_Ingrediente
+
+function monta_select_cozinheiro(){
+    global $link;
+
+    // lista degustador já cadastrados
+    $query =   "SELECT f.idFuncionario, f.nome, c.descricao AS cargo
+                FROM funcionario f
+                JOIN Cargo c ON f.idCargo = c.idCargo
+                WHERE c.descricao = 'Cozinheiro';";
+
+    if ($result = mysqli_query($link, $query)) {
+        echo "<select name=\"idFuncionario\">";
+        echo "<option selected disabled hidden> Selecionar Cozinheiro</option>";
+        // busca os dados lidos do banco de dados
+        while ($row = mysqli_fetch_assoc($result)) {
+            $id = $row["idFuncionario"];
+            $nome_cozinheiro = $row["nome"];
+            echo "<option value=\"$id\">";
+            echo  $nome_cozinheiro . "</option>";
             }
             echo "</select>";
             

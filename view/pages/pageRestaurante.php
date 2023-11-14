@@ -4,6 +4,7 @@ if(!isset($_SESSION)) {
 }
 include_once('../../controller/protect.php');
 include_once('../../controller/restauranteController.php');
+include_once('../../controller/referenciaController.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,15 +13,15 @@ include_once('../../controller/restauranteController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleTable.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
-    />
-    
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Página de Receitas</title>
+</head>
     <title>Restaurantes</title>
 
     <script>
@@ -43,7 +44,7 @@ include_once('../../controller/restauranteController.php');
 
 </head>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <!-- <?php require_once('../components/menu.php');?> -->
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
@@ -109,33 +110,31 @@ include_once('../../controller/restauranteController.php');
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
-                        <th>Nome</th>
-                        <th>Contato</th>
+                        <th>Funcionario</th>
+                        <th>Restaurante</th>
+                        <th>Data Inicio</th>
+                        <th>Data Fim</th>
                         <th class="operacao">Operações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Tabela de restaurantes -->
-                    <?php foreach ($restaurantes as $index => $restaurante): ?>
+                    <!-- Tabela de referencia -->
+                    <?php foreach ($referencias as $index => $referencia): ?>
                         <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
                             <td class="select-column">
-                                <input type="checkbox" name="checkbox[]" value="<?php echo $restaurante['idRestaurante']; ?>">
+                                <input type="checkbox" name="checkbox[]" value="<?php echo $referencia['idFuncionario']; ?>">
                             </td>
+                            <td><?php echo $referencia['nomeFun']; ?></td>
+                            <td><?php echo $referencia['nomeRes']; ?></td>
+                            <td><?php echo $referencia['data_inicio']; ?></td>
+                            <td><?php echo $referencia['data_fim']; ?></td>
                             <td>
-                                <?php echo $restaurante['nome']; ?>
-                            </td>
-                            <td>
-                                <?php echo $restaurante['contato']; ?>
-                            </td>
-                            <td>
-                                <a href="../pages/Restaurante/pageRestauranteAlteracao.php?idRestaurante=<?php echo $restaurante['idRestaurante']; ?>">
+                                <a href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario']; ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
-                            </td>
-                            <td>
-                                <a href="#" onclick="confirmarExclusao(<?php echo $restaurante['idRestaurante']; ?>);" class="button">
+                                a href="#" onclick="confirmarExclusao(<?php echo $referencia['idFuncionario']; ?>);" class="button">
                                     <span class="material-symbols-outlined"> delete </span>
-                                </a>
+                                </a><
                             </td>
                         </tr>
                     <?php endforeach; ?>

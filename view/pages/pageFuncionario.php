@@ -4,6 +4,14 @@ if(!isset($_SESSION)) {
 }
 include_once('../../controller/protect.php');
 include_once('../../controller/funcionarioController.php');
+
+// Limpe as variáveis de sessão 
+unset($_SESSION['rg']);
+unset($_SESSION['nomeF']);
+unset($_SESSION['data_ingresso']);
+unset($_SESSION['salario']);
+unset($_SESSION['nome_fantasia']);
+unset($_SESSION['cargo']);
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +20,9 @@ include_once('../../controller/funcionarioController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylePesq.css">
+    <link rel="stylesheet" href="../css/styleTable.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
 
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
@@ -108,7 +119,7 @@ include_once('../../controller/funcionarioController.php');
 
 </head>
     <!-- Menu lateral - vem de outra página -->
-    <?php //require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php');?>
 
     <div class="paginação">
         <a href="homePage.php">Homepage > </a>
@@ -137,7 +148,7 @@ include_once('../../controller/funcionarioController.php');
                 </div>
                 <!-- Criar -->
                 <div class="button-nova">
-                    <a href="./Funcionario/pageFuncionarioCadastro.php">
+                    <a href="./Funcionario/pageFuncionarioCadastro.php?acao=cadastro">
                         <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
@@ -169,7 +180,7 @@ include_once('../../controller/funcionarioController.php');
     <section class="conteiner-conteudo">
         <button onclick="confirmarExclusaoCheckbox()" align="rigt">Inativo Selecionados</button>
 
-        <form id="excluirSelect" action="../../controller/funcinarioController.php?acao=inativosSelecionados" method="post">
+        <form id="excluirSelect" action="../../controller/funcionarioController.php?acao=inativosSelecionados" method="post">
             <table class="table" border="1" align="right">
                 <thead>
                     <tr>
@@ -180,7 +191,7 @@ include_once('../../controller/funcionarioController.php');
                         <th>SALÁRIO</th>
                         <th>NOME FANTASIA</th>
                         <th>CARGO</th>
-                        <th>STATUS</th>
+                        <th>SITUAÇÃO</th>
                         <th class="operacao" colspan="2">OPERAÇÔES</th>
                     </tr>
                 </thead>
@@ -211,9 +222,9 @@ include_once('../../controller/funcionarioController.php');
                             </td>
                             <td>
                                 <?php  
-                                    if ($funcionario['status'] == '0') {
+                                    if ($funcionario['situacao'] == '0') {
                                         echo 'Ativo';
-                                    } elseif ($funcionario['status'] == '1') {
+                                    } elseif ($funcionario['situacao'] == '1') {
                                         echo 'Inativo';
                                     } else {
                                         echo 'Desconhecido';
@@ -221,7 +232,7 @@ include_once('../../controller/funcionarioController.php');
                                 ?>
                             </td>
                             <td>
-                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
+                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>&acao=alteracao">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
                             </td>

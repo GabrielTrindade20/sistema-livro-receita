@@ -1,44 +1,74 @@
 <?php
 
-class funcionarioModel {
+class receitaModel
+{
     private $link;
     private $erros = array();
     private $sucesso = array();
 
-    public function __construct($link) {
+    public function __construct($link)
+    {
         $this->link = $link;
     }
 
-    public function getErros() {
+    public function getErros()
+    {
         return $this->erros;
     }
-    
-    public function getSucesso() {
+
+    public function getSucesso()
+    {
         return $this->sucesso;
     }
 
-    public function validar_campos( $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo ) {
-        if (!empty($rg) && !empty($nome) && !empty($data_ingresso) && !empty($salario) && !empty($nome_fantasia) 
-            && !empty($cargo) && !empty($situacao) ) {
+    public function validar_campos(
+        $nome,
+        $data_criacao,
+        $modo_preparo,
+        $qtd_porcao,
+        $degustador,
+        $data_degustacao,
+        $nota_degustacao,
+        $ind_inedita,
+        $id_cozinheiro,
+        $id_categoria,
+        $id_foto_receita
+    ) {
+        if (
+            !empty($rg) && !empty($nome) && !empty($data_ingresso) && !empty($salario) && !empty($nome_fantasia)
+            && !empty($cargo) && !empty($situacao)
+        ) {
             $rg = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             $nome = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             $data_ingresso = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             $salario = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
             $nome_fantasia = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
 
-            return array($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo );
+            return array($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo);
         } else {
             $this->erros[] = "Por gentileza, preencha todos os campos.";
             return false;
         }
-    }//fim validar campos
+    } //fim validar campos
 
-    public function create( $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo )
-    {
-        $query =   "INSERT INTO funcionario
-                    (rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo)
+    public function create(
+        $nome_receita,
+        $data_criacao,
+        $modo_preparo,
+        $qtd_porcao,
+        $degustador,
+        $data_degustacao,
+        $nota_degustacao,
+        $ind_inedita,
+        $id_cozinheiro,
+        $id_categoria,
+        $id_foto_receita
+    ) {
+        $query =   "INSERT INTO receita
+                    (nome_receita, data_criacao, modo_preparo, qtd_porcao, degustador,
+                    data_degustacao, nota_degustacao, ind_inedita, id_cozinheiro,  id_categoria)
                     VALUE
-                    (?, ?, ?, ?, ?, ?, ?);";
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         // * Preparar a declaração
         $stmt = $this->link->prepare($query);
@@ -46,7 +76,16 @@ class funcionarioModel {
         // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
             // Vincular os parâmetros da declaração com os valores
-            $stmt->bind_param("ssssssi", $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo );
+            $stmt->bind_param("sssiisssii",$nome_receita,
+                                        $data_criacao,
+                                        $modo_preparo,
+                                        $qtd_porcao,
+                                        $degustador,
+                                        $data_degustacao,
+                                        $nota_degustacao,
+                                        $ind_inedita,
+                                        $id_cozinheiro,
+                                        $id_categoria);
 
             // Executar a declaração preparada
             if ($stmt->execute()) {
@@ -60,9 +99,9 @@ class funcionarioModel {
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
-    }// fim create
-    
-    public function read( )
+    } // fim create
+
+    public function read()
     {
         $query =   "SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo
                     FROM funcionario f
@@ -77,9 +116,9 @@ class funcionarioModel {
         }
 
         return $funcionarios;
-    }// fim read
+    } // fim read
 
-    public function update( $id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo )
+    public function update($id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo)
     {
         $query =   "UPDATE funcionario 
                     SET rg = ?,
@@ -109,40 +148,15 @@ class funcionarioModel {
         }
 
         return false;
-    }// fim update
+    } // fim update
 
-    public function situacao_inativo( $id, $situacao )
-    {
-        $query =   "UPDATE funcionario 
-                    SET situacao = ?
-                    WHERE idFuncionario = ?";
-
-        $stmt = $this->link->prepare($query);
-
-        if ($stmt) {
-            $stmt->bind_param("si", $situacao, $id);
-
-            if ($stmt->execute()) {
-                $this->sucesso[] = "Inativo, atualizado efetuada com sucesso!";
-                return true;
-            } else {
-                $this->erros[] = "Erro ao excluir: " . $stmt->error;
-            }
-
-            $stmt->close();
-        } else {
-            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
-        }
-
-        return false; 
-    }// fim delete
-
-    public function recuperaFuncionario($id)
+    public function recuperaDegustador()
     {
         // lista cursos já cadastrados
-        $query =   "SELECT idFuncionario, rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo
-                    FROM funcionario
-                    WHERE idFuncionario = '$id';";
+        $query =   "SELECT f.idFuncionario, f.nome, c.descricao AS cargo
+                    FROM funcionario f
+                    JOIN Cargo c ON f.idCargo = c.idCargo
+                    WHERE c.descricao = 'Desgustador';";
 
         $resultado = mysqli_query($this->link, $query);
 
@@ -151,7 +165,6 @@ class funcionarioModel {
         } else {
             return null; // Retornar null em caso de erro na consulta
         }
-    }// fim de recuperar
+    } // fim de recuperaDegustador
 
 }// fim class
-?>

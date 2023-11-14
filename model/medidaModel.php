@@ -29,7 +29,7 @@ class medidaModel {
 
     public function create( $descricao )
     {
-        $query =   "INSERT INTO Medida 
+        $query =   "INSERT INTO medida 
                     (descricao) 
                     VALUE
                     (?);";
@@ -55,6 +55,74 @@ class medidaModel {
              $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
          }
     }// fim create
+
+    public function read()
+    {
+        $query =   "SELECT *
+                    FROM medida;";
+        $ingredientes = array();
+
+        if ($result = mysqli_query($this->link, $query)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $ingredientes[] = $row;
+            }
+            mysqli_free_result($result);
+        }
+
+        return $ingredientes;
+    } // fim read
+
+    public function delete($id)
+    {
+        $query =   "DELETE 
+                    FROM medida 
+                    WHERE idMedida = ?";
+
+        $stmt = $this->link->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("i", $id);
+
+            if ($stmt->execute()) {
+                $this->sucesso[] = "Exclusão efetuada com sucesso!";
+                return true;
+            } else {
+                $this->erros[] = "Erro ao excluir: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+
+        return false;
+    } // fim delete
+
+    public function update($id, $descricao)
+    {
+        $query =   "UPDATE medida 
+                    SET descricao = ?
+                    WHERE idMedida = ?";
+
+        $stmt = $this->link->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("si", $descricao, $id);
+
+            if ($stmt->execute()) {
+                $this->sucesso[] = "Atualização efetuada com sucesso!";
+                return true;
+            } else {
+                $this->erros[] = "Erro ao atualizar: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+
+        return false;
+    } // fim update
 
 }// fim class
 ?>

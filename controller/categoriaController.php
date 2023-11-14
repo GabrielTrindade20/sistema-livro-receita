@@ -1,10 +1,10 @@
 <?php
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once(__DIR__ .'../../configuration/connect.php');
-include_once(__DIR__ .'../../model/categoriaModel.php');
+include_once(__DIR__ . '../../configuration/connect.php');
+include_once(__DIR__ . '../../model/categoriaModel.php');
 
 $categoriaModel = new categoriaModel($link);
 
@@ -12,14 +12,12 @@ $categoriaModel = new categoriaModel($link);
 //$sendPesqCategria = filter_input( )
 
 // SALVAR 
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) 
-{
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
     $descricao = $_POST["descricao"];
-    
-    if(empty($descricao)){
+
+    if (empty($descricao)) {
         $categoriaModel->validar_campos($descricao);
-    }
-    else {
+    } else {
         if (!empty($categoriaModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $categoriaModel->getErros();
@@ -41,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"]))
 // Vem da page de ALTERAÇÃO 
 elseif (isset($_POST['alterar'])) {
     $idCategoria = $_POST['idCategoria'];
-    $novaDescricao = $_POST['descricao']; 
+    $novaDescricao = $_POST['descricao'];
 
     // Verifique se a descrição não está vazia
     if (empty($novaDescricao)) {
@@ -53,8 +51,7 @@ elseif (isset($_POST['alterar'])) {
             $_SESSION["erros"] = $categoriaModel->getErros();
             header("Location: ../view/pages/pageCategoria.php");
             exit();
-        }
-        else {
+        } else {
             if ($atualizado = $categoriaModel->update($idCategoria, $novaDescricao)) {
                 $_SESSION["sucesso"] = $categoriaModel->getSucesso();
             } else {
@@ -81,9 +78,8 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
 
     header("Location: ../view/pages/pageCategoria.php");
     exit();
-}
-elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){ 
-    if(isset($_POST['checkbox']) && is_array($_POST['checkbox'])) {
+} elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados') {
+    if (isset($_POST['checkbox']) && is_array($_POST['checkbox'])) {
         // Loop através dos IDs das categorias selecionadas
         foreach ($_POST['checkbox'] as $idCategoria) {
             // Verificar se o ID da categoria é válido (por exemplo, um número inteiro positivo)
@@ -104,15 +100,31 @@ elseif(isset($_GET['acao']) && $_GET['acao'] === 'excluirSelecionados'){
         exit();
     }
 }
+// Pesquisar
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['descricao'])) {
+    $termo = $_POST['descricao'];
+    $resultados = $categoriaModel->pesquisar($termo);
+    
+    // Armazenar os resultados da pesquisa em uma variável de sessão
+    $_SESSION['resultados_pesquisa'] = $resultados;
+
+    // Redirecionar de volta para a página pageCategoria
+    header("Location: ../view/pages/pageCategoria.php");
+    exit();
+}
+
+
+
+
 // RETORNAR DADOS SALVOS
-else 
-{
+else {
     $categorias = $categoriaModel->read();
     mysqli_close($link);
 
     // Contar quandas linhas tem na tabela
-    $countCategorias = count($categorias); 
+    $countCategorias = count($categorias);
 }
+
 
 
 ?>
