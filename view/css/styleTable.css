@@ -1,13 +1,9 @@
-.conteiner-conteudo {
-    margin-left: 300px;
-}
 
 /* Estilos para a tabela em telas maiores */
 .table {
     width: 90%;
     border-collapse: collapse;
     /* Colapso de borda para evitar espaços entre células */
-
 }
 
 th,

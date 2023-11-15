@@ -108,7 +108,7 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
 
                 <!-- Criar -->
                 <div class="button-nova">
-                    <a href="./Funcionario/pageFuncionarioCadastro.php">
+                    <a href="./Funcionario/pageFuncionarioCadastro.php?acao=cadastro">
                         <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
@@ -177,9 +177,14 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
                                     ?>
                                 </span>
                             </td>
+<<<<<<< HEAD
                             <td class="td-operacao">
                                 <a
                                     href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
+=======
+                            <td>
+                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>&acao=alteracao">
+>>>>>>> f090175ec637b0c930d28d060e392776e29808d5
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
 

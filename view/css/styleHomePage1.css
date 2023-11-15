@@ -1,0 +1,44 @@
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#sub-titulo {
+    display: grid;
+    width: auto;
+    grid-template-columns: 35% 25% 35%;
+    text-align: center;
+    align-items: center;
+}
+
+#sub-titulo hr {
+    width: 100%;
+}
+
+#sub-titulo h2 {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px 0px;
+    font-size: 20px;
+}
+
+.col {
+    margin: 10px;
+}
+
+.card {
+    background-color: #EEB253;
+    height: 120px;
+    width: 120px; 
+    margin: 10% 10% 10% 10%;
+    border-radius: 5px;
+    box-shadow: 1px 4px 10px #000;
+    transition: 0.3s;
+    padding: 20%  0% 20% 0%;
+    justify-content: center;
+}
+
+.card a>span {
+    display: block;
+    margin-bottom: 5px;
+}

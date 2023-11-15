@@ -17,6 +17,7 @@ include_once('../../../controller/referenciaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styleEdica.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="../../css/stylePesq.css">
     <link rel="stylesheet" href="../../css/styleTable.css">
     <link rel="stylesheet" href="../../css/styleResponsivo.css">
@@ -25,6 +26,10 @@ include_once('../../../controller/referenciaController.php');
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+=======
+    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+>>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -35,12 +40,14 @@ include_once('../../../controller/referenciaController.php');
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
 
+    <!-- Cadastro do funcionario -->
     <section class="conteiner-conteudo">
         <div>
             <h1>Informações</h1>
         </div>
 
         <div class="conteiner-abas">
+<<<<<<< HEAD
             <!-- Formulário de Cadastro -->
             <div class="title-container">
                 <h2>Funcionário</h2>
@@ -65,6 +72,31 @@ include_once('../../../controller/referenciaController.php');
                         monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
                         ?>
                     </div>
+=======
+            <!-- Formulário de Cadastro Funcionario -->
+            <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
+                <div class="conteiner-dados">
+                    <label for="rg">RG:</label>
+                    <input type="text" id="rg" name="rg" value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
+
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome_funcionarioF']) ? $_SESSION['nome_funcionarioF'] : ''; ?>" required>
+
+                    <label for="data_ingresso">Data Ingresso:</label>
+                    <input type="date" id="data_ingresso" name="data_ingresso" value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>" required>
+
+                    <label for="salario">Salário:</label>
+                    <input type="text" id="salario" name="salario" value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
+
+                    <label for="nome_fantasia">Nome Fantasia:</label>
+                    <input type="text" id="nome_fantasia" name="nome_fantasia" value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>" required>
+
+                    <label for="cargo">Cargo:</label>
+
+                    <?php
+                    monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
+                    ?> <br>
+>>>>>>> f090175ec637b0c930d28d060e392776e29808d5
                 </div>
                 <div class="form-row-container">
                     <div class="form-field">
@@ -105,7 +137,10 @@ include_once('../../../controller/referenciaController.php');
 
     </section>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 </body>
 
 <script>
@@ -118,7 +153,7 @@ include_once('../../../controller/referenciaController.php');
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'pagePesquisaReferencia.php?search=' + searchTerm, true);
 
-        xhr.onload = function () {
+        xhr.onload = function() {
             if (xhr.status == 200) {
                 // Atualize a tabela com os resultados da pesquisa
                 var table1 = document.getElementById('table1');
@@ -147,9 +182,9 @@ include_once('../../../controller/referenciaController.php');
     }
 
     // pegar nome e id de restaurante e colocar no form
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         // Adicione um ouvinte de evento de clique ao documento
-        document.addEventListener('click', function (event) {
+        document.addEventListener('click', function(event) {
             if (event.target && event.target.classList.contains('adicionar-restaurante')) {
                 var nomeRestaurante = event.target.getAttribute('data-nome');
                 var idRestaurante = event.target.getAttribute('data-id');
@@ -166,7 +201,7 @@ include_once('../../../controller/referenciaController.php');
     });
 
     // remover linha
-    document.addEventListener('click', function (event) {
+    document.addEventListener('click', function(event) {
         if (event.target && event.target.classList.contains('remover-restaurante')) {
             var nomeRestaurante = event.target.getAttribute('data-nome');
             var idLinha = event.target.getAttribute('data-id'); // Recupere o valor do atributo "data-id" para identificar a linha
@@ -197,8 +232,7 @@ include_once('../../../controller/referenciaController.php');
         if (!restaurante || !dataInicio || !dataFim) {
             alert("Preencha todos os campos antes de salvar.");
             return;
-        }
-        else {
+        } else {
             if (indiceEditando !== -1) {
                 // Se um registro estiver sendo editado, atualize a linha existente
                 var row = table2.rows[indiceEditando];
@@ -257,7 +291,7 @@ include_once('../../../controller/referenciaController.php');
     }
 
     // verificar se o botao editar foi clicado e chamar a função editar
-    document.addEventListener('click', function (event) {
+    document.addEventListener('click', function(event) {
         if (event.target.classList.contains('editar-restaurante')) {
             editarRestaurante(event);
         }
@@ -285,12 +319,12 @@ include_once('../../../controller/referenciaController.php');
 
         // Envie os dados para o servidor
         fetch('../../../controller/referenciaController.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
             .then(response => response.text())
             .then(data => {
                 console.log('Resposta do servidor:', data);
@@ -299,8 +333,6 @@ include_once('../../../controller/referenciaController.php');
                 console.error('Erro ao enviar os dados para o servidor:', error);
             });
     }
-
-
 </script>
 
 </html>

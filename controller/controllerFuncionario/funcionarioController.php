@@ -34,12 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
 
                 // Salvar os valores dos campos do formulário nas variáveis de sessão
                 $_SESSION["rg"] = $rg;
-                $_SESSION["nomeF"] = $nome;
+                $_SESSION["nome_funcionarioF"] = $nome;
                 $_SESSION["data_ingresso"] = $data_ingresso;
                 $_SESSION["salario"] = $salario;
                 $_SESSION["nome_fantasia"] = $nome_fantasia;
                 $_SESSION['0'] = $situacao;
-                $_SESSION["cargo"] = $cargo;
+                $_SESSION["cargo_funcionario"] = $cargo;
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
             }
@@ -125,7 +125,6 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'inativo') {
 // RETORNAR DADOS SALVOS
 else {
     $funcionarios = $funcionarioModel->read();
-    mysqli_close($link);
 
     // Contar quandas linhas tem na tabela
     $countFuncionarios = count($funcionarios);
