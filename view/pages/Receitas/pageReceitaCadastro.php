@@ -8,6 +8,7 @@ include_once('../../../configuration/connect.php');
 include '../../../model/funcoes.php';
 include_once('../../../controller/receitaController.php');
 include_once('../../../model/fotoModel.php');
+include_once('../../../model/funcoes.php');
 
 $fotoModel = new fotoModel($link);
 $usuario = $_SESSION["id"];
@@ -48,12 +49,12 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
 
 $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
 
-// if (isset($ultima_foto)) {
-//     $id_foto_receita =  $ultima_foto['id_foto_receita'];
-//     $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
-//     $link_img = "<a target=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
-//     $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "&acao=deletar-foto\">DELETAR</a>";
-// }
+if (isset($ultima_foto)) {
+    $id_foto_receita =  $ultima_foto['id_foto_receita'];
+    $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
+    $link_img = "<a target=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
+    $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "&acao=deletar-foto\">DELETAR</a>";
+}
 
 ?>
 
@@ -119,9 +120,7 @@ $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
                 </div>
                 <div class="box-foto">
                     <?php
-
                     if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-                        $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
                         echo $img_ultima;
                         unset($_SESSION["cadastro_sucesso"]);
                     }
@@ -131,7 +130,7 @@ $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
                     <div class="box-foto">
                         <label for="foto_receita">Foto da Receita</label>
                         <input type="file" accept="image/*" name="foto_receita">
-                        <button type="submit" name="upload" class="button" >Salvar</button>
+                        <button type="submit" name="upload" class="button">Salvar</button>
                     </div>
                 </form>
                 <form method="POST" action="../../../controller/receitaController.php">
@@ -183,6 +182,14 @@ $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
                 <!-- Medidas Cadastra -->
                 <h3>Ingrediente Medidas Cadastradas</h3>
 
+                <form action="" method="post">
+                    <label for="">Ingrediente</label>
+                    <?php monta_select_Ingrediente(); ?>
+                    <label for="nova_entrada">Nova Entrada:</label>
+                    <input type="text" name="nova_entrada" id="nova_entrada">
+
+                    <input type="submit" value="Enviar">
+                </form>
                 <form action="" method="post">
                     <label for="cadas_ingrediente">Ingrediente</label>
                     <input type="text">
