@@ -1,6 +1,6 @@
 <?php
 include_once('../../../controller/protect.php');
-include_once('../../../controller/funcionarioController.php');
+include_once('../../../controller/controllerFuncionario/funcionarioController.php');
 include_once('../../../controller/restauranteController.php');
 ?>
 

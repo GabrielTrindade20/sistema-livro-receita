@@ -155,7 +155,6 @@ class referenciaModel
 
     public function recuperaReferencia($idFuncionario)
     {
-<<<<<<< HEAD
         $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim
               FROM referencia
               WHERE idFuncionario = ? AND idRestaurante = ?";
@@ -165,14 +164,12 @@ class referenciaModel
                     INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
                     INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
                     WHERE funcionario.idFuncionario = '$idFuncionario';";
-=======
         $query =   "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
         FROM funcionario
         INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
         INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
         WHERE funcionario.idFuncionario = '$idFuncionario';";
 
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 
         $stmt = $this->link->prepare($query);
         $stmt->bind_param("ii", $idFuncionario, $idRestaurante);

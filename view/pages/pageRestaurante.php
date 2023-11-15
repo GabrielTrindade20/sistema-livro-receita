@@ -14,7 +14,6 @@ include_once('../../controller/referenciaController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="../css/styleTable.css">
@@ -23,7 +22,6 @@ include_once('../../controller/referenciaController.php');
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-=======
     <!-- BOOSTRAP  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -36,7 +34,6 @@ include_once('../../controller/referenciaController.php');
     <!-- <link rel="stylesheet" href="../css/styleResponsivo.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
     <title>Restaurantes</title>
 
     <script>
@@ -59,7 +56,6 @@ include_once('../../controller/referenciaController.php');
     </script>
 
 </head>
-<<<<<<< HEAD
 <!-- Menu lateral - vem de outra página -->
 <?php require_once('../components/menu.php'); ?>
 
@@ -166,7 +162,6 @@ include_once('../../controller/referenciaController.php');
         </table>
     </form>
 </section>
-=======
 
 <body>
     <!-- Menu lateral - vem de outra página -->
@@ -258,7 +253,6 @@ include_once('../../controller/referenciaController.php');
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 </body>
 
 </html>

@@ -12,13 +12,10 @@ if (isset($_GET['idFuncionario'])) {
     $funcionarioModel = new funcionarioModel($link);
     $recuperar = $funcionarioModel->recuperaFuncionario($idFuncionario);
 
-<<<<<<< HEAD
 
     if ($recuperar /*&& $recuperarReferencia}*/) {
-=======
     // recuperar funcionario
     if ($recuperar) {
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
         $rg = $recuperar["rg"];
         $nome = $recuperar["nome"];
         $data_ingresso = $recuperar["data_ingresso"];
@@ -47,25 +44,19 @@ if (isset($_GET['idFuncionario'])) {
     <link rel="stylesheet" href="../../css/styleMenu.css">
     <link rel="stylesheet" href="../../css/styleCadastro.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
-<<<<<<< HEAD
 
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-=======
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
     <title>Funcionário</title>
 </head>
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-<<<<<<< HEAD
     <?php require_once('../../components/menuSubFolders2.php'); ?>
-=======
     <!-- <?php require_once('../../components/menuSubFolders.php'); ?>  -->
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 
     <section class="conteiner-conteudo">
         <h1 class="titulo">Funcionário</h1>
@@ -83,7 +74,6 @@ if (isset($_GET['idFuncionario'])) {
                         <input type="text" id="rg" name="rg" required value="<?php echo isset($rg) ? $rg : ''; ?>">
                     </div>
 
-<<<<<<< HEAD
                     <div class="form-field">
                         <label for="nome">Nome:</label>
                         <input type="text" id="nome" name="nome" required
@@ -159,7 +149,6 @@ if (isset($_GET['idFuncionario'])) {
                             <input type="date" name="data_fim" value="<?php echo isset($data_fim) ? $data_fim : ''; ?>">
                         </div>
                     </div>
-=======
                     <label for="data_ingresso">Data Ingresso:</label>
                     <input type="date" id="data_ingresso" name="data_ingresso" required value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
 
@@ -184,7 +173,6 @@ if (isset($_GET['idFuncionario'])) {
                     monta_select_cargo2($cargo);
                     ?>
                     <br>
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
                 </div>
                 <div class="conteiner-operacoes">
                     <!-- Botão para salvar o cargo -->

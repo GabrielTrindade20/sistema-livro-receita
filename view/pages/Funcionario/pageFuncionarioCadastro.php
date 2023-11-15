@@ -17,7 +17,6 @@ include_once('../../../controller/referenciaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styleEdica.css">
-<<<<<<< HEAD
     <link rel="stylesheet" href="../../css/stylePesq.css">
     <link rel="stylesheet" href="../../css/styleTable.css">
     <link rel="stylesheet" href="../../css/styleResponsivo.css">
@@ -26,10 +25,8 @@ include_once('../../../controller/referenciaController.php');
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-=======
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -47,7 +44,6 @@ include_once('../../../controller/referenciaController.php');
         </div>
 
         <div class="conteiner-abas">
-<<<<<<< HEAD
             <!-- Formulário de Cadastro -->
             <div class="title-container">
                 <h2>Funcionário</h2>
@@ -72,7 +68,6 @@ include_once('../../../controller/referenciaController.php');
                         monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
                         ?>
                     </div>
-=======
             <!-- Formulário de Cadastro Funcionario -->
             <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados">
@@ -96,7 +91,6 @@ include_once('../../../controller/referenciaController.php');
                     <?php
                     monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
                     ?> <br>
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
                 </div>
                 <div class="form-row-container">
                     <div class="form-field">
@@ -137,10 +131,6 @@ include_once('../../../controller/referenciaController.php');
 
     </section>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> f090175ec637b0c930d28d060e392776e29808d5
 </body>
 
 <script>
