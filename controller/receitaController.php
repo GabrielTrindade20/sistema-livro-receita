@@ -14,7 +14,7 @@ $receitaModel = new receitaModel($link);
 
 // SALVAR 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
-    if (isset($ultima_foto)) {
+    if (isset($ultima_foto) && isset($_SESSION['upload_form_foto'])) {
         $id_foto_receita =  $ultima_foto['id_foto_receita'];
         $path_foto_receita =  $ultima_foto['path'];
 
@@ -49,10 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
                 $id_foto_receita,
                 $path_foto_receita
             )) {
-                $_SESSION["sucesso"] = "Receita Salva";
+                $_SESSION["sucesso"] = ["Receita Salva"];
             } else {
-                $_SESSION["erros"] = "Erro ao salvar.";
+                $_SESSION["erros"] = ["Erro ao salvar. Tente novamente!"];
             }
+        } else {
+            $_SESSION["erros"] = ["Preenchar todos os campos."];
         }
     } else {
         $_SESSION["erros"] = ["Escolhar uma imagem antes."];
@@ -65,19 +67,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
 
 
     mysqli_close($link);
-
-    var_dump(
-        $nome,
-        $data_criacao,
-        $modo_preparo,
-        $qtd_porcao,
-        $degustador,
-        $data_degustacao,
-        $nota_degustacao,
-        $ind_inedita,
-        $id_cozinheiro,
-        $id_categoria,
-        $id_foto_receita,
-        $path_foto_receita
-    );
 }

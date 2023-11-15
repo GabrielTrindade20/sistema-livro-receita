@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include '../../../model/funcoes.php';
@@ -12,6 +16,7 @@ $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
 
 // SALVAR FOTO
 if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])) {
+    $_SESSION['upload_form_foto'] = true;
     $arquivo = $_FILES["foto_receita"];
     if ($arquivo['error'])
         $_SESSION["mensagem"] = "Falha ao enviar o arquivo";
@@ -46,7 +51,6 @@ $id_foto_receita =  $ultima_foto['id_foto_receita'];
 $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
 $link_img = "<a targer=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
 $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=". $id_foto_receita. "\&acao=deletar-foto\">DELETAR</a>";
-
 }
 
 ?>
@@ -82,20 +86,19 @@ $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=". $id_foto_receita
         <!-- Notificação de erro ou não -->
         <div class="mensagens">
             <?php
-            if (isset($_SESSION["erros"])) {
-                $erros = $_SESSION["erros"];
-                foreach ($erros as $erro) {
-                    echo $erro . "<br>";
+                if (isset($_SESSION["erros"])) {
+                    $erros = $_SESSION["erros"];
+                    foreach ($erros as $erro) {
+                        echo $erro . "<br>";
+                    }
+                    unset($_SESSION["erros"]);
+                } elseif (isset($_SESSION["sucesso"])) {
+                    $sucessos = $_SESSION["sucesso"];
+                    foreach ($sucessos as $sucesso) {
+                        echo $sucesso . "<br>";
+                    }
+                    unset($_SESSION["sucesso"]);
                 }
-                // Limpar as mensagens de erro da sessão
-                unset($_SESSION["erros"]);
-            } elseif (isset($_SESSION["sucesso"])) {
-                $sucessos = $_SESSION["sucesso"];
-                foreach ($sucessos as $sucesso) {
-                    echo $sucesso . "<br>";
-                }
-                unset($_SESSION["sucesso"]);
-            }
             ?>
         </div>
 
@@ -108,7 +111,7 @@ $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=". $id_foto_receita
                     unset($_SESSION["mensagem"]); // Limpa a mensagem da sessão para que ela não seja exibida novamente
                 }
                                   
-                if (isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
+                if(isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
                     echo $img_ultima; 
                     unset($_SESSION["cadastro_sucesso"]);
                 }
