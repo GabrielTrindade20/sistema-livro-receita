@@ -27,13 +27,11 @@ include_once('../controller/loginController.php');
         <section id="section-direita"> 
             <!-- Notificação de erro ao logar -->
             <?php if (isset($mensagem)): ?>
-<<<<<<< HEAD
                 <figure class="notification" >
                     <div class="notification_body">
                         <div><?php echo $mensagem; ?></div>
                     <div class="notification_progress"></div>
                 </figure>
-=======
             <figure class="notification" >
                 <div class="notification_body">
                     <?php if (isset($mensagem)): ?>

@@ -103,11 +103,24 @@ include_once('../../controller/receitaController.php');
                     <thead>
                         <tr>
                             <th class="select-column">-</th>
-                            <th>Receita</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Cozinheiro</th>
+                            <th>Data de criação</th>
                             <th class="operacao">Operações</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a href="../pages/Receitas/visualizarReceita.php">Visualizar</a>
+                            </td>
+                        </tr>
                         <!-- Tabela de categoria -->
                         <!-- <?php foreach ($categorias as $index => $categoria) : ?>
                         <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
@@ -128,6 +141,7 @@ include_once('../../controller/receitaController.php');
                                 </a>
                             </td>
                         </tr>
+
                     <?php endforeach; ?> -->
                     </tbody>
                 </table>

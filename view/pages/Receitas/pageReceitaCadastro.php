@@ -3,9 +3,6 @@ include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include '../../../model/funcoes.php';
 include_once('../../../controller/receitaController.php');
-<<<<<<< HEAD
-include_once('../../../controller/fotoController.php');
-=======
 include_once('../../../model/fotoModel.php');
 
 $fotoModel = new fotoModel($link);
@@ -52,7 +49,6 @@ $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=". $id_foto_receita
 
 }
 
->>>>>>> cfaadf9234660366f963cae0b1a35201cdb7ecd2
 ?>
 
 <!DOCTYPE html>
@@ -122,11 +118,7 @@ $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=". $id_foto_receita
                 <div class="box-foto">
                     <label for="foto_receita">Foto da Receita</label>
                     <input type="file" accept="image/*" name="foto_receita">
-<<<<<<< HEAD
-                    <input type="submit" name="Enviar">
-=======
                     <button type="submit" name="upload" class="button">Salvar</button>
->>>>>>> cfaadf9234660366f963cae0b1a35201cdb7ecd2
                 </div>
             </form>
             <form method="POST" action="../../../controller/receitaController.php">
