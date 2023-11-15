@@ -49,5 +49,17 @@ create table receita
     foreign key(id_foto_receita) references foto_receita (id_foto_receita)
 ) 
 engine=InnoDB;
-select * from receita;
-drop table receita;
+select * from referencia;
+
+SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
+FROM funcionario
+INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+WHERE funcionario.idFuncionario = 7;
+
+SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, COUNT(restaurante.idRestaurante) as countRes
+FROM funcionario
+INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+Where funcionario.idFuncionario
+GROUP BY funcionario.idFuncionario, funcionario.nome;
