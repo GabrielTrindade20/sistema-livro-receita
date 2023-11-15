@@ -64,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
     // Redirecionar
     header("Location: ../view/pages/Receitas/pageReceitaCadastro.php");
     exit();
-
-
+    
     mysqli_close($link);
 }

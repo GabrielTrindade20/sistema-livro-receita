@@ -12,12 +12,11 @@ include_once('../../../model/fotoModel.php');
 $fotoModel = new fotoModel($link);
 $usuario = $_SESSION["id"];
 
-$ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
-
 // SALVAR FOTO
 if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])) {
     $_SESSION['upload_form_foto'] = true;
     $arquivo = $_FILES["foto_receita"];
+
     if ($arquivo['error']) {
         $_SESSION["mensagem"] = "Falha ao enviar o arquivo";
     } elseif ($arquivo['size'] > 2097154) {
@@ -46,12 +45,15 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
     }
 }
 
-if (isset($ultima_foto)) {
-    $id_foto_receita =  $ultima_foto['id_foto_receita'];
-    $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
-    $link_img = "<a targer=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
-    $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "\&acao=deletar-foto\">DELETAR</a>";
-}
+
+$ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
+
+// if (isset($ultima_foto)) {
+//     $id_foto_receita =  $ultima_foto['id_foto_receita'];
+//     $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
+//     $link_img = "<a target=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
+//     $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "&acao=deletar-foto\">DELETAR</a>";
+// }
 
 ?>
 
@@ -112,8 +114,14 @@ if (isset($ultima_foto)) {
                         echo $_SESSION["mensagem"];
                         unset($_SESSION["mensagem"]);
                     }
+                    ?>
+
+                </div>
+                <div class="box-foto">
+                    <?php
 
                     if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
+                        $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
                         echo $img_ultima;
                         unset($_SESSION["cadastro_sucesso"]);
                     }
@@ -123,7 +131,7 @@ if (isset($ultima_foto)) {
                     <div class="box-foto">
                         <label for="foto_receita">Foto da Receita</label>
                         <input type="file" accept="image/*" name="foto_receita">
-                        <button type="submit" name="upload" class="button">Salvar</button>
+                        <button type="submit" name="upload" class="button" >Salvar</button>
                     </div>
                 </form>
                 <form method="POST" action="../../../controller/receitaController.php">
