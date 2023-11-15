@@ -32,7 +32,6 @@ class receitaModel
         $ind_inedita,
         $id_cozinheiro,
         $id_categoria,
-        $id_foto_receita
     ) {
         if (
             !empty($rg) && !empty($nome) && !empty($data_ingresso) && !empty($salario) && !empty($nome_fantasia)
@@ -62,13 +61,14 @@ class receitaModel
         $ind_inedita,
         $id_cozinheiro,
         $id_categoria,
-        $id_foto_receita
+        $id_foto_receita,
+        $path_foto_receita
     ) {
         $query =   "INSERT INTO receita
                     (nome_receita, data_criacao, modo_preparo, qtd_porcao, degustador,
-                    data_degustacao, nota_degustacao, ind_inedita, id_cozinheiro,  id_categoria)
+                    data_degustacao, nota_degustacao, ind_inedita, id_cozinheiro,  id_categoria, id_foto_receita, path_foto_receita)
                     VALUE
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         // * Preparar a declaração
         $stmt = $this->link->prepare($query);
@@ -76,7 +76,7 @@ class receitaModel
         // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
             // Vincular os parâmetros da declaração com os valores
-            $stmt->bind_param("sssiisssii",$nome_receita,
+            $stmt->bind_param("sssiisssiiss",$nome_receita,
                                         $data_criacao,
                                         $modo_preparo,
                                         $qtd_porcao,
@@ -85,7 +85,9 @@ class receitaModel
                                         $nota_degustacao,
                                         $ind_inedita,
                                         $id_cozinheiro,
-                                        $id_categoria);
+                                        $id_categoria, 
+                                        $id_foto_receita,
+                                        $path_foto_receita);
 
             // Executar a declaração preparada
             if ($stmt->execute()) {

@@ -1,7 +1,6 @@
 #titulo{
   text-align: left;
   margin-bottom: 25px;
-  top: 50%;
 }
 
 #sub-titulo{
@@ -12,10 +11,12 @@
   text-align: center;
   align-items: center;
 }
+
 #sub-titulo hr{
   margin: 0px;
   width: 100%;
 }
+
 #sub-titulo h2{
   display: block;
   width: 100%;
@@ -23,11 +24,15 @@
   font-size: 20px;
 }
 
+.box-parametro {
+  display: flex;
+}
+
 .conteiner-conteudo {
   width: auto;
   height: auto;
   padding-left: 350px;
-  padding-top: 90px;
+  padding-top: 30px;
   text-align: left;
   display: block;
   margin-left: auto;
@@ -39,20 +44,21 @@
 
 #cards-conteiner-1{
   display: grid;
-  grid-template-columns: repeat(4, 90px); /* Quatro colunas com largura de 100px cada */
-  grid-gap: 10%; /* Espaçamento entre os cards */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-content: center; /* Centraliza verticalmente */
-  margin-top: 20px; /* Ajuste o espaçamento superior conforme necessário */
+  grid-template-columns: repeat(4, 90px); 
+  grid-gap: 10%; 
+  justify-content: center;
+  align-content: center; 
+  margin-top: 20px; 
   text-align: center;
 }
+
 #cards-conteiner-2{
   display: grid;
-  grid-template-columns: repeat(3, 90px); /* Quatro colunas com largura de 100px cada */
-  grid-gap: 10%; /* Espaçamento entre os cards */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-content: center; /* Centraliza verticalmente */
-  margin-top: 20px; /* Ajuste o espaçamento superior conforme necessário */
+  grid-template-columns: repeat(3, 90px); 
+  grid-gap: 10%; 
+  justify-content: center; 
+  align-content: center;
+  margin-top: 20px; 
   text-align: center;
 }
 
@@ -62,7 +68,6 @@
   height: 130px;
   margin: 10% 5% 3% 0%;
   width: 110px;
-  /* padding: 5px 15px 20px 15px;  */
   border-radius: 3px;
   box-shadow: 1px 4px 10px #000;
   transition: 0.3s;
@@ -74,15 +79,11 @@
   margin-bottom: 15px;
 }
 
-
-
 .card img{
   width: 30px;
   margin-top: 15px;
   color: #ffffff;
 }
-
-
 
 .card p{
   text-align: center;
@@ -94,7 +95,7 @@
 
 .box-busca { 
   display: flex;
-  justify-content: center; /* Centralize horizontalmente */
+  justify-content: center;
   margin-bottom: 30px;
   margin-top: 25px;
 }
@@ -116,8 +117,8 @@
 .search-box {
   position: relative;
   width: 100%;
-  max-width: 500px; /* Define um valor máximo para o input */
-  align-items: center; /* Centralize verticalmente */
+  max-width: 500px;
+  align-items: center; 
   border: 1x solid rgba(0, 0, 0, 0.214);
   height: 30px;
   background-color: rgb(255, 255, 255);
@@ -144,7 +145,7 @@
   width: 38px;
   height: 25px;
   text-align: left;
-  margin-left: 10px; /* Alterado para margin-left */
+  margin-left: 10px;
   border: none;
   border-radius: 0px;
   cursor: pointer;

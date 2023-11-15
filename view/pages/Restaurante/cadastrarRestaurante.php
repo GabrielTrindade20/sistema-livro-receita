@@ -19,7 +19,7 @@ include_once('../../../controller/restauranteController.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders.php'); ?>
+    <?php require_once('../../components/menuSubFolders2.php'); ?>
 
     <section class="conteiner-conteudo">
         <!-- Notificação de erro ou não -->
