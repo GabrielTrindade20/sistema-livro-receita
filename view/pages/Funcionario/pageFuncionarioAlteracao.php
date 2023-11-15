@@ -27,6 +27,7 @@ if (isset($_GET['idFuncionario'])) {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();
     }
+    }
 }
 
 ?>
