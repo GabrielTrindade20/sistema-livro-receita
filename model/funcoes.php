@@ -1,9 +1,10 @@
-<?php 
+<?php
 
-function monta_select_cargo(){
+function monta_select_cargo()
+{
 
     global $link;
-    
+
     // lista cursos já cadastrados
     $query = "SELECT idCargo, descricao FROM cargo;";
     if ($result = mysqli_query($link, $query)) {
@@ -15,17 +16,18 @@ function monta_select_cargo(){
             $cargo = $row["descricao"];
             echo "<option value=\"$id\">";
             echo  $cargo . "</option>";
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
-}// fim monta_select_cargo
+} // fim monta_select_cargo
 
-function monta_select_cargo2($idCargo){
+function monta_select_cargo2($idCargo)
+{
     global $link;
-  
+
     // lista cursos já cadastrados
     $query = "SELECT idCargo, descricao FROM cargo;";
     if ($result = mysqli_query($link, $query)) {
@@ -34,26 +36,27 @@ function monta_select_cargo2($idCargo){
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row["idCargo"];
             $cargo = $row["descricao"];
-                    echo $idCargo." == " .$id. " <br>";
-                    if ($idCargo == $id) {
-                        $selected = 'selected';
-                    } else {
-                        $selected = '';
-                    }
+            echo $idCargo . " == " . $id . " <br>";
+            if ($idCargo == $id) {
+                $selected = 'selected';
+            } else {
+                $selected = '';
+            }
             echo "<option value=\"$id\" $selected>";
             echo  $cargo . "</option>";
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
 }
 
-function monta_select_restaurante(){
+function monta_select_restaurante()
+{
 
     global $link;
-    
+
     // lista cursos já cadastrados
     $query = "SELECT idRestaurante, nome FROM restaurante;";
     if ($result = mysqli_query($link, $query)) {
@@ -65,19 +68,20 @@ function monta_select_restaurante(){
             $restaurante = $row["nome"];
             echo "<option value=\"$id\">";
             echo  $restaurante . '</option>';
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
-}// fim monta_select_restaurante
+} // fim monta_select_restaurante
 
 
-function monta_select_categoria(){
+function monta_select_categoria()
+{
 
     global $link;
-    
+
     // lista medidas já cadastrados
     $query = "SELECT idCategoria, descricao FROM Categoria;";
     if ($result = mysqli_query($link, $query)) {
@@ -89,18 +93,19 @@ function monta_select_categoria(){
             $categoria = $row["descricao"];
             echo "<option value=\"$id\">";
             echo  $categoria . '</option>';
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
-}// fim monta_select_categoria
+} // fim monta_select_categoria
 
-function monta_select_medida(){
+function monta_select_medida()
+{
 
     global $link;
-    
+
     // lista medidas já cadastrados
     $query = "SELECT idMedida, descricao FROM Medida;";
     if ($result = mysqli_query($link, $query)) {
@@ -112,38 +117,37 @@ function monta_select_medida(){
             $medida = $row["descricao"];
             echo "<option value=\"$id\">";
             echo  $medida . '</option>';
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
-}// fim monta_select_medida
+} // fim monta_select_medida
 
-function monta_select_Ingrediente(){
+function monta_select_Ingrediente()
+{
 
     global $link;
-    
-    // lista medidas já cadastrados
-    $query = "SELECT idIngrediente, descricao FROM Ingrediente;";
+
+    $query = "SELECT idIngrediente, nome FROM Ingrediente;";
     if ($result = mysqli_query($link, $query)) {
-        echo "<select name=\"idIngrediente\">";
-        echo "<option selected disabled hidden> Selecionar Ingrediente</option>";
-        // busca os dados lidos do banco de dados
+        echo '<input list="ingredientes" name="idIngrediente" placeholder="Selecionar ou Adicionar">';
+        echo '<datalist id="ingredientes">';
+
         while ($row = mysqli_fetch_assoc($result)) {
             $id = $row["idIngrediente"];
-            $ingrediente = $row["descricao"];
-            echo "<option value=\"$id\">";
-            echo  $ingrediente . '</option>';
-            }
-            echo "</select>";
-            
-        // libera a área de memória onde está o resultado
+            $ingrediente = $row["nome"];
+            echo "<option value=\"$ingrediente\">";
+        }
+
+        echo '</datalist>';
         mysqli_free_result($result);
     }
-}// fim monta_select_Ingrediente
+}
 
-function monta_select_degustador(){
+function monta_select_degustador()
+{
     global $link;
 
     // lista degustador já cadastrados
@@ -161,15 +165,16 @@ function monta_select_degustador(){
             $nome_degustador = $row["nome"];
             echo "<option value=\"$id\">";
             echo  $nome_degustador . "</option>";
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
-}// fim monta_select_Ingrediente
+} // fim monta_select_Ingrediente
 
-function monta_select_cozinheiro(){
+function monta_select_cozinheiro()
+{
     global $link;
 
     // lista degustador já cadastrados
@@ -187,11 +192,10 @@ function monta_select_cozinheiro(){
             $nome_cozinheiro = $row["nome"];
             echo "<option value=\"$id\">";
             echo  $nome_cozinheiro . "</option>";
-            }
-            echo "</select>";
-            
+        }
+        echo "</select>";
+
         // libera a área de memória onde está o resultado
         mysqli_free_result($result);
     }
-}// fim monta_select_Ingrediente
-?>
+} // fim monta_select_Ingrediente
