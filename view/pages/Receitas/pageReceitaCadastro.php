@@ -3,6 +3,7 @@ include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include '../../../model/funcoes.php';
 include_once('../../../controller/receitaController.php');
+include_once('../../../controller/fotoController.php');
 ?>
 
 <!DOCTYPE html>
@@ -57,6 +58,7 @@ include_once('../../../controller/receitaController.php');
                 <div class="box-foto">
                     <label for="foto_receita">Foto da Receita</label>
                     <input type="file" accept="image/*" name="foto_receita">
+                    <input type="submit" name="Enviar">
                 </div>
                 <div class="conteiner-dados">
                     <label for="nome">Nome</label>
