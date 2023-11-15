@@ -41,7 +41,6 @@ if (isset($_GET['idFuncionario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styleEdica.css">
     <link rel="stylesheet" href="../../css/stylePesq.css">
-    <link rel="stylesheet" href="../../css/styleResponsivo.css">
     <link rel="stylesheet" href="../../css/styleMenu.css">
     <link rel="stylesheet" href="../../css/styleCadastro.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
