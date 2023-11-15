@@ -15,15 +15,19 @@ include_once('../../controller/referenciaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <link rel="stylesheet" href="../css/styleAll.css">
     <link rel="stylesheet" href="../css/stylePesq.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
     <link rel="stylesheet" href="../css/styleTable1.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <!-- <link rel="stylesheet" href="../css/styleResponsivo.css"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <title>Restaurantes</title>
 
@@ -47,15 +51,6 @@ include_once('../../controller/referenciaController.php');
     </script>
 
 </head>
-<!-- Menu lateral - vem de outra página -->
-<?php require_once('../components/menu.php'); ?>
-
-<div class="paginação">
-    <a href="homePage.php">Homepage > </a>
-    <a href="pageRestaurante.php">Restaurantes</a>
-</div>
-
-
 
 <body>
     <!-- Menu lateral - vem de outra página -->
@@ -82,8 +77,11 @@ include_once('../../controller/referenciaController.php');
                 <!-- Search -->
                 <form class="form-p">
                     <button>
-                        <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
-                            <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                            aria-labelledby="search">
+                            <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                                stroke="currentColor" stroke-width="1.333" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
                         </svg>
                     </button>
                     <input class="input-p" placeholder="Pesquisar" required="" type="search">
@@ -115,7 +113,8 @@ include_once('../../controller/referenciaController.php');
         </div>
 
         <section>
-            <form id="excluirSelect" action="../../controller/referenciaController.php?acao=excluirSelecionados" method="post">
+            <form id="excluirSelect" action="../../controller/referenciaController.php?acao=excluirSelecionados"
+                method="post">
                 <table class="table  table-striped table-hover">
                     <thead>
                         <tr>
@@ -127,13 +126,18 @@ include_once('../../controller/referenciaController.php');
                     </thead>
                     <tbody>
                         <!-- Tabela de referencia -->
-                        <?php foreach ($referencias as $index => $referencia) : ?>
+                        <?php foreach ($referencias as $index => $referencia): ?>
                             <tr>
                                 <td class="select-column"> - </td>
-                                <td><?php echo $referencia['nomeFun']; ?></td>
-                                <td><?php echo $referencia['countRes']; ?></td>
+                                <td>
+                                    <?php echo $referencia['nomeFun']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $referencia['countRes']; ?>
+                                </td>
                                 <td class="operecao-td">
-                                    <a href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario'] ?>">
+                                    <a
+                                        href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario'] ?>">
                                         <span class="material-symbols-outlined"> edit </span>
                                     </a>
                                 </td>
@@ -145,7 +149,9 @@ include_once('../../controller/referenciaController.php');
         </section>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
 </body>
 
