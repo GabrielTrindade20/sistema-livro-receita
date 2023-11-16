@@ -1,0 +1,17 @@
+.conteiner-button-inativar {
+    position: absolute;
+    margin-top: 20px;
+}
+
+/* Estilo para o botão "Inativar Selecionados" */
+.inativar-button {
+    display: inline-flex;
+    background-color: #EEB253;
+    color: #fff;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.8rem;
+}

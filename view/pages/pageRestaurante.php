@@ -128,7 +128,7 @@ include_once('../../controller/referenciaController.php');
                                     href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario'] ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
-                            </td>
+                            </td>                            
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

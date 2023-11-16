@@ -22,6 +22,7 @@ $numCargos = count($cargos);
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+    <link rel="stylesheet" href="../css/styleInativaCheckBox.css">
     <link rel="stylesheet" href="../css/styleConteudoPages.css">
     <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
@@ -98,6 +99,10 @@ $numCargos = count($cargos);
                     </div>
                 </div><!-- Search -->
             </div>
+        </div>
+
+        <div class="conteiner-button-inativar">
+            <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Inativar Selecionados</button>
         </div>
     </section>
 

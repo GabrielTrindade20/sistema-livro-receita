@@ -26,12 +26,14 @@ if (isset($_SESSION['resultados_pesquisa'])) {
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+    <link rel="stylesheet" href="../css/styleInativaCheckBox.css">
     <link rel="stylesheet" href="../css/styleConteudoPages.css">
     <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
     <link rel="stylesheet" href="../css/styleTable1.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
+
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -126,10 +128,13 @@ if (isset($_SESSION['resultados_pesquisa'])) {
             }
             ?>
         </div>
+
+        <div class="conteiner-button-inativar">
+            <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Inativar Selecionados</button>
+        </div>
     </section>
 
     <section class="conteiner-conteudo2">
-        <button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
 
         <form id="excluirSelect" action="../../controller/categoriaController.php?acao=excluirSelecionados"
             method="post">
