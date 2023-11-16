@@ -51,6 +51,7 @@ include_once('../../../controller/protect.php');
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
 
+
     <div class="conteiner-conteudo">
         <div class="titulo">
             <h2>Categoria</label>
