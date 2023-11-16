@@ -7,6 +7,7 @@ include_once('../../../controller/protect.php');
 include_once('../../../configuration/connect.php');
 include '../../../model/funcoes.php';
 include_once('../../../controller/receitaController.php');
+include_once('../../../controller/composicaoController.php');
 include_once('../../../model/fotoModel.php');
 include_once('../../../model/funcoes.php');
 
@@ -70,7 +71,7 @@ if (isset($ultima_foto)) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <link rel="stylesheet" href="../../css/styleAll.css">
-    <!-- <link rel="stylesheet" href="../../css/styleEdica.css"> -->
+    <link rel="stylesheet" href="../../css/styleFoto.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Receita Cadastro</title>
@@ -126,11 +127,12 @@ if (isset($ultima_foto)) {
                     }
                     ?>
                 </div>
+
                 <form enctype="multipart/form-data" action="" method="post">
                     <div class="box-foto">
                         <label for="foto_receita">Foto da Receita</label>
                         <input type="file" accept="image/*" name="foto_receita">
-                        <button type="submit" name="upload" class="button">Salvar</button>
+                        <button type="submit" id="file" name="upload" class="button">Salvar</button>
                     </div>
                 </form>
                 <form method="POST" action="../../../controller/receitaController.php">
@@ -178,27 +180,46 @@ if (isset($ultima_foto)) {
 
         <!-- Cadastro medida ingrediente -->
         <section align="right">
+            <!-- Notificação de erro ou não -->
+            <div class="mensagens">
+                <?php
+                if (isset($_SESSION["errosC"])) {
+                    $erros = $_SESSION["errosC"];
+                    foreach ($erros as $erro) {
+                        echo $erro . "<br>";
+                    }
+                    unset($_SESSION["errosC"]);
+                } elseif (isset($_SESSION["sucessoC"])) {
+                    $sucessos = $_SESSION["sucessoC"];
+                    foreach ($sucessos as $sucesso) {
+                        echo $sucesso . "<br>";
+                    }
+                    unset($_SESSION["sucesso"]);
+                }
+                ?>
+            </div>
+
             <div>
                 <!-- Medidas Cadastra -->
                 <h3>Ingrediente Medidas Cadastradas</h3>
 
-                <form action="" method="post">
-                    <label for="">Ingrediente</label>
+                <form action="../../../controller/composicaoController.php" method="post">
+                    <label for="ingrediente">Escolhar Ingrediente Existente</label>
                     <?php monta_select_Ingrediente(); ?>
-                    <label for="nova_entrada">Nova Entrada:</label>
-                    <input type="text" name="nova_entrada" id="nova_entrada">
 
-                    <input type="submit" value="Enviar">
-                </form>
-                <form action="" method="post">
-                    <label for="cadas_ingrediente">Ingrediente</label>
-                    <input type="text">
-                    <label for="cadas_ingrediente">Medidas</label>
-                    <input type="text">
-                    <label for="cadas_ingrediente">Quantidade</label>
-                    <input type="number">
+                    <label for="novoIngrediente">Ou adicione</label>
+                    <input type="text" name="novoIngrediente" placeholder="Novo Ingrediente">
 
-                    <button type="submit">Salvar</button>
+                    <label for="medida">Medidas</label>
+                    <?php monta_select_medida(); ?>
+
+                    <label for="novoMedida">Ou adicione</label>
+                    <input type="text" name="novoMedida" placeholder="Novo Ingrediente">
+
+                    <label for="quantidade">Quantidade</label>
+                    <input type="number" name="quantidade">
+
+                    <button type="submit" name="salvar_composicao">Salvar</button>
                 </form>
 
                 <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a></div>

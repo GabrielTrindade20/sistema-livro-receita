@@ -4,6 +4,8 @@ class medidaModel {
     private $link;
     private $erros = array();
     private $sucesso = array();
+    public $verificaSim;
+    public $verificaNao;
 
     public function __construct($link) {
         $this->link = $link;
@@ -124,5 +126,37 @@ class medidaModel {
         return false;
     } // fim update
 
+    public function verificarExisteBanco($descricao)
+    {
+        $query = "SELECT * FROM medida WHERE descricao = ? ;";
+
+        // Preparar a declaração
+        $stmt = $this->link->prepare($query);
+
+        // Verifica se a consulta foi bem-sucedida
+        if ($stmt) {
+            // Vincula os parâmetros
+            $stmt->bind_param("s", $descricao );
+
+            // Executa a consulta
+            $stmt->execute();
+
+            // Armazena o resultado
+            $stmt->store_result();
+
+            // Verifica se há algum resultado retornado (ou seja, se o registro já existe)
+            if ($stmt->num_rows > 0) {
+                $this->verificaSim = "O registro já existe no banco de dados.";
+            } else {
+                $this->verificaNao = "O registro não existe no banco de dados. Você pode adicioná-lo.";
+            }
+
+            // Fecha a declaração
+            $stmt->close();
+        } else {
+            // Se houver um erro na consulta
+            echo "Erro na consulta: " . $this->link->error;
+        }
+    }
 }// fim class
 ?>
