@@ -98,7 +98,7 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
 
                     <div class="info-qtd">
                         <a href="#">
-                            <?php echo "(" . $countFuncionarios . ") Funcionários"; ?>
+                            <?php echo "(" . $countFuncionarios . ") Salvos"; ?>
                         </a>
                     </div>
                 </div>

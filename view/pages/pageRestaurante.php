@@ -53,7 +53,6 @@ include_once('../../controller/referenciaController.php');
                         <a href="#">
                             <?php echo "(" . $count_referencias . ") Salvos"; ?>
                         </a>
-
                     </div>
                 </div>
 
