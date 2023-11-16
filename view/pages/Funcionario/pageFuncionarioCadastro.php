@@ -17,6 +17,14 @@ include_once('../../../controller/referenciaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styleEdica.css">
+    <link rel="stylesheet" href="../../css/stylePesq.css">
+    <link rel="stylesheet" href="../../css/styleTable.css">
+    <link rel="stylesheet" href="../../css/styleResponsivo.css">
+    <link rel="stylesheet" href="../../css/styleMenu.css">
+    <link rel="stylesheet" href="../../css/styleCadastro.css">
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -31,33 +39,35 @@ include_once('../../../controller/referenciaController.php');
 
     <!-- Cadastro do funcionario -->
     <section class="conteiner-conteudo">
-        <h1 class="titulo">Funcionário</h1>
-
-        <!-- Botão para cancelar e voltar à página principal -->
-        <a href="../../pages/pageFuncionario.php">Sair</a>
-
-        <!-- Notificação de erro ou não -->
-        <div class="mensagens">
-            <?php
-            if (isset($_SESSION["erros"])) {
-                $erros = $_SESSION["erros"];
-                // Exibir as mensagens de erro
-                foreach ($erros as $erro) {
-                    echo $erro . "<br>";
-                }
-                // Limpar as mensagens de erro da sessão
-                unset($_SESSION["erros"]);
-            } elseif (isset($_SESSION["sucesso"])) {
-                $sucessos = $_SESSION["sucesso"];
-                foreach ($sucessos as $sucesso) {
-                    echo $sucesso . "<br>";
-                }
-                unset($_SESSION["sucesso"]);
-            }
-            ?>
+        <div>
+            <h1>Informações</h1>
         </div>
 
         <div class="conteiner-abas">
+            <!-- Formulário de Cadastro -->
+            <div class="title-container">
+                <h2>Funcionário</h2>
+            </div>
+
+            <form method="POST" action="../../../controller/controllerFuncionario/funcionarioController.php">
+                <div class="form-row-container">
+                    <div class="form-field">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome"
+                            value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Nome Fantasia:</label>
+                        <input type="text" id="nome_fantasia" name="nome_fantasia"
+                            value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
+                            required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Cargo:</label>
+                        <?php
+                        monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
+                        ?>
+                    </div>
             <!-- Formulário de Cadastro Funcionario -->
             <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados">
@@ -82,13 +92,43 @@ include_once('../../../controller/referenciaController.php');
                     monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
                     ?> <br>
                 </div>
-
-                <div class="">
-                    <!-- Botão para salvar o funcionario -->
-                    <button type="submit" name="salvar" class="button">Salvar</button>
+                <div class="form-row-container">
+                    <div class="form-field">
+                        <label for="nome">RG:</label>
+                        <input type="text" id="rg" name="rg" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Salário:</label>
+                        <input type="text" id="salario" name="salario"
+                            value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="nome">Restaurante:</label>
+                        <?php
+                        monta_select_restaurante(isset($_SESSION['idRestaurante']) ? $_SESSION['idRestaurante'] : '');
+                        ?>
+                    </div>
+                </div>
+                <div class="form-row-container">
+                    <div class="form-field">
+                        <label for="nome">Data de Ingresso:</label>
+                        <input type="date" id="data_ingresso" name="data_ingresso"
+                            value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
+                            required>
+                    </div>
+                </div>
+                <br>
+                <div class="form-row-container">
+                    <div class="conteiner-operacoes">
+                        <!-- Botão para salvar o funcionário -->
+                        <button type="submit" name="salvar" class="button">Salvar</button>
+                        <!-- Botão para cancelar e voltar à página principal -->
+                        <a href="../pageFuncionario.php">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>
+
     </section>
 
 </body>

@@ -1,187 +1,141 @@
 <?php
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 include_once('../../controller/protect.php');
-include_once('../../controller/funcionarioController.php');
-
-// Limpe as variáveis de sessão 
-unset($_SESSION['rg']);
-unset($_SESSION['nomeF']);
-unset($_SESSION['data_ingresso']);
-unset($_SESSION['salario']);
-unset($_SESSION['nome_fantasia']);
-unset($_SESSION['cargo']);
+include_once('../../controller/controllerFuncionario/funcionarioController.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/stylePesq.css">
-    <link rel="stylesheet" href="../css/styleTable.css">
-    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
-
-    <link rel="stylesheet" href="../css/stylePesq.css">
-    <link rel="stylesheet" href="../css/styleResponsivo.css">
-    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <!-- BOOSTRAP  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" 
-    />
-    
-    <title>Funcionário</title>
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+
+    <link rel="stylesheet" href="../css/styleConteudoPages.css">
+    <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
+    <link rel="stylesheet" href="../css/stylePesquisar.css">
+    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+    <link rel="stylesheet" href="../css/styleResponsivo.css">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <style>
+        /* Estilo para células ativas (verde) */
+        .ativo {
+            background-color: #6eaa5e;
+            color: black;
+            padding: 3px 6px;
+            border-radius: 8px;
+        }
+
+        /* Estilo para células inativas (vermelho) */
+        .inativo {
+            background-color: #ff5232;
+            color: black;
+            padding: 3px 6px;
+            border-radius: 8px;
+        }
+
+        /* Estilo para o botão "Inativar Selecionados" */
+        .inativar-button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .conteiner-button-inativar {
+            float: right;
+            margin-top: 10px;
+            margin-right: 105px;
+        }
+
+        /* Ajustes para o botão de pesquisa */
+        .search-box-button {
+            margin-top: -3px;
+            margin-right: 5px;
+        }
+    </style>
 
     <script>
-        function confirmarExclusaoCheckbox2() {
-            if (confirm("Tem certeza de que deseja excluir as funcionarios selecionadas?")) {
-                document.forms["excluirSelect"].submit();
-            }
-        }
-
-        function confirmarInativo(idFuncionario) {
-            var confirmacao = confirm("Tem certeza de que deseja colocar o funcionário como inativo?");
-
-            if (confirmacao) {
-                // Fazer uma solicitação AJAX para atualizar o status do funcionário
-                var url = "../../controller/funcionarioController.php?acao=inativo&idFuncionario=" + idFuncionario;
-                var xhr = new XMLHttpRequest();
-
-                xhr.open("GET", url, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Atualizar o status na tabela na página atual
-                        var rows = document.querySelectorAll('.funcionario-row[data-id="' + idFuncionario + '"]');
-                        for (var i = 0; i < rows.length; i++) {
-                            var cells = rows[i].getElementsByTagName('td');
-                            if (cells.length > 7) { // Verifica se há pelo menos 8 colunas (a coluna de status é a 8ª)
-                                cells[7].textContent = 'Inativo';
-                            }
-                        }
-                        alert("Funcionário marcado como inativo.");
-                    }
-                };
-
-                xhr.send();
-            }
-        }
-
         function confirmarExclusaoCheckbox() {
-            var checkboxes = document.querySelectorAll('input[name="checkbox[]"]:checked');
-            var ids = [];
-
-            checkboxes.forEach(function(checkbox) {
-                ids.push(checkbox.value);
-            });
-
-            if (ids.length === 0) {
-                alert("Nenhum funcionário selecionado.");
-                return;
-            }
-
-            var confirmacao = confirm("Tem certeza de que deseja colocar os funcionários como inativos?");
-
-            if (confirmacao) {
-                // Fazer uma solicitação AJAX para atualizar o status dos funcionários selecionados
-                var url = "../../controller/funcionarioController.php?acao=inativosSelecionados";
-                var xhr = new XMLHttpRequest();
-                var formData = new FormData();
-
-                ids.forEach(function(id) {
-                    formData.append("checkbox[]", id);
-                });
-
-                xhr.open("POST", url, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Atualizar o status na tabela na página atual
-                        ids.forEach(function(id) {
-                            var rows = document.querySelectorAll('.funcionario-row[data-id="' + id + '"]');
-                            for (var i = 0; i < rows.length; i++) {
-                                var cells = rows[i].getElementsByTagName('td');
-                                if (cells.length > 7) { // Verifica se há pelo menos 8 colunas (a coluna de status é a 8ª)
-                                    cells[7].textContent = 'Inativo';
-                                }
-                            }
-                        });
-                        alert("Funcionários marcados como inativos.");
-                    }
-                };
-
-                xhr.send(formData);
+            if (confirm("Tem certeza de que deseja inativar os funcionários selecionados?")) {
+                document.forms["inativarSelecionados"].submit();
             }
         }
-
     </script>
 
+    <title>Funcionário</title>
 </head>
+
+<body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php');?>
+    <?php require_once('../components/menu.php'); ?>
 
-    <div class="paginação">
-        <a href="homePage.php">Homepage > </a>
-        <a href="pagefuncionario.php">funcionario</a>
-    </div>
+    <section class="conteiner-conteudo2">
 
-    <section class="conteiner-pesquisa">
-        <div class="titulos" id="titulo">
-            <div class="conteiner-titulo">
-                <div>
-                    <h1>Lista de Funcionários</h1>
+        <div class="paginação">
+            <a href="homePage.php">Homepage > </a>
+            <a href="pagefuncionario.php">funcionario</a>
+        </div>
+
+        <div class="containerPesquisa">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 conteiner-info">
+                    <div>
+                        <h1>Lista de Funcionários</h1>
+                    </div>
+
+                    <div class="info-qtd">
+                        <a href="#">
+                            <?php echo "(" . $countFuncionarios . ") Funcionários"; ?>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="info-receitas">
-                    <?php echo "(" . $countFuncionarios. ") Funcionários"; ?>
-                </div>
-            </div>
-
-            <div class="search-container">
-                <!-- Search -->
-                <div class="search-box">
-                    <form method="POST" action="">
-                        <input type="text" class="search-box-input" name="busca" placeholder="Pesquisar">
-                        <input name="sendPesqFuncinario" type="submit" class="">
+                <div class="col-md-6 col-sm-12 conteiner-func">
+                    <!-- Search -->
+                    <form class="form-p">
+                        <button>
+                            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-labelledby="search">
+                                <path
+                                    d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                                    stroke="currentColor" stroke-width="1.333" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <input class="input-p" placeholder="Pesquisar" required="" type="search">
                     </form>
-                </div>
-                <!-- Criar -->
-                <div class="button-nova">
-                    <a href="./Funcionario/pageFuncionarioCadastro.php?acao=cadastro">
-                        <button class="nova-receita-button">Cadastrar</button>
-                    </a>
+
+                    <!-- Criar -->
+                    <div class="button-nova">
+                        <a href="./Funcionario/pageFuncionarioCadastro.php?acao=cadastro">
+                            <button class="nova-button">Cadastrar</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Notificação de erro ou não -->
-        <div class="mensagens">
-            <?php
-                if (isset($_SESSION["erros"])) {
-                    $erros = $_SESSION["erros"];
-                    // Exibir as mensagens de erro
-                    foreach ($erros as $erro) {
-                        echo $erro . "<br>";
-                    }
-                    // Limpar as mensagens de erro da sessão
-                    unset($_SESSION["erros"]);
-                } elseif (isset($_SESSION["sucesso"])) {
-                    $sucessos = $_SESSION["sucesso"];
-                    foreach ($sucessos as $sucesso) {
-                        echo $sucesso. "<br>";
-                    }
-                    unset($_SESSION["sucesso"]);
-                }
-            ?>
-        </div>
+            <div class="conteiner-button-inativar">
+                <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Inativar Selecionados</button>
+            </div>
     </section>
 
-    <section class="conteiner-conteudo">
-        <button onclick="confirmarExclusaoCheckbox()" align="rigt">Inativo Selecionados</button>
-
-        <form id="excluirSelect" action="../../controller/funcionarioController.php?acao=inativosSelecionados" method="post">
-            <table class="table" border="1" align="right">
+    <section class="conteiner-conteudo2">
+        <form id="inativarSelecionados" action="../../controller/funcionarioController.php?acao=inativosSelecionados"
+            method="post">
+            <table class="table center-table" style="margin-bottom: 5rem" border="1">
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
@@ -198,9 +152,11 @@ unset($_SESSION['cargo']);
                 <tbody>
                     <!-- Tabela de funcionario -->
                     <?php foreach ($funcionarios as $index => $funcionario): ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?> funcionario-row" data-id="<?php echo $funcionario['idFuncionario']; ?>">
+                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?> funcionario-row"
+                            data-id="<?php echo $funcionario['idFuncionario']; ?>">
                             <td class="select-column">
-                                <input type="checkbox" name="checkbox[]" value="<?php echo $funcionario['idFuncionario']; ?>">
+                                <input type="checkbox" name="checkbox[]"
+                                    value="<?php echo $funcionario['idFuncionario']; ?>">
                             </td>
                             <td>
                                 <?php echo $funcionario['rg']; ?>
@@ -209,7 +165,7 @@ unset($_SESSION['cargo']);
                                 <?php echo $funcionario['nome']; ?>
                             </td>
                             <td>
-                                <?php echo $funcionario['data_ingresso'] = implode("/",array_reverse(explode("-", $funcionario['data_ingresso']))); ?>
+                                <?php echo $funcionario['data_ingresso'] = implode("/", array_reverse(explode("-", $funcionario['data_ingresso']))); ?>
                             </td>
                             <td>
                                 <?php echo 'R$' . $funcionario['salario']; ?>
@@ -221,23 +177,29 @@ unset($_SESSION['cargo']);
                                 <?php echo $funcionario['cargo']; ?>
                             </td>
                             <td>
-                                <?php  
+                                <span class="status <?php echo ($funcionario['situacao'] == '0') ? 'ativo' : 'inativo'; ?>">
+                                    <?php
                                     if ($funcionario['situacao'] == '0') {
                                         echo 'Ativo';
                                     } elseif ($funcionario['situacao'] == '1') {
                                         echo 'Inativo';
                                     } else {
                                         echo 'Desconhecido';
-                                    } 
-                                ?>
+                                    }
+                                    ?>
+                                </span>
                             </td>
+                            <td class="td-operacao">
+                                <a
+                                    href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
                             <td>
-                                <a href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>&acao=alteracao">
+                                <a
+                                    href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>&acao=alteracao">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
-                            </td>
-                            <td>
-                                <a href="#" onclick="confirmarInativo(<?php echo $funcionario['idFuncionario']; ?>);" class="button">
+
+                                <a href="#" onclick="confirmarInativo(<?php echo $funcionario['idFuncionario']; ?>);"
+                                    class="button">
                                     <span class="material-symbols-outlined"> delete </span>
                                 </a>
                             </td>
@@ -247,5 +209,11 @@ unset($_SESSION['cargo']);
             </table>
         </form>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>

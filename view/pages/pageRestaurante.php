@@ -15,36 +15,17 @@ include_once('../../controller/referenciaController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
-    <link rel="stylesheet" href="../css/styleAll.css">
-    <link rel="stylesheet" href="../css/stylePesq.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="../css/styleConteudoPages.css">
+    <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
     <link rel="stylesheet" href="../css/styleTable1.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
-
     <title>Restaurantes</title>
-
-    <script>
-        function confirmarExclusao(idFuncionario, idRestaurante) {
-            var confirmacao = confirm("Tem certeza de que deseja excluir este restaurante?");
-
-            if (confirmacao) {
-                // Se o usuário confirmar a exclusão, redirecione para o script de exclusão com o ID
-                window.location.href = "../../controller/referenciaController.php?acao=excluir&idFuncionario=" + idFuncionario + "&idRestaurante=" + idRestaurante;
-            } else {
-                // Se o usuário cancelar, não faça nada
-            }
-        }
-
-        function confirmarExclusaoCheckbox() {
-            if (confirm("Tem certeza de que deseja excluir os restaurantes selecionados?")) {
-                document.forms["excluirSelect"].submit();
-            }
-        }
-    </script>
 
 </head>
 
@@ -58,35 +39,45 @@ include_once('../../controller/referenciaController.php');
             <a href="homePage.php">Homepage > </a>
             <a href="pageRestaurante.php">Restaurantes</a>
         </div>
-        <div class="continer-top">
-            <div class="conteiner-titulo">
-                <div>
-                    <h1>Lista de Restaurantes</h1>
+
+        <div class="containerPesquisa">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 conteiner-info">
+                    <div>
+                        <h1>Lista de Restaurantes</h1>
+                    </div>
+                    <div class="info-qtd">
+                        <a href="#">
+                            <?php echo "(" . $count_referencias . ") Salvos"; ?>
+                        </a>
+
+                    </div>
                 </div>
 
-                <div class="info-receitas">
-                    <?php echo "(" . $count_referencias . ") Salvos"; ?>
-                </div>
-            </div>
-
-            <div class="search-container">
-                <!-- Search -->
-                <form class="form-p">
-                    <button>
-                        <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
-                            <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </button>
-                    <input class="input-p" placeholder="Pesquisar" required="" type="search">
-                </form>
-                <!-- Criar -->
-                <div class="button-nova">
-                    <a href="./Restaurante/pageRestauranteCadastro.php">
-                        <button class="nova-button">Cadastrar</button>
-                    </a>
+                <div class="col-md-6 col-sm-12 conteiner-func">
+                    <!-- Search -->
+                    <form class="form-p">
+                        <button>
+                            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                                aria-labelledby="search">
+                                <path
+                                    d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                                    stroke="currentColor" stroke-width="1.333" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <input class="input-p" placeholder="Pesquisar" required="" type="search">
+                    </form>
+                    <!-- Criar -->
+                    <div class="button-nova">
+                        <a href="./Restaurante/pageRestauranteCadastro.php">
+                            <button class="nova-button">Cadastrar</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Notificação de erro ou não -->
         <div class="mensagens">
@@ -105,37 +96,45 @@ include_once('../../controller/referenciaController.php');
             ?>
         </div>
 
-        <section>
-            <form id="excluirSelect" action="../../controller/referenciaController.php?acao=excluirSelecionados" method="post">
-                <table class="table  table-striped table-hover">
-                    <thead>
+    </section>
+
+    <section class="conteiner-conteudo2">
+        <form id="excluirSelect" action="../../controller/referenciaController.php?acao=excluirSelecionados"
+            method="post">
+            <table class="table  table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>-</th>
+                        <th>Funcionario</th>
+                        <th>Restaurantes cadastrados</th>
+                        <th class="operacao">Operações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tabela de referencia -->
+                    <?php foreach ($referencias as $index => $referencia): ?>
                         <tr>
-                            <th>-</th>
-                            <th>Funcionario</th>
-                            <th>Restaurantes cadastrados</th>
-                            <th class="operacao">Operações</th>
+                            <td class="select-column"> - </td>
+                            <td>
+                                <?php echo $referencia['nomeFun']; ?>
+                            </td>
+                            <td>
+                                <?php echo $referencia['countRes']; ?>
+                            </td>
+                            <td class="operecao-td">
+                                <a
+                                    href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario'] ?>">
+                                    <span class="material-symbols-outlined"> edit </span>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Tabela de referencia -->
-                        <?php foreach ($referencias as $index => $referencia) : ?>
-                            <tr>
-                                <td class="select-column"> - </td>
-                                <td><?php echo $referencia['nomeFun']; ?></td>
-                                <td><?php echo $referencia['countRes']; ?></td>
-                                <td class="operecao-td">
-                                    <a href="../pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=<?php echo $referencia['idFuncionario'] ?>">
-                                        <span class="material-symbols-outlined"> edit </span>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </form>
-        </section>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </form>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>
