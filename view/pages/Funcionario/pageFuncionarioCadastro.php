@@ -34,6 +34,36 @@ include_once('../../../controller/referenciaController.php');
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Funcionário</title>
+
+    <style>
+        .conteiner-conteudo {
+            position: relative;
+            margin-top: 150px;
+            margin-left: 350px;
+            width: 60%;
+        }
+
+        .conteiner-conteudo form {
+            width: 100%;
+            padding: 30px 60px 100px 0;
+            border: 1px solid white;
+            border-radius: 0px 0px 10px 10px;
+            box-shadow: 0px 5px 10px -5px black;
+        }
+
+        .conteiner-abas {
+            background-color: aquamarine;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin-left: 25px;
+            align-items: center;
+        }
+
+        .conteiner-dados input {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,92 +76,63 @@ include_once('../../../controller/referenciaController.php');
             <h2>Informações</h2>
         </div>
 
-        <form method="POST" action="../../../controller/controllerFuncionario/funcionarioController.php">
-            <div class="conteiner-abas">
-                <div class="row">
-                    <div class="form-field">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome"
-                            value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="nome">Nome Fantasia:</label>
-                        <input type="text" id="nome_fantasia" name="nome_fantasia"
-                            value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
-                            required>
-                    </div>
-                    <div class="form-field">
-                        <label for="nome">Cargo:</label>
-                        <?php
-                        monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
-                        ?>
-                    </div>
-                    <!-- Formulário de Cadastro Funcionario -->
-                    <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
-                        <div class="conteiner-dados">
-                            <label for="rg">RG:</label>
-                            <input type="text" id="rg" name="rg"
-                                value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
-
+        <div class="conteiner-abas">
+            <form class="form_funcionario" method="POST" action="../controller/funcionarioController.php">
+                <div class="conteiner-abas">
+                    <div class="row">
+                        <div class="col">
                             <label for="nome">Nome:</label>
                             <input type="text" id="nome" name="nome"
                                 value="<?php echo isset($_SESSION['nome_funcionarioF']) ? $_SESSION['nome_funcionarioF'] : ''; ?>"
                                 required>
 
-                            <label for="data_ingresso">Data Ingresso:</label>
-                            <input type="date" id="data_ingresso" name="data_ingresso"
-                                value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
-                                required>
-
-                            <label for="salario">Salário:</label>
-                            <input type="text" id="salario" name="salario"
-                                value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
-
-                            <label for="nome_fantasia">Nome Fantasia:</label>
-                            <input type="text" id="nome_fantasia" name="nome_fantasia"
-                                value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
-                                required>
-
-                            <label for="cargo">Cargo:</label>
-
-                            <?php
-                            monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
-                            ?> <br>
+                            <label for="rg">RG:</label>
+                            <input type="text" id="rg" name="rg"
+                                value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
                         </div>
-                        <div class="form-row-container">
-                            <div class="form-field">
-                                <label for="nome">RG:</label>
-                                <input type="text" id="rg" name="rg" required>
-                            </div>
-                            <div class="form-field">
-                                <label for="nome">Salário:</label>
-                                <input type="text" id="salario" name="salario"
-                                    value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>"
-                                    required>
-                            </div>
-                            <div class="form-field">
-                                <label for="nome">Restaurante:</label>
-                                <?php
-                                monta_select_restaurante(isset($_SESSION['idRestaurante']) ? $_SESSION['idRestaurante'] : '');
-                                ?>
-                            </div>
-                        </div>
-                        <div class="form-row-container">
-                            <div class="form-field">
-                                <label for="nome">Data de Ingresso:</label>
-                                <input type="date" id="data_ingresso" name="data_ingresso"
-                                    value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
-                                    required>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="cancelar">
-                            <button type="submit" name="salvar" class="button">Salvar</button>
-                            <a href="../../pages/pageFuncionario.php">Cancelar</a>
-                        </div>
+                    <div class="row">
+                        <label for="data_ingresso">Data Ingresso:</label>
+                        <input type="date" id="data_ingresso" name="data_ingresso"
+                            value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
+                            required>
+                    </div>
+
+                    <div class="row">
+                        <label for="salario">Salário:</label>
+                        <input type="text" id="salario" name="salario"
+                            value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
+                    </div>
+
+                    <div class="row">
+                        <label for="nome_fantasia">Nome Fantasia:</label>
+                        <input type="text" id="nome_fantasia" name="nome_fantasia"
+                            value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
+                            required>
+                    </div>
+
+                    <div class="row">
+                        <label for="cargo">Cargo:</label>
+                        <?php
+                        monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
+                        ?> <br>
+                    </div>
+
+                    <div class="row">
+                        <label for="nome">Restaurante:</label>
+                        <?php
+                        monta_select_restaurante(isset($_SESSION['idRestaurante']) ? $_SESSION['idRestaurante'] : '');
+                        ?>
+                    </div>
                 </div>
-        </form>
 
+        </div>
+        <div class="cancelar">
+            <button type="submit" name="salvar" class="button">Salvar</button>
+            <a href="../../pages/pageFuncionario.php">Cancelar</a>
+        </div>
+        </form>
     </section>
 
 </body>
