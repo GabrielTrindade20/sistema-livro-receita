@@ -3,7 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 include_once('../../controller/protect.php');
-include_once('../../controller/controllerFuncionario/funcionarioController.php');
+include_once('../../controller/funcionarioController.php');
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,6 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
     <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
     <link rel="stylesheet" href="../css/styleTable1.css">
-    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
 
@@ -51,13 +50,10 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
         /* Estilo para o botão "Inativar Selecionados" */
         .inativar-button {
             display: block;
-            margin-bottom: 10px;
         }
 
         .conteiner-button-inativar {
             float: right;
-            margin-top: 10px;
-            margin-right: 105px;
         }
 
         /* Ajustes para o botão de pesquisa */
@@ -66,14 +62,6 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
             margin-right: 5px;
         }
     </style>
-
-    <script>
-        function confirmarExclusaoCheckbox() {
-            if (confirm("Tem certeza de que deseja inativar os funcionários selecionados?")) {
-                document.forms["inativarSelecionados"].submit();
-            }
-        }
-    </script>
 
     <title>Funcionário</title>
 </head>
@@ -126,13 +114,34 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
                     </div>
                 </div>
             </div>
-
-            <div class="conteiner-button-inativar">
-                <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Inativar Selecionados</button>
-            </div>
     </section>
 
     <section class="conteiner-conteudo2">
+        <!-- Notificação de erro ou não -->
+        <div class="mensagens">
+            <?php
+                if (isset($_SESSION["erros"])) {
+                    $erros = $_SESSION["erros"];
+                    // Exibir as mensagens de erro
+                    foreach ($erros as $erro) {
+                        echo $erro . "<br>";
+                    }
+                    // Limpar as mensagens de erro da sessão
+                    unset($_SESSION["erros"]);
+                } elseif (isset($_SESSION["sucesso"])) {
+                    $sucessos = $_SESSION["sucesso"];
+                    foreach ($sucessos as $sucesso) {
+                        echo $sucesso . "<br>";
+                    }
+                    unset($_SESSION["sucesso"]);
+                }
+            ?>
+        </div>
+        
+        <div class="conteiner-button-inativar">
+            <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Inativar Selecionados</button>
+        </div>
+
         <form id="inativarSelecionados" action="../../controller/funcionarioController.php?acao=inativosSelecionados"
             method="post">
             <table class="table center-table" style="margin-bottom: 5rem" border="1">
@@ -200,7 +209,7 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
 
                                 <a href="#" onclick="confirmarInativo(<?php echo $funcionario['idFuncionario']; ?>);"
                                     class="button">
-                                    <span class="material-symbols-outlined"> delete </span>
+                                    <span class="material-symbols-outlined"> do_not_disturb_on </span>
                                 </a>
                             </td>
                         </tr>
@@ -210,10 +219,8 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
         </form>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/funcionarioInativo.js"></script>
 
 </body>
-
 </html>

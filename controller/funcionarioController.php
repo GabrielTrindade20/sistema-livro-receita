@@ -3,9 +3,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once(__DIR__ . '../../../configuration/connect.php');
-include_once(__DIR__ . '../../../model/funcionarioModel.php');
-include_once(__DIR__ . '../../../model/referenciaModel.php');
+include_once(__DIR__ . '../../configuration/connect.php');
+include_once(__DIR__ . '../../model/funcionarioModel.php');
+include_once(__DIR__ . '../../model/referenciaModel.php');
 
 $funcionarioModel = new funcionarioModel($link);
 
