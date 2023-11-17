@@ -29,7 +29,10 @@ include_once('../../../model/modelCargo/cargoModel.php');
         </div>
 
         <div class="conteiner-abas">
-            <h2>Nome do Cargo</h2>
+            
+            <div class="title-container">
+                <h2>Nome do Cargo</h2>
+            </div>
             <!-- Formulário de Cadastro -->
             <form action="../../../controller/controllerCargo/cargoController.php" method="POST">
 

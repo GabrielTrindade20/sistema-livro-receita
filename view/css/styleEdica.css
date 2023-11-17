@@ -46,6 +46,11 @@
     padding: 50px;
 }
 
+.conteiner-formulario{
+    background-color: #BE783C;
+    width: 100%;
+}
+
 .conteiner-dados {
     width: 40%;
     display: block;
@@ -61,7 +66,7 @@
 
 .conteiner-operacoes button {
     position: absolute;
-    width: 90px;
+    width: 14%;
     height: 33px;
     padding: 5px;
     justify-content: space-between;

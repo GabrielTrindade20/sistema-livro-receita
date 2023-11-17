@@ -155,6 +155,15 @@ class referenciaModel
 
     public function recuperaReferencia($idFuncionario)
     {
+        $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim
+              FROM referencia
+              WHERE idFuncionario = ? AND idRestaurante = ?";
+        // lista cursos já cadastrados
+        $query =   "SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+                    FROM funcionario
+                    INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+                    INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+                    WHERE funcionario.idFuncionario = '$idFuncionario';";
         $query =   "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
         FROM funcionario
         INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
@@ -162,14 +171,22 @@ class referenciaModel
         WHERE funcionario.idFuncionario = '$idFuncionario';";
 
 
-        $resultado = mysqli_query($this->link, $query);
+        $stmt = $this->link->prepare($query);
+        $stmt->bind_param("ii", $idFuncionario, $idRestaurante);
+        $stmt->execute();
 
-        if ($resultado) {
-            return mysqli_fetch_assoc($resultado);
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $referencias = array();
+            while ($row = $result->fetch_assoc()) {
+                $referencias[] = $row;
+            }
+            return $referencias;
         } else {
-            return null; // Retornar null em caso de erro na consulta
+            return null; // Retornar null em caso de erro na consulta ou se não houver referências
         }
-    } // fim de recuperar
+    }
 
     public function pegarUltimoIdFuncionario()
     {

@@ -61,7 +61,9 @@ $numCargos = count($cargos);
                 </div>
 
                 <div class="info-receitas">
-                    <?php echo "($numCargos) Cargos"; ?>
+                    <a href="#">
+                        <?php echo "($numCargos) Cargos"; ?>
+                    </a>
                 </div>
             </div>
 
@@ -69,7 +71,7 @@ $numCargos = count($cargos);
                 <div class="search-box">
                     <form method="post" action="#">
                         <div class="search-box-input-container">
-                            <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
+                            <input type="text" class="search-box-input" name="busca" placeholder="Pesquisa">
                             <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
                         </div>
                     </form>
@@ -77,7 +79,7 @@ $numCargos = count($cargos);
 
                 <div class="button-nova">
                     <a href="Cargo/cargoCadastro.php">
-                        <button class="nova-receita-button">Novo Cargo</button>
+                        <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
             </div><!-- Search -->
@@ -85,7 +87,7 @@ $numCargos = count($cargos);
     </section>
 
     <section class="conteiner-conteudo">
-        
+
         <table class="table">
             <thead>
                 <tr>
