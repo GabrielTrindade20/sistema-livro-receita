@@ -1,5 +1,5 @@
 <?php
-include_once('../../../controller/protect.php');
+include_once('../../../controller/protectSubFolders.php');
 include_once('../../../controller/controllerFuncionario/funcionarioController.php');
 include_once('../../../controller/restauranteController.php');
 ?>
@@ -12,8 +12,7 @@ include_once('../../../controller/restauranteController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../../css/styleTable1.css">
     <!-- <link rel="stylesheet" href="../../css/styleEdica.css"> -->
@@ -217,6 +216,8 @@ include_once('../../../controller/restauranteController.php');
     </section>
 
     <script src="../../js/referencia2.js"></script>
+    <!-- BOOSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

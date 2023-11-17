@@ -9,10 +9,6 @@
   --black: black;
 }
 
-section{
-  margin-right: 15px;
-}
-
 .header {
   background-color: var(--black);
   padding: 5px 15px; 
