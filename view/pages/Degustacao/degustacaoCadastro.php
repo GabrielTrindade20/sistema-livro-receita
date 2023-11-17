@@ -1,3 +1,9 @@
+<?php
+include_once('../../../controller/protectSubFolders.php');
+include_once('../../../controller/protect.php');
+include_once('../../../model/funcoes.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,96 +11,81 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styleHomePage.css">
-    <link rel="stylesheet" href="../css/styleMenu.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+
+    <link rel="stylesheet" href="../../css/styleCabeçalhoEdicao.css">
+    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Página Principal</title>
+    <title>Degustação</title>
+
+    <style>
+        .conteiner-conteudo {
+            position: relative;
+            margin-top: 150px;
+            right: -350px;
+            width: 50%;
+        }
+
+        .conteiner-conteudo form {
+            width: 100%;
+            padding: 30px 60px 100px 0;
+            border: 1px solid white;
+            border-radius: 0px 0px 10px 10px;
+            box-shadow: 0px 5px 10px -5px black;
+        }
+
+        .conteiner-dados {
+            width: 40%;
+            display: block;
+            align-items: center;
+            text-align: left;
+            margin-left: 30%;
+            margin-top: 10%;
+        }
+
+        .conteiner-dados input {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="usuario">
-            <a href="">
-                <span class="usuario-name">Gabriel Rocha</span>
-                <span class="material-symbols-outlined"> person </span>
-            </a>
-        </div>
-    </header>
+    <!-- Menu lateral - vem de outra página -->
+    <?php require_once('../../components/menuSubFolders2.php'); ?>
 
-    <nav class="menu-lateral">
-        <div class="logo">
-            <a href="homePage.php"><img src="../../view/css/img/logoIcon.png" alt="logo site livro de receitas"> </a>
-        </div>
 
-        <div class="links-menu">
-            <div class="icone-menu">
-                <a href="../homePage.php">
-                    <span class="material-symbols-outlined"> Home </span>
-                    <span>Home</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageReceitas.php">
-                    <span class="material-symbols-outlined"> restaurant </span>
-                    <span>Receitas</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageLivroReceitas.php">
-                    <span class="material-symbols-outlined"> menu_book </span>
-                    <span>Livro de Receitas</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageCategoria.php">
-                    <span class="material-symbols-outlined"> category </span>
-                    <span>Categoria</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageDegustacao.php">
-                    <span><img src="../../view/css/iconsSVG/iconDegustação.svg" alt=""></span>
-                    <span>Degustação</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageCargo.php">
-                    <span class="material-symbols-outlined"> patient_list </span>
-                    <span>Cargo</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageFuncionario.php">
-                    <span class="material-symbols-outlined"> group </span>
-                    <span>Funcionários</span>
-                </a>
-            </div>
-            <div class="icone-menu">
-                <a href="../pageRestaurante.php">
-                    <span class="material-symbols-outlined"> restaurant_menu </span>
-                    <span>Restaurantes</span>
-                </a>
-            </div>
+    <div class="conteiner-conteudo">
+        <div class="titulo">
+            <h2>Degustação</label>
         </div>
+        <!-- Formulário de Cadastro -->
+        <form method="POST" action="../../../controller/degistacaoController.php">
 
-        <div class="perfil">
-            <div class="icon-usuario">
-                <a href="pagePerfil.php">
-                    <span class="material-symbols-outlined"> person </span>
-                    <span class="name">Gabriel Rocha</span>
-                </a>
-                <a href="./../../controller/logoutController.php">
-                    <span class="material-symbols-outlined"> logout </span>
-                </a>
+            <div class="conteiner-dados">
+                <label for="degustador">Degustador:</label>
+                <input type="text" id="degustador" name="degustador" required>
+                <?/*php monta_select_degustador();*/ ?>
+                <br>
+                <label for="nota_degustacao">Nota:</label>
+                <input type="number" id="nota_degustacao" name="nota_degustacao" required>
+
+                <label for="data_degustacao">Data de Degustação:</label>
+                <input type="date" id="data_degustacao" name="data_degustacao" required>
+
+                <label for="nome">Receita:</label>
+                <input type="text" id="nome" name="nome" required>
             </div>
-        </div>
-    </nav>
+            <br>
 
-    <section class="conteiner-conteudo">
-        
-    </section>
+            <!-- Botão para salvar o cargo -->
+
+            <!-- Botão para cancelar e voltar à página principal -->
+            <div class="cancelar">
+                <button type="submit" name="salvar" class="button">Salvar</button>
+                <a href="../../pages/pageCategoria.php">Cancelar</a>
+            </div>
+        </form>
+    </div>
 
 </body>
 

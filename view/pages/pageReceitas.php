@@ -111,16 +111,6 @@ include_once('../../controller/receitaController.php');
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <a href="../pages/Receitas/visualizarReceita.php">Visualizar</a>
-                            </td>
-                        </tr>
                         <!-- Tabela de categoria -->
                         <!-- <?php foreach ($categorias as $index => $categoria) : ?>
                         <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
