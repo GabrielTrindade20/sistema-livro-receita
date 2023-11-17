@@ -5,7 +5,7 @@ class ingredienteModel
     private $link;
     private $erros = array();
     private $sucesso = array();
-        public $verificaSim;
+    public $verificaSim;
     public $verificaNao;
 
     public function __construct($link)
@@ -141,7 +141,7 @@ class ingredienteModel
         // Verifica se a consulta foi bem-sucedida
         if ($stmt) {
             // Vincula os parâmetros
-            $stmt->bind_param("s", $nome );
+            $stmt->bind_param("s", $nome);
 
             // Executa a consulta
             $stmt->execute();
@@ -163,4 +163,17 @@ class ingredienteModel
             echo "Erro na consulta: " . $this->link->error;
         }
     }
+
+    public function pesquisar_ingrediente($termo_pesquisa)
+    {
+        $query =   "SELECT idIngrediente, nome
+                    FROM ingrediente
+                    WHERE nome LIKE ? ;";
+
+        $stmt = $this->link->prepare($query);
+        $termo_pesquisa = "%" . $termo_pesquisa . "%";
+        $stmt->bind_param('s', $termo_pesquisa);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    } // fim read
 } // fim class 

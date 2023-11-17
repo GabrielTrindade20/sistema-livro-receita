@@ -3,11 +3,9 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once('../../../controller/protect.php');
+include_once('../../../controller/protectSubFolders.php');
 include_once('../../../configuration/connect.php');
-include '../../../model/funcoes.php';
 include_once('../../../controller/receitaController.php');
-include_once('../../../controller/composicaoController.php');
 include_once('../../../model/fotoModel.php');
 include_once('../../../model/funcoes.php');
 
@@ -71,9 +69,7 @@ if (isset($ultima_foto)) {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <link rel="stylesheet" href="../../css/styleAll.css">
-    <link rel="stylesheet" href="../../css/styleFoto.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Receita Cadastro</title>
 </head>
 
@@ -204,11 +200,11 @@ if (isset($ultima_foto)) {
                 <h3>Ingrediente Medidas Cadastradas</h3>
 
                 <form action="../../../controller/composicaoController.php" method="post">
-                    <label for="ingrediente">Escolhar Ingrediente Existente</label>
-                    <?php monta_select_Ingrediente(); ?>
+                    <label for="ingrediente">Ingrediente</label>
+                    <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" 
+                    onkeyup="carregarIngrediente(this.value)" autocomplete="off">
 
-                    <label for="novoIngrediente">Ou adicione</label>
-                    <input type="text" name="novoIngrediente" placeholder="Novo Ingrediente">
+                    <span id=resultado-pesquisa-ingrediente></span>
 
                     <label for="medida">Medidas</label>
                     <?php monta_select_medida(); ?>
@@ -218,6 +214,8 @@ if (isset($ultima_foto)) {
 
                     <label for="quantidade">Quantidade</label>
                     <input type="number" name="quantidade">
+
+                    <input type="hidden" name="idIngrediente" id="idIngrediente">
 
                     <button type="submit" name="salvar_composicao">Salvar</button>
                 </form>
@@ -249,6 +247,7 @@ if (isset($ultima_foto)) {
 
     </section>
 
+    <script src="../../js/customReceita.js"></script>
 </body>
 
 </html>
