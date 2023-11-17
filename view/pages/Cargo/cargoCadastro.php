@@ -34,7 +34,7 @@ include_once('../../../model/modelCargo/cargoModel.php');
                 <h2>Nome do Cargo</h2>
             </div>
             <!-- Formulário de Cadastro -->
-            <form action="../../../controller/controllerCargo/cargoController.php" method="POST">
+            <form action="../../../controller/cargoController.php" method="POST">
 
                 <div class="conteiner-dados">
                     <label for="descricao">Nome:</label> <!-- Altere o "for" e o "id" para "descricao" -->
