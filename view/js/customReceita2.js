@@ -1,11 +1,12 @@
-function carregarIngrediente(valor) {
+
+function carregarMedida(valor) {
     // Realize uma solicitação AJAX para o script PHP de atualização
     if (valor.length >= 2) {
         // Crie uma instância do objeto XMLHttpRequest
         var xhr = new XMLHttpRequest();
 
         // Defina o método e a URL da solicitação
-        xhr.open('GET', '../../../controller/composicaoController.php?ingrediente=' + valor);
+        xhr.open('GET', '../../../controller/composicaoController2.php?medida=' + valor);
 
         // Defina o cabeçalho para indicar que você está enviando dados via URL
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -19,21 +20,20 @@ function carregarIngrediente(valor) {
                     var resposta = JSON.parse(xhr.responseText);
 
                     var conteudoHTML = "<ul class='list-group' position-fixed>";
-                    if(resposta['status']){
-                        for (i = 0; i < resposta['dados'].length; i++) {
-                           conteudoHTML += "<li class='list-group-item list-group-itemaction' style='cursor: pointer;' onclick='getIdIngrediente(" 
-                           + resposta['dados'][i].idIngrediente + " , " +  JSON.stringify(resposta['dados'][i].nome) + ")'>" 
-                           + resposta['dados'][i].nome + "</li>";
+                    if(resposta['statusM']){
+                        for (i = 0; i < resposta['dadosM'].length; i++) {
+                           conteudoHTML += "<li class='list-group-item list-group-itemaction' style='cursor: pointer;' onclick='getIdMedida(" 
+                           + resposta['dadosM'][i].idMedida + " , " +  JSON.stringify(resposta['dadosM'][i].descricao) + ")'>" 
+                           + resposta['dadosM'][i].descricao + "</li>";
                         }
                     } else {
-                        conteudoHTML += " <li class='list-group-item' disabled>" + resposta['msg'] + "</li> ";
+                        conteudoHTML += " <li class='list-group-item' disabled>" + resposta['msgM'] + "</li> ";
                     }
 
                     conteudoHTML += "</ul>";
 
                     // enviar para o html lista
-                    document.getElementById('resultado-pesquisa-ingrediente').innerHTML = conteudoHTML;
-                    
+                    document.getElementById('resultado-pesquisa-medida').innerHTML = conteudoHTML;
                 } else {
                     // Houve um erro na solicitação
                     console.error('Erro na solicitação. Código de status:', xhr.status);
@@ -44,15 +44,15 @@ function carregarIngrediente(valor) {
         xhr.send();
         
     } else {
-        document.getElementById('resultado-pesquisa-ingrediente').innerHTML = "";
+        document.getElementById('resultado-pesquisa-medida').innerHTML = "";
     }
 }
 
-function getIdIngrediente(idIngrediente, nome)
+function getIdMedida(idMedida, descricao)
 {
-    document.getElementById("ingrediente").value = nome;
-    document.getElementById("idIngrediente").value = idIngrediente;
+    document.getElementById("medida").value = descricao;
+    document.getElementById("idMedida").value = idMedida;
     
     // fechar lista
-    document.getElementById('resultado-pesquisa-ingrediente').innerHTML = "";
+    document.getElementById('resultado-pesquisa-medida').innerHTML = "";
 }

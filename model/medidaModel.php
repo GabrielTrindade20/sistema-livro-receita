@@ -158,5 +158,18 @@ class medidaModel {
             echo "Erro na consulta: " . $this->link->error;
         }
     }
+
+    public function pesquisar_medida($termo_pesquisa)
+    {
+        $query =   "SELECT idMedida, descricao
+                    FROM medida
+                    WHERE descricao LIKE ? ;";
+
+        $stmt = $this->link->prepare($query);
+        $termo_pesquisa = "%" . $termo_pesquisa . "%";
+        $stmt->bind_param('s', $termo_pesquisa);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }// fim class
 ?>

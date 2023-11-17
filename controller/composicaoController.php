@@ -24,7 +24,6 @@ if(!empty($pesquisar_ingrediente)) {
 echo json_encode($retorna_ingrediente);
 
 
-
 //var_dump($pesquisar_ingrediente);
 
 

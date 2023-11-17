@@ -201,21 +201,23 @@ if (isset($ultima_foto)) {
 
                 <form action="../../../controller/composicaoController.php" method="post">
                     <label for="ingrediente">Ingrediente</label>
+                    
                     <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" 
                     onkeyup="carregarIngrediente(this.value)" autocomplete="off">
 
-                    <span id=resultado-pesquisa-ingrediente></span>
+                    <span id="resultado-pesquisa-ingrediente"></span> 
 
-                    <label for="medida">Medidas</label>
-                    <?php monta_select_medida(); ?>
+                    <label for="medida">Medida</label>
+                    <input type="text" id="medida" name="medida" placeholder="Pesquisar Medida" 
+                    onkeyup="carregarMedida(this.value)" autocomplete="off">
 
-                    <label for="novoMedida">Ou adicione</label>
-                    <input type="text" name="novoMedida" placeholder="Novo Ingrediente">
+                    <span id="resultado-pesquisa-medida"></span> 
 
                     <label for="quantidade">Quantidade</label>
                     <input type="number" name="quantidade">
 
                     <input type="hidden" name="idIngrediente" id="idIngrediente">
+                    <input type="hidden" name="idMedida" id="idMedida">
 
                     <button type="submit" name="salvar_composicao">Salvar</button>
                 </form>
@@ -248,6 +250,7 @@ if (isset($ultima_foto)) {
     </section>
 
     <script src="../../js/customReceita.js"></script>
+    <script src="../../js/customReceita2.js"></script>
 </body>
 
 </html>

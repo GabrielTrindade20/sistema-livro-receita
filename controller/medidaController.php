@@ -52,4 +52,23 @@ if (isset($_GET['acao']) && $_GET['acao'] == 'deleteM') {
 
 // READ
 $dados_medidas = $medidaModel->read();
+
+// pesquisar medida na receita
+$pesquisar_medida = filter_input(INPUT_GET, "medida", FILTER_DEFAULT);
+
+if(!empty($pesquisar_medida)) {
+    $resultado_medida = $medidaModel->pesquisar_medida($pesquisar_medida);
+
+    if($resultado_medida !== false && !empty($resultado_medida)) {
+        $dados_medida = $resultado_medida; 
+        $retorna_medida = ['statusM' => true, 'dadosM' => $dados_medida];
+    } else {
+        $retorna_medida = ['statusM' => false, 'msgM' => "Erro: nenhuma medida encontrado!"];
+    }
+}else {
+    $retorna_medida = ['statusM' => false, 'msgM' => "Erro: nenhuma medida encontrado!"];
+}
+
+echo json_encode($retorna_medida);
+
 ?>
