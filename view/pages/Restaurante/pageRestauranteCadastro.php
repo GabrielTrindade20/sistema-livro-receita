@@ -15,14 +15,40 @@ include_once('../../../controller/restauranteController.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <link rel="stylesheet" href="../../css/styleAll.css">
-    <link rel="stylesheet" href="../../css/stylePesq.css">
-    <link rel="stylesheet" href="../../css/stylePesquisar.css">
     <link rel="stylesheet" href="../../css/styleTable1.css">
     <!-- <link rel="stylesheet" href="../../css/styleEdica.css"> -->
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Restaurante</title>
+
+    <style>
+        .conteiner-conteudo {
+            position: relative;
+            margin-top: 150px;
+            right: -350px;
+            width: 50%;
+        }
+
+        .conteiner-conteudo form {
+            width: 100%;
+            padding: 30px 60px 100px 0;
+            border: 1px solid white;
+            border-radius: 0px 0px 10px 10px;
+            box-shadow: 0px 5px 10px -5px black;
+        }
+        .conteiner-dados {
+            width: 40%;
+            display: block;
+            align-items: center;
+            text-align: left;
+            margin-left: 30%;
+            margin-top: 10%;
+        }
+
+        .conteiner-dados input {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>

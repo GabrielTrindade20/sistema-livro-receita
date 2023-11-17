@@ -16,21 +16,54 @@ include_once('../../../controller/referenciaController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/styleEdica.css">
-    <link rel="stylesheet" href="../../css/stylePesq.css">
-    <link rel="stylesheet" href="../../css/styleTable.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="../../css/styleCabeçalhoEdicao.css">
     <link rel="stylesheet" href="../../css/styleResponsivo.css">
-    <link rel="stylesheet" href="../../css/styleMenu.css">
-    <link rel="stylesheet" href="../../css/styleCadastro.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Funcionário</title>
+
+    <style>
+        .conteiner-conteudo {
+            position: relative;
+            margin-top: 150px;
+            margin-left: 350px;
+            width: 60%;
+        }
+
+        .conteiner-conteudo form {
+            width: 100%;
+            padding: 30px 60px 100px 0;
+            border: 1px solid white;
+            border-radius: 0px 0px 10px 10px;
+            box-shadow: 0px 5px 10px -5px black;
+        }
+
+        .conteiner-abas {
+            background-color: aquamarine;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            margin-left: 25px;
+            align-items: center;
+        }
+
+        .conteiner-dados input {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,96 +72,67 @@ include_once('../../../controller/referenciaController.php');
 
     <!-- Cadastro do funcionario -->
     <section class="conteiner-conteudo">
-        <div>
-            <h1>Informações</h1>
+        <div class="titulo">
+            <h2>Informações</h2>
         </div>
 
         <div class="conteiner-abas">
-            <!-- Formulário de Cadastro -->
-            <div class="title-container">
-                <h2>Funcionário</h2>
-            </div>
+            <form class="form_funcionario" method="POST" action="../controller/funcionarioController.php">
+                <div class="conteiner-abas">
+                    <div class="row">
+                        <div class="col">
+                            <label for="nome">Nome:</label>
+                            <input type="text" id="nome" name="nome"
+                                value="<?php echo isset($_SESSION['nome_funcionarioF']) ? $_SESSION['nome_funcionarioF'] : ''; ?>"
+                                required>
 
-            <form method="POST" action="../../../controller/controllerFuncionario/funcionarioController.php">
-                <div class="form-row-container">
-                    <div class="form-field">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome"
-                            value="<?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : ''; ?>" required>
+                            <label for="rg">RG:</label>
+                            <input type="text" id="rg" name="rg"
+                                value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
+                        </div>
                     </div>
-                    <div class="form-field">
-                        <label for="nome">Nome Fantasia:</label>
+
+                    <div class="row">
+                        <label for="data_ingresso">Data Ingresso:</label>
+                        <input type="date" id="data_ingresso" name="data_ingresso"
+                            value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
+                            required>
+                    </div>
+
+                    <div class="row">
+                        <label for="salario">Salário:</label>
+                        <input type="text" id="salario" name="salario"
+                            value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
+                    </div>
+
+                    <div class="row">
+                        <label for="nome_fantasia">Nome Fantasia:</label>
                         <input type="text" id="nome_fantasia" name="nome_fantasia"
                             value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>"
                             required>
                     </div>
-                    <div class="form-field">
-                        <label for="nome">Cargo:</label>
+
+                    <div class="row">
+                        <label for="cargo">Cargo:</label>
                         <?php
-                        monta_select_cargo2(isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '');
-                        ?>
+                        monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
+                        ?> <br>
                     </div>
-            <!-- Formulário de Cadastro Funcionario -->
-            <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
-                <div class="conteiner-dados">
-                    <label for="rg">RG:</label>
-                    <input type="text" id="rg" name="rg" value="<?php echo isset($_SESSION['rg']) ? $_SESSION['rg'] : ''; ?>" required>
 
-                    <label for="nome">Nome:</label>
-                    <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome_funcionarioF']) ? $_SESSION['nome_funcionarioF'] : ''; ?>" required>
-
-                    <label for="data_ingresso">Data Ingresso:</label>
-                    <input type="date" id="data_ingresso" name="data_ingresso" value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>" required>
-
-                    <label for="salario">Salário:</label>
-                    <input type="text" id="salario" name="salario" value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
-
-                    <label for="nome_fantasia">Nome Fantasia:</label>
-                    <input type="text" id="nome_fantasia" name="nome_fantasia" value="<?php echo isset($_SESSION['nome_fantasia']) ? $_SESSION['nome_fantasia'] : ''; ?>" required>
-
-                    <label for="cargo">Cargo:</label>
-
-                    <?php
-                    monta_select_cargo2(isset($_SESSION['cargo_funcionario']) ? $_SESSION['cargo_funcionario'] : '');
-                    ?> <br>
-                </div>
-                <div class="form-row-container">
-                    <div class="form-field">
-                        <label for="nome">RG:</label>
-                        <input type="text" id="rg" name="rg" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="nome">Salário:</label>
-                        <input type="text" id="salario" name="salario"
-                            value="<?php echo isset($_SESSION['salario']) ? $_SESSION['salario'] : ''; ?>" required>
-                    </div>
-                    <div class="form-field">
+                    <div class="row">
                         <label for="nome">Restaurante:</label>
                         <?php
                         monta_select_restaurante(isset($_SESSION['idRestaurante']) ? $_SESSION['idRestaurante'] : '');
                         ?>
                     </div>
                 </div>
-                <div class="form-row-container">
-                    <div class="form-field">
-                        <label for="nome">Data de Ingresso:</label>
-                        <input type="date" id="data_ingresso" name="data_ingresso"
-                            value="<?php echo isset($_SESSION['data_ingresso']) ? $_SESSION['data_ingresso'] : ''; ?>"
-                            required>
-                    </div>
-                </div>
-                <br>
-                <div class="form-row-container">
-                    <div class="conteiner-operacoes">
-                        <!-- Botão para salvar o funcionário -->
-                        <button type="submit" name="salvar" class="button">Salvar</button>
-                        <!-- Botão para cancelar e voltar à página principal -->
-                        <a href="../pageFuncionario.php">Cancelar</a>
-                    </div>
-                </div>
-            </form>
-        </div>
 
+        </div>
+        <div class="cancelar">
+            <button type="submit" name="salvar" class="button">Salvar</button>
+            <a href="../../pages/pageFuncionario.php">Cancelar</a>
+        </div>
+        </form>
     </section>
 
 </body>
@@ -143,7 +147,7 @@ include_once('../../../controller/referenciaController.php');
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'pagePesquisaReferencia.php?search=' + searchTerm, true);
 
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (xhr.status == 200) {
                 // Atualize a tabela com os resultados da pesquisa
                 var table1 = document.getElementById('table1');
@@ -172,9 +176,9 @@ include_once('../../../controller/referenciaController.php');
     }
 
     // pegar nome e id de restaurante e colocar no form
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Adicione um ouvinte de evento de clique ao documento
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', function (event) {
             if (event.target && event.target.classList.contains('adicionar-restaurante')) {
                 var nomeRestaurante = event.target.getAttribute('data-nome');
                 var idRestaurante = event.target.getAttribute('data-id');
@@ -191,7 +195,7 @@ include_once('../../../controller/referenciaController.php');
     });
 
     // remover linha
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (event.target && event.target.classList.contains('remover-restaurante')) {
             var nomeRestaurante = event.target.getAttribute('data-nome');
             var idLinha = event.target.getAttribute('data-id'); // Recupere o valor do atributo "data-id" para identificar a linha
@@ -281,7 +285,7 @@ include_once('../../../controller/referenciaController.php');
     }
 
     // verificar se o botao editar foi clicado e chamar a função editar
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (event.target.classList.contains('editar-restaurante')) {
             editarRestaurante(event);
         }
@@ -309,12 +313,12 @@ include_once('../../../controller/referenciaController.php');
 
         // Envie os dados para o servidor
         fetch('../../../controller/referenciaController.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
             .then(response => response.text())
             .then(data => {
                 console.log('Resposta do servidor:', data);

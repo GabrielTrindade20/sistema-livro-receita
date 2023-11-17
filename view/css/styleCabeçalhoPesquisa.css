@@ -42,9 +42,9 @@ h2 {
 .info-qtd {
   background-color: #EEB253;
   color: #fff;
-  padding: 2px 10px; /* Ajuste conforme necessário para o espaçamento interno */
-  border-radius: 15px; /* Ajuste conforme necessário para o arredondamento das bordas */
-  display: inline-block; /* Adicionado para exibir na mesma linha */
+  padding: 2px 10px; 
+  border-radius: 15px; 
+  display: inline-block; 
   margin-left: 15px;
   margin-bottom: 20px;
   align-items: center;
@@ -54,6 +54,10 @@ h2 {
 .info-qtd a {
   font-size: 13px;
   color: #fff;
+}
+
+.form-p button{
+  padding-bottom: 5px;
 }
 
 .nova-button {

@@ -20,6 +20,7 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 
+    <link rel="stylesheet" href="../css/styleInativaCheckBox.css">
     <link rel="stylesheet" href="../css/styleConteudoPages.css">
     <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
@@ -48,18 +49,6 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
             border-radius: 8px;
         }
 
-        /* Estilo para o botão "Inativar Selecionados" */
-        .inativar-button {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .conteiner-button-inativar {
-            float: right;
-            margin-top: 10px;
-            margin-right: 105px;
-        }
-
         /* Ajustes para o botão de pesquisa */
         .search-box-button {
             margin-top: -3px;
@@ -83,10 +72,9 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
     <?php require_once('../components/menu.php'); ?>
 
     <section class="conteiner-conteudo2">
-
         <div class="paginação">
             <a href="homePage.php">Homepage > </a>
-            <a href="pagefuncionario.php">funcionario</a>
+            <a href="pagefuncionario.php">Funcionario</a>
         </div>
 
         <div class="containerPesquisa">
@@ -98,7 +86,7 @@ include_once('../../controller/controllerFuncionario/funcionarioController.php')
 
                     <div class="info-qtd">
                         <a href="#">
-                            <?php echo "(" . $countFuncionarios . ") Funcionários"; ?>
+                            <?php echo "(" . $countFuncionarios . ") Salvos"; ?>
                         </a>
                     </div>
                 </div>
