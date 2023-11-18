@@ -40,7 +40,7 @@ include_once('../../controller/protect.php');
                 </div>
                 <div class="col">
                     Total Receitas
-                    <p>100</p>
+                    <p>10230</p>
                 </div>
             </div>
         </div>
