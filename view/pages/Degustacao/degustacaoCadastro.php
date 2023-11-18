@@ -1,6 +1,7 @@
 <?php
 include_once('../../../controller/protectSubFolders.php');
 include_once('../../../controller/protect.php');
+/*include_once('../../../controller/degustacaoController.php');*/
 include_once('../../../model/funcoes.php');
 ?>
 
@@ -59,12 +60,12 @@ include_once('../../../model/funcoes.php');
             <h2>Degustação</label>
         </div>
         <!-- Formulário de Cadastro -->
-        <form method="POST" action="../../../controller/degistacaoController.php">
+        <form method="POST" action="../../../controller/degustacaoController.php">
 
             <div class="conteiner-dados">
                 <label for="degustador">Degustador:</label>
                 <input type="text" id="degustador" name="degustador" required>
-                <?/*php monta_select_degustador();*/ ?>
+                <?php /*monta_select_degustador();*/?>
                 <br>
                 <label for="nota_degustacao">Nota:</label>
                 <input type="number" id="nota_degustacao" name="nota_degustacao" required>

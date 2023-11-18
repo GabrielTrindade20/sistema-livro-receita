@@ -77,10 +77,10 @@ include_once('../../controller/protect.php');
             <thead>
                 <tr>
                     <th class="select-column">-</th>
-                    <th>Nome</th>
-                    <th>Categoria</th>
-                    <th>Cozinheiro</th>
-                    <th>Data de Criação</th>
+                    <th>Degustador</th>
+                    <th>Receita</th>
+                    <th>Nota</th>
+                    <th>Data de Degustação</th>
                     <th class="operacao">Operações</th>
                 </tr>
             </thead>
@@ -90,9 +90,9 @@ include_once('../../controller/protect.php');
                     <td class="select-column">
                         <a href=""><input type="checkbox"></a>
                     </td>
-                    <td>Nome do Prato</td>
-                    <td>Categoria A</td>
-                    <td>Nome do Cozinheiro</td>
+                    <td>Nome do Degustador</td>
+                    <td>Nome da Receita</td>
+                    <td>Nota</td>
                     <td>01/09/2023</td>
                     <td class="operacao">
                         <a class="operation-link" href="#"><img
