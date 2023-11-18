@@ -11,31 +11,25 @@
     --black: black;
 }
 
-.conteiner-conteudo {
-    margin-left: 300px;
-    margin-top: 100px;
+.conteiner-conteudo-cadastro div>h1 {
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px;
+    text-align: center;
+    width: 230px;
+    background-color: #f0c2aab1;
 }
 
 .conteiner-abas {
     width: 90%;
 }
+
 .conteiner-abas h2{
     z-index: 1;
     position: absolute;
-    top: 220px;
-    left: 340px;
-   
+    padding-left: 40px;
+    padding-top: 20px;
+    font-size: 23px;
 }
-
-.conteiner-conteudo div>h1 {
-    border-radius: 10px 10px 0px 0px;
-    padding: 5px;
-    padding-left: 15px;
-    width: 230px;
-    margin-bottom: 0px;
-    background-color: #f0c2aab1;
-}
-
 
 .conteiner-abas form {
     background-color: rgb(255, 255, 255);
@@ -43,25 +37,12 @@
     width: 100%;
     position: relative;
     text-align: center;
-    padding: 50px;
-}
-
-.conteiner-dados {
-    width: 40%;
-    display: block;
-    align-items: center;
-    text-align: left;
-    margin-left: 30%;
-    margin-top: 10%;
-}
-
-.conteiner-dados input {
-    width: 100%;
+    padding: 20px;
 }
 
 .conteiner-operacoes button {
     position: absolute;
-    width: 90px;
+    width: 10%;
     height: 33px;
     padding: 5px;
     justify-content: space-between;
@@ -73,10 +54,6 @@
     font-size: 1rem;
 }
 
-.button:hover{
-    cursor: pointer;
-}
-
 .conteiner-operacoes a {
     position: absolute;
     width: 100px;
@@ -84,7 +61,53 @@
     padding: 5px;
     justify-content: space-between;
     background-color: #F0C3AA;
-    right: 100px;
+    right: 12%;
     top: -34px;
     border-radius: 10px 10px 0px 0px;
 }
+
+.button:hover{
+    cursor: pointer;
+}
+
+/* page funcionario */
+.conteiner-formulario{
+    background-color: #BE783C;
+    width: 100%;
+}
+
+.conteiner-dados-funcionario {
+    width: 40%;
+    display: block;
+    align-items: center;
+    text-align: left;
+    margin-left: 30%;
+    margin-top: 20px;
+}
+
+.conteiner-dados-funcionario input {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.conteiner-dados-funcionario-select select {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    cursor:pointer;
+    padding: 5px 10px;
+}
+
+.conteiner-dados-funcionario-status {
+    display: flex;
+}
+
+.conteiner-dados-funcionario-status input {
+    width: 15%;
+    
+}
+

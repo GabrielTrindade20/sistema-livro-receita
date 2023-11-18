@@ -1,18 +1,19 @@
 <?php
-include_once('../../../controller/protect.php');
+if (!isset($_SESSION)) {
+    session_start();
+}
+include_once('../../../controller/protectSubFolders.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/funcionarioModel.php');
-include_once('../../../model/referenciaModel.php');
+include_once('../../../model/funcoes.php');
 
 if (isset($_GET['idFuncionario'])) {
     $idFuncionario = $_GET['idFuncionario'];
     $funcionarioModel = new funcionarioModel($link);
     $recuperar = $funcionarioModel->recuperaFuncionario($idFuncionario);
-    
-    // $referenciaModel = new referenciaModel($link);
-    // $recuperarReferencia = $referenciaModel->recuperaReferencia($idFuncionario, $idRestaurante);
 
-if ($recuperar /*&& $recuperarReferencia}*/) {
+
+    if ($recuperar) {
         $rg = $recuperar["rg"];
         $nome = $recuperar["nome"];
         $data_ingresso = $recuperar["data_ingresso"];
@@ -20,13 +21,12 @@ if ($recuperar /*&& $recuperarReferencia}*/) {
         $nome_fantasia = $recuperar["nome_fantasia"];
         $situacao = $recuperar["situacao"];
         $cargo = $recuperar["idCargo"];
-        // $data_inicio = $recuperarReferencia["data_inicio"];
-        // $data_fim = $recuperarReferencia["data_fim"];
     } else {
         header("Location: pageFuncionario.php?mensagem=" . urlencode("Funcionário não encontrado."));
         exit();
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -36,74 +36,73 @@ if ($recuperar /*&& $recuperarReferencia}*/) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/styleEdica.css">
-    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Funcionário</title>
+    <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
+    <link rel="stylesheet" href="../../css/styleEdicao.css">
+    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <title>Funcionário Alteração</title>
 </head>
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <!-- <?php require_once('../../components/menuSubFolders.php'); ?> -->
+    <?php require_once('../../components/menuSubFolders2.php'); ?>
 
-    <section class="conteiner-conteudo">
-        <h1 class="titulo">Funcionário</h1>
+    <section class="conteiner-conteudo-cadastro">
+        <div>
+            <h1>Informações</h1>
+        </div>
 
         <div class="conteiner-abas">
+            <div class="title-container">
+                <h2>Funcionário</h2>
+            </div>
+                <?php
+                if (isset($_SESSION["erro_funcionario_existe"])) {
+                    $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
+                    echo $erro_funcionario_existe . "<br>";
+
+                    unset($_SESSION["erro_funcionario_existe"]);
+                } 
+                ?>
+            
             <!-- Formulário de Alteraçao -->
             <form method="POST" action="../../../controller/funcionarioController.php">
-                <div class="conteiner-dados">
-                    <!-- <input type="hidden" name="idFuncionario" value="<?php echo $recuperar["idFuncionario"]; ?>"> -->
+                <div class="conteiner-dados-funcionario">
                     <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
 
-                    <label for="rg">RG:</label>
+                    <label for="rg">RG</label>
                     <input type="text" id="rg" name="rg" required value="<?php echo isset($rg) ? $rg : ''; ?>">
 
-                    <label for="nome">Nome:</label>
+                    <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required value="<?php echo isset($nome) ? $nome : ''; ?>">
 
-                    <label for="data_ingresso">Data Ingresso:</label>
-                    <input type="date" id="data_ingresso" name="data_ingresso" required
-                        value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
+                    <label for="nome">Nome Fantasia</label>
+                    <input type="text" id="nome_fantasia" name="nome_fantasia" required value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
 
-                    <label for="salario">Salário:</label>
-                    <input type="text" id="salario" name="salario" required
-                        value="<?php echo isset($salario) ? $salario : ''; ?>">
+                    <label for="nome">Data Ingresso</label>
+                    <input type="date" id="data_ingresso" name="data_ingresso" required value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
 
-                    <label for="nome_fantasia">Nome Fantasia:</label>
-                    <input type="text" id="nome_fantasia" name="nome_fantasia" required
-                        value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
+                    <label for="nome">Salário</label>
+                    <input type="text" id="salario" name="salario" required value="<?php echo isset($salario) ? $salario : ''; ?>">
 
-                    <p>Situação:</p>
-                    <label for="ativo">Ativo</label>
-                    <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
+                    <label for="nome">Situação</label>
+                    <div class="conteiner-dados-funcionario-status">
+                        <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
+                        <label for="ativo">Ativo</label>
 
-                    <label for="inativo">Inativo</label>
-                    <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
+                        <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
+                        <label for="inativo">Inativo</label>
+                    </div>
 
-                    <label for="cargo">Cargo:</label>
-                    <?php
-                    include_once('../../../configuration/connect.php');
-                    include '../../../model/funcoes.php';
-
-                    monta_select_cargo2($cargo);
-                    ?>
-                    <br>
-
-                    <label for="restaurante">Restaurante:</label>
-                    <?php 
-                        monta_select_restaurante();
-                    ?> <br>
-                    
-                    <label for="restaurante">Data de Início</label>
-                    <input type="date" name="data_inicio" value="<?php echo isset($data_inicio) ? $data_inicio : ''; ?>"> <br>
-
-                    <label for="restaurante">Data de Fim</label>
-                    <input type="date" name="data_fim" value="<?php echo isset($data_fim) ? $data_fim : ''; ?>">
+                    <label for="nome">Cargo</label>
+                    <div class="conteiner-dados-funcionario-select">
+                        <?php monta_select_cargo2($cargo); ?>
+                    </div>
 
                 </div>
-                <br>
+
                 <div class="conteiner-operacoes">
                     <!-- Botão para salvar o cargo -->
                     <button type="submit" name="alterar" class="button">Salvar</button>

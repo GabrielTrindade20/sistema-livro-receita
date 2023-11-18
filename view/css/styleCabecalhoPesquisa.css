@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --blue: #01093F;
+  --white: #ffffff;
+  --black: #000000;
+  --laranja: #EEB253;
+}
+
+.conteiner-info h1 {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: large;
+}
+
+.conteinerPesquisa {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px; /* Ajuste conforme necessário */
+}
+
+.conteiner-info {
+  display: flex;
+  align-items: center;
+}
+
+
+.conteiner-func {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  padding: 0 10px; /* Ajuste conforme necessário */
+}
+
+.info-qtd {
+  background-color: #EEB253;
+  color: #fff;
+  padding: 8px; /* Ajuste conforme necessário para o espaçamento interno */
+  border-radius: 15px; /* Ajuste conforme necessário para o arredondamento das bordas */
+  display: inline-block; /* Adicionado para exibir na mesma linha */
+  margin-left: 15px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+
+.info-qtd a {
+  font-size: 14px;
+  color: #fff;
+}
+
+.nova-button {
+  background-color: #EEB253;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 10px;
+  font-size: 0.8rem;
+}

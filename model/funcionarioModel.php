@@ -62,22 +62,23 @@ class funcionarioModel {
         }
     }// fim create
     
-    public function read( )
+    public function read()
     {
         $query =   "SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo
                     FROM funcionario f
                     JOIN Cargo c ON f.idCargo = c.idCargo;";
         $funcionarios = array();
-
+    
         if ($result = mysqli_query($this->link, $query)) {
             while ($row = mysqli_fetch_assoc($result)) {
                 $funcionarios[] = $row;
             }
             mysqli_free_result($result);
         }
-
+    
         return $funcionarios;
-    }// fim read
+    }
+    
 
     public function update( $id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo )
     {
@@ -116,26 +117,26 @@ class funcionarioModel {
         $query =   "UPDATE funcionario 
                     SET situacao = ?
                     WHERE idFuncionario = ?";
-
+    
         $stmt = $this->link->prepare($query);
-
+    
         if ($stmt) {
             $stmt->bind_param("si", $situacao, $id);
-
+    
             if ($stmt->execute()) {
-                $this->sucesso[] = "Inativo, atualizado efetuada com sucesso!";
+                $this->sucesso[] = "Inativo, atualização efetuada com sucesso!";
                 return true;
             } else {
                 $this->erros[] = "Erro ao excluir: " . $stmt->error;
             }
-
+    
             $stmt->close();
         } else {
             $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
         }
-
+    
         return false; 
-    }// fim delete
+    }
 
     public function recuperaFuncionario($id)
     {
@@ -143,6 +144,22 @@ class funcionarioModel {
         $query =   "SELECT idFuncionario, rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo
                     FROM funcionario
                     WHERE idFuncionario = '$id';";
+
+        $resultado = mysqli_query($this->link, $query);
+
+        if ($resultado) {
+            return mysqli_fetch_assoc($resultado);
+        } else {
+            return null; // Retornar null em caso de erro na consulta
+        }
+    }// fim de recuperar
+
+    public function existeFuncionario($rg)
+    {
+        // lista cursos já cadastrados
+        $query =   "SELECT idFuncionario, rg
+                    FROM funcionario
+                    WHERE rg = '$rg';";
 
         $resultado = mysqli_query($this->link, $query);
 

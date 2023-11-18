@@ -5,6 +5,8 @@ class referenciaModel
     private $link;
     private $erros = array();
     private $sucesso = array();
+    public $verificaSim;
+    public $verificaNao;
 
     public function __construct($link)
     {
@@ -62,10 +64,11 @@ class referenciaModel
 
     public function read($idFuncionario)
     {
-        $query = "SELECT r.idFuncionario, r.data_inicio, r.data_fim, rr.nome AS restaurante
-                    FROM referencia r
-                    JOIN restaurante rr ON r.idRestaurante = rr.idRestaurante
-                    WHERE r.idFuncionario = ?;";
+        $query = "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
+        FROM funcionario
+        INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+        INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+        WHERE funcionario.idFuncionario = ?;";
 
         $referencias = array();
 
@@ -101,12 +104,12 @@ class referenciaModel
     {
         $query = "UPDATE referencia 
               SET idRestaurante = ?, data_inicio = ?, data_fim = ?
-              WHERE idFuncionario = ?;";
+              WHERE idFuncionario = ? AND idRestaurante= ?;";
 
         $stmt = $this->link->prepare($query);
 
         if ($stmt) {
-            $stmt->bind_param("issi", $idRestaurante, $data_inicio, $data_fim, $idFuncionario);
+            $stmt->bind_param("issii", $idRestaurante, $data_inicio, $data_fim, $idFuncionario, $idRestaurante);
 
             if ($stmt->execute()) {
                 $this->sucesso[] = "Atualização efetuada com sucesso!";
@@ -150,22 +153,40 @@ class referenciaModel
         return false;
     } // fim delete
 
-    public function recuperaReferencia($idFuncionario, $idRestaurante)
+    public function recuperaReferencia($idFuncionario)
     {
-        // lista cursos já cadastrados
         $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim
-                    FROM referencia
-                    WHERE idFuncionario = '$idFuncionario'
-                    AND idRestaurante = '$idRestaurante';";
+              FROM referencia
+              WHERE idFuncionario = ? AND idRestaurante = ?";
+        // lista cursos já cadastrados
+        $query =   "SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+                    FROM funcionario
+                    INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+                    INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+                    WHERE funcionario.idFuncionario = '$idFuncionario';";
+        $query =   "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
+        FROM funcionario
+        INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+        INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+        WHERE funcionario.idFuncionario = '$idFuncionario';";
 
-        $resultado = mysqli_query($this->link, $query);
 
-        if ($resultado) {
-            return mysqli_fetch_assoc($resultado);
+        $stmt = $this->link->prepare($query);
+        $stmt->bind_param("ii", $idFuncionario, $idRestaurante);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $referencias = array();
+            while ($row = $result->fetch_assoc()) {
+                $referencias[] = $row;
+            }
+            return $referencias;
         } else {
-            return null; // Retornar null em caso de erro na consulta
+            return null; // Retornar null em caso de erro na consulta ou se não houver referências
         }
-    } // fim de recuperar
+    }
 
     public function pegarUltimoIdFuncionario()
     {
@@ -182,6 +203,56 @@ class referenciaModel
         }
     }
 
+    public function leitura()
+    {
+        $query = "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, COUNT(restaurante.idRestaurante) as countRes
+        FROM funcionario
+        INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
+        INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
+        Where funcionario.idFuncionario
+        GROUP BY funcionario.idFuncionario, funcionario.nome;";
 
+        $referencias = array();
+        if ($resultados = mysqli_query($this->link, $query)) {
+            while ($row = mysqli_fetch_assoc($resultados)) {
+                $referencias[] = $row;
+            }
+            mysqli_free_result($resultados);
+        }
+
+        return $referencias;
+    } // fim read
+
+    public function verificarExisteBanco($idFuncionario, $idRestaurante)
+    {
+        $query = "SELECT * FROM referencia WHERE idFuncionario = ? AND idRestaurante = ?;";
+
+        // Preparar a declaração
+        $stmt = $this->link->prepare($query);
+
+        // Verifica se a consulta foi bem-sucedida
+        if ($stmt) {
+            // Vincula os parâmetros
+            $stmt->bind_param("ii", $idFuncionario, $idRestaurante);
+
+            // Executa a consulta
+            $stmt->execute();
+
+            // Armazena o resultado
+            $stmt->store_result();
+
+            // Verifica se há algum resultado retornado (ou seja, se o registro já existe)
+            if ($stmt->num_rows > 0) {
+                $this->verificaSim = "O registro já existe no banco de dados.";
+            } else {
+                $this->verificaNao = "O registro não existe no banco de dados. Você pode adicioná-lo.";
+            }
+
+            // Fecha a declaração
+            $stmt->close();
+        } else {
+            // Se houver um erro na consulta
+            echo "Erro na consulta: " . $this->link->error;
+        }
+    }
 } // fim class
-?>

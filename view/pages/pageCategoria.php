@@ -65,7 +65,9 @@ if (isset($_SESSION['resultados_pesquisa'])) {
             </div>
 
             <div class="info-receitas">
-                <?php echo "(" . $countCategorias . ") Categorias"; ?>
+                <a href="#">
+                    <?php echo "(" . $countCategorias . ") Categorias"; ?>
+                </a>
             </div>
         </div>
 
@@ -82,7 +84,7 @@ if (isset($_SESSION['resultados_pesquisa'])) {
             <!-- Criar -->
             <div class="button-nova">
                 <a href="./Categoria/pageCategoriaCadastro.php">
-                    <button class="nova-receita-button">Nova Receita</button>
+                    <button class="nova-receita-button">Cadastrar</button>
                 </a>
             </div>
         </div>

@@ -20,8 +20,7 @@ $numCargos = count($cargos);
     <link rel="stylesheet" href="../css/styleTable.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="../css/styleResponsivo.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Página de Receitas</title>
 
     <script>
@@ -30,11 +29,12 @@ $numCargos = count($cargos);
 
             if (confirmacao) {
                 // Se o usuário confirmar a exclusão, redirecione para o script de exclusão com o ID
-                window.location.href = "../../controller/controllerCargo/cargoController.php?acao=excluir&idCargo=" + idCargo;
+                window.location.href = "../../controller/cargoController.php?acao=excluir&idCargo=" + idCargo;
             } else {
                 // Se o usuário cancelar, não faça nada
             }
         }
+
         function confirmarExclusaoCheckbox() {
             if (confirm("Tem certeza de que deseja excluir as cargos selecionadas?")) {
                 document.forms["excluirSelect"].submit();
@@ -61,7 +61,9 @@ $numCargos = count($cargos);
                 </div>
 
                 <div class="info-receitas">
-                    <?php echo "($numCargos) Cargos"; ?>
+                    <a href="#">
+                        <?php echo "($numCargos) Cargos"; ?>
+                    </a>
                 </div>
             </div>
 
@@ -69,7 +71,7 @@ $numCargos = count($cargos);
                 <div class="search-box">
                     <form method="post" action="#">
                         <div class="search-box-input-container">
-                            <input type="text" class="search-box-input" name="busca" placeholder="Faça sua Pesquisa">
+                            <input type="text" class="search-box-input" name="busca" placeholder="Pesquisa">
                             <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
                         </div>
                     </form>
@@ -77,7 +79,7 @@ $numCargos = count($cargos);
 
                 <div class="button-nova">
                     <a href="Cargo/cargoCadastro.php">
-                        <button class="nova-receita-button">Novo Cargo</button>
+                        <button class="nova-receita-button">Cadastrar</button>
                     </a>
                 </div>
             </div><!-- Search -->
@@ -85,37 +87,61 @@ $numCargos = count($cargos);
     </section>
 
     <section class="conteiner-conteudo">
-        
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="select-column">-</th>
-                    <th class="nome-col" colspan="3">Nome</th>
-                    <th class="operacao-col">Operações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($cargos as $index => $cargo): ?>
-                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                        <td class="select-column">
-                            <input type="checkbox" name="checkbox[]" value="<?php echo $cargo['idCargo']; ?>">
-                        </td>
-                        <td colspan="3">
-                            <?php echo $cargo['descricao']; ?>
-                        </td>
-                        <td class="td-operacao">
-                            <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
-                                <span class="material-symbols-outlined"> edit </span>
-                            </a>
-
-                            <a href="#" onclick="confirmarExclusao(<?php echo $cargo['idCargo']; ?>);" class="button">
-                                <span class="material-symbols-outlined"> delete </span>
-                            </a>
-                        </td>
+        <!-- Notificação de erro ou não -->
+        <div class="mensagens">
+            <?php
+            if (isset($_SESSION["erros"])) {
+                $erros = $_SESSION["erros"];
+                // Exibir as mensagens de erro
+                foreach ($erros as $erro) {
+                    echo $erro . "<br>";
+                }
+                // Limpar as mensagens de erro da sessão
+                unset($_SESSION["erros"]);
+            } elseif (isset($_SESSION["sucesso"])) {
+                $sucessos = $_SESSION["sucesso"];
+                foreach ($sucessos as $sucesso) {
+                    echo $sucesso . "<br>";
+                }
+                unset($_SESSION["sucesso"]);
+            }
+            ?>
+        </div>
+        <div class="conteiner-button-inativar">
+            <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
+        </div>
+        <form id="excluirSelect" action="../../controller/cargoController.php?acao=excluirSelecionados" method="post">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="select-column">-</th>
+                        <th class="nome-col" colspan="3">Nome</th>
+                        <th class="operacao-col">Operações</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($cargos as $index => $cargo) : ?>
+                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                            <td class="select-column">
+                                <input type="checkbox" name="checkbox[]" value="<?php echo $cargo['idCargo']; ?>">
+                            </td>
+                            <td colspan="3">
+                                <?php echo $cargo['descricao']; ?>
+                            </td>
+                            <td class="td-operacao">
+                                <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
+                                    <span class="material-symbols-outlined"> edit </span>
+                                </a>
+
+                                <a href="#" onclick="confirmarExclusao(<?php echo $cargo['idCargo']; ?>);" class="button">
+                                    <span class="material-symbols-outlined"> delete </span>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </form>
     </section>
 
 </body>

@@ -9,25 +9,9 @@
   --black: black;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  font-family: 'Noto Sans', sans-serif;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #f5f5f5;
-}
-
-section{
-  margin-right: 15px;
-}
-
 .header {
   background-color: var(--black);
-  padding: 5px 15px; /* Adicionar algum espaço interno para o cabeçalho */
+  padding: 5px 15px; 
 }
 
 .usuario{
@@ -137,5 +121,5 @@ section{
 .perfil {
   border-top: 1px solid var(--black); 
   width: 100%;
-  text-align: left;
+  text-align: center;
 }

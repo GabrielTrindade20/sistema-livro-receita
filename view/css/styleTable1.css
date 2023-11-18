@@ -1,0 +1,33 @@
+/* ARREDONDA TABLE */
+.table tr:last-child td:last-child{
+    border-bottom-right-radius: 10px;
+}
+
+.table tr:last-child td:first-child{
+    border-bottom-left-radius: 10px;
+}
+.table tr:first-child th:last-child{
+    border-top-right-radius: 10px;
+}
+
+.table tr:last-child th:first-child{
+    border-top-left-radius: 10px;
+}
+
+.table {
+    width: 90%;
+}
+
+.operation {
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.operation a>span{
+    /* margin-right: 20px; */
+    align-items: center;
+    background-color: var(--laranjaTransparent);
+    padding: 5px;
+    border-radius: 8px;
+}
