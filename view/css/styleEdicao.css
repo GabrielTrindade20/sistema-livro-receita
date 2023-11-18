@@ -111,3 +111,48 @@
     
 }
 
+/*receita*/
+.form{
+    width: 100%;
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 10px;
+}
+
+.conteiner-form-colum {
+    width: 100%;
+}
+.title-container h1{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.conteiner-form-colum-operacoes{
+   float: right;
+}
+.conteiner-form-colum input {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.conteiner-dados-input-select select {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor:pointer;
+    padding: 5px 10px;
+}
+
+.conteiner-dados-input-select input {
+    width: 15%;
+}
+
+.conteiner-dados-input-select input[type=radio] {
+margin-bottom: 10px;
+}

@@ -79,7 +79,7 @@ if(!isset($_SESSION)) {
                 <span class="material-symbols-outlined"> person </span>
                 <span class="name"> <?php echo $_SESSION['nome'] ?> </span>
             </a>
-            <a href="../../controller/logoutController.php">
+            <a href="../../../controller/logoutController.php">
                 <span class="material-symbols-outlined"> logout </span>
             </a>
         </div>

@@ -69,8 +69,10 @@ if (isset($ultima_foto)) {
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <link rel="stylesheet" href="../../css/styleConteudoPages.css">
+    <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
+    <link rel="stylesheet" href="../../css/styleEdicao.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
+
     <title>Receita Cadastro</title>
 </head>
 
@@ -78,104 +80,29 @@ if (isset($ultima_foto)) {
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
 
-    <section class="conteiner-conteudo2">
+    <section class="conteiner-conteudo3">
+        <div class="paginação-sub">
+            <a href="homePage.php">Homepage </a> >
+            <a href="../pageReceitas.php"> Receitas </a> >
+            <a href="#" class="pagina-atual"> Receitas Cadastro</a>
+        </div>
+
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
                     Informações</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                <button class="nav-link" id="composicao-tab" data-bs-toggle="tab" data-bs-target="#composicao-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
                     Composição</button>
             </li>
-
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                <section class="conteiner-conteudo3">
-                    <div class="container ">
-                        <div class="row">
-                            <div class="col">
-                                Column
-                                <h1>Cadastrar Receita</h1>
-                                <div><!-- Foto -->
-                                    <?php
-                                    if (isset($_SESSION["mensagem"])) {
-                                        echo $_SESSION["mensagem"];
-                                        unset($_SESSION["mensagem"]);
-                                    }
-                                    ?>
-
-                                </div>
-                                <div class="box-foto">
-                                    <?php
-                                    if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-                                        echo $img_ultima;
-                                        unset($_SESSION["cadastro_sucesso"]);
-                                    }
-                                    ?>
-                                </div>
-                                <form enctype="multipart/form-data" action="" method="post">
-                                    <div class="box-foto">
-                                        <label for="foto_receita">Foto da Receita</label>
-                                        <input type="file" accept="image/*" name="foto_receita"> <br>
-                                        <button type="submit" id="file" name="upload" class="button">Salvar</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                            <div class="col">
-
-                                <form method="POST" action="../../../controller/receitaController.php">
-                                    <div class="conteiner-dados">
-                                        <label for="nome">Nome</label>
-                                        <input type="text" id="nome" name="nome" required>
-                                        <br>
-                                        <label for="data_criacao">Data de Criação</label>
-                                        <input type="date" id="data_criacao" name="data_criacao" required>
-                                        <br>
-                                        <label for="qtd_porcao">Quantidade de Porções</label>
-                                        <input type="number" id="qtd_porcao" name="qtd_porcao" required>
-                                        <br>
-                                        <label for="degustador">Degustador</label>
-                                        <?php monta_select_degustador(); ?>
-                                        <br>
-                                        <label for="nota_degustacao">Nota</label>
-                                        <input type="number" id="nota_degustacao" name="nota_degustacao">
-                                        <br>
-                                        <label for="data_degustacao">Data de Degustação</label>
-                                        <input type="date" id="data_degustacao" name="data_degustacao">
-                                        <br>
-                                        <label for="ind_inedita">Inédita</label>
-                                        <input type="radio" id="sim" name="ind_inedita" value="S">
-                                        <label for="sim">Sim</label>
-                                        <input type="radio" id="nao" name="ind_inedita" value="N">
-                                        <label for="nao">Não</label><br>
-                                        <br>
-                                        <label for="cozinheiro">Cozinheiro</label>
-                                        <?php monta_select_cozinheiro(); ?>
-                                        <br>
-                                        <label for="categoria">Categoria</label>
-                                        <?php monta_select_categoria(); ?>
-                                        <br>
-                                        <div class="box-text-area">
-                                            <h3 class="titulo">Modo de Preparo</h3>
-                                            <textarea name="modo_preparo" id="" rows="8" cols="50" maxlength="4000"></textarea>
-                                        </div>
-                                        <div class="conteiner-operacoes">
-                                            <button type="submit" name="salvar" class="button">Salvar</button>
-                                        </div>
-                                </form>
-                            </div>
-                            <div class="col">
-                                Column
-                            </div>
-                        </div>
+                <section> 
+                    <div class="title-container">
+                        <h1>Cadastrar Receita</h1>
                     </div>
-                    <!-- Cancelar e voltar à página principal -->
-                    <a href="../../pages/pageReceitas.php">Cancelar</a>
-
-
 
                     <!-- Notificação de erro ou não -->
                     <div class="mensagens">
@@ -195,15 +122,85 @@ if (isset($ultima_foto)) {
                         }
                         ?>
                     </div>
-
-                    <!-- Formulário de Cadastro -->
-                    <div class="conteiner-abas">
-
+                    <div><!-- Foto -->
+                        <?php
+                        if (isset($_SESSION["mensagem"])) {
+                            echo $_SESSION["mensagem"];
+                            unset($_SESSION["mensagem"]);
+                        }
+                        ?>
 
                     </div>
+                    <div class="box-foto">
+                        <?php
+                        if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
+                            echo $img_ultima;
+                            unset($_SESSION["cadastro_sucesso"]);
+                        }
+                        ?>
+                    </div>
+
+                    <form enctype="multipart/form-data" action="" method="post">
+                        <div class="box-foto">
+                            <label for="foto_receita">Foto da Receita</label>
+                            <input type="file" accept="image/*" name="foto_receita"> <br>
+                            <button type="submit" id="file" name="upload" class="button">Salvar</button>
+                        </div>
+                    </form>
+
+                    <form method="POST" action="../../../controller/receitaController.php">
+                        <div class="conteiner-form-colum-operacoes">
+                            <button type="submit" name="salvar" class="button">Salvar</button>
+                        </div>
+                        <div class="form">
+                            <div class="conteiner-form-colum">
+                                <label for="nome">Nome</label>
+                                <input type="text" id="nome" name="nome" required>
+
+                                <label for="data_criacao">Data de Criação</label>
+                                <input type="date" id="data_criacao" name="data_criacao" required>
+
+                                <label for="qtd_porcao">Quantidade de Porções</label>
+                                <input type="number" id="qtd_porcao" name="qtd_porcao" required>
+                                
+                                <div class="conteiner-dados-input-select">
+                                <label for="degustador">Degustador</label>
+                                    <?php monta_select_degustador(); ?>
+                                </div>
+                                <label for="nota_degustacao">Nota</label>
+                                <input type="number" id="nota_degustacao" name="nota_degustacao">
+
+                                <label for="data_degustacao">Data de Degustação</label>
+                                <input type="date" id="data_degustacao" name="data_degustacao">
+                            </div>
+                            <div class="conteiner-form-colum">
+                                <div class="conteiner-dados-input-select">
+                                    <label for="ind_inedita">Inédita</label> <br>
+                                    <input type="radio" id="sim" name="ind_inedita" value="S">
+                                    <label for="sim">Sim</label>
+                                    <input type="radio" id="nao" name="ind_inedita" value="N">
+                                    <label for="nao">Não</label> <br>
+
+                                    <label for="cozinheiro">Cozinheiro</label>
+                                    <?php monta_select_cozinheiro(); ?>
+
+                                    <label for="categoria">Categoria</label>
+                                    <?php monta_select_categoria(); ?>
+                                </div>
+
+                            </div>
+
+                            <div class="conteiner-form-colum">
+                                <h3 class="titulo">Modo de Preparo</h3>
+                                <textarea name="modo_preparo" id="" rows="10" cols="40" maxlength="4000"></textarea>
+                            </div>
+                        </div>
+
+                    </form>
                 </section>
             </div>
-            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+
+            <div class="tab-pane fade" id="composicao-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                 <!-- Cadastro medida ingrediente -->
                 <section>
                     <!-- Notificação de erro ou não -->

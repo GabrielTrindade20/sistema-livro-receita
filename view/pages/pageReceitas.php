@@ -34,7 +34,7 @@ include_once('../../controller/receitaController.php');
     <section class="conteiner-conteudo">
         <div class="paginação">
             <a href="homePage.php">Homepage </a> >
-            <a href="pageCategoria.php" class="pagina-atual"> Receitas</a>
+            <a href="#" class="pagina-atual"> Receitas</a>
         </div>
 
         <div class="containerPesquisa">
@@ -103,6 +103,7 @@ include_once('../../controller/receitaController.php');
                         <tr>
                             <th class="select-column">-</th>
                             <th>Receita</th>
+                            <th>Categorias</th>
                             <th class="operation" colspan="2">Operações</th>
                         </tr>
                     </thead>
@@ -113,9 +114,8 @@ include_once('../../controller/receitaController.php');
                             <td class="select-column">
                                 <input type="checkbox" name="checkbox[]" value="<?php echo $receita['nome_receita']; ?>">
                             </td>
-                            <td>
-                                <?php echo $receita['nome_receita']; ?>
-                            </td>
+                            <td> <?php echo $receita['nome_receita']; ?> </td>
+                            <td> <?php echo $receita['categoria_nome']; ?> </td>
                             <td class="operation">
                                 <a href="#" onclick="confirmarExclusao(<?php echo $receita['nome_receita']; ?>);" class="button">
                                     <span class="material-symbols-outlined"> visibility </span>
