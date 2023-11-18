@@ -14,21 +14,17 @@ include_once('../../controller/funcionarioController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 
-    <link rel="stylesheet" href="../css/styleConteudoPages.css">
-    <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
+    <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
+    <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
+    <link rel="stylesheet" href="../css/styleNoti.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
     <link rel="stylesheet" href="../css/styleTable1.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="../css/styleResponsivo.css">
-
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <style>
         /* Estilo para células ativas (verde) */
@@ -47,15 +43,6 @@ include_once('../../controller/funcionarioController.php');
             border-radius: 8px;
         }
 
-        /* Estilo para o botão "Inativar Selecionados" */
-        .inativar-button {
-            display: block;
-        }
-
-        .conteiner-button-inativar {
-            float: right;
-        }
-
         /* Ajustes para o botão de pesquisa */
         .search-box-button {
             margin-top: -3px;
@@ -70,11 +57,11 @@ include_once('../../controller/funcionarioController.php');
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../components/menu.php'); ?>
 
-    <section class="conteiner-conteudo2">
+    <section class="conteiner-conteudo">
 
         <div class="paginação">
             <a href="homePage.php">Homepage > </a>
-            <a href="pagefuncionario.php">funcionario</a>
+            <a href="pagefuncionario.php" class="pagina-atual">Funcionário</a>
         </div>
 
         <div class="containerPesquisa">
@@ -114,9 +101,10 @@ include_once('../../controller/funcionarioController.php');
                     </div>
                 </div>
             </div>
+        </div> 
     </section>
 
-    <section class="conteiner-conteudo2">
+    <section class="conteiner-conteudo-func">
         <!-- Notificação de erro ou não -->
         <div class="mensagens">
             <?php
@@ -144,18 +132,18 @@ include_once('../../controller/funcionarioController.php');
 
         <form id="inativarSelecionados" action="../../controller/funcionarioController.php?acao=inativosSelecionados"
             method="post">
-            <table class="table center-table" style="margin-bottom: 5rem" border="1">
+            <table class="table table-striped table-hover" >
                 <thead>
                     <tr>
-                        <th class="select-column">-</th>
+                        <th>-</th>
                         <th>RG</th>
-                        <th>NOME</th>
-                        <th>DATA INGRESSO</th>
-                        <th>SALÁRIO</th>
-                        <th>NOME FANTASIA</th>
-                        <th>CARGO</th>
-                        <th>SITUAÇÃO</th>
-                        <th class="operacao" colspan="2">OPERAÇÔES</th>
+                        <th>Nome</th>
+                        <th>Data Ingresso</th>
+                        <th>Salário</th>
+                        <th>Nome Fantasia</th>
+                        <th>Cargo</th>
+                        <th>Status</th>
+                        <th class="operation" colspan="2">Operações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -163,7 +151,7 @@ include_once('../../controller/funcionarioController.php');
                     <?php foreach ($funcionarios as $index => $funcionario): ?>
                         <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?> funcionario-row"
                             data-id="<?php echo $funcionario['idFuncionario']; ?>">
-                            <td class="select-column">
+                            <td>
                                 <input type="checkbox" name="checkbox[]"
                                     value="<?php echo $funcionario['idFuncionario']; ?>">
                             </td>
@@ -198,10 +186,7 @@ include_once('../../controller/funcionarioController.php');
                                     ?>
                                 </span>
                             </td>
-                            <td class="td-operacao">
-                                <a
-                                    href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>">
-                            <td>
+                            <td class="operation">
                                 <a
                                     href="../pages/Funcionario/pageFuncionarioAlteracao.php?idFuncionario=<?php echo $funcionario['idFuncionario']; ?>&acao=alteracao">
                                     <span class="material-symbols-outlined"> edit </span>

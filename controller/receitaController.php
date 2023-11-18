@@ -67,3 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
     
     mysqli_close($link);
 }
+
+$dados_receitas = $receitaModel->read();
+$countReceitas = count($dados_receitas);

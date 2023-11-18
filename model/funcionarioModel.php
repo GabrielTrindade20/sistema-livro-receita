@@ -154,5 +154,21 @@ class funcionarioModel {
         }
     }// fim de recuperar
 
+    public function existeFuncionario($rg)
+    {
+        // lista cursos já cadastrados
+        $query =   "SELECT idFuncionario, rg
+                    FROM funcionario
+                    WHERE rg = '$rg';";
+
+        $resultado = mysqli_query($this->link, $query);
+
+        if ($resultado) {
+            return mysqli_fetch_assoc($resultado);
+        } else {
+            return null; // Retornar null em caso de erro na consulta
+        }
+    }// fim de recuperar
+
 }// fim class
 ?>
