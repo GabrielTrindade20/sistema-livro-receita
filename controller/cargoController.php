@@ -4,8 +4,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once('../../configuration/connect.php');
-include_once('../../model/modelCargo/cargoModel.php'); // Inclua o modelo de cargo
+include_once(__DIR__ . '../../configuration/connect.php');
+include_once(__DIR__ . '../../model/modelCargo/cargoModel.php'); // Inclua o modelo de cargo
 
 $cargoModel = new cargoModel($link);
 
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
             // Não há erros, salve no banco de dados
             if ($cargoModel->create($descricao)) {
                 $_SESSION["sucesso"] = $cargoModel->getSucesso();
-                header("Location: ../../view/pages/pageCargo.php");
+                header("Location: ../view/pages/pageCargo.php");
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
             }
@@ -50,7 +50,7 @@ elseif (isset($_POST['editar'])) {
         } else {
             if ($atualizado = $cargoModel->update($idCargo, $novaDescricao)) {
                 $_SESSION["sucesso"] = $cargoModel->getSucesso();
-                header("Location: ../../view/pages/pageCargo.php");
+                header("Location: ../view/pages/pageCargo.php");
             } else {
                 $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
             }
@@ -67,7 +67,7 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
 
         if ($cargoModel->delete($idCargo)) {
             $_SESSION["sucesso"] = $cargoModel->getSucesso();
-            header("Location: ../../view/pages/pageCargo.php");
+            header("Location: ../view/pages/pageCargo.php");
         } else {
             $_SESSION["erros"] = ["Erro ao excluir no banco de dados."];
         }

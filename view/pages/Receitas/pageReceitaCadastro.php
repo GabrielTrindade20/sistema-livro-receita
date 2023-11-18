@@ -98,7 +98,23 @@ if (isset($ultima_foto)) {
                             <div class="col">
                                 Column
                                 <h1>Cadastrar Receita</h1>
+                                <div><!-- Foto -->
+                                    <?php
+                                    if (isset($_SESSION["mensagem"])) {
+                                        echo $_SESSION["mensagem"];
+                                        unset($_SESSION["mensagem"]);
+                                    }
+                                    ?>
 
+                                </div>
+                                <div class="box-foto">
+                                    <?php
+                                    if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
+                                        echo $img_ultima;
+                                        unset($_SESSION["cadastro_sucesso"]);
+                                    }
+                                    ?>
+                                </div>
                                 <form enctype="multipart/form-data" action="" method="post">
                                     <div class="box-foto">
                                         <label for="foto_receita">Foto da Receita</label>
@@ -106,7 +122,7 @@ if (isset($ultima_foto)) {
                                         <button type="submit" id="file" name="upload" class="button">Salvar</button>
                                     </div>
                                 </form>
-                                
+
                             </div>
                             <div class="col">
 
@@ -182,23 +198,7 @@ if (isset($ultima_foto)) {
 
                     <!-- Formulário de Cadastro -->
                     <div class="conteiner-abas">
-                        <div><!-- Notificação foto de erro ou não -->
-                            <?php
-                            if (isset($_SESSION["mensagem"])) {
-                                echo $_SESSION["mensagem"];
-                                unset($_SESSION["mensagem"]);
-                            }
-                            ?>
 
-                        </div>
-                        <div class="box-foto">
-                            <?php
-                            if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-                                echo $img_ultima;
-                                unset($_SESSION["cadastro_sucesso"]);
-                            }
-                            ?>
-                        </div>
 
                     </div>
                 </section>
