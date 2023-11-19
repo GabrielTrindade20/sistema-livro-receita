@@ -10,7 +10,7 @@
     --primary-hover: #ff8b61;
     --text: #BE783C;
     --erro: #c62a2594;
-  }
+}
 
 * {
     margin: 0;
@@ -27,7 +27,7 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--black);
 }
 
 .conteiner-conteudo {
@@ -37,43 +37,71 @@ a {
 }
 
 .conteiner-conteudo2 {
-    padding-left: 320px; /*tamanho fixo*/
-    padding-top: 20px;
-    padding-right: 5%;
-}
-/* tela funcionario */
-.conteiner-conteudo-func{ 
-    padding-left: 320px; 
-    padding-top: 20px;
-}
-
-.conteiner-button-inativar {
-    float: right;
-    padding-right: 10%;
-}
-/* tela cadastro */
-.conteiner-conteudo-cadastro {
-    padding-left: 26%; 
-    padding-top: 30px;
-    padding-right: 2%; 
-}
-
-.conteiner-conteudo3 {
+    padding-left: 320px;
     padding-top: 10px;
-    background-color: white;
-    margin: 0;
-    border-top: none;
-    border-bottom: solid 1px #dee2e6;
-    border-left: solid 1px #dee2e6;
-    border-right: solid 1px #dee2e6;
+    padding-right: 8%;
+}
+
+.button-select-all{
+    float: right;
 }
 
 .paginação {
-    font-size: 15px;
+    font-size: 14px;
     padding-bottom: 20px;
 }
+
+.paginação-sub {
+    font-size: smaller;
+    padding-bottom: 20px;
+}
+
+.paginação a:hover {
+    color: var(--laranja);
+}
+.paginação-sub a:hover {
+    color: var(--laranja);
+}
+/* tela funcionario */
+.conteiner-conteudo-func {
+    padding-left: 320px;
+    padding-top: 20px;
+}
+
+.conteiner-button-inativar { /* usado em categoria,cargo*/
+    float: right;
+    padding-right: 10%;
+}
+
 
 .pagina-atual {
     color: var(--laranja);
     font-weight: bold;
+}
+
+/* tela cadastro */
+.conteiner-conteudo-cadastro {
+    padding-left: 26%;
+    padding-top: 30px;
+    padding-right: 2%;
+}
+
+/* cadastro receita */
+.conteiner-conteudo3 {
+    padding-left: 320px;
+    padding-top: 10px;
+    padding-right: 5%;
+}
+
+.nav-item button:hover{
+    color: var(--laranja);
+}
+
+.conteiner-conteudo3 section {
+    padding: 20px;
+    background-color: white;
+    border-top: none;
+    border-bottom: solid 1px #dee2e6;
+    border-left: solid 1px #dee2e6;
+    border-right: solid 1px #dee2e6;
 }

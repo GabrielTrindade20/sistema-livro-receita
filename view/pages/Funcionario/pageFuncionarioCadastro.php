@@ -34,13 +34,13 @@ include_once('../../../model/funcoes.php');
         </div>
 
         <?php
-                if (isset($_SESSION["erro_funcionario_existe"])) {
-                    $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
-                    echo $erro_funcionario_existe . "<br>";
+        if (isset($_SESSION["erro_funcionario_existe"])) {
+            $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
+            echo $erro_funcionario_existe . "<br>";
 
-                    unset($_SESSION["erro_funcionario_existe"]);
-                } 
-                ?>
+            unset($_SESSION["erro_funcionario_existe"]);
+        }
+        ?>
 
         <div class="conteiner-abas">
             <!-- Formulário de Cadastro -->
@@ -52,7 +52,7 @@ include_once('../../../model/funcoes.php');
             <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados-funcionario">
                     <label for="rg">RG</label>
-                    <input type="text" id="rg" name="rg"  required>
+                    <input type="text" id="rg" name="rg" required>
 
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
@@ -68,10 +68,10 @@ include_once('../../../model/funcoes.php');
 
                     <label for="cargo">Cargo</label>
                     <div class="conteiner-dados-funcionario-select">
-                        <?php monta_select_cargo(); ?> 
+                        <?php monta_select_cargo(); ?>
                     </div>
                 </div>
-                
+
                 <div class="conteiner-operacoes">
                     <!-- Botão para salvar o funcionário -->
                     <button type="submit" name="salvar" class="button">Salvar</button>
@@ -83,4 +83,5 @@ include_once('../../../model/funcoes.php');
     </section>
 
 </body>
+
 </html>

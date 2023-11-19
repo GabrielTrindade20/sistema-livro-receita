@@ -143,7 +143,7 @@ include_once('../../controller/funcionarioController.php');
                         <th>Nome Fantasia</th>
                         <th>Cargo</th>
                         <th>Status</th>
-                        <th class="operation" colspan="2">Operações</th>
+                        <th class="operation">Operações</th>
                     </tr>
                 </thead>
                 <tbody>

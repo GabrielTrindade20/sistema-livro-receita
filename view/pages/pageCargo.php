@@ -16,12 +16,18 @@ $numCargos = count($cargos);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/stylePesq.css">
-    <link rel="stylesheet" href="../css/styleTable.css">
-    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
-    <link rel="stylesheet" href="../css/styleResponsivo.css">
+    <!-- BOOSTRAP  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <title>Página de Receitas</title>
+
+    <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
+    <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
+    <link rel="stylesheet" href="../css/styleNoti.css">
+    <link rel="stylesheet" href="../css/stylePesquisar.css">
+    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
+
+    <title>Cargos</title>
 
     <script>
         function confirmarExclusao(idCargo) {
@@ -48,88 +54,90 @@ $numCargos = count($cargos);
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../components/menu.php'); ?>
 
-    <div id="sub-titulo">
-        <a href="">links paginas</a>
-    </div>
+    <section class="conteiner-conteudo">
+        <div class="paginação">
+            <a href="homePage.php">Homepage </a> >
+            <a href="#" class="pagina-atual">Categoria</a>
+        </div>
+        <div class="containerPesquisa">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 conteiner-info">
+                    <div>
+                        <h1>Lista de Cargos</h1>
+                    </div>
 
-    <section class="conteiner-pesquisa">
-
-        <div class="titulos" id="titulo">
-            <div class="conteiner-titulo">
-                <div>
-                    <h1>Lista de Cargos</h1>
+                    <div class="info-qtd">
+                        <a href="#">
+                            <?php echo "( $numCargos ) Cargos"; ?>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="info-receitas">
-                    <a href="#">
-                        <?php echo "($numCargos) Cargos"; ?>
-                    </a>
+                <div class="col-md-6 col-sm-12 conteiner-func">
+                    <form method="post" action="../../controller/cargoController.php" class="form-p">
+                        <button>
+                            <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
+                                <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <input class="input-p" placeholder="Pesquisar" required="" type="search" name="descricao">
+                    </form>
+
+                    <!-- Criar -->
+                    <div class="button-nova">
+                        <a href="Cargo/cargoCadastro.php">
+                            <button class="nova-button">Cadastrar</button>
+                        </a>
+                    </div>
                 </div>
             </div>
 
-            <div class="search-container">
-                <div class="search-box">
-                    <form method="post" action="#">
-                        <div class="search-box-input-container">
-                            <input type="text" class="search-box-input" name="busca" placeholder="Pesquisa">
-                            <button class="search-box-button"><i class="search-box-icone icon icon-search"></i></button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="button-nova">
-                    <a href="Cargo/cargoCadastro.php">
-                        <button class="nova-receita-button">Cadastrar</button>
-                    </a>
-                </div>
-            </div><!-- Search -->
-        </div>
+            <!-- Notificação de erro ou não -->
+            <div class="mensagens">
+                <?php
+                if (isset($_SESSION["erros"])) {
+                    $erros = $_SESSION["erros"];
+                    // Exibir as mensagens de erro
+                    foreach ($erros as $erro) {
+                        echo $erro . "<br>";
+                    }
+                    // Limpar as mensagens de erro da sessão
+                    unset($_SESSION["erros"]);
+                } elseif (isset($_SESSION["sucesso"])) {
+                    $sucessos = $_SESSION["sucesso"];
+                    foreach ($sucessos as $sucesso) {
+                        echo $sucesso . "<br>";
+                    }
+                    unset($_SESSION["sucesso"]);
+                }
+                ?>
+            </div>
     </section>
 
-    <section class="conteiner-conteudo">
-        <!-- Notificação de erro ou não -->
-        <div class="mensagens">
-            <?php
-            if (isset($_SESSION["erros"])) {
-                $erros = $_SESSION["erros"];
-                // Exibir as mensagens de erro
-                foreach ($erros as $erro) {
-                    echo $erro . "<br>";
-                }
-                // Limpar as mensagens de erro da sessão
-                unset($_SESSION["erros"]);
-            } elseif (isset($_SESSION["sucesso"])) {
-                $sucessos = $_SESSION["sucesso"];
-                foreach ($sucessos as $sucesso) {
-                    echo $sucesso . "<br>";
-                }
-                unset($_SESSION["sucesso"]);
-            }
-            ?>
-        </div>
+    <section class="conteiner-conteudo2">
         <div class="conteiner-button-inativar">
-            <button class="inativar-button" onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
+            <button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
         </div>
         <form id="excluirSelect" action="../../controller/cargoController.php?acao=excluirSelecionados" method="post">
-            <table class="table">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
-                        <th class="nome-col" colspan="3">Nome</th>
-                        <th class="operacao-col">Operações</th>
+                        <th>Cargo</th>
+                        <th class="operation">Operações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($cargos as $index => $cargo) : ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                        <tr>
                             <td class="select-column">
                                 <input type="checkbox" name="checkbox[]" value="<?php echo $cargo['idCargo']; ?>">
                             </td>
-                            <td colspan="3">
+                            <td>
                                 <?php echo $cargo['descricao']; ?>
                             </td>
-                            <td class="td-operacao">
-                                <a href="../../model/modelCargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
+                            <td class="operation">
+                                <a href="Cargo/cargoEdicao.php?idCargo=<?php echo $cargo['idCargo']; ?>">
                                     <span class="material-symbols-outlined"> edit </span>
                                 </a>
 

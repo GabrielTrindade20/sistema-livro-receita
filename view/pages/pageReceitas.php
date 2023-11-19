@@ -34,7 +34,7 @@ include_once('../../controller/receitaController.php');
     <section class="conteiner-conteudo">
         <div class="paginação">
             <a href="homePage.php">Homepage </a> >
-            <a href="pageCategoria.php" class="pagina-atual"> Receitas</a>
+            <a href="#" class="pagina-atual"> Receitas</a>
         </div>
 
         <div class="containerPesquisa">
@@ -44,11 +44,8 @@ include_once('../../controller/receitaController.php');
                         <h1>Lista de Receitas</h1>
                     </div>
 
-
                     <div class="info-qtd">
-                        <a href="#">
-                            <?php echo "(" . $countReceitas . ") Receitas"; ?>
-                        </a>
+                        <?php echo "(" . $countReceitas . ") Receitas"; ?>
                     </div>
                 </div>
 
@@ -103,32 +100,32 @@ include_once('../../controller/receitaController.php');
                         <tr>
                             <th class="select-column">-</th>
                             <th>Receita</th>
+                            <th>Categorias</th>
                             <th class="operation" colspan="2">Operações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Tabela de categoria -->
                         <?php foreach ($dados_receitas as $index => $receita) : ?>
-                        <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                            <td class="select-column">
-                                <input type="checkbox" name="checkbox[]" value="<?php echo $receita['nome_receita']; ?>">
-                            </td>
-                            <td>
-                                <?php echo $receita['nome_receita']; ?>
-                            </td>
-                            <td class="operation">
-                                <a href="#" onclick="confirmarExclusao(<?php echo $receita['nome_receita']; ?>);" class="button">
-                                    <span class="material-symbols-outlined"> visibility </span>
-                                </a>
-                                <a href="../pages/Receitas/pageReceitaCadastro.php?nome_receita=<?php echo $receita['nome_receita']; ?>">
-                                    <span class="material-symbols-outlined"> edit </span>
-                                </a>
-                                <a href="#" class="button">
-                                    <span class="material-symbols-outlined"> delete </span>
-                                </a> 
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                            <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                                <td class="select-column">
+                                    <input type="checkbox" name="checkbox[]" value="<?php echo $receita['nome_receita']; ?>">
+                                </td>
+                                <td> <?php echo $receita['nome_receita']; ?> </td>
+                                <td> <?php echo $receita['categoria_nome']; ?> </td>
+                                <td class="operation">
+                                    <a href="#" onclick="confirmarExclusao(<?php echo $receita['nome_receita']; ?>);" class="button">
+                                        <span class="material-symbols-outlined"> visibility </span>
+                                    </a>
+                                    <a href="../pages/Receitas/pageReceitaCadastro.php?nome_receita=<?php echo $receita['nome_receita']; ?>">
+                                        <span class="material-symbols-outlined"> edit </span>
+                                    </a>
+                                    <a href="#" class="button">
+                                        <span class="material-symbols-outlined"> delete </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </form>

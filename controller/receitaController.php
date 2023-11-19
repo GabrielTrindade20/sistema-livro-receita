@@ -14,7 +14,7 @@ $receitaModel = new receitaModel($link);
 
 // SALVAR 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
-    if (isset($ultima_foto) && isset($_SESSION['upload_form_foto'])) {
+    if (isset($ultima_foto) && isset($_SESSION['upload_form_foto']) && isset($_SESSION["cadastro_sucesso"])) {
         $id_foto_receita =  $ultima_foto['id_foto_receita'];
         $path_foto_receita =  $ultima_foto['path'];
 

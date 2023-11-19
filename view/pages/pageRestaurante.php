@@ -77,7 +77,6 @@ include_once('../../controller/referenciaController.php');
             </div>
         </div>
 
-
         <!-- Notificação de erro ou não -->
         <div class="mensagens">
             <?php
