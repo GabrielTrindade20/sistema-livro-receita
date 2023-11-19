@@ -39,18 +39,11 @@ a {
 .conteiner-conteudo2 {
     padding-left: 320px;
     padding-top: 10px;
-    padding-right: 5%;
+    padding-right: 8%;
 }
 
-/* tela funcionario */
-.conteiner-conteudo-func {
-    padding-left: 320px;
-    padding-top: 20px;
-}
-
-.conteiner-button-inativar {
+.button-select-all{
     float: right;
-    padding-right: 10%;
 }
 
 .paginação {
@@ -60,11 +53,26 @@ a {
 
 .paginação-sub {
     font-size: smaller;
+    padding-bottom: 20px;
 }
 
 .paginação a:hover {
     color: var(--laranja);
 }
+.paginação-sub a:hover {
+    color: var(--laranja);
+}
+/* tela funcionario */
+.conteiner-conteudo-func {
+    padding-left: 320px;
+    padding-top: 20px;
+}
+
+.conteiner-button-inativar { /* usado em categoria,cargo*/
+    float: right;
+    padding-right: 10%;
+}
+
 
 .pagina-atual {
     color: var(--laranja);

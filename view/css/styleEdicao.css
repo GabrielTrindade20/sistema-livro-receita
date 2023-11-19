@@ -70,7 +70,12 @@
     cursor: pointer;
 }
 
-/* page funcionario */
+.title-container h1{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* page funcionario e categoria */
 .conteiner-formulario{
     background-color: #BE783C;
     width: 100%;
@@ -123,10 +128,8 @@
 .conteiner-form-colum {
     width: 100%;
 }
-.title-container h1{
-    font-size: 25px;
-    font-weight: bold;
-}
+
+
 
 .conteiner-form-colum-operacoes{
    float: right;
