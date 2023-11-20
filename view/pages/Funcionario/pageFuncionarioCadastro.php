@@ -43,7 +43,6 @@ include_once('../../../model/funcoes.php');
         ?>
 
         <div class="conteiner-abas">
-            <!-- Formulário de Cadastro -->
             <div class="title-container">
                 <h2>Funcionário</h2>
             </div>

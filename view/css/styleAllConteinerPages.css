@@ -42,6 +42,14 @@ a {
     padding-right: 8%;
 }
 
+
+/* cadastro reaturante */
+.conteiner-conteudo4 {
+    padding-left: 300px;
+    padding-top: 10px;
+    padding-right: 5%;
+}
+
 .button-select-all{
     float: right;
 }
@@ -62,6 +70,7 @@ a {
 .paginação-sub a:hover {
     color: var(--laranja);
 }
+
 /* tela funcionario */
 .conteiner-conteudo-func {
     padding-left: 320px;

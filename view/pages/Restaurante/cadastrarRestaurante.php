@@ -1,5 +1,5 @@
 <?php
-include_once('../../../controller/protect.php');
+include_once('../../../controller/protectSubFolders.php');
 include_once('../../../controller/funcionarioController.php');
 include_once('../../../controller/restauranteController.php');
 ?>
@@ -11,17 +11,27 @@ include_once('../../../controller/restauranteController.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/styleEdica.css">
+    <!-- BOOSTRAP  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
+    <link rel="stylesheet" href="../../css/styleRestaurante.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Restaurante</title>
+
 </head>
 
 <body>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
 
-    <section class="conteiner-conteudo">
+    <section class="conteiner-conteudo-cadastro">
+        <div class="titulo-res">
+            <h1>Restaurante</h1>
+        </div>
+
         <!-- Notificação de erro ou não -->
         <div class="mensagens">
             <?php
@@ -42,9 +52,9 @@ include_once('../../../controller/restauranteController.php');
             }
             ?>
         </div>
-        <h1 class="titulo">Restaurante</h1>
 
         <div class="conteiner-abas">
+
             <!-- Formulário de Cadastro -->
             <form method="POST" action="../../../controller/restauranteController.php">
 
@@ -54,7 +64,7 @@ include_once('../../../controller/restauranteController.php');
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" name="nome" required>
                     <label for="contato">Contato:</label>
-                    <input type="text" id="contato" name="contato" required>
+                    <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="11" id="contato" name="contato" placeholder="Digite o contato" maxlength="9" required>
                 </div>
                 <br>
 
@@ -63,42 +73,52 @@ include_once('../../../controller/restauranteController.php');
                     <button type="submit" name="salvar_restaurante" class="button">Salvar</button>
 
                     <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../../pages/Restaurante/pageRestauranteCadastro.php">Voltar</a>
+                    <a href="pageRestauranteCadastro.php">
+                        <span class="material-symbols-outlined"> arrow_back</span>
+                    </a>
                 </div>
             </form>
+            <div class="scrollable">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Contato</th>
+                            <th class="operation">Operações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Tabela de restaurantes -->
+                        <?php foreach ($restaurantes as $index => $restaurante) : ?>
+                            <tr>
+                                <td>
+                                    <?php echo $restaurante['nome']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $restaurante['contato']; ?>
+                                </td>
+                                <td class="operation">
+                                    <a onclick="editarRestaurante(<?php echo $restaurante['idRestaurante'] ?>, '<?php echo $restaurante['nome'] ?>', '<?php echo $restaurante['contato']; ?>')" href="#" class="editar-restaurante" id="btn-salvar-restaurante" data-id="<?php echo $restaurante['idRestaurante']; ?>">
+                                        <span class="material-symbols-outlined"> edit </span>
+                                    </a>
+                                    <a class="remover-restaurante" href="cadastrarRestaurante.php?idRestaurante=<?php echo $restaurante['idRestaurante']; ?>&acao=delete">
+                                        <span class="material-symbols-outlined"> delete </span>
+                                    </a>
+
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <table class="table" id="table1" border="1">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Contato</th>
-                    <th>Operações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Tabela de restaurantes -->
-                <?php foreach ($restaurantes as $index => $restaurante) : ?>
-                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                        <td>
-                            <?php echo $restaurante['nome']; ?>
-                        </td>
-                        <td>
-                            <?php echo $restaurante['contato']; ?>
-                        </td>
-                        <td>
-                            <a class="remover-restaurante" href="cadastrarRestaurante.php?idRestaurante=<?php echo $restaurante['idRestaurante']; ?>&acao=delete">
-                            Remover </a>
-                            <a onclick="editarRestaurante(<?php echo $restaurante['idRestaurante'] ?>, '<?php echo $restaurante['nome'] ?>', '<?php echo $restaurante['contato']; ?>')" href="#" class="editar-restaurante"
-                            id="btn-salvar-restaurante" data-id="<?php echo $restaurante['idRestaurante']; ?>"> Editar </a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
     </section>
 
     <script src="../../js/restauranteAleracao.js"></script>
+    <!-- BOOSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
