@@ -29,7 +29,7 @@ include_once('../../../controller/restauranteController.php');
 
     <section class="conteiner-conteudo4">
         <div class="paginação-sub">
-            <a href="homePage.php">Homepage </a> >
+            <a href="../homePage.php">Homepage </a> >
             <a href="../pageRestaurante.php"> Restaurante </a> >
             <a href="#" class="pagina-atual"> Restaurante Cadastro</a>
         </div>
@@ -47,7 +47,7 @@ include_once('../../../controller/restauranteController.php');
                         </div>
 
                         <div class="scrollable">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-sm  table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>Funcionários</th>
@@ -74,7 +74,7 @@ include_once('../../../controller/restauranteController.php');
                             <h1>Restaurantes</h1>
                         </div>
                         <div class="scrollable">
-                            <table class="table table-striped table-hover">
+                            <table class="table table-sm table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>

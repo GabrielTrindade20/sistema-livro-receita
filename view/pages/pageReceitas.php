@@ -21,7 +21,7 @@ include_once('../../controller/receitaController.php');
     <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
-    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
 
     <title>Receitas</title>
@@ -95,7 +95,7 @@ include_once('../../controller/receitaController.php');
             <!--<button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button> -->
 
             <form id="excluirSelect" action="../../controller/receitaController.php?acao=excluirSelecionados" method="post">
-                <table class="table table-striped table-hover">
+                <table class="table table-sm table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="select-column">-</th>

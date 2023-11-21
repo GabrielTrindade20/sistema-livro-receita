@@ -64,7 +64,7 @@
 }
 
 .logo img{
-  width: 200px;
+  width: 180px;
   margin-top: 30px;
 }
 
@@ -97,7 +97,6 @@
 }
 
 .links-menu {
-  width: 100%;
   margin-top: 30px;
   margin-left: 10px;
   text-align: left;
@@ -105,6 +104,8 @@
 
 .icone-menu:hover {
   background: rgba(255, 255, 255, 0.3);
+  font-weight: bolder;
+  color: var(--white);
 }
 
 .menu-lateral>nav {
@@ -120,6 +121,43 @@
 
 .perfil {
   border-top: 1px solid var(--black); 
-  width: 100%;
+  width: 90%;
   text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Estilos padrão para telas maiores que 600px */
+@media only screen and (min-width: 600px) {
+  .menu-lateral {
+    width: 250px;
+  }
+
+  .menu-lateral a > span {
+    padding: 0 16px 0 12px;
+  }
+
+  .menu-lateral a span > span {
+    display: inline; /* Garante que os nomes sejam visíveis em telas maiores */
+  }
+}
+
+/* Estilos para telas menores que 600px */
+@media only screen and (max-width: 600px) {
+  .menu-lateral {
+    width: 15%;
+    padding: 20px;
+  }
+
+  .menu-lateral a > span {
+    padding: 0 12px;
+  }
+
+  .logo img {
+    width: 80px;
+  }
+
+  .icone-menu a span > span{
+    display: none; /* Oculta os nomes em telas menores */
+  }
 }

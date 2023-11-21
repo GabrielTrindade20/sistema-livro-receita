@@ -23,7 +23,7 @@ include_once('../../controller/referenciaController.php');
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/styleNoti.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
-    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <title>Restaurantes</title>
 
@@ -99,7 +99,7 @@ include_once('../../controller/referenciaController.php');
     <section class="conteiner-conteudo2">
         <form id="excluirSelect" action="../../controller/referenciaController.php?acao=excluirSelecionados"
             method="post">
-            <table class="table table-striped table-hover">
+            <table class="table table-sm table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Funcionario</th>

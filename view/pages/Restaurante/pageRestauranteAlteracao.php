@@ -102,7 +102,7 @@ if (isset($_GET['idFuncionario'])) {
             </div>
 
             <div class="scrollable">
-                <table class="table table-striped table-hover">
+                <table class="table table-sm  table-striped table-hover">
                     <thead>
                         <tr>
                             <th class="select-column">Restaurantes</th>

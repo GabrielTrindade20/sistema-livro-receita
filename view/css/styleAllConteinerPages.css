@@ -81,6 +81,9 @@ a {
     float: right;
     padding-right: 10%;
 }
+.conteiner-button-select { /* usado em categoria,cargo*/
+    float: right;
+}
 
 
 .pagina-atual {

@@ -28,7 +28,7 @@ if (isset($_SESSION['resultados_pesquisa'])) {
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/styleNoti.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
-    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <title>Categorias</title>
 
@@ -118,12 +118,12 @@ if (isset($_SESSION['resultados_pesquisa'])) {
     </section>
 
     <section class="conteiner-conteudo2">
-        <div class="conteiner-button-inativar">
+        <div class="conteiner-button-select">
             <button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
         </div>
 
         <form id="excluirSelect" action="../../controller/categoriaController.php?acao=excluirSelecionados" method="post">
-            <table class="table table-striped table-hover">
+            <table class="table table-sm table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="select-column">-</th>

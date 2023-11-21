@@ -79,7 +79,7 @@ include_once('../../../controller/restauranteController.php');
                 </div>
             </form>
             <div class="scrollable">
-                <table class="table table-striped table-hover">
+                <table class="table table-sm table-striped table-hover">
                     <thead>
                         <tr>
                             <th>Nome</th>

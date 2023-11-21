@@ -17,7 +17,7 @@ include_once('../../controller/protect.php');
     <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
-    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
 
     <title>Degustação</title>
@@ -99,7 +99,7 @@ include_once('../../controller/protect.php');
         </div>
         <!--<button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button> -->
 
-        <table class="table table-striped table-hover">
+        <table class="table table-sm   table-striped table-hover">
             <thead>
                 <tr>
                     <th class="select-column">-</th>

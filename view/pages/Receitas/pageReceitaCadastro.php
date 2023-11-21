@@ -82,7 +82,7 @@ if (isset($ultima_foto)) {
 
     <section class="conteiner-conteudo3">
         <div class="paginação-sub">
-            <a href="homePage.php">Homepage </a> >
+            <a href="../homePage.php">Homepage </a> >
             <a href="../pageReceitas.php"> Receitas </a> >
             <a href="#" class="pagina-atual"> Receitas Cadastro</a>
         </div>

@@ -132,7 +132,7 @@ include_once('../../controller/funcionarioController.php');
 
         <form id="inativarSelecionados" action="../../controller/funcionarioController.php?acao=inativosSelecionados"
             method="post">
-            <table class="table table-striped table-hover" >
+            <table class="table table-sm   table-striped table-hover" >
                 <thead>
                     <tr>
                         <th>-</th>
