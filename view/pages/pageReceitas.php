@@ -34,7 +34,7 @@ include_once('../../controller/receitaController.php');
     <section class="conteiner-conteudo">
         <div class="paginação">
             <a href="homePage.php">Homepage </a> >
-            <a href="#" class="pagina-atual"> Receitas</a>
+            <a href="#" class="pagina-atual">Receitas</a>
         </div>
 
         <div class="containerPesquisa">

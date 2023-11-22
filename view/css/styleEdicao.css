@@ -23,7 +23,7 @@
     width: 90%;
 }
 
-.conteiner-abas h2{
+.conteiner-abas h2 {
     z-index: 1;
     position: absolute;
     padding-left: 40px;
@@ -66,17 +66,17 @@
     border-radius: 10px 10px 0px 0px;
 }
 
-.button:hover{
+.button:hover {
     cursor: pointer;
 }
 
-.title-container h1{
+.title-container h1 {
     font-size: 25px;
     font-weight: bold;
 }
 
 /* page funcionario e categoria */
-.conteiner-formulario{
+.conteiner-formulario {
     background-color: #BE783C;
     width: 100%;
 }
@@ -103,7 +103,7 @@
     font-size: 14px;
     padding: 3px;
     margin-top: 5px;
-    cursor:pointer;
+    cursor: pointer;
     padding: 5px 10px;
 }
 
@@ -113,11 +113,11 @@
 
 .conteiner-dados-funcionario-status input {
     width: 15%;
-    
+
 }
 
 /*receita*/
-.form{
+.form {
     width: 100%;
     display: flex;
     grid-template-columns: repeat(2, 1fr);
@@ -130,9 +130,11 @@
 }
 
 
-.conteiner-form-colum-operacoes{
-   float: right;
+.conteiner-form-colum-operacoes {
+    float: right;
+    position: relative;
 }
+
 .conteiner-form-colum input {
     width: 100%;
     font-size: 14px;
@@ -141,13 +143,18 @@
     margin-bottom: 10px;
 }
 
+.conteiner-form-colum textarea {
+    position: relative;
+    width: 100%;
+}
+
 .conteiner-dados-input-select select {
     width: 100%;
     font-size: 14px;
     padding: 3px;
     margin-top: 5px;
     margin-bottom: 10px;
-    cursor:pointer;
+    cursor: pointer;
     padding: 5px 10px;
 }
 
@@ -156,5 +163,60 @@
 }
 
 .conteiner-dados-input-select input[type=radio] {
-margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.box-foto img {
+    width: 150px;
+}
+
+.button-adicionar{
+    width: auto;
+    height: 33px;
+    padding: 0px 10px;
+    justify-content: space-between;
+    background-color: #F0C3AA;
+    right: 0px;
+    top: -34px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.button-salvar{
+    position: absolute;
+    width: 80px;
+    height: 33px;
+    padding: 5px;
+    background-color: #F0C3AA;
+    right: -20px;
+    top: -149px;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    font-size: 1rem;
+}
+
+.button-cancelar{
+    position: absolute;
+    width: 100px;
+    height: 33px;
+    padding: 5px;
+    background-color: #F0C3AA;
+    right: 70px;
+    top: -149px;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.form-ingredientes{
+    padding: 10px;
+    background-color: #EEB253;
+    justify-content: space-between;
+}
+
+.form-ingredientes input{
+    width: 20%;
 }

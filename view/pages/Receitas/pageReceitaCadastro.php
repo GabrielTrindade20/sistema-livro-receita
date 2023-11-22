@@ -30,7 +30,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
         if ($extensao != "jpg" && $extensao != "png") {
             $_SESSION["mensagem"] = "Tipo de arquivo não aceito";
         } else {
-            $path =   $pasta . $novo_nome_arquivo . '.' . $extensao;
+            $path = $pasta . $novo_nome_arquivo . '.' . $extensao;
             $deu_certo = move_uploaded_file($arquivo["tmp_name"], $path);
 
             if ($deu_certo) {
@@ -49,7 +49,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
 $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
 
 if (isset($ultima_foto)) {
-    $id_foto_receita =  $ultima_foto['id_foto_receita'];
+    $id_foto_receita = $ultima_foto['id_foto_receita'];
     $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
     $link_img = "<a target=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
     $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "&acao=deletar-foto\">DELETAR</a>";
@@ -67,7 +67,8 @@ if (isset($ultima_foto)) {
     <!-- BOOSTRAP  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
     <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../../css/styleEdicao.css">
@@ -89,17 +90,20 @@ if (isset($ultima_foto)) {
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                    type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
                     Informações</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="composicao-tab" data-bs-toggle="tab" data-bs-target="#composicao-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                <button class="nav-link" id="composicao-tab" data-bs-toggle="tab" data-bs-target="#composicao-tab-pane"
+                    type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
                     Composição</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                <section> 
+            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                tabindex="0">
+                <section>
                     <div class="title-container">
                         <h1>Cadastrar Receita</h1>
                     </div>
@@ -122,7 +126,8 @@ if (isset($ultima_foto)) {
                         }
                         ?>
                     </div>
-                    <div><!-- Foto -->
+                    <div>
+                        <!-- Foto -->
                         <?php
                         if (isset($_SESSION["mensagem"])) {
                             echo $_SESSION["mensagem"];
@@ -132,12 +137,12 @@ if (isset($ultima_foto)) {
 
                     </div>
                     <div class="box-foto">
-                        <?php
-                        if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-                            echo $img_ultima;
-                            unset($_SESSION["cadastro_sucesso"]);
-                        }
-                        ?>
+                            <?php
+                            if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) && $_SESSION["cadastro_sucesso"]) {
+                                echo $img_ultima;
+                                unset($_SESSION["cadastro_sucesso"]);
+                            }
+                            ?>
                     </div>
 
                     <form enctype="multipart/form-data" action="" method="post">
@@ -150,7 +155,8 @@ if (isset($ultima_foto)) {
 
                     <form method="POST" action="../../../controller/receitaController.php">
                         <div class="conteiner-form-colum-operacoes">
-                            <button type="submit" name="salvar" class="button">Salvar</button>
+                            <button type="submit" name="salvar" class="button-salvar">Salvar</button>
+                            <a href="../../pages/pageCargo.php" class="button-cancelar">Cancelar</a>
                         </div>
                         <div class="form">
                             <div class="conteiner-form-colum">
@@ -162,9 +168,9 @@ if (isset($ultima_foto)) {
 
                                 <label for="qtd_porcao">Quantidade de Porções</label>
                                 <input type="number" id="qtd_porcao" name="qtd_porcao" required>
-                                
+
                                 <div class="conteiner-dados-input-select">
-                                <label for="degustador">Degustador</label>
+                                    <label for="degustador">Degustador</label>
                                     <?php monta_select_degustador(); ?>
                                 </div>
                                 <label for="nota_degustacao">Nota</label>
@@ -200,7 +206,8 @@ if (isset($ultima_foto)) {
                 </section>
             </div>
 
-            <div class="tab-pane fade" id="composicao-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <div class="tab-pane fade" id="composicao-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                tabindex="0">
                 <!-- Cadastro medida ingrediente -->
                 <section>
                     <!-- Notificação de erro ou não -->
@@ -226,15 +233,17 @@ if (isset($ultima_foto)) {
                         <!-- Medidas Cadastra -->
                         <h3>Ingrediente Medidas Cadastradas</h3>
 
-                        <form action="../../../controller/composicaoController.php" method="post">
+                        <form action="../../../controller/composicaoController.php" method="post" class="form-ingredientes">
                             <label for="ingrediente">Ingrediente</label>
 
-                            <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" onkeyup="carregarIngrediente(this.value)" autocomplete="off">
+                            <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente"
+                                onkeyup="carregarIngrediente(this.value)" autocomplete="off">
 
                             <span id="resultado-pesquisa-ingrediente"></span>
 
                             <label for="medida">Medida</label>
-                            <input type="text" id="medida" name="medida" placeholder="Pesquisar Medida" onkeyup="carregarMedida(this.value)" autocomplete="off">
+                            <input type="text" id="medida" name="medida" placeholder="Pesquisar Medida"
+                                onkeyup="carregarMedida(this.value)" autocomplete="off">
 
                             <span id="resultado-pesquisa-medida"></span>
 
@@ -244,10 +253,14 @@ if (isset($ultima_foto)) {
                             <input type="hidden" name="idIngrediente" id="idIngrediente">
                             <input type="hidden" name="idMedida" id="idMedida">
 
-                            <button type="submit" name="salvar_composicao">Salvar</button>
+                            <button type="submit" name="salvar_composicao" class="button-adicionar">
+                            <i class="fas fa-plus"></i>
+                            Adicionar
+                            </button>
                         </form>
 
-                        <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a></div>
+                        <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas
+                                salvas</a></div>
 
                         <div class="table-lista">
                             <h3>Lista de Ingredientes</h3>
@@ -265,7 +278,8 @@ if (isset($ultima_foto)) {
                                 </tbody>
                             </table>
 
-                            <button id="salvar-todos" name="salvar_medidas" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
+                            <button id="salvar-todos" name="salvar_medidas" onclick="passarReferenciaParaPHP()">Salvar
+                                Todos</button>
                             <br>
                         </div>
 
