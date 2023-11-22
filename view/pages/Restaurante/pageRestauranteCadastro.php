@@ -78,8 +78,8 @@ include_once('../../../controller/restauranteController.php');
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Contato</th>
-                                        <th class="operation">Operações</th>
+                                        <!-- <th>Contato</th>
+                                        <th class="operation">Operações</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,9 +89,9 @@ include_once('../../../controller/restauranteController.php');
                                             <td>
                                                 <?php echo $restaurante['nome']; ?>
                                             </td>
-                                            <td>
+                                            <!-- <td>
                                                 <?php echo $restaurante['contato']; ?>
-                                            </td>
+                                            </td> -->
                                             <td class="operation">
                                                 <button class="adicionar-restaurante" data-nome="<?php echo $restaurante['nome']; ?>" data-idR="<?php echo $restaurante['idRestaurante']; ?>"> + </button>
                                             </td>

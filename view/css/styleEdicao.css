@@ -213,10 +213,13 @@
 
 .form-ingredientes{
     padding: 10px;
-    background-color: #EEB253;
     justify-content: space-between;
 }
 
 .form-ingredientes input{
     width: 20%;
+}
+
+.col-lg-3{
+    width: 30%;
 }
