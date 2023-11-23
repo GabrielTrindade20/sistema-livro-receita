@@ -1,5 +1,5 @@
 <?php
-include_once('../../../controller/protect.php');
+include_once('../../../controller/protectSubFolders.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,3 +72,17 @@ include_once('../../../controller/protect.php');
 </body>
 
 </html>
+ <!-- Menu lateral - vem de outra página -->
+ <?php include '../../components/menuSub1.php'; ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
+        </div>
+        <div class="conteudo">
+
+        </div>

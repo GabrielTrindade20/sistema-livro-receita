@@ -12,7 +12,9 @@ include_once('../../../controller/restauranteController.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../components/style.css">
 
     <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../../css/styleEdicao.css">
@@ -25,82 +27,94 @@ include_once('../../../controller/restauranteController.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders2.php'); ?>
-    <div class="paginação-sub">
-        <a href="../homePage.php">Homepage </a> >
-        <a href="../pageRestaurante.php"> Referência </a> >
-        <a href="#" class="pagina-atual"> Referência Cadastro</a>
-    </div>
-    <section class="conteiner-conteudo-cadastro">
-        <div class="aba-sair">
-            <a href="../pageRestaurante.php">Cancelar</a>
+    <?php include '../../components/menuSub1.php'; ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
         </div>
-        
-            <div>
-                <h1>Referência</h1>
-            </div> 
-            <div class="container-all">
-            <div class="form-refe">
-                <!-- Notificação de erro ou não -->
-                <div class="mensagens">
-                    <?php
-                    if (isset($_SESSION["erros"])) {
-                        $erro = $_SESSION["erros"];
-                        echo  $erro;
-
-                        unset($_SESSION["erros"]);
-                    } elseif (isset($_SESSION["sucesso"])) {
-                        $sucesso = $_SESSION["sucesso"];
-                        echo $sucesso;
-
-                        unset($_SESSION["sucesso"]);
-                    }
-                    ?>
+        <div class="conteudo">
+            <div class="paginação-sub">
+                <a href="../homePage.php">Homepage </a> >
+                <a href="../pageRestaurante.php"> Referência </a> >
+                <a href="#" class="pagina-atual"> Referência Cadastro</a>
+            </div>
+            <section>
+                <div class="aba-sair">
+                    <a href="../pageRestaurante.php">Cancelar</a>
                 </div>
-                <div class="link-res">
-                    <a href="cadastrarRestaurante.php">Cadastrar Restaurante</a>
-                </div>
-                <div class="conteiner">
-                    <form id="form" method="POST" action="../../../controller/referenciaController.php">
-                        <input type="hidden" name="acao" id="acao" value="salvar">
-                        <input type="hidden" name="idFuncionario" id="idFuncionario" value="">
-                        <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
-                        <div class="row mb-3">
-                            <div class="col-12">
-                                <label for="nome" class="form-label">Funcionário</label>
-                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Pesquisar Funcionário" onkeyup="carregarFuncionario(this.value)" autocomplete="off">
-                                <span id="resultado-pesquisa-funcionario"></span>
-                            </div>
-                            <div class="col-12">
-                                <label for="Restaurante" class="form-label">Restaurante</label>
-                                <input type="text" class="form-control" name="restaurante" id="restaurante" placeholder="Pesquisar Restaurante" onkeyup="carregarRestaurante(this.value)" autocomplete="off">
-                                <span id="resultado-pesquisa-restaurante"></span>
 
-                            </div>
-                            <div class="col-12">
-                                <label for="data_inicio" class="form-label">Data Inicio</label>
-                                <input type="date" class="form-control" name="data_inicio" id="data_inicio" require>
-                            </div>
-                            <div class="col-12">
-                                <label for="data_fim" class="form-label">Data Fim</label>
-                                <input type="date" class="form-control" name="data_fim" id="data_fim" require>
-                            </div>
+                <div>
+                    <h1>Referência</h1>
+                </div>
+                <div class="container-all">
+                    <div class="form-refe">
+                        <!-- Notificação de erro ou não -->
+                        <div class="mensagens">
+                            <?php
+                            if (isset($_SESSION["erros"])) {
+                                $erro = $_SESSION["erros"];
+                                echo  $erro;
+
+                                unset($_SESSION["erros"]);
+                            } elseif (isset($_SESSION["sucesso"])) {
+                                $sucesso = $_SESSION["sucesso"];
+                                echo $sucesso;
+
+                                unset($_SESSION["sucesso"]);
+                            }
+                            ?>
+                        </div>
+                        <div class="link-res">
+                            <a href="cadastrarRestaurante.php">Cadastrar Restaurante</a>
+                        </div>
+                        <div class="conteiner">
+                            <form id="form" method="POST" action="../../../controller/referenciaController.php">
+                                <input type="hidden" name="acao" id="acao" value="salvar">
+                                <input type="hidden" name="idFuncionario" id="idFuncionario" value="">
+                                <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <label for="nome" class="form-label">Funcionário</label>
+                                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Pesquisar Funcionário" onkeyup="carregarFuncionario(this.value)" autocomplete="off">
+                                        <span id="resultado-pesquisa-funcionario"></span>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="Restaurante" class="form-label">Restaurante</label>
+                                        <input type="text" class="form-control" name="restaurante" id="restaurante" placeholder="Pesquisar Restaurante" onkeyup="carregarRestaurante(this.value)" autocomplete="off">
+                                        <span id="resultado-pesquisa-restaurante"></span>
+
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="data_inicio" class="form-label">Data Inicio</label>
+                                        <input type="date" class="form-control" name="data_inicio" id="data_inicio" require>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="data_fim" class="form-label">Data Fim</label>
+                                        <input type="date" class="form-control" name="data_fim" id="data_fim" require>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" name="salvar_referencia" value="salvar_referencia" id="btn-salvar-referencia">Salvar referencia</button>
+                            </form>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" name="salvar_referencia" value="salvar_referencia" id="btn-salvar-referencia">Salvar referencia</button>
-                    </form>
+                    </div>
+
                 </div>
 
-            </div>
+            </section>
 
         </div>
 
-    </section>
-
-    <script src="../../js/referenciaFuncionario.js"></script>
-    <script src="../../js/referenciaRestaurante.js"></script>
-    <!-- BOOSTRAP JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/referenciaFuncionario.js"></script>
+        <script src="../../js/referenciaRestaurante.js"></script>
+        <!-- BOOSTRAP JAVASCRIPT -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

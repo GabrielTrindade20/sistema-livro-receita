@@ -1,4 +1,5 @@
 <?php
+include_once('../../../controller/protectSubFolders.php');
 include_once('../../../configuration/connect.php');
 include_once('../../../model/modelCargo/cargoModel.php');
 
@@ -11,6 +12,11 @@ include_once('../../../model/modelCargo/cargoModel.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOSTRAP  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../components/style.css">
+
     <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../../css/styleEdicao.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
@@ -21,41 +27,52 @@ include_once('../../../model/modelCargo/cargoModel.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders2.php') ?>
-
-<div class="paginação-sub">
-            <a href="homePage.php">Homepage </a> >
-            <a href="../pageCargo.php"> Cargo </a> >
-            <a href="#" class="pagina-atual"> Cargo</a>
+    <?php include '../../components/menuSub1.php'; ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
         </div>
-    <section class="conteiner-conteudo-cadastro">
-        
-        <div class="conteiner-abas">
-            <div class="title-container">
-                <h1>Cadastrar Cargo</h1>
+        <div class="conteudo">
+            <div class="paginação-sub">
+                <a href="homePage.php">Homepage </a> >
+                <a href="../pageCargo.php"> Cargo </a> >
+                <a href="#" class="pagina-atual"> Cargo</a>
             </div>
+            <section>
 
-            <!-- Formulário de Cadastro -->
-            <form action="../../../controller/cargoController.php" method="POST">
+                <div class="conteiner-abas">
+                    <div class="title-container">
+                        <h1>Cadastrar Cargo</h1>
+                    </div>
 
-                <div class="conteiner-dados-funcionario">
-                    <label for="descricao">Nome:</label> <!-- Altere o "for" e o "id" para "descricao" -->
-                    <input type="text" id="descricao" name="descricao" required> <!-- Altere "name" para "descricao" -->
+                    <!-- Formulário de Cadastro -->
+                    <form action="../../../controller/cargoController.php" method="POST">
+
+                        <div class="conteiner-dados-funcionario">
+                            <label for="descricao">Nome:</label> <!-- Altere o "for" e o "id" para "descricao" -->
+                            <input type="text" id="descricao" name="descricao" required> <!-- Altere "name" para "descricao" -->
+                        </div>
+                        <br>
+
+                        <div class="conteiner-operacoes">
+                            <!-- Botão para salvar o cargo -->
+                            <button type="submit" name="salvar" class="button">Salvar</button>
+
+                            <!-- Botão para cancelar e voltar à página principal -->
+                            <a href="../../pages/pageCargo.php">Cancelar</a>
+                        </div>
+                    </form>
+
                 </div>
-                <br>
 
-                <div class="conteiner-operacoes">
-                    <!-- Botão para salvar o cargo -->
-                    <button type="submit" name="salvar" class="button">Salvar</button>
-
-                    <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../../pages/pageCargo.php">Cancelar</a>
-                </div>
-            </form>
+            </section>
 
         </div>
-
-    </section>
 </body>
 
 </html>

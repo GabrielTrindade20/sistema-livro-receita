@@ -36,6 +36,11 @@ if (isset($_GET['idFuncionario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOSTRAP  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../components/style.css">
+    
     <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../../css/styleEdicao.css">
     <link rel="icon" href="css/iconsSVG/iconReceita.svg">
@@ -47,77 +52,85 @@ if (isset($_GET['idFuncionario'])) {
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders2.php'); ?>
-
-    <section class="conteiner-conteudo-cadastro">
-        <div class="paginação-sub">
-            <a href="../homePage.php">Homepage </a> >
-            <a href="../pageFuncionario.php"> Funcionários </a> >
-            <a href="#" class="pagina-atual"> Funcionário Cadastro</a>
+    <?php include '../../components/menuSub1.php'; ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
         </div>
-        <div>
-            <h1>Informações</h1>
-        </div>
-
-        <div class="conteiner-abas">
-            <div class="title-container">
-                <h2>Funcionário</h2>
-            </div>
-            <?php
-            if (isset($_SESSION["erro_funcionario_existe"])) {
-                $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
-                echo $erro_funcionario_existe . "<br>";
-
-                unset($_SESSION["erro_funcionario_existe"]);
-            }
-            ?>
-
-            <!-- Formulário de Alteraçao -->
-            <form method="POST" action="../../../controller/funcionarioController.php">
-                <div class="conteiner-dados-funcionario">
-                    <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
-
-                    <label for="rg">RG</label>
-                    <input type="text" id="rg" name="rg" required value="<?php echo isset($rg) ? $rg : ''; ?>">
-
-                    <label for="nome">Nome</label>
-                    <input type="text" id="nome" name="nome" required value="<?php echo isset($nome) ? $nome : ''; ?>">
-
-                    <label for="nome">Nome Fantasia</label>
-                    <input type="text" id="nome_fantasia" name="nome_fantasia" required value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
-
-                    <label for="nome">Data Ingresso</label>
-                    <input type="date" id="data_ingresso" name="data_ingresso" required value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
-
-                    <label for="nome">Salário</label>
-                    <input type="text" id="salario" name="salario" required value="<?php echo isset($salario) ? $salario : ''; ?>">
-
-                    <label for="nome">Situação</label>
-                    <div class="conteiner-dados-funcionario-status">
-                        <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
-                        <label for="ativo">Ativo</label>
-
-                        <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
-                        <label for="inativo">Inativo</label>
-                    </div>
-
-                    <label for="nome">Cargo</label>
-                    <div class="conteiner-dados-funcionario-select">
-                        <?php monta_select_cargo2($cargo); ?>
-                    </div>
-
+        <div class="conteudo">
+            <section>
+                <div class="paginação-sub">
+                    <a href="../homePage.php">Homepage </a> >
+                    <a href="../pageFuncionario.php"> Funcionários </a> >
+                    <a href="#" class="pagina-atual"> Funcionário Cadastro</a>
+                </div>
+                <div>
+                    <h1>Informações</h1>
                 </div>
 
-                <div class="conteiner-operacoes">
-                    <!-- Botão para salvar o cargo -->
-                    <button type="submit" name="alterar" class="button">Salvar</button>
+                <div class="conteiner-abas">
+                    <?php
+                    if (isset($_SESSION["erro_funcionario_existe"])) {
+                        $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
+                        echo $erro_funcionario_existe . "<br>";
 
-                    <!-- Botão para cancelar e voltar à página principal -->
-                    <a href="../pageFuncionario.php">Cancelar</a>
+                        unset($_SESSION["erro_funcionario_existe"]);
+                    }
+                    ?>
+
+                    <!-- Formulário de Alteraçao -->
+                    <form method="POST" action="../../../controller/funcionarioController.php">
+                        <div class="conteiner-dados-funcionario">
+                            <input type="hidden" name="idFuncionario" value="<?php echo $idFuncionario; ?>">
+
+                            <label for="rg">RG</label>
+                            <input type="text" id="rg" name="rg" required value="<?php echo isset($rg) ? $rg : ''; ?>">
+
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required value="<?php echo isset($nome) ? $nome : ''; ?>">
+
+                            <label for="nome">Nome Fantasia</label>
+                            <input type="text" id="nome_fantasia" name="nome_fantasia" required value="<?php echo isset($nome_fantasia) ? $nome_fantasia : ''; ?>">
+
+                            <label for="nome">Data Ingresso</label>
+                            <input type="date" id="data_ingresso" name="data_ingresso" required value="<?php echo isset($data_ingresso) ? $data_ingresso : ''; ?>">
+
+                            <label for="nome">Salário</label>
+                            <input type="text" id="salario" name="salario" required value="<?php echo isset($salario) ? $salario : ''; ?>">
+
+                            <label for="nome">Situação</label>
+                            <div class="conteiner-dados-funcionario-status">
+                                <input type="radio" id="ativo" name="situacao" value="0" <?php echo ($situacao === '0') ? 'checked' : ''; ?>>
+                                <label for="ativo">Ativo</label>
+
+                                <input type="radio" id="inativo" name="situacao" value="1" <?php echo ($situacao === '1') ? 'checked' : ''; ?>>
+                                <label for="inativo">Inativo</label>
+                            </div>
+
+                            <label for="nome">Cargo</label>
+                            <div class="conteiner-dados-funcionario-select">
+                                <?php monta_select_cargo2($cargo); ?>
+                            </div>
+
+                        </div>
+
+                        <div class="conteiner-operacoes">
+                            <!-- Botão para salvar o cargo -->
+                            <button type="submit" name="alterar" class="button">Salvar</button>
+
+                            <!-- Botão para cancelar e voltar à página principal -->
+                            <a href="../pageFuncionario.php">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </section>
+
         </div>
-    </section>
 
 </body>
 
