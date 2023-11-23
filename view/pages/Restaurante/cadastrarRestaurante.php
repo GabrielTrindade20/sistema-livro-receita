@@ -26,7 +26,11 @@ include_once('../../../controller/restauranteController.php');
 <body>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
-
+    <div class="paginação-sub">
+        <a href="../homePage.php">Homepage </a> >
+        <a href="../pageRestaurante.php"> Restaurante </a> >
+        <a href="#" class="pagina-atual"> Restaurante Cadastro</a>
+    </div>
     <section class="conteiner-conteudo-cadastro">
         <div class="titulo-res">
             <h1>Restaurante</h1>

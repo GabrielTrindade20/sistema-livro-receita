@@ -6,7 +6,7 @@ h3 {
 #sub-titulo {
     display: grid;
     width: auto;
-    grid-template-columns: 35% 25% 35%;
+    grid-template-columns: 35% 30% 35%;
     text-align: center;
     align-items: center;
 }
@@ -32,7 +32,8 @@ h3 {
     width: 120px; 
     margin: 10% 10% 10% 10%;
     border-radius: 5px;
-    box-shadow: 1px 4px 10px #000;
+    /* box-shadow: 1px 4px 10px #000; */
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     transition: 0.3s;
     padding: 20%  0% 20% 0%;
     justify-content: center;

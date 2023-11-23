@@ -37,14 +37,14 @@ if (isset($_GET['idCargo'])) {
 <body>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php') ?>
-
-    <!-- Estrutura do formulário de edição -->
-    <section class="conteiner-conteudo-cadastro">
-        <div class="paginação-sub">
+<div class="paginação-sub">
             <a href="homePage.php">Homepage </a> >
             <a href="../pageCargo.php"> Cargo </a> >
             <a href="#" class="pagina-atual"> Cargo Edição</a>
         </div>
+    <!-- Estrutura do formulário de edição -->
+    <section class="conteiner-conteudo-cadastro">
+        
         <div class="conteiner-abas">
             <div class="title-container">
                 <h1>Edição Cargo</h1>

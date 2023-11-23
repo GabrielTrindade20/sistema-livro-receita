@@ -50,6 +50,11 @@ if (isset($_GET['idFuncionario'])) {
     <?php require_once('../../components/menuSubFolders2.php'); ?>
 
     <section class="conteiner-conteudo-cadastro">
+        <div class="paginação-sub">
+            <a href="../homePage.php">Homepage </a> >
+            <a href="../pageFuncionario.php"> Funcionários </a> >
+            <a href="#" class="pagina-atual"> Funcionário Cadastro</a>
+        </div>
         <div>
             <h1>Informações</h1>
         </div>
@@ -58,15 +63,15 @@ if (isset($_GET['idFuncionario'])) {
             <div class="title-container">
                 <h2>Funcionário</h2>
             </div>
-                <?php
-                if (isset($_SESSION["erro_funcionario_existe"])) {
-                    $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
-                    echo $erro_funcionario_existe . "<br>";
+            <?php
+            if (isset($_SESSION["erro_funcionario_existe"])) {
+                $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
+                echo $erro_funcionario_existe . "<br>";
 
-                    unset($_SESSION["erro_funcionario_existe"]);
-                } 
-                ?>
-            
+                unset($_SESSION["erro_funcionario_existe"]);
+            }
+            ?>
+
             <!-- Formulário de Alteraçao -->
             <form method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados-funcionario">

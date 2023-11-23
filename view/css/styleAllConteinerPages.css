@@ -43,23 +43,14 @@ a {
 }
 
 
-/* cadastro reaturante */
-.conteiner-conteudo4 {
-    padding-left: 300px;
-    padding-top: 10px;
-    padding-right: 5%;
-}
-
-.button-select-all{
-    float: right;
-}
-
 .paginação {
     font-size: 14px;
     padding-bottom: 20px;
 }
 
 .paginação-sub {
+    padding-top: 10px;
+    padding-left: 260px;
     font-size: smaller;
     padding-bottom: 20px;
 }
@@ -69,6 +60,17 @@ a {
 }
 .paginação-sub a:hover {
     color: var(--laranja);
+}
+
+/* cadastro reaturante */
+.conteiner-conteudo4 {
+    padding-left: 300px;
+    padding-top: 10px;
+    padding-right: 5%;
+}
+
+.button-select-all{
+    float: right;
 }
 
 /* tela funcionario */
@@ -94,8 +96,8 @@ a {
 /* tela cadastro */
 .conteiner-conteudo-cadastro {
     padding-left: 26%;
-    padding-top: 30px;
-    padding-right: 2%;
+    /* padding-top: 30px; */
+    padding-right: 8%;
 }
 
 /* cadastro receita */

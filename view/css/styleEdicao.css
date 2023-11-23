@@ -12,6 +12,7 @@
 }
 
 .conteiner-conteudo-cadastro div>h1 {
+    font-size: 18px;
     border-radius: 10px 10px 0px 0px;
     padding: 5px;
     text-align: center;
@@ -20,7 +21,7 @@
 }
 
 .conteiner-abas {
-    width: 90%;
+    width: 100%;
 }
 
 .conteiner-abas h2{
@@ -82,12 +83,11 @@
 }
 
 .conteiner-dados-funcionario {
-    width: 40%;
+    width: 32%;
     display: block;
     align-items: center;
     text-align: left;
-    margin-left: 30%;
-    margin-top: 20px;
+    margin-left: 35%;
 }
 
 .conteiner-dados-funcionario input {

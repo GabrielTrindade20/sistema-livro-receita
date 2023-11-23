@@ -79,13 +79,13 @@ if (isset($ultima_foto)) {
 <body>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
-
-    <section class="conteiner-conteudo3">
-        <div class="paginação-sub">
+<div class="paginação-sub">
             <a href="../homePage.php">Homepage </a> >
             <a href="../pageReceitas.php"> Receitas </a> >
             <a href="#" class="pagina-atual"> Receitas Cadastro</a>
         </div>
+    <section class="conteiner-conteudo3">
+        
 
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">

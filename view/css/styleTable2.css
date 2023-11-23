@@ -19,22 +19,21 @@
     background-color: #F0C3AA;
     border-radius: 10px 10px 0px 0px;
 }
-
 .container-all{
-    padding-top: 40px;
-}
-
-.container {
-    padding: 10px;
     background-color: white;
 }
-
+.form-refe{
+    width: 32%;
+    padding: 20px;
+}
 
 .btn {
     background-color: var(--laranja);
     border: none;
     color: var(--black);
 }
+
+
 /* ARREDONDA TABLE */
 .table tr:last-child td:first-child {
     border-bottom-left-radius: 10px;

@@ -16,7 +16,7 @@ include_once('../../../model/funcoes.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../../css/styleEdicao.css">
-    <link rel="icon" href="css/iconsSVG/iconReceita.svg">
+    <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -26,9 +26,14 @@ include_once('../../../model/funcoes.php');
 <body>
     <!-- Menu lateral - vem de outra página -->
     <?php require_once('../../components/menuSubFolders2.php'); ?>
-
+    <div class="paginação-sub">
+        <a href="../homePage.php">Homepage </a> >
+        <a href="../pageFuncionario.php"> Funcionários </a> >
+        <a href="#" class="pagina-atual"> Funcionário Cadastro</a>
+    </div>
     <!-- Cadastro do funcionario -->
     <section class="conteiner-conteudo-cadastro">
+
         <div>
             <h1>Informações</h1>
         </div>
@@ -43,10 +48,6 @@ include_once('../../../model/funcoes.php');
         ?>
 
         <div class="conteiner-abas">
-            <div class="title-container">
-                <h2>Funcionário</h2>
-            </div>
-
             <!-- Formulário de Cadastro Funcionario -->
             <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
                 <div class="conteiner-dados-funcionario">

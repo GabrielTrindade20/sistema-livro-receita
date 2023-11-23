@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
             exit();
         }
     } else {
-        $_SESSION["erros"] =  "erro";
+        $_SESSION["erros"] =  "erro no acao = salva?";
     }
 }
 

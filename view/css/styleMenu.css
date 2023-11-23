@@ -26,7 +26,6 @@
 }
 
 .usuario a {
-  text-decoration: none; /* Remover a decoração de link */
   text-align: right; /* Alinhar verticalmente os elementos filhos */
   padding: 10px; /* Adicionar algum espaço interno para o link */
   border-radius: 5px; /* Adicionar borda arredondada */
@@ -50,8 +49,8 @@
   flex-direction: column;
   width: 250px;
   height: 100%;
-  gap: 40px;
-  padding: 50px 10px 30px 10px;
+  gap: 30px;
+  padding: 20px 10px 30px 10px;
   background: var(--primary);
   
 }
@@ -146,18 +145,17 @@
 @media only screen and (max-width: 600px) {
   .menu-lateral {
     width: 15%;
-    padding: 20px;
   }
 
   .menu-lateral a > span {
-    padding: 0 12px;
+    padding: 0 5px;
   }
 
   .logo img {
-    width: 80px;
+    width: 70px;
   }
 
-  .icone-menu a span > span{
+  .name span{
     display: none; /* Oculta os nomes em telas menores */
   }
 }
