@@ -41,6 +41,22 @@ if (isset($_GET['idFuncionario'])) {
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <style>
+        .conteiner-dados {
+            width: 40%;
+            padding-bottom: 40px;
+        }
+
+        .conteiner-operacoes a {
+            top: -146px;
+        }
+
+        .conteiner-operacoes button {
+            top: -146px;
+        }
+    </style>
+
     <title>Restaurante</title>
 
 </head>
@@ -58,26 +74,38 @@ if (isset($_GET['idFuncionario'])) {
             </header>
         </div>
         <div class="conteudo">
+            <div class="paginação-sub">
+                <a href="../homePage.php">Homepage </a> >
+                <a href="../pageRestaurante.php"> Restaurante </a> >
+                <a href="#" class="pagina-atual"> Restaurante Cadastro</a>
+            </div>
             <section>
-                <div class="titulo-res">
+                <div class="titulo">
                     <h1>Informações</h1>
                 </div>
 
                 <div class="conteiner-abas">
+                    <div class="infor-fun">
+                        <p> Funcionário: <?php echo $recuperarNome; ?> </p>
+                    </div>
                     <!-- Formulário de Alteraçao -->
                     <form method="POST" action="../../../controller/referenciaControllerEditar.php">
-                        <div class="infor-fun">
-                            <h2>Funcionário</h2>
-                            <p> Nome: <?php echo $recuperarNome; ?> </p>
-                        </div>
-                        <div class="conteiner-dados">
-                            <input type="hidden" name="acao" id="acao" value="salvar">
-                            <input type="hidden" name="idFuncionario" id="idFuncionario" value="<?php echo $idFuncionario; ?>">
-                            <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
-                            <label for="restaurante">Data de Início</label>
-                            <input type="date" name="data_inicio" id="data_inicio">
-                            <label for="restaurante">Data de Fim</label>
-                            <input type="date" name="data_fim" id="data_fim">
+
+                        <input type="hidden" name="acao" id="acao" value="salvar">
+                        <input type="hidden" name="idFuncionario" id="idFuncionario" value="<?php echo $idFuncionario; ?>">
+                        <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
+                        <div class="conteiner-dados position-absolute top-60 start-50 translate-middle">
+                            <div class="row g-3">
+                                <div class="col">
+                                    <label for="restaurante" class="form-label">Data de Início</label>
+                                    <input class="form-control" type="date" name="data_inicio" id="data_inicio">
+
+                                </div>
+                                <div class="col">
+                                    <label for="restaurante" class="form-label">Data de Fim</label>
+                                    <input class="form-control" type="date" name="data_fim" id="data_fim">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="conteiner-operacoes">
@@ -104,9 +132,9 @@ if (isset($_GET['idFuncionario'])) {
                         }
                         ?>
                     </div>
-                    <div class="infor-fun">
+                    <!-- <div>
                         <h2>Restaurantes Cadastrados</h2>
-                    </div>
+                    </div> -->
 
                     <div class="scrollable">
                         <table class="table table-sm  table-striped table-hover">

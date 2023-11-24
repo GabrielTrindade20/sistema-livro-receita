@@ -17,8 +17,7 @@ include_once('../../../controller/restauranteController.php');
     <link rel="stylesheet" href="../../components/style.css">
 
     <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
-    <link rel="stylesheet" href="../../css/styleEdicao.css">
-    <link rel="stylesheet" href="../../css/styleTable2.css">
+    <link rel="stylesheet" href="../../css/styleReferencia.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -44,77 +43,76 @@ include_once('../../../controller/restauranteController.php');
                 <a href="#" class="pagina-atual"> Referência Cadastro</a>
             </div>
             <section>
-                <div class="aba-sair">
-                    <a href="../pageRestaurante.php">Cancelar</a>
-                </div>
-
-                <div>
+                <div class="titulo">
                     <h1>Referência</h1>
                 </div>
-                <div class="container-all">
-                    <div class="form-refe">
-                        <!-- Notificação de erro ou não -->
-                        <div class="mensagens">
-                            <?php
-                            if (isset($_SESSION["erros"])) {
-                                $erro = $_SESSION["erros"];
-                                echo  $erro;
 
-                                unset($_SESSION["erros"]);
-                            } elseif (isset($_SESSION["sucesso"])) {
-                                $sucesso = $_SESSION["sucesso"];
-                                echo $sucesso;
+                <div class="conteiner-abas ">
+                    <!-- Notificação de erro ou não -->
+                    <div class="mensagens">
+                        <?php
+                        if (isset($_SESSION["erros"])) {
+                            $erro = $_SESSION["erros"];
+                            echo  $erro;
 
-                                unset($_SESSION["sucesso"]);
-                            }
-                            ?>
-                        </div>
-                        <div class="link-res">
-                            <a href="cadastrarRestaurante.php">Cadastrar Restaurante</a>
-                        </div>
-                        <div class="conteiner">
-                            <form id="form" method="POST" action="../../../controller/referenciaController.php">
-                                <input type="hidden" name="acao" id="acao" value="salvar">
-                                <input type="hidden" name="idFuncionario" id="idFuncionario" value="">
-                                <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
-                                <div class="row mb-3">
-                                    <div class="col-12">
-                                        <label for="nome" class="form-label">Funcionário</label>
-                                        <input type="text" class="form-control" name="nome" id="nome" placeholder="Pesquisar Funcionário" onkeyup="carregarFuncionario(this.value)" autocomplete="off">
-                                        <span id="resultado-pesquisa-funcionario"></span>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="Restaurante" class="form-label">Restaurante</label>
-                                        <input type="text" class="form-control" name="restaurante" id="restaurante" placeholder="Pesquisar Restaurante" onkeyup="carregarRestaurante(this.value)" autocomplete="off">
-                                        <span id="resultado-pesquisa-restaurante"></span>
+                            unset($_SESSION["erros"]);
+                        } elseif (isset($_SESSION["sucesso"])) {
+                            $sucesso = $_SESSION["sucesso"];
+                            echo $sucesso;
 
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="data_inicio" class="form-label">Data Inicio</label>
-                                        <input type="date" class="form-control" name="data_inicio" id="data_inicio" require>
-                                    </div>
-                                    <div class="col-12">
-                                        <label for="data_fim" class="form-label">Data Fim</label>
-                                        <input type="date" class="form-control" name="data_fim" id="data_fim" require>
-                                    </div>
-                                </div>
+                            unset($_SESSION["sucesso"]);
+                        }
+                        ?>
+                    </div>
 
-                                <button type="submit" class="btn btn-primary" name="salvar_referencia" value="salvar_referencia" id="btn-salvar-referencia">Salvar referencia</button>
-                            </form>
-                        </div>
+                    <div class="nova">
+                    <a href="cadastrarRestaurante.php">Cadastrar Restaurante</a>
 
                     </div>
 
+                    <form method="POST" action="../../../controller/referenciaController.php">
+                        <input type="hidden" name="acao" id="acao" value="salvar">
+                        <input type="hidden" name="idFuncionario" id="idFuncionario" value="">
+                        <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
+                        <div class="conteiner-dados ">
+                            <div class="row mb-3 ">
+                                <div class="col-12">
+                                    <label for="nome" class="form-label">Funcionário</label>
+                                    <input type="text" class="form-control" name="nome" id="nome" placeholder="Pesquisar Funcionário" onkeyup="carregarFuncionario(this.value)" autocomplete="off">
+                                    <span id="resultado-pesquisa-funcionario"></span>
+                                </div>
+                                <div class="col-12">
+                                    <label for="Restaurante" class="form-label">Restaurante</label>
+                                    <input type="text" class="form-control" name="restaurante" id="restaurante" placeholder="Pesquisar Restaurante" onkeyup="carregarRestaurante(this.value)" autocomplete="off">
+                                    <span id="resultado-pesquisa-restaurante"></span>
+
+                                </div>
+                                <div class="col-12">
+                                    <label for="data_inicio" class="form-label">Data Inicio</label>
+                                    <input type="date" class="form-control" name="data_inicio" id="data_inicio" require>
+                                </div>
+                                <div class="col-12">
+                                    <label for="data_fim" class="form-label">Data Fim</label>
+                                    <input type="date" class="form-control" name="data_fim" id="data_fim" require>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="conteiner-operacoes">
+                            <button type="submit" class="button" name="salvar_referencia" value="salvar_referencia" id="btn-salvar-referencia">Salvar</button>
+                            <a href="../pageRestaurante.php">Cancelar</a>
+
+                        </div>
+                    </form>
+                    
                 </div>
-
             </section>
-
         </div>
+    </div>
 
-        <script src="../../js/referenciaFuncionario.js"></script>
-        <script src="../../js/referenciaRestaurante.js"></script>
-        <!-- BOOSTRAP JAVASCRIPT -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/referenciaFuncionario.js"></script>
+    <script src="../../js/referenciaRestaurante.js"></script>
+    <!-- BOOSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

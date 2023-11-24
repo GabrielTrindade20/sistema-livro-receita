@@ -40,49 +40,33 @@ include_once('../../../controller/restauranteController.php');
         <div class="conteudo">
             <div class="paginação-sub">
                 <a href="../homePage.php">Homepage </a> >
-                <a href="../pageRestaurante.php"> Restaurante </a> >
+                <a href="../pageRestaurante.php"> Referência </a> >
+                <a href="pageRestauranteCadastro.php"> Referência Cadastro </a> >
                 <a href="#" class="pagina-atual"> Restaurante Cadastro</a>
             </div>
             <section>
-                <div class="titulo-res">
+                <div class="titulo">
                     <h1>Restaurante</h1>
                 </div>
 
-                <!-- Notificação de erro ou não -->
-                <div class="mensagens">
-                    <?php
-                    if (isset($_SESSION["erros"])) {
-                        $erros = $_SESSION["erros"];
-                        // Exibir as mensagens de erro
-                        foreach ($erros as $erro) {
-                            echo $erro . "<br>";
-                        }
-                        // Limpar as mensagens de erro da sessão
-                        unset($_SESSION["erros"]);
-                    } elseif (isset($_SESSION["sucesso"])) {
-                        $sucessos = $_SESSION["sucesso"];
-                        foreach ($sucessos as $sucesso) {
-                            echo $sucesso . "<br>";
-                        }
-                        unset($_SESSION["sucesso"]);
-                    }
-                    ?>
-                </div>
-
-                <div class="conteiner-abas">
+                <div class="conteiner-abas"> <!-- Notificação de erro ou não -->
 
                     <!-- Formulário de Cadastro -->
                     <form method="POST" action="../../../controller/restauranteController.php">
-
-                        <div class="conteiner-dados">
-                            <input type="hidden" name="acao" id="acao" value="salvar">
-                            <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
-                            <label for="nome">Nome:</label>
-                            <input type="text" id="nome" name="nome" required>
-                            <label for="contato">Contato:</label>
-                            <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="11" id="contato" name="contato" placeholder="Digite o contato" maxlength="9" required>
+                        <input type="hidden" name="acao" id="acao" value="salvar">
+                        <input type="hidden" name="idRestaurante" id="idRestaurante" value="">
+                        <div class="conteiner-dados position-absolute top-50 start-50 translate-middle">
+                            <div class="row g-3">
+                                <div class="col">
+                                    <label for="nome" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome" required>
+                                </div>
+                                <div class="col">
+                                    <label for="contato" class="form-label">Contato</label>
+                                    <input class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="11" id="contato" name="contato" placeholder="Digite o contato" maxlength="12" required>
+                                </div>
+                            </div>
                         </div>
-                        <br>
 
                         <div class="conteiner-operacoes">
                             <!-- Botão para salvar o cargo -->
@@ -94,48 +78,71 @@ include_once('../../../controller/restauranteController.php');
                             </a>
                         </div>
                     </form>
-                    <div class="scrollable">
-                        <table class="table table-sm table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Contato</th>
-                                    <th class="operation">Operações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Tabela de restaurantes -->
-                                <?php foreach ($restaurantes as $index => $restaurante) : ?>
-                                    <tr>
-                                        <td>
-                                            <?php echo $restaurante['nome']; ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $restaurante['contato']; ?>
-                                        </td>
-                                        <td class="operation">
-                                            <a onclick="editarRestaurante(<?php echo $restaurante['idRestaurante'] ?>, '<?php echo $restaurante['nome'] ?>', '<?php echo $restaurante['contato']; ?>')" href="#" class="editar-restaurante" id="btn-salvar-restaurante" data-id="<?php echo $restaurante['idRestaurante']; ?>">
-                                                <span class="material-symbols-outlined"> edit </span>
-                                            </a>
-                                            <a class="remover-restaurante" href="cadastrarRestaurante.php?idRestaurante=<?php echo $restaurante['idRestaurante']; ?>&acao=delete">
-                                                <span class="material-symbols-outlined"> delete </span>
-                                            </a>
-
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                    <div class="mensagens">
+                        <?php
+                        if (isset($_SESSION["erros"])) {
+                            $erros = $_SESSION["erros"];
+                            // Exibir as mensagens de erro
+                            foreach ($erros as $erro) {
+                                echo $erro . "<br>";
+                            }
+                            // Limpar as mensagens de erro da sessão
+                            unset($_SESSION["erros"]);
+                        } elseif (isset($_SESSION["sucesso"])) {
+                            $sucessos = $_SESSION["sucesso"];
+                            foreach ($sucessos as $sucesso) {
+                                echo $sucesso . "<br>";
+                            }
+                            unset($_SESSION["sucesso"]);
+                        }
+                        ?>
                     </div>
+                    <div class="dados">
+
+                        <div class="scrollable">
+                            <table class="table table-sm table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Contato</th>
+                                        <th class="operation">Operações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Tabela de restaurantes -->
+                                    <?php foreach ($restaurantes as $index => $restaurante) : ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $restaurante['nome']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $restaurante['contato']; ?>
+                                            </td>
+                                            <td class="operation">
+                                                <a onclick="editarRestaurante(<?php echo $restaurante['idRestaurante'] ?>, '<?php echo $restaurante['nome'] ?>', '<?php echo $restaurante['contato']; ?>')" href="#" class="editar-restaurante" id="btn-salvar-restaurante" data-id="<?php echo $restaurante['idRestaurante']; ?>">
+                                                    <span class="material-symbols-outlined"> edit </span>
+                                                </a>
+                                                <a class="remover-restaurante" href="cadastrarRestaurante.php?idRestaurante=<?php echo $restaurante['idRestaurante']; ?>&acao=delete">
+                                                    <span class="material-symbols-outlined"> delete </span>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
 
             </section>
         </div>
+    </div>
 
-
-        <script src="../../js/restauranteAleracao.js"></script>
-        <!-- BOOSTRAP JAVASCRIPT -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/restauranteAleracao.js"></script>
+    <!-- BOOSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

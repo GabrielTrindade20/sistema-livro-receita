@@ -53,16 +53,16 @@ include_once('../../../model/funcoes.php');
                     <h1>Informações</h1>
                 </div>
 
-                <?php
-                if (isset($_SESSION["erro_funcionario_existe"])) {
-                    $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
-                    echo $erro_funcionario_existe . "<br>";
-
-                    unset($_SESSION["erro_funcionario_existe"]);
-                }
-                ?>
-
                 <div class="conteiner-abas">
+        
+                    <?php
+                    if (isset($_SESSION["erro_funcionario_existe"])) {
+                        $erro_funcionario_existe = $_SESSION["erro_funcionario_existe"];
+                        echo $erro_funcionario_existe . "<br>";
+
+                        unset($_SESSION["erro_funcionario_existe"]);
+                    }
+                    ?>
                     <!-- Formulário de Cadastro Funcionario -->
                     <form class="form_funcionario" method="POST" action="../../../controller/funcionarioController.php">
                         <div class="conteiner-dados-funcionario">

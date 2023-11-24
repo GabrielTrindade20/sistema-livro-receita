@@ -1,4 +1,8 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include_once(__DIR__ . '../../configuration/connect.php');
 include_once(__DIR__ . '../../model/referenciaModel.php');
 
@@ -12,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $data_fim =  $_POST["data_fim"];
     // $acao = $_POST["acao"];
 
-    var_dump($idFuncionario, $idRestaurante, $data_inicio, $data_fim);
+    //var_dump($idFuncionario, $idRestaurante, $data_inicio, $data_fim);
 
     if (!empty($idRestaurante)) {
         if ($referenciaModel->update($idFuncionario, $idRestaurante, $data_inicio, $data_fim)) {
@@ -23,9 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["errosE"] =  "Erro na atualização";
         }
     } else {
-        echo  "erro";
+        $_SESSION["errosE"] =  "Por favor, escolhar um cadastro para atualizar.";
+        header("Location: ../view/pages/Restaurante/pageRestauranteAlteracao.php?idFuncionario=$idFuncionario");
+        exit(); // Certifique-se de encerrar o script após o redirecionamento 
     }
-    
 }
 
 // EXCLUIR
