@@ -1,0 +1,305 @@
+/*
+#section-esquerda{
+    background-color: var(--primary);
+    
+    width: 45%;
+    align-items: center;
+    height: 100%;
+    position: fixed;
+    float: left;
+}
+
+#div-logo{
+    margin: auto 15%;
+}
+#div-logo img{
+    width: 200px;
+    margin-top: 12rem;
+    margin-bottom: 12rem;
+}
+
+#section-direita{
+    width: 50%;
+    float: right;
+    background-color: red;
+}
+
+/* Notificação 
+.notification {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: max-content;
+    border-radius: 6px;
+    background-color: var(--erro);
+    color: var(--black);
+    box-shadow: 0 1px 10px rgb(0, 0, 0, 0.1);
+    transform: translateY(30px);
+    opacity: 0;
+    visibility: hidden;
+    animation: fade-in 5s linear;
+}
+
+.notification p {
+    font-size: 1rem;
+}
+
+.notification_body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 11px;
+}
+
+.notification_progress {
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    width: calc(100% - 8px);
+    height: 3px;
+    transform: scaleY(0);
+    transform-origin: left;
+    background: linear-gradient(to right, #3e2f2c, #ff694f);
+    border-radius: inherit;
+    animation: progress 4.5s 0.3s linear;
+}
+
+@keyframes fade-in {
+    5% {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes progress {
+    to {
+        transform: scaleX(1);
+    }
+}
+/*--------------*/
+
+/*#erro-login{
+    padding: 20px;
+    color:  var(--black);
+    font-size: 16pt;
+    margin: 2%;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    background-color: var(--erro);
+    transition: all .3s ease;
+}*/
+/*
+#conteiner-form{
+    margin: 10% 20% 10% 20%;
+    height: 30%;
+    text-align: center;
+    width: 60%;
+}
+
+.my-form{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 16px;
+    min-width: 280px;
+    max-width: 460px;
+    width: 100%;
+    padding: 10px;
+}
+
+.titulo-login{
+    color: var(--primary);
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-bottom: 2px solid var(--black);
+    padding-bottom: 3px;
+    display: inline-block;
+    border-radius: 3px;
+}
+
+.botao-login{
+    background-color: var(--primary);
+    color: var(--white);
+    white-space: nowrap;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+    line-height: 50px;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: .025em;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 800;
+    min-height: 50px;
+    width: 100%;
+    border-radius: 50px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.15);
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+}
+
+.input-text input{
+    font-size: 16px;
+    font-weight: 500;
+    max-width: 80%;
+    width: 100%;
+    border: 1px solid;
+    height: 20px;
+    letter-spacing: .03rem;
+    background-color: transparent;
+    outline: none;
+    transition: .25s;
+    border-radius: 20px;
+    text-indent: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    padding-left: 30px;
+}
+
+.botao:hover {
+    background-color: var(--primary-hover);
+}
+
+.input-text {
+    position: relative;
+}
+
+.input-text input::-webkit-input-placeholder { 
+    text-align: left;
+    background-position: left;
+    background-size: 1rem;
+    background-repeat: no-repeat;
+    padding: 10px;
+    padding-left: 0px;
+    font-weight: 500;
+}
+
+.input-text span {
+    position: absolute;
+    left: 10px;
+    bottom: 4px;
+    width: 30px;
+    height: 30px;
+    transform-origin: center;
+}
+
+.input-text input:focus {
+    border: 1px solid var(--primary);
+}
+
+span a{
+    color: var(--primary);
+}
+*/
+
+// styleTable
+/* Estilos para a tabela em telas maiores */
+.table {
+    width: 90%;
+    border-collapse: collapse;
+    /* Colapso de borda para evitar espaços entre células */
+}
+
+th,
+td {
+    padding: 5px;
+    text-align: left;
+    background-color: #d9d9d9a4;
+    /* Cor de fundo com 20% de opacidade */
+    border: 1px solid rgba(0, 0, 0, 0.042);
+    /* Adicione uma borda às células */
+}
+
+/* Estilize as células de linhas pares */
+.even-row td {
+    background-color: #d9d9d93f;
+    /* Cor de fundo para linhas pares */
+}
+
+/* Estilize as células de linhas ímpares */
+.odd-row td {
+    background-color: #d9d9d9a4;
+    /* Cor de fundo para linhas ímpares */
+}
+
+/* Estilos para a coluna de seleção */
+.select-column {
+    width: 50px;
+    text-align: center;
+}
+
+
+/* Estilos para a coluna "Nome" (3/4 da largura) */
+th:nth-child(2),
+td:nth-child(2) {
+    background-color: #d9d9d93f;
+    width: auto;
+    /* 3/4 da largura */
+}
+
+/* Estilos para a coluna "Operação" (1/4 da largura) */
+th:nth-child(3),
+td:nth-child(3) {
+    background-color: #d9d9d9a4;
+    text-align: center;
+    /* Alinhe o conteúdo à direita */
+    justify-content: space-evenly;
+}
+
+
+/* Estilos para os links de operações */
+.operation-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Alinhe à direita usando flexbox */
+    text-align: right;
+    /* Alinhe o texto à direita */
+}
+
+.operation-link a {
+    margin-left: 10px;
+    /* Adicione um espaço à esquerda entre os links de operação */
+}
+
+.operation-link button {
+    border: none;
+}
+
+.conteiner-operacoes {
+    cursor: pointer;
+}
+
+/* Estilize as células de linhas pares */
+.even-row td {
+    background-color: #d9d9d93f;
+    /* Cor de fundo para linhas pares */
+}
+
+/* Estilize as células de linhas ímpares */
+.odd-row td {
+    background-color: #d9d9d9a4;
+    /* Cor de fundo para linhas ímpares */
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.operation-link form button> img, a>img{
+    width: 20px;
+}
+
+.td-operacao{
+    justify-content: space-around;
+}

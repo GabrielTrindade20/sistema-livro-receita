@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@200;300;400&display=swap');
+
+:root {
+    --blue: #01093F;
+    --white: #ffffff;
+    --black: #000000;
+    --laranja: #EEB253;
+    --laranjaTransparent: #efd8b2;
+    --primary: #EEB253;
+    --primary-hover: #ff8b61;
+    --text: #BE783C;
+    --erro: #c62a2594;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--black);
+    background-color: #f0eeee;
+}
+
+a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.conteiner-conteudo {
+    padding-left: 290px;
+    padding-top: 10px;
+    padding-right: 10%;
+}
+
+.conteiner-conteudo2 {
+    padding-left: 320px;
+    padding-top: 10px;
+    padding-right: 8%;
+}
+
+
+.paginação {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+.paginação-sub {
+    font-size: smaller;
+    padding-bottom: 20px;
+}
+
+.paginação a:hover {
+    color: var(--laranja);
+}
+.paginação-sub a:hover {
+    color: var(--laranja);
+}
+
+/* cadastro reaturante */
+.conteiner-conteudo4 {
+    padding-left: 300px;
+    padding-top: 10px;
+    padding-right: 5%;
+}
+
+.button-select-all{
+    float: right;
+}
+
+/* tela funcionario */
+.conteiner-conteudo-func {
+    padding-left: 320px;
+    padding-top: 20px;
+}
+
+.conteiner-button-inativar { /* usado em categoria,cargo*/
+    float: right;
+    padding-right: 10%;
+}
+.conteiner-button-select { /* usado em categoria,cargo*/
+    float: right;
+}
+
+
+.pagina-atual {
+    color: var(--laranja);
+    font-weight: bold;
+}
+
+/* tela cadastro */
+.conteiner-conteudo-cadastro {
+    padding-left: 26%;
+    /* padding-top: 30px; */
+    padding-right: 8%;
+}
+
+/* cadastro receita */
+.conteiner-conteudo3 {
+    padding-left: 320px;
+    padding-top: 10px;
+    padding-right: 5%;
+}
+
+.nav-item button:hover{
+    color: var(--laranja);
+}
+
+.conteiner-conteudo3 section {
+    padding: 20px;
+    background-color: white;
+    border-top: none;
+    border-bottom: solid 1px #dee2e6;
+    border-left: solid 1px #dee2e6;
+    border-right: solid 1px #dee2e6;
+}

@@ -1,4 +1,3 @@
-/* ! USAR NA PAGE FUNCIONARIO */
 /* ARREDONDA TABLE */
 .table tr:last-child td:last-child{
     border-bottom-right-radius: 10px;
@@ -16,12 +15,8 @@
 }
 
 .table {
-<<<<<<< HEAD
-    margin-top: 50px;
-    border-collapse: collapse;
-=======
-    width: 90%;
->>>>>>> 4fb2ba83548940f58276ae656f8cf4388badf223
+    width: 100%;
+     padding-top: 30px;
 }
 
 .operation {

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Poppins:wght@200;300;400&display=swap');
+
+/* EDIÇÕES PARA AS PÁGINAS DE EDIÇÃO E CADASTRO */
+
+:root {
+    --primary: #EEB253;
+    --primary-hover: #ff8b61;
+    --text: #BE783C;
+    --erro: #c62a2594;
+    --white: white;
+    --black: black;
+}
+
+.conteiner-conteudo-cadastro div>h1 {
+    font-size: 18px;
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px;
+    text-align: center;
+    width: 230px;
+    background-color: #f0c2aab1;
+}
+
+.conteiner-abas {
+    width: 100%;
+}
+
+.conteiner-abas h2{
+    z-index: 1;
+    position: absolute;
+    padding-left: 40px;
+    padding-top: 20px;
+    font-size: 23px;
+}
+
+.conteiner-abas form {
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgba(0, 0, 0, 0.212);
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+}
+
+.conteiner-operacoes button {
+    position: absolute;
+    width: 10%;
+    height: 33px;
+    padding: 5px;
+    justify-content: space-between;
+    background-color: #F0C3AA;
+    right: 0px;
+    top: -34px;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    font-size: 1rem;
+}
+
+.conteiner-operacoes a {
+    position: absolute;
+    width: 100px;
+    height: 33px;
+    padding: 5px;
+    justify-content: space-between;
+    background-color: #F0C3AA;
+    right: 12%;
+    top: -34px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.title-container h1{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* page funcionario e categoria */
+.conteiner-formulario{
+    background-color: #BE783C;
+    width: 100%;
+}
+
+.conteiner-dados-funcionario {
+    width: 32%;
+    display: block;
+    align-items: center;
+    text-align: left;
+    margin-left: 35%;
+}
+
+.conteiner-dados-funcionario input {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.conteiner-dados-funcionario-select select {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    cursor:pointer;
+    padding: 5px 10px;
+}
+
+.conteiner-dados-funcionario-status {
+    display: flex;
+}
+
+.conteiner-dados-funcionario-status input {
+    width: 15%;
+    
+}
+
+/*receita*/
+.form{
+    width: 100%;
+    display: flex;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding: 10px;
+}
+
+.conteiner-form-colum {
+    width: 100%;
+}
+
+
+.conteiner-form-colum-operacoes{
+   float: right;
+}
+.conteiner-form-colum input {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.conteiner-dados-input-select select {
+    width: 100%;
+    font-size: 14px;
+    padding: 3px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor:pointer;
+    padding: 5px 10px;
+}
+
+.conteiner-dados-input-select input {
+    width: 15%;
+}
+
+.conteiner-dados-input-select input[type=radio] {
+margin-bottom: 10px;
+}

@@ -149,5 +149,18 @@ class restauranteModel {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }// fim pesquisar uso para cadastrar funcionario
 
+    public function pesquisar_restaurante($termo_pesquisa)
+    {
+        $query =   "SELECT idRestaurante, nome
+                    FROM restaurante
+                    WHERE nome LIKE ? ;";
+
+        $stmt = $this->link->prepare($query);
+        $termo_pesquisa = "%" . $termo_pesquisa . "%";
+        $stmt->bind_param('s', $termo_pesquisa);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    } // fim read
+
 }// fim class
 ?>

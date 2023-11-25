@@ -28,31 +28,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
             header("Location: ../view/pages/Funcionario/pageFuncionarioCadastro.php");
             exit();
         } else {
-            // Depois de inserir os dados no banco de dados com sucesso
-            if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo)) {
-                $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
-
-                // Salvar os valores dos campos do formulário nas variáveis de sessão
-                $_SESSION["rg"] = $rg;
-                $_SESSION["nome_funcionarioF"] = $nome;
-                $_SESSION["data_ingresso"] = $data_ingresso;
-                $_SESSION["salario"] = $salario;
-                $_SESSION["nome_fantasia"] = $nome_fantasia;
-                $_SESSION['0'] = $situacao;
-                $_SESSION["cargo_funcionario"] = $cargo;
+            if($existe_funcionario != null) {
+                $_SESSION["erro_funcionario_existe"] = "RG já existe!";
+                header("Location: ../view/pages/pageFuncionario.php");
+                exit();
             } else {
-                $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
-            }
+                // Depois de inserir os dados no banco de dados com sucesso
+                if ($funcionarioModel->create($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo)) {
+                    $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
+                } else {
+                    $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
+                }
 
-            // Redirecionar
-            header("Location: ../../view/pages/pageFuncionario.php");
-            exit();
+                // Redirecionar
+                header("Location: ../view/pages/pageFuncionario.php");
+                exit();
+            }
         }
     }
     mysqli_close($link);
 }
 // Vem da page de ALTERAÇÃO 
-elseif (isset($_POST['alterar'])) {
+elseif (isset($_POST['alterar']) ) {
     $idFuncionario = $_POST['idFuncionario'];
     $rg_novo = $_POST["rg"];
     $nome_novo = $_POST["nome"];
@@ -62,6 +59,7 @@ elseif (isset($_POST['alterar'])) {
     $situacao_novo = $_POST["situacao"];
     $cargo_novo = $_POST["idCargo"];
 
+    //var_dump($rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $situacao_novo, $cargo_novo);
     // Verifique se a descrição não está vazia
     if (empty($rg_novo) && empty($nome_novo) && empty($data_ingresso_novo) && empty($salario_novo) && empty($nome_fantasia_novo) && empty($situacao_novo) && empty($cargo_novo)) {
         $funcionarioModel->validar_campos($rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $situacao_novo, $cargo_novo);
@@ -73,13 +71,20 @@ elseif (isset($_POST['alterar'])) {
             header("Location: ../view/pages/pageFuncionario.php");
             exit();
         } else {
-            if ($atualizado = $funcionarioModel->update($idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $situacao_novo, $cargo_novo)) {
-                $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
+            $existe_funcionario = $funcionarioModel->existeFuncionario($idFuncionario);
+            if($existe_funcionario != null) {
+                $_SESSION["erro_funcionario_existe"] = "RG já existe!";
+                header("Location: ../view/pages/pageFuncionario.php");
+                exit();
             } else {
-                $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
+                if ($atualizado = $funcionarioModel->update($idFuncionario, $rg_novo, $nome_novo, $data_ingresso_novo, $salario_novo, $nome_fantasia_novo, $situacao_novo, $cargo_novo)) {
+                    $_SESSION["sucesso"] = $funcionarioModel->getSucesso();
+                } else {
+                    $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
+                }
+                header("Location: ../view/pages/pageFuncionario.php");
+                exit();
             }
-            header("Location: ../view/pages/pageFuncionario.php");
-            exit();
         }
     }
 }

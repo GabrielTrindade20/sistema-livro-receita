@@ -1,21 +1,23 @@
 <?php
-include_once('../../../controller/protect.php');
+include_once('../../../controller/protectSubFolders.php');
 include_once('../../../configuration/connect.php');
-include_once('../../../model/categoriaModel.php');
+include_once('../../../model/modelCargo/cargoModel.php');
+$path = '../../../components/menuSubFolders2.php';
 
-if (isset($_GET['idCategoria'])) {
-    $idCategoria = $_GET['idCategoria'];
-    $categoriaModel = new categoriaModel($link);
-    $recuperar = $categoriaModel->recuperaCategoria($idCategoria);
+if (isset($_GET['idCargo'])) {
+    $idCargo = $_GET['idCargo'];
+    $cargoModel = new cargoModel($link);
+    $recuperar = $cargoModel->recuperaCargo($idCargo);
 
     if ($recuperar) {
         $descricao = $recuperar['descricao'];
     } else {
-        header("Location: pageCategoria.php?mensagem=" . urlencode("Categoria não encontrado."));
+        header("Location: pageCargo.php?mensagem=" . urlencode("Cargo não encontrado."));
         exit();
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -34,8 +36,7 @@ if (isset($_GET['idCategoria'])) {
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-    <title>Categoria Edição</title>
+    <title>Cargo Edição</title>
 </head>
 
 <body>
@@ -51,31 +52,31 @@ if (isset($_GET['idCategoria'])) {
             </header>
         </div>
         <div class="conteudo">
+            <div class="paginação-sub">
+                <a href="homePage.php">Homepage </a> >
+                <a href="../pageCargo.php"> Cargo </a> >
+                <a href="#" class="pagina-atual"> Cargo Edição</a>
+            </div>
             <!-- Estrutura do formulário de edição -->
             <section>
-                <div class="paginação-sub">
-                    <a href="homePage.php">Homepage </a> >
-                    <a href="../pageCategoria.php"> Categorias </a> >
-                    <a href="#" class="pagina-atual"> Categoria Edição</a>
-                </div>
+
                 <div class="conteiner-abas">
                     <div class="title-container">
-                        <h1>Editar Categoria</h1>
+                        <h1>Edição Cargo</h1>
                     </div>
+
                     <!-- Formulário de Alteraçao -->
-                    <form method="POST" action="../../../controller/categoriaController.php">
+                    <form method="POST" action="../../controller/controllerCargo/cargoController.php">
                         <div class="conteiner-dados-funcionario">
-                            <input type="hidden" name="idCategoria" value="<?php echo $recuperar["idCategoria"]; ?>">
-                            <label for="nome">Nome da Categoria</label>
-                            <input type="text" id="nome" name="descricao" value="<?php echo isset($descricao) ? $descricao : ''; ?>" required>
+                            <input type="hidden" name="idCargo" value="<?php echo $idCargo; ?>">
+                            <label for="nome">Nome do Cargo</label>
+                            <input type="text" id="descricao" name="descricao" value="<?php echo isset($descricao) ? $descricao : ''; ?>" required>
                         </div>
 
                         <div class="conteiner-operacoes">
-                            <!-- Botão para salvar o cargo -->
-                            <button type="submit" name="alterar" class="button">Salvar</button>
+                            <button type="submit" name="editar" class="button">Salvar</button>
 
-                            <!-- Botão para cancelar e voltar à página principal -->
-                            <a href="../pageCategoria.php">Cancelar</a>
+                            <a href="../pageCargo.php">Cancelar</a>
                         </div>
                     </form>
                 </div>

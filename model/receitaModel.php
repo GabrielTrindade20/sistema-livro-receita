@@ -76,18 +76,21 @@ class receitaModel
         // Verificar se a preparação da declaração foi bem-sucedida
         if ($stmt) {
             // Vincular os parâmetros da declaração com os valores
-            $stmt->bind_param("sssiisssiiss",$nome_receita,
-                                        $data_criacao,
-                                        $modo_preparo,
-                                        $qtd_porcao,
-                                        $degustador,
-                                        $data_degustacao,
-                                        $nota_degustacao,
-                                        $ind_inedita,
-                                        $id_cozinheiro,
-                                        $id_categoria, 
-                                        $id_foto_receita,
-                                        $path_foto_receita);
+            $stmt->bind_param(
+                "sssiisssiiss",
+                $nome_receita,
+                $data_criacao,
+                $modo_preparo,
+                $qtd_porcao,
+                $degustador,
+                $data_degustacao,
+                $nota_degustacao,
+                $ind_inedita,
+                $id_cozinheiro,
+                $id_categoria,
+                $id_foto_receita,
+                $path_foto_receita
+            );
 
             // Executar a declaração preparada
             if ($stmt->execute()) {
@@ -105,19 +108,42 @@ class receitaModel
 
     public function read()
     {
-        $query =   "SELECT f.idFuncionario, f.rg, f.nome, f.data_ingresso, f.salario, f.nome_fantasia, f.situacao, c.descricao AS cargo
-                    FROM funcionario f
-                    JOIN Cargo c ON f.idCargo = c.idCargo;";
-        $funcionarios = array();
+        $query =   "SELECT 
+                    r.nome_receita, 
+                    r.data_criacao, 
+                    r.modo_preparo, 
+                    r.qtd_porcao, 
+                    f_degustador.nome AS nome_degustador, -- Nome do degustador
+                    f_cozinheiro.nome AS nome_cozinheiro, -- Nome do cozinheiro
+                    r.data_degustacao, 
+                    r.nota_degustacao, 
+                    r.ind_inedita, 
+                    r.id_cozinheiro AS cozinheiro_id, 
+                    c.descricao AS categoria_nome, -- Nome da categoria
+                    r.id_categoria AS categoria_id, 
+                    fr.nome_foto, -- Nome da foto
+                    fr.path AS path_foto
+                FROM 
+                    receita r
+                    -- Join com a tabela de funcionário para obter o nome do degustador
+                    INNER JOIN funcionario f_degustador ON r.degustador = f_degustador.idFuncionario
+                    -- Join com a tabela de funcionário para obter o nome do cozinheiro
+                    INNER JOIN funcionario f_cozinheiro ON r.id_cozinheiro = f_cozinheiro.idFuncionario
+                    -- Join com a tabela de categoria para obter o nome da categoria
+                    INNER JOIN categoria c ON r.id_categoria = c.idCategoria
+                    -- Join com a tabela de foto_receita para obter dados da foto
+                    LEFT JOIN foto_receita fr ON r.id_foto_receita = fr.id_foto_receita;";
+
+        $receitas = array();
 
         if ($result = mysqli_query($this->link, $query)) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $funcionarios[] = $row;
+                $receitas[] = $row;
             }
             mysqli_free_result($result);
         }
 
-        return $funcionarios;
+        return $receitas;
     } // fim read
 
     public function update($id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo)

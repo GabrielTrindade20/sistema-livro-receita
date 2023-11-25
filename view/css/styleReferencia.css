@@ -1,0 +1,104 @@
+.mensagens {
+    padding: 0;
+    position: fixed;
+}
+
+.aba-sair a {
+    text-align: center;
+    position: absolute;
+    width: 100px;
+    height: 33px;
+    padding: 5px;
+    top: 106px;
+    right: 5%;
+    justify-content: space-between;
+    background-color: #F0C3AA;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.titulo h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px;
+    text-align: center;
+    width: 230px;
+    background-color: #f0c2aab1;
+}
+
+.conteiner-abas {
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgba(0, 0, 0, 0.212);
+    padding: 30px;
+    text-align: center;
+}
+
+.infor-fun {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+.infor-fun h2 {
+    font-size: 22px;
+    font-weight: 550;
+}
+
+.infor-fun p {
+    font-size: 18px;
+}
+
+.conteiner-abas form {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteiner-dados {
+    text-align: left;
+    width: 30%;
+}
+
+.conteiner-operacoes button {
+    position: absolute;
+    width: 10%;
+    height: 33px;
+    padding: 5px;
+    justify-content: space-between;
+    background-color: #F0C3AA;
+    right: -3%;
+    top: -108px;
+    border-radius: 10px 10px 0px 0px;
+    border: none;
+    font-size: 1rem;
+}
+
+.conteiner-operacoes a {
+    position: absolute;
+    width: 80px;
+    height: 33px;
+    padding: 5px;
+    justify-content: space-between;
+    background-color: #F0C3AA;
+    right: 8%;
+    top: -108px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.nova {
+    padding: 10px;
+}
+.nova a{
+    color: var(--primary);
+}
+.nova a:hover{
+    color: var(--primary-hover);
+}

@@ -68,7 +68,7 @@ if(!isset($_SESSION)) {
         <div class="icone-menu">
             <a href="../../view/pages/pageRestaurante.php">
                 <span class="material-symbols-outlined"> restaurant_menu </span>
-                <span>Restaurantes</span>
+                <span>Referência</span>
             </a>
         </div>
     </div>

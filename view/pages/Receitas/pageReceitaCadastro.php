@@ -9,11 +9,16 @@ include_once('../../../controller/receitaController.php');
 include_once('../../../model/fotoModel.php');
 include_once('../../../model/funcoes.php');
 
+if (!isset($_SESSION['controlar_abas'])) {
+    $_SESSION['controlar_abas'] = 0;
+}
+
 $fotoModel = new fotoModel($link);
 $usuario = $_SESSION["id"];
 
 // SALVAR FOTO
 if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["upload"])) {
+
     $_SESSION['upload_form_foto'] = true;
     $arquivo = $_FILES["foto_receita"];
 
@@ -35,8 +40,9 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
 
             if ($deu_certo) {
                 $fotoModel->create($novo_nome_arquivo, $nome_do_arquivo, $path, $usuario);
-                $_SESSION["cadastro_sucesso"] = true;
                 $_SESSION["mensagem"] = "Arquivo salvo!";
+                $_SESSION["cadastro_sucesso"] = true;
+                $_SESSION['controlar_abas'] = 1;
             } else {
                 $_SESSION["mensagem"] = "Erro ao enviar.";
                 $_SESSION["cadastro_sucesso"] = false;
@@ -44,7 +50,6 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
         }
     }
 }
-
 
 $ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
 
@@ -54,7 +59,6 @@ if (isset($ultima_foto)) {
     $link_img = "<a target=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
     $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "&acao=deletar-foto\">DELETAR</a>";
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -65,119 +69,88 @@ if (isset($ultima_foto)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../components/style.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <link rel="stylesheet" href="../../css/styleConteudoPages.css">
+    <link rel="stylesheet" href="../../css/styleAllConteinerPages.css">
+    <link rel="stylesheet" href="../../css/styleReceita.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
+
     <title>Receita Cadastro</title>
 </head>
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../../components/menuSubFolders2.php'); ?>
+    <?php //include '../../components/menuSub1.php'; 
+    ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
+        </div>
+        <div class="conteudo">
+            <div class="paginação-sub">
+                <a href="../homePage.php">Homepage </a> >
+                <a href="../pageReceitas.php"> Receitas </a> >
+                <a href="#" class="pagina-atual"> Receitas Cadastro</a>
+            </div>
+            <section>
 
-    <section class="conteiner-conteudo2">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                    Informações</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-                    Composição</button>
-            </li>
+                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">1 Foto</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 1) echo "active"; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">2 Dados</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 2) echo "active"; ?>" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">3 Ingredientes</button>
+                    </li>
+                </ul>
+                <div class="foto">
+                    <?php
+                    if (isset($_SESSION["mensagem"])) {
+                        echo $_SESSION["mensagem"];
+                        unset($_SESSION["mensagem"]);
+                    }
+                    ?>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane show <?php if ($_SESSION['controlar_abas'] == 0) {
+                                                    echo "active";
+                                                } else {
+                                                    echo " ";
+                                                } ?>" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <!-- foto -->
+                        <div class="conteiner-abas">
+                            <div class="box-foto">
+                                <?php
+                                if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
+                                    $_SESSION['img_foto'] = $img_ultima;
+                                    echo $_SESSION['img_foto'];
+                                    unset($_SESSION["cadastro_sucesso"]);
+                                }
+                                ?>
+                            </div>
 
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                <section class="conteiner-conteudo3">
-                    <div class="container ">
-                        <div class="row">
-                            <div class="col">
-                                Column
-                                <h1>Cadastrar Receita</h1>
-                                <div><!-- Foto -->
-                                    <?php
-                                    if (isset($_SESSION["mensagem"])) {
-                                        echo $_SESSION["mensagem"];
-                                        unset($_SESSION["mensagem"]);
-                                    }
-                                    ?>
-
-                                </div>
+                            <form enctype="multipart/form-data" action="" method="post">
                                 <div class="box-foto">
-                                    <?php
-                                    if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-                                        echo $img_ultima;
-                                        unset($_SESSION["cadastro_sucesso"]);
-                                    }
-                                    ?>
+                                    <label for="foto_receita">Foto da Receita</label>
+                                    <input type="file" accept="image/*" name="foto_receita"> <br>
+                                    <button type="submit" id="file" name="upload" class="button">Salvar</button>
                                 </div>
-                                <form enctype="multipart/form-data" action="" method="post">
-                                    <div class="box-foto">
-                                        <label for="foto_receita">Foto da Receita</label>
-                                        <input type="file" accept="image/*" name="foto_receita"> <br>
-                                        <button type="submit" id="file" name="upload" class="button">Salvar</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                            <div class="col">
-
-                                <form method="POST" action="../../../controller/receitaController.php">
-                                    <div class="conteiner-dados">
-                                        <label for="nome">Nome</label>
-                                        <input type="text" id="nome" name="nome" required>
-                                        <br>
-                                        <label for="data_criacao">Data de Criação</label>
-                                        <input type="date" id="data_criacao" name="data_criacao" required>
-                                        <br>
-                                        <label for="qtd_porcao">Quantidade de Porções</label>
-                                        <input type="number" id="qtd_porcao" name="qtd_porcao" required>
-                                        <br>
-                                        <label for="degustador">Degustador</label>
-                                        <?php monta_select_degustador(); ?>
-                                        <br>
-                                        <label for="nota_degustacao">Nota</label>
-                                        <input type="number" id="nota_degustacao" name="nota_degustacao">
-                                        <br>
-                                        <label for="data_degustacao">Data de Degustação</label>
-                                        <input type="date" id="data_degustacao" name="data_degustacao">
-                                        <br>
-                                        <label for="ind_inedita">Inédita</label>
-                                        <input type="radio" id="sim" name="ind_inedita" value="S">
-                                        <label for="sim">Sim</label>
-                                        <input type="radio" id="nao" name="ind_inedita" value="N">
-                                        <label for="nao">Não</label><br>
-                                        <br>
-                                        <label for="cozinheiro">Cozinheiro</label>
-                                        <?php monta_select_cozinheiro(); ?>
-                                        <br>
-                                        <label for="categoria">Categoria</label>
-                                        <?php monta_select_categoria(); ?>
-                                        <br>
-                                        <div class="box-text-area">
-                                            <h3 class="titulo">Modo de Preparo</h3>
-                                            <textarea name="modo_preparo" id="" rows="8" cols="50" maxlength="4000"></textarea>
-                                        </div>
-                                        <div class="conteiner-operacoes">
-                                            <button type="submit" name="salvar" class="button">Salvar</button>
-                                        </div>
-                                </form>
-                            </div>
-                            <div class="col">
-                                Column
-                            </div>
+                            </form>
                         </div>
+
                     </div>
-                    <!-- Cancelar e voltar à página principal -->
-                    <a href="../../pages/pageReceitas.php">Cancelar</a>
-
-
-
-                    <!-- Notificação de erro ou não -->
+                    <!-- Notificação de erro ou não receita -->
                     <div class="mensagens">
                         <?php
                         if (isset($_SESSION["erros"])) {
@@ -195,94 +168,146 @@ if (isset($ultima_foto)) {
                         }
                         ?>
                     </div>
+                    <div class="tab-pane  <?php if ($_SESSION['controlar_abas'] == 1) {
+                                                echo 'active';
+                                            } else {
+                                                echo ' ';
+                                            } ?>" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <!-- receita -->
+                        <div class="conteiner-abas">
+                            <section>
+                                <form method="POST" action="../../../controller/receitaController.php">
+                                    <div class="conteiner-form-colum-operacoes">
+                                        <button type="submit" name="salvar" class="button">Salvar</button>
+                                    </div>
+                                    <div class="form">
+                                        <div class="conteiner-form-colum">
+                                            <label for="nome">Nome</label>
+                                            <input type="text" id="nome" name="nome" value="<?php echo isset($_SESSION['nome_receita']) ? $_SESSION['nome_receita'] : ''; ?>" required>
 
-                    <!-- Formulário de Cadastro -->
-                    <div class="conteiner-abas">
+                                            <label for="data_criacao">Data de Criação</label>
+                                            <input type="date" id="data_criacao" name="data_criacao" value="<?php echo isset($_SESSION['data_criacao']) ? $_SESSION['data_criacao'] : ''; ?>" required>
 
+                                            <label for="qtd_porcao">Quantidade de Porções</label>
+                                            <input type="number" id="qtd_porcao" name="qtd_porcao" value="<?php echo isset($_SESSION['qtd_porcao']) ? $_SESSION['qtd_porcao'] : ''; ?>" required>
 
-                    </div>
-                </section>
-            </div>
-            <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                <!-- Cadastro medida ingrediente -->
-                <section>
-                    <!-- Notificação de erro ou não -->
-                    <div class="mensagens">
-                        <?php
-                        if (isset($_SESSION["errosC"])) {
-                            $erros = $_SESSION["errosC"];
-                            foreach ($erros as $erro) {
-                                echo $erro . "<br>";
-                            }
-                            unset($_SESSION["errosC"]);
-                        } elseif (isset($_SESSION["sucessoC"])) {
-                            $sucessos = $_SESSION["sucessoC"];
-                            foreach ($sucessos as $sucesso) {
-                                echo $sucesso . "<br>";
-                            }
-                            unset($_SESSION["sucesso"]);
-                        }
-                        ?>
-                    </div>
+                                            <div class="conteiner-dados-input-select">
+                                                <label for="degustador">Degustador</label>
+                                                <?php monta_select_degustador(isset($_SESSION['degustador']) ? $_SESSION['degustador'] : '');  ?>
+                                            </div>
+                                            <label for="nota_degustacao">Nota</label>
+                                            <input type="number" id="nota_degustacao" name="nota_degustacao" value="<?php echo isset($_SESSION['nota_degustacao']) ? $_SESSION['nota_degustacao'] : ''; ?>">
 
-                    <div>
-                        <!-- Medidas Cadastra -->
-                        <h3>Ingrediente Medidas Cadastradas</h3>
+                                            <label for="data_degustacao">Data de Degustação</label>
+                                            <input type="date" id="data_degustacao" name="data_degustacao" value="<?php echo isset($_SESSION['data_degustacao']) ? $_SESSION['data_degustacao'] : ''; ?>">
+                                        </div>
+                                        <div class="conteiner-form-colum">
+                                            <div class="conteiner-dados-input-select">
+                                                <label for="ind_inedita">Inédita</label> <br>
+                                                <input type="radio" id="sim" name="ind_inedita" value="S" <?php echo (isset($_SESSION['ind_inedita']) && $_SESSION['ind_inedita'] == 'S') ? 'checked' : ''; ?>>
+                                                <label for="sim">Sim</label>
+                                                <input type="radio" id="nao" name="ind_inedita" value="N" <?php echo (isset($_SESSION['ind_inedita']) && $_SESSION['ind_inedita'] == 'N') ? 'checked' : ''; ?>>
+                                                <label for="nao">Não</label> <br>
 
-                        <form action="../../../controller/composicaoController.php" method="post">
-                            <label for="ingrediente">Ingrediente</label>
+                                                <label for="cozinheiro">Cozinheiro</label>
+                                                <?php monta_select_cozinheiro(isset($_SESSION['cozinheiro']) ? $_SESSION['cozinheiro'] : ''); ?>
 
-                            <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" onkeyup="carregarIngrediente(this.value)" autocomplete="off">
+                                                <label for="categoria">Categoria</label>
+                                                <?php monta_select_categoria(isset($_SESSION['categoria']) ? $_SESSION['categoria'] : ''); ?>
+                                            </div>
 
-                            <span id="resultado-pesquisa-ingrediente"></span>
+                                        </div>
 
-                            <label for="medida">Medida</label>
-                            <input type="text" id="medida" name="medida" placeholder="Pesquisar Medida" onkeyup="carregarMedida(this.value)" autocomplete="off">
+                                        <div class="conteiner-form-colum mb-3">
+                                            <h3 class="titulo" class="form-label">Modo de Preparo</h3>
+                                            <textarea name="modo_preparo" id="" rows="10" cols="40" maxlength="4000"><?php echo isset($_SESSION['modo_preparo']) ? $_SESSION['modo_preparo'] : ''; ?></textarea>
+                                        </div>
+                                    </div>
 
-                            <span id="resultado-pesquisa-medida"></span>
-
-                            <label for="quantidade">Quantidade</label>
-                            <input type="number" name="quantidade">
-
-                            <input type="hidden" name="idIngrediente" id="idIngrediente">
-                            <input type="hidden" name="idMedida" id="idMedida">
-
-                            <button type="submit" name="salvar_composicao">Salvar</button>
-                        </form>
-
-                        <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a></div>
-
-                        <div class="table-lista">
-                            <h3>Lista de Ingredientes</h3>
-                            <table class="table" id="table" border="1" align="right">
-                                <thead>
-                                    <tr>
-                                        <th class="select-column">-</th>
-                                        <th>Medida</th>
-                                        <th>Ingrediente</th>
-                                        <th class="operacao" colspan="2">OPERAÇÕES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Gerando de acordo com o que foi cadastrado -->
-                                </tbody>
-                            </table>
-
-                            <button id="salvar-todos" name="salvar_medidas" onclick="passarReferenciaParaPHP()">Salvar Todos</button>
-                            <br>
+                                </form>
+                            </section>
                         </div>
-
                     </div>
-                </section>
-            </div>
+                    <div class="tab-pane <?php if ($_SESSION['controlar_abas'] == 2) {
+                                                echo 'active';
+                                            } else {
+                                                echo ' ';
+                                            } ?>" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                        <!-- Cadastro medida ingrediente -->
+                        <div class="conteiner-abas">
+
+                            <div>
+                                <form action="../../../controller/receitaController.php" method="post">
+
+                                    <input type="hidden" name="nome_receita" id="nome_receita" value="<?php echo isset($_SESSION['nome_receita']) ? $_SESSION['nome_receita'] : ''; ?>">
+                                    <input type="hidden" name="idIngrediente" id="idIngrediente">
+                                    <input type="hidden" name="idMedida" id="idMedida">
+
+                                    <label for="ingrediente">Ingrediente</label>
+
+                                    <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" onkeyup="carregarIngrediente(this.value)" autocomplete="off">
+
+                                    <span id="resultado-pesquisa-ingrediente"></span>
+
+                                    <label for="medida">Medida</label>
+                                    <input type="text" id="medida" name="medida" placeholder="Pesquisar Medida" onkeyup="carregarMedida(this.value)" autocomplete="off">
+
+                                    <span id="resultado-pesquisa-medida"></span>
+
+                                    <label for="quantidade">Quantidade</label>
+                                    <input type="number" name="quantidade">
+
+                                    <button type="submit" name="salvar_composicao">Adicionar</button>
+                                </form>
+
+                                <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a></div>
+
+                                <div class="table-lista">
+                                    <h3>Lista de Ingredientes</h3>
+                                    <table class="table" id="table" border="1" align="right">
+                                        <thead>
+                                            <tr>
+                                                <th class="select-column"></th>
+                                                <th>Medida</th>
+                                                <th>Ingrediente</th>
+                                                <th>Quantidade</th>
+                                                <th class="operacao" colspan="2">OPERAÇÕES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Gerando de acordo com o que foi cadastrado -->
+                                            <?php foreach ($dados_composicao as $index => $composicao) : ?>
+                                                <tr>
+                                                    <td></td>
+                                                    <td> <?php echo $composicao['nome']; ?> </td>
+                                                    <td> <?php echo $composicao['descricao']; ?> </td>
+                                                    <td> <?php echo $composicao['qtd_medida']; ?> </td>
+                                                    <td>
+                                                        <a onclick="" class="remover-restaurante" href="pageReceitaIngreMedida.php?idIngrediente=<?php echo $ingrediente['idIngrediente']; ?>&acao=delete">
+                                                            Remover </a>
+                                                        <a onclick="editarComposicao(<?php echo $composicao['idIngrediente'] ?>, '<?php echo $composicao['nome'] ?>', '<?php echo $composicao['descricao']; ?>')" href="#" class="editar-composicao" id="btn-salvar-composicao" data-id="<?php echo $composicao['idIngrediente']; ?>"> Editar </a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+
+                                    <button>Salvar e Sair</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
 
-    <script src="../../js/customReceita.js"></script>
-    <script src="../../js/customReceita2.js"></script>
 
-    <!-- BOOSTRAP JAVASCRIPT -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/customReceita.js"></script>
+        <script src="../../js/customReceita2.js"></script>
+
+        <!-- BOOSTRAP JAVASCRIPT -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

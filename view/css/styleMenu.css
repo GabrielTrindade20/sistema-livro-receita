@@ -11,7 +11,7 @@
 
 .header {
   background-color: var(--black);
-  padding: 5px 15px; 
+  padding: 5px 10px; 
 }
 
 .usuario{
@@ -26,7 +26,6 @@
 }
 
 .usuario a {
-  text-decoration: none; /* Remover a decoração de link */
   text-align: right; /* Alinhar verticalmente os elementos filhos */
   padding: 10px; /* Adicionar algum espaço interno para o link */
   border-radius: 5px; /* Adicionar borda arredondada */
@@ -50,8 +49,8 @@
   flex-direction: column;
   width: 250px;
   height: 100%;
-  gap: 40px;
-  padding: 50px 10px 30px 10px;
+  gap: 30px;
+  padding: 20px 10px 30px 10px;
   background: var(--primary);
   
 }
@@ -64,7 +63,7 @@
 }
 
 .logo img{
-  width: 200px;
+  width: 180px;
   margin-top: 30px;
 }
 
@@ -97,7 +96,6 @@
 }
 
 .links-menu {
-  width: 100%;
   margin-top: 30px;
   margin-left: 10px;
   text-align: left;
@@ -105,6 +103,8 @@
 
 .icone-menu:hover {
   background: rgba(255, 255, 255, 0.3);
+  font-weight: bolder;
+  color: var(--white);
 }
 
 .menu-lateral>nav {
@@ -120,6 +120,42 @@
 
 .perfil {
   border-top: 1px solid var(--black); 
-  width: 100%;
+  width: 90%;
   text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Estilos padrão para telas maiores que 600px */
+@media only screen and (min-width: 600px) {
+  .menu-lateral {
+    width: 250px;
+  }
+
+  .menu-lateral a > span {
+    padding: 0 16px 0 12px;
+  }
+
+  .menu-lateral a span > span {
+    display: inline; /* Garante que os nomes sejam visíveis em telas maiores */
+  }
+}
+
+/* Estilos para telas menores que 600px */
+@media only screen and (max-width: 600px) {
+  .menu-lateral {
+    width: 15%;
+  }
+
+  .menu-lateral a > span {
+    padding: 0 5px;
+  }
+
+  .logo img {
+    width: 70px;
+  }
+
+  .name span{
+    display: none; /* Oculta os nomes em telas menores */
+  }
 }
