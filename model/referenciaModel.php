@@ -155,24 +155,15 @@ class referenciaModel
 
     public function recuperaReferencia($idFuncionario)
     {
-        $query = "SELECT idFuncionario, idRestaurante, data_inicio, data_fim
-              FROM referencia
-              WHERE idFuncionario = ? AND idRestaurante = ?";
-        // lista cursos já cadastrados
-        $query =   "SELECT funcionario.idFuncionario, restaurante.idRestaurante, referencia.data_inicio, referencia.data_fim
+        $query =   "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
                     FROM funcionario
                     INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
                     INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
-                    WHERE funcionario.idFuncionario = '$idFuncionario';";
-        $query =   "SELECT funcionario.idFuncionario, funcionario.nome as nomeFun, restaurante.idRestaurante, restaurante.nome as nomeRes,  restaurante.contato, referencia.data_inicio, referencia.data_fim
-        FROM funcionario
-        INNER JOIN referencia ON funcionario.idFuncionario = referencia.idFuncionario
-        INNER JOIN restaurante ON referencia.idRestaurante = restaurante.idRestaurante
-        WHERE funcionario.idFuncionario = '$idFuncionario';";
+                    WHERE funcionario.idFuncionario = ?;";
 
 
         $stmt = $this->link->prepare($query);
-        $stmt->bind_param("ii", $idFuncionario, $idRestaurante);
+        $stmt->bind_param("i", $idFuncionario);
         $stmt->execute();
 
         $result = $stmt->get_result();
@@ -198,6 +189,20 @@ class referenciaModel
         if ($result) {
             $row = mysqli_fetch_assoc($result);
             return $row['idFuncionario'];
+        } else {
+            return false; // Ou qualquer outro valor que indique um erro
+        }
+    }
+    public function pegarNomedFuncionario($id)
+    {
+        $sql = "SELECT idFuncionario,nome FROM funcionario  
+                WHERE idFuncionario = '$id';";
+
+        $result = mysqli_query($this->link, $sql);
+
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['nome'];
         } else {
             return false; // Ou qualquer outro valor que indique um erro
         }

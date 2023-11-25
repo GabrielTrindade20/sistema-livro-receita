@@ -170,5 +170,17 @@ class funcionarioModel {
         }
     }// fim de recuperar
 
+    public function pesquisar_funcionario($termo_pesquisa)
+    {
+        $query =   "SELECT idFuncionario, nome
+                    FROM funcionario
+                    WHERE nome LIKE ? ;";
+
+        $stmt = $this->link->prepare($query);
+        $termo_pesquisa = "%" . $termo_pesquisa . "%";
+        $stmt->bind_param('s', $termo_pesquisa);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    } // fim read
 }// fim class
 ?>

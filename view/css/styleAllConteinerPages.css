@@ -42,9 +42,6 @@ a {
     padding-right: 8%;
 }
 
-.button-select-all{
-    float: right;
-}
 
 .paginação {
     font-size: 14px;
@@ -62,6 +59,18 @@ a {
 .paginação-sub a:hover {
     color: var(--laranja);
 }
+
+/* cadastro reaturante */
+.conteiner-conteudo4 {
+    padding-left: 300px;
+    padding-top: 10px;
+    padding-right: 5%;
+}
+
+.button-select-all{
+    float: right;
+}
+
 /* tela funcionario */
 .conteiner-conteudo-func {
     padding-left: 320px;
@@ -71,6 +80,9 @@ a {
 .conteiner-button-inativar { /* usado em categoria,cargo*/
     float: right;
     padding-right: 10%;
+}
+.conteiner-button-select { /* usado em categoria,cargo*/
+    float: right;
 }
 
 
@@ -82,8 +94,8 @@ a {
 /* tela cadastro */
 .conteiner-conteudo-cadastro {
     padding-left: 26%;
-    padding-top: 30px;
-    padding-right: 2%;
+    /* padding-top: 30px; */
+    padding-right: 8%;
 }
 
 /* cadastro receita */

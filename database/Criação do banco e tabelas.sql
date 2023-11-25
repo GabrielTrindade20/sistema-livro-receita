@@ -1,6 +1,22 @@
 create database livro_receita_dev;
-
 use livro_receita_dev;
+
+CREATE USER 'adm_LivroReceitas'@'localhost' IDENTIFIED WITH mysql_native_password BY 'livro123'; 
+grant select, insert, update, delete on livro_receita_dev.* to 'adm_LivroReceitas'@'localhost';
+
+create table login
+(
+idLogin int not null auto_increment,
+nome varchar(45) not null,
+senha varchar(45) not null,
+primary key(idLogin)
+)
+engine=InnoDB;
+
+insert into login
+(nome, senha)
+value
+("senac","senac");
 
 create table Categoria
 (
@@ -92,52 +108,6 @@ create table receita
 	ind_inedita ENUM('S', 'N') NOT NULL, -- Valores possíveis: 'S' (sim) e 'N' (nao)
 	id_cozinheiro smallint not null,
     id_categoria smallint not null,
-    id_foto_receita int unsigned zerofill not null,
-	primary key(nome_receita),
-	foreign key(id_cozinheiro) references funcionario (idFuncionario),
-    foreign key(degustador) references funcionario (idFuncionario),
-    foreign key(id_categoria) references Categoria (idCategoria),
-    foreign key(id_foto_receita) references foto_receita (id_foto_receita)
-) 
-engine=InnoDB;
-
-create table ingrediente
-(
-idIngrediente int not null auto_increment,
-nome varchar(45) not null,
-descricao varchar(200),
-primary key(idIngrediente)
-)
-engine=InnoDB;
-
-create table medida
-(
-idMedida int not null auto_increment,
-descricao varchar(15) not null,
-primary key(idMedida)
-)
-engine=InnoDB;
-
-create table foto_receita
-(
-id_foto_receita int unsigned zerofill not null auto_increment,
-nome_foto varchar(50) not null,
-primary key(id_foto_receita)
-)
-engine=InnoDB;
-
-create table receita
-(
-	nome_receita varchar(45) not null,
-	data_criacao date not null,
-	modo_preparo varchar(4000) not null,
-	qtd_porcao int unsigned zerofill,
-    degustador smallint,
-    data_degustacao date,
-    nota_degustacao decimal(3,1),
-	ind_inedita ENUM('S', 'N') NOT NULL, -- Valores possíveis: 'S' (sim) e 'N' (nao)
-	id_cozinheiro smallint not null,
-    id_categoria smallint not null,
     id_foto_receita int unsigned zerofill,
 	primary key(nome_receita),
 	foreign key(id_cozinheiro) references funcionario (idFuncionario),
@@ -145,4 +115,16 @@ create table receita
     foreign key(id_categoria) references Categoria (idCategoria),
     foreign key(id_foto_receita) references foto_receita (id_foto_receita)
 ) 
+engine=InnoDB;
+
+create table composicao
+(
+nome_receita varchar(50) not null,
+idIngrediente int not null,
+idMedida int not null,
+qtd_medida smallint,
+foreign key(nome_receita)references receita(nome_receita),
+foreign key(idIngrediente) references ingrediente (idIngrediente),
+foreign key(idMedida) references medida (idMedida)
+)
 engine=InnoDB;

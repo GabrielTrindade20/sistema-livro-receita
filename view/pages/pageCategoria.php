@@ -22,13 +22,16 @@ if (isset($_SESSION['resultados_pesquisa'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- BOOSTRAP  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="../components/style.css">
 
     <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/styleNoti.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
-    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
     <title>Categorias</title>
 
@@ -54,10 +57,19 @@ if (isset($_SESSION['resultados_pesquisa'])) {
 </head>
 
 <body>
-    <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php'); ?>
-
-    <section class="conteiner-conteudo">
+ <!-- Menu lateral - vem de outra página -->
+ <?php include '../components/testemenu.php'; ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
+        </div>
+        <div class="conteudo">
+                <section>
         <div class="paginação">
             <a href="homePage.php">Homepage </a> >
             <a href="#" class="pagina-atual">Categoria</a>
@@ -117,13 +129,13 @@ if (isset($_SESSION['resultados_pesquisa'])) {
 
     </section>
 
-    <section class="conteiner-conteudo2">
-        <div class="conteiner-button-inativar">
+    <section>
+        <div class="conteiner-button-select">
             <button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button>
         </div>
 
         <form id="excluirSelect" action="../../controller/categoriaController.php?acao=excluirSelecionados" method="post">
-            <table class="table table-striped table-hover">
+            <table class="table table-sm table-striped table-hover">
                 <thead>
                     <tr>
                         <th class="select-column">-</th>
@@ -177,6 +189,8 @@ if (isset($_SESSION['resultados_pesquisa'])) {
             </table>
         </form>
     </section>
+        </div>
+
 
 
 </body>

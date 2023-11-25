@@ -13,10 +13,12 @@ include_once('../../controller/protect.php');
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
+    <link rel="stylesheet" href="../components/style.css">
+
     <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/stylePesquisar.css">
-    <link rel="stylesheet" href="../css/styleTable1.css">
+    <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
 
     <title>Livro de Receitas</title>
@@ -31,9 +33,18 @@ include_once('../../controller/protect.php');
 
 <body>
     <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php'); ?>
-
-    <section class="conteiner-conteudo">
+    <?php include '../components/testemenu.php'; ?>
+    <!-- Page Content -->
+    <div id="content">
+        <div class="container-fluid">
+            <header>
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                </button>
+            </header>
+        </div>
+        <div class="conteudo">
+ <section>
         <div class="paginação">
             <a href="homePage.php">Homepage </a> >
             <a href="#" class="pagina-atual"> Livros de Receitas</a>
@@ -93,11 +104,11 @@ include_once('../../controller/protect.php');
         </div>
     </section>
 
-    <section class="conteiner-conteudo2">
+    <section>
         <div class="aviso">
             <p>( NÃO FINALIZADA - APENAS VISUALIZAÇÃO )</p>
         </div>
-        <table class="table table-striped table-hover">
+        <table class="table table-sm  table-striped table-hover">
             <thead>
                 <tr>
                     <th class="select-column">-</th>
@@ -127,6 +138,8 @@ include_once('../../controller/protect.php');
             </tbody>
         </table>
     </section>
+        </div>
+   
 
 </body>
 

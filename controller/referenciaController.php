@@ -11,7 +11,7 @@ $referenciaModel = new referenciaModel($link);
 // SALVAR pageCadastro
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
     $idFuncionario = $_POST["idFuncionario"];
-    $nome = $_POST["nome"];
+    $idRestaurante = $_POST["idRestaurante"];
     $data_inicio = $_POST["data_inicio"];
     $data_fim = $_POST["data_fim"];
 
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["acao"])) {
             exit();
         }
     } else {
-        $_SESSION["erros"] =  "erro";
+        $_SESSION["erros"] =  "erro no acao = salva?";
     }
 }
 
