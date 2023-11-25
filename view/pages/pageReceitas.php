@@ -4,6 +4,19 @@ if (!isset($_SESSION)) {
 }
 include_once('../../controller/protect.php');
 include_once('../../controller/receitaController.php');
+unset(
+    $_SESSION["nome_receita"],
+    $_SESSION["data_criacao"],
+    $_SESSION["modo_preparo"],
+    $_SESSION["qtd_porcao"],
+    $_SESSION["degustador"],
+    $_SESSION["data_degustacao"],
+    $_SESSION["nota_degustacao"],
+    $_SESSION["ind_inedita"],
+    $_SESSION["id_cozinheiro"],
+    $_SESSION["id_categoria"],
+    $_SESSION['controlar_abas']
+);
 ?>
 
 <!DOCTYPE html>
