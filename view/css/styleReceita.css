@@ -24,7 +24,7 @@
     width: 100%;
 }
 
-.conteiner-abas h2{
+.conteiner-abas h2 {
     z-index: 1;
     position: absolute;
     padding-left: 40px;
@@ -67,17 +67,17 @@
     border-radius: 10px 10px 0px 0px;
 }
 
-.button:hover{
+.button:hover {
     cursor: pointer;
 }
 
-.title-container h1{
+.title-container h1 {
     font-size: 25px;
     font-weight: bold;
 }
 
 /* page funcionario e categoria */
-.conteiner-formulario{
+.conteiner-formulario {
     background-color: #BE783C;
     width: 100%;
 }
@@ -103,7 +103,7 @@
     font-size: 14px;
     padding: 3px;
     margin-top: 5px;
-    cursor:pointer;
+    cursor: pointer;
     padding: 5px 10px;
 }
 
@@ -113,11 +113,11 @@
 
 .conteiner-dados-funcionario-status input {
     width: 15%;
-    
+
 }
 
 /*receita*/
-.form{
+.form {
     width: 100%;
     display: flex;
     grid-template-columns: repeat(2, 1fr);
@@ -130,9 +130,10 @@
 }
 
 
-.conteiner-form-colum-operacoes{
-   float: right;
+.conteiner-form-colum-operacoes {
+    float: right;
 }
+
 .conteiner-form-colum input {
     width: 100%;
     font-size: 14px;
@@ -147,7 +148,7 @@
     padding: 3px;
     margin-top: 5px;
     margin-bottom: 10px;
-    cursor:pointer;
+    cursor: pointer;
     padding: 5px 10px;
 }
 
@@ -156,5 +157,140 @@
 }
 
 .conteiner-dados-input-select input[type=radio] {
-margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-abas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.menus-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.aba-container {
+    width: 10rem;
+    height: 2.5rem;
+    background-color: #F0C3AA;
+    border: black;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+}
+
+.acoes-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.aba-container-acoes {
+    width: 5rem;
+    height: 2rem;
+    border: none;
+    background-color: #EEB253;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.form-foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.icon-arquivo {
+    position: absolute;
+    top: 80px;
+}
+
+.icon-lixeira {
+    position: absolute;
+    bottom: 80px;
+    right: 370px
+}
+
+.input-imagem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 15rem;
+    border-style: dashed;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.form-column label {
+    font-weight: bold;
+    align-self: flex-start;
+}
+
+.inedita-options {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.inedita-options :nth-child(3) {
+    margin-left: 1rem;
+}
+
+.form-pesquisa-ingredientes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-pesquisa-ingredientes button {
+    background-color: #ff8b61;
+    border: none;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.inputs-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.fieldset-ingredientes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.fieldset-ingredientes button {
+    width: 28px;
+    height: 28px;
+    background-color: #ff8b61;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
 }
