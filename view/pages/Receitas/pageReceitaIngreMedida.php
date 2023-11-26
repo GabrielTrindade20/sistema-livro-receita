@@ -44,7 +44,6 @@ include_once('../../../controller/medidaController.php');
 
             <!-- Ingrediente -->
             <section>
-                <a href="pageReceitaCadastro.php">Voltar</a>
                 <div class="continer">
                     <div class="box-form">
                         <h3>Ingrediente</h3>

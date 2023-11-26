@@ -80,31 +80,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
     mysqli_close($link);
 }
 
-// salvar ingrediente
-if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar_composicao"])) {
-    $nome_receita = $_POST["nome_receita"];
-    $ingrediente = $_POST["idIngrediente"];
-    $medida = $_POST["idMedida"];
-    $quantidade = $_POST["quantidade"];
 
-    if (isset($ingrediente) && isset($medida) && isset($quantidade) && isset($nome_receita)) {
-        if ($composicaoModel->create($nome_receita, $ingrediente, $medida, $quantidade)) {
-            $_SESSION["sucesso"] =  ["Ingredientes salvos."];
-            header("Location: ../view/pages/Receitas/pageReceitaCadastro.php");
-            exit();
-        } else {
-            $_SESSION["erros"] = ["Erro ao salvar. Tente novamente!"];
-        }
-    } else {
-        $_SESSION["erros"] = ["Preenchar todos os campos!"];
-    }
-    header("Location: ../view/pages/Receitas/pageReceitaCadastro.php");
-    exit();
-} // fim post salvar_composicao
-
-if ($_SESSION['controlar_abas'] == 2) {
-    $nome_receita =  $_SESSION["nome_receita"];
-    $dados_composicao = $composicaoModel->read($nome_receita);
-}
 $dados_receitas = $receitaModel->read();
 $countReceitas = count($dados_receitas);

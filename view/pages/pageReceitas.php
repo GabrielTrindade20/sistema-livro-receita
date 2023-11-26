@@ -15,7 +15,9 @@ unset(
     $_SESSION["ind_inedita"],
     $_SESSION["id_cozinheiro"],
     $_SESSION["id_categoria"],
-    $_SESSION['controlar_abas']
+    $_SESSION['controlar_abas'],
+    $_SESSION["cadastro_sucesso"],
+    $_SESSION["ultima_id_foto_receita"]
 );
 ?>
 

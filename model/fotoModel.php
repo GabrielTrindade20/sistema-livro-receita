@@ -140,4 +140,22 @@ class fotoModel
         }
     } // fim de recuperaFoto
 
+    
+    public function recuperaUltimoIdFoto()
+    {
+        // lista cursos já cadastrados
+        $query =   "SELECT id_foto_receita
+                    FROM foto_receita
+                    WHERE id_foto_receita=(select max(id_foto_receita) from foto_receita);";
+
+        $result = mysqli_query($this->link, $query);
+
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['id_foto_receita']; // Retorna o array associativo completo
+        } else {
+            return false; // Ou qualquer outro valor que indique um erro
+        }
+    } // fim de recuperaFoto
+
 }// fim class
