@@ -136,8 +136,8 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
             <section>
 
                 <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">1 Foto</button>
+                <li class="nav-item" role="presentation">
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">1 Foto</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 1) echo "active"; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">2 Dados</button>
@@ -294,7 +294,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                                     <button type="submit" name="salvar_composicao">Adicionar</button>
                                 </form>
 
-                                <div class="box-link-i-m"> <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a></div>
+                                <div class="box-link-i-m"> <a href="pageReceitaIngreMedidaAlteracao.php?nome_receita=<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">Lista de Ingredientes e Medidas salvas</a></div>
 
                                 <div class="table-lista">
                                     <h3>Lista de Ingredientes</h3>
