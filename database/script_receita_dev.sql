@@ -106,3 +106,22 @@ FROM
     INNER JOIN categoria c ON r.id_categoria = c.idCategoria
     -- Join com a tabela de foto_receita para obter dados da foto
     LEFT JOIN foto_receita fr ON r.id_foto_receita = fr.id_foto_receita;
+    
+    select * from composicao;
+   
+DELETE FROM composicao
+WHERE nome_receita = 'senac7878'
+AND idIngrediente = 3
+AND idMedida = 3;
+
+UPDATE composicao 
+SET idIngrediente = 5,
+idMedida = 6,
+qtd_medida = 3
+WHERE nome_receita = 'erceita 2'
+AND idIngrediente = 3;
+                    
+SELECT funcionario.nome, funcionario.idCargo, cargo.idCargo AS descricao
+FROM funcionario
+JOIN Cargo ON funcionario.idCargo = cargo.idCargo
+WHERE funcionario.idCargo = 3;

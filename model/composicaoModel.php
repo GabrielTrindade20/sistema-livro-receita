@@ -151,5 +151,42 @@ class composicaoModel
         return false;
     } // fim update
 
+    public function recuperaReceitaComposicao($nome_receita)
+    {
+        $query =   "SELECT composicao.nome_receita, composicao.idIngrediente, ingrediente.nome, composicao.idMedida, medida.descricao, composicao.qtd_medida
+                    FROM composicao
+                    JOIN receita ON composicao.nome_receita = receita.nome_receita
+                    JOIN ingrediente ON composicao.idIngrediente = ingrediente.idIngrediente
+                    JOIN medida ON composicao.idMedida = medida.idMedida
+                    WHERE composicao.nome_receita = ?;";
+        
+        $composicao = array();
+
+        $stmt = $this->link->prepare($query);
+
+        // Verificar se a preparação da declaração foi bem-sucedida
+        if ($stmt) {
+            // Vincular o parâmetro da declaração com o valor
+            $stmt->bind_param("s", $nome_receita);
+
+            // Executar a declaração preparada
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $composicao[] = $row;
+                }
+                $result->free();
+            } else {
+                $this->erros[] = "Erro ao consultar: " . $stmt->error;
+            }
+
+            // Fechar a declaração preparada
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+
+        return $composicao;
+    }
 
 }// fim class

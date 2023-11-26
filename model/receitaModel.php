@@ -21,34 +21,34 @@ class receitaModel
         return $this->sucesso;
     }
 
-    public function validar_campos(
-        $nome,
-        $data_criacao,
-        $modo_preparo,
-        $qtd_porcao,
-        $degustador,
-        $data_degustacao,
-        $nota_degustacao,
-        $ind_inedita,
-        $id_cozinheiro,
-        $id_categoria,
-    ) {
-        if (
-            !empty($rg) && !empty($nome) && !empty($data_ingresso) && !empty($salario) && !empty($nome_fantasia)
-            && !empty($cargo) && !empty($situacao)
-        ) {
-            $rg = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
-            $nome = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
-            $data_ingresso = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
-            $salario = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
-            $nome_fantasia = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+    // public function validar_campos(
+    //     $nome,
+    //     $data_criacao,
+    //     $modo_preparo,
+    //     $qtd_porcao,
+    //     $degustador,
+    //     $data_degustacao,
+    //     $nota_degustacao,
+    //     $ind_inedita,
+    //     $id_cozinheiro,
+    //     $id_categoria,
+    // ) {
+    //     if (
+    // //       !empty($rg) && !empty($nome) && !empty($data_ingresso) && !empty($salario) && !empty($nome_fantasia)
+    //         && !empty($cargo) && !empty($situacao)
+    //     ) {
+    //         $rg = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+    //         $nome = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+    //         $data_ingresso = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+    //         $salario = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
+    //         $nome_fantasia = filter_var(FILTER_SANITIZE_SPECIAL_CHARS);
 
-            return array($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo);
-        } else {
-            $this->erros[] = "Por gentileza, preencha todos os campos.";
-            return false;
-        }
-    } //fim validar campos
+    //         return array($rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo);
+    //     } else {
+    //         $this->erros[] = "Por gentileza, preencha todos os campos.";
+    //         return false;
+    //     }
+    // } //fim validar campos
 
     public function create(
         $nome_receita,
@@ -178,21 +178,20 @@ class receitaModel
         return false;
     } // fim update
 
-    public function recuperaDegustador()
+    public function recuperaReceita($nome_receita)
     {
-        // lista cursos já cadastrados
-        $query =   "SELECT f.idFuncionario, f.nome, c.descricao AS cargo
-                    FROM funcionario f
-                    JOIN Cargo c ON f.idCargo = c.idCargo
-                    WHERE c.descricao = 'Desgustador';";
+        $query =   "SELECT *
+                    FROM 
+                        receita 
+                    WHERE nome_receita = ?";
 
-        $resultado = mysqli_query($this->link, $query);
+        $stmt = $this->link->prepare($query);
+        $stmt->bind_param("s", $nome_receita); 
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $receita = $result->fetch_assoc();
 
-        if ($resultado) {
-            return mysqli_fetch_assoc($resultado);
-        } else {
-            return null; // Retornar null em caso de erro na consulta
-        }
-    } // fim de recuperaDegustador
+        return $receita;
+    } // fim de recuperaReceita
 
 }// fim class

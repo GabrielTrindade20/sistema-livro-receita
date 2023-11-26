@@ -140,7 +140,6 @@ class funcionarioModel {
 
     public function recuperaFuncionario($id)
     {
-        // lista cursos já cadastrados
         $query =   "SELECT idFuncionario, rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo
                     FROM funcionario
                     WHERE idFuncionario = '$id';";
@@ -152,11 +151,27 @@ class funcionarioModel {
         } else {
             return null; // Retornar null em caso de erro na consulta
         }
+
     }// fim de recuperar
+
+    public function recuperaFuncionarioCargo($idCargo)
+    {
+        $query =   "SELECT funcionario.nome, funcionario.idCargo, cargo.idCargo AS descricao
+                    FROM funcionario
+                    JOIN Cargo ON funcionario.idCargo = cargo.idCargo
+                    WHERE funcionario.idCargo = '$idCargo'";
+
+        $resultado = mysqli_query($this->link, $query);
+
+        if ($resultado) {
+            return mysqli_fetch_assoc($resultado);
+        } else {
+            return null; // Retornar null em caso de erro na consulta
+        }
+    }
 
     public function existeFuncionario($rg)
     {
-        // lista cursos já cadastrados
         $query =   "SELECT idFuncionario, rg
                     FROM funcionario
                     WHERE rg = '$rg';";

@@ -20,7 +20,7 @@ if (isset($_POST['editar'])) {
         $mensagem = 'Por favor, preencha a descrição do cargo.';
     } else {
         // Tente atualizar o cargo
-        $atualizado = $cargoModel->atualizarCargo($idCargo, $novaDescricao);
+        $atualizado = $cargoModel->update($idCargo, $novaDescricao);
 
         if ($atualizado) {
             $mensagem = 'Cargo atualizado com sucesso!';

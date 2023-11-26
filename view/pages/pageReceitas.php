@@ -142,7 +142,7 @@ unset(
                                             <a href="#" onclick="confirmarExclusao(<?php echo $receita['nome_receita']; ?>);" class="button">
                                                 <span class="material-symbols-outlined"> visibility </span>
                                             </a>
-                                            <a href="../pages/Receitas/pageReceitaCadastro.php?nome_receita=<?php echo $receita['nome_receita']; ?>">
+                                            <a href="../pages/Receitas/pageReceitaAlteracao.php?nome_receita=<?php echo $receita['nome_receita']; ?>">
                                                 <span class="material-symbols-outlined"> edit </span>
                                             </a>
                                             <a href="#" class="button">

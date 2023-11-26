@@ -140,7 +140,6 @@ class fotoModel
         }
     } // fim de recuperaFoto
 
-    
     public function recuperaUltimoIdFoto()
     {
         // lista cursos já cadastrados
@@ -157,5 +156,21 @@ class fotoModel
             return false; // Ou qualquer outro valor que indique um erro
         }
     } // fim de recuperaFoto
+
+    public function recuperaFotoReceita($nome_receita)
+    {
+        $query =   "SELECT *
+                    FROM 
+                        receita 
+                    WHERE nome_receita = ?";
+
+        $stmt = $this->link->prepare($query);
+        $stmt->bind_param("s", $nome_receita); 
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $receita = $result->fetch_assoc();
+
+        return $receita;
+    } // fim de recuperaReceita
 
 }// fim class
