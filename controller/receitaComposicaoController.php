@@ -67,3 +67,8 @@ if ($_SESSION['controlar_abas'] == 2 ) {
     $nome_receita =  $_SESSION["nome_receita"];
     $dados_composicao = $composicaoModel->read($nome_receita);
 }
+//ler dados de composição
+if (isset($_GET["nome_receita"]) && $_SESSION['controlar_abas'] == 2 ) {
+    $nome_receita =  $_GET["nome_receita"];
+    $dados_composicao = $composicaoModel->read($nome_receita);
+}

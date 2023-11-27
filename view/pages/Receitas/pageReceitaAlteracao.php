@@ -131,7 +131,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
             <div class="paginação-sub">
                 <a href="../homePage.php">Homepage </a> >
                 <a href="../pageReceitas.php"> Receitas </a> >
-                <a href="#" class="pagina-atual"> Receitas Edição</a>
+                <a href="#" class="pagina-atual"> Receita Edição</a>
             </div>
             <section>
 
@@ -151,16 +151,15 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                     </li>
                 </ul>
 
-                <div class="foto" id="mensagemFoto">
-                    <?php
-                    if (isset($_SESSION["mensagem"])) {
-                        echo $_SESSION["mensagem"];
-                        unset($_SESSION["mensagem"]);
-                    }
-                    ?>
-                </div>
-
                 <div class="tab-content" id="myTabContent">
+                    <div class="foto" id="mensagemFoto">
+                        <?php
+                        if (isset($_SESSION["mensagem"])) {
+                            echo $_SESSION["mensagem"];
+                            unset($_SESSION["mensagem"]);
+                        }
+                        ?>
+                    </div>
                     <!-- foto form -->
                     <div class="tab-pane show <?php if ($_SESSION['controlar_abas'] == 0) {
                                                     echo 'active';
@@ -196,7 +195,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                     </div>
 
                     <!-- Notificação de erro ou não receita -->
-                    <div class="mensagens">
+                    <div class="mensagens" id="mensagemR">
                         <?php
                         if (isset($_SESSION["erros"])) {
                             $erros = $_SESSION["erros"];
@@ -223,55 +222,64 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                         <!-- receita -->
                         <div class="conteiner-abas">
                             <section>
-                                <form method="POST" action="../../../controller/receitaController.php">
-                                    <div class="conteiner-form-colum-operacoes">
-                                        <button type="submit" name="salvar" class="button">Salvar</button>
-                                    </div>
-                                    <div class="form">
-                                        <div class="conteiner-form-colum">
-                                            <label for="nome">Nome</label>
-                                            <input type="text" id="nome" name="nome" value="<?php echo isset($nome_receita) ? $nome_receita : ''; ?>" required>
+                                <div class="row justify-content-center">
+                                    <div class="col-6">
+                                        <form method="POST" action="../../../controller/receitaController.php">
+                                            <div class="form">
+                                                <div class="mb-3">
+                                                    <label for="nome" class="form-label">Nome</label>
+                                                    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome" value="<?php echo isset($nome_receita) ? $nome_receita : ''; ?>" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="data_criacao" class="form-label">Data de Criação</label>
+                                                    <input type="date" class="form-control" id="data_criacao" name="data_criacao" value="<?php echo isset($data_criacao) ? $data_criacao : ''; ?>" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="data_criacao" class="form-label">Quantidade de Porções</label>
+                                                    <input type="number" class="form-control" id="qtd_porcao" name="qtd_porcao" value="<?php echo isset($qtd_porcao) ? $qtd_porcao : ''; ?>" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="degustador" class="form-label">Degustador</label>
+                                                    <?php monta_select_degustador_recupera(isset($degustador) ? $degustador : '');  ?>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nota_degustacao" class="form-label">Nota Desgustação</label>
+                                                    <input type="number" class="form-control" id="nota_degustacao" name="nota_degustacao" value="<?php echo isset($nota_degustacao) ? $nota_degustacao : ''; ?>">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="data_degustacao" class="form-label">Data de Degustação</label>
+                                                    <input type="date" class="form-control" id="data_degustacao" name="data_degustacao" value="<?php echo isset($data_degustacao) ? $data_degustacao : ''; ?>">
+                                                </div>
 
-                                            <label for="data_criacao">Data de Criação</label>
-                                            <input type="date" id="data_criacao" name="data_criacao" value="<?php echo isset($data_criacao) ? $data_criacao : ''; ?>" required>
+                                                <div class="conteiner-dados-input-select">
+                                                    <div class="mb-3">
+                                                        <label for="ind_inedita" class="form-label">Inédita</label> <br>
+                                                        <input type="radio" id="sim" name="ind_inedita" value="S" <?php echo (isset($ind_inedita) && $ind_inedita == 'S') ? 'checked' : ''; ?>>
+                                                        <label for="sim" class="form-label">Sim</label>
+                                                        <input type="radio" id="nao" name="ind_inedita" value="N" <?php echo (isset($ind_inedita) && $ind_inedita == 'N') ? 'checked' : ''; ?>>
+                                                        <label for="nao" class="form-label">Não</label> <br>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="cozinheiro" class="form-label">Cozinheiro</label>
+                                                        <?php monta_select_cozinheiro_recupera(isset($id_cozinheiro) ? $id_cozinheiro : ''); ?>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="categoria" class="form-label">Categoria</label>
+                                                        <?php monta_select_categoria_recupera(isset($id_categoria) ? $id_categoria : ''); ?>
+                                                    </div>
+                                                </div>
 
-                                            <label for="qtd_porcao">Quantidade de Porções</label>
-                                            <input type="number" id="qtd_porcao" name="qtd_porcao" value="<?php echo isset($qtd_porcao) ? $qtd_porcao : ''; ?>" required>
-
-                                            <div class="conteiner-dados-input-select">
-                                                <label for="degustador">Degustador</label>
-                                                <?php monta_select_degustador_recupera(isset($degustador) ? $degustador : '');  ?>
+                                                <div class="mb-3">
+                                                    <h3 class="titulo" class="form-label">Modo de Preparo</h3>
+                                                    <textarea class="form-control" name="modo_preparo" id="modo_preparo" rows="10" cols="40" maxlength="4000"><?php echo isset($modo_preparo) ? $modo_preparo : ''; ?></textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <button type="submit" name="salvar" class="btn btn-primary">Salvar e próximo</button>
+                                                </div>
                                             </div>
-                                            <label for="nota_degustacao">Nota</label>
-                                            <input type="number" id="nota_degustacao" name="nota_degustacao" value="<?php echo isset($nota_degustacao) ? $nota_degustacao : ''; ?>">
-
-                                            <label for="data_degustacao">Data de Degustação</label>
-                                            <input type="date" id="data_degustacao" name="data_degustacao" value="<?php echo isset($data_degustacao) ? $data_degustacao : ''; ?>">
-                                        </div>
-                                        <div class="conteiner-form-colum">
-                                            <div class="conteiner-dados-input-select">
-                                                <label for="ind_inedita">Inédita</label> <br>
-                                                <input type="radio" id="sim" name="ind_inedita" value="S" <?php echo (isset($ind_inedita) && $ind_inedita == 'S') ? 'checked' : ''; ?>>
-                                                <label for="sim">Sim</label>
-                                                <input type="radio" id="nao" name="ind_inedita" value="N" <?php echo (isset($ind_inedita) && $ind_inedita == 'N') ? 'checked' : ''; ?>>
-                                                <label for="nao">Não</label> <br>
-
-                                                <label for="cozinheiro">Cozinheiro</label>
-                                                <?php monta_select_cozinheiro_recupera(isset($id_cozinheiro) ? $id_cozinheiro : ''); ?>
-
-                                                <label for="categoria">Categoria</label>
-                                                <?php monta_select_categoria_recupera(isset($id_categoria) ? $id_categoria : ''); ?>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="conteiner-form-colum mb-3">
-                                            <h3 class="titulo" class="form-label">Modo de Preparo</h3>
-                                            <textarea name="modo_preparo" id="" rows="10" cols="40" maxlength="4000"><?php echo isset($modo_preparo) ? $modo_preparo : ''; ?></textarea>
-                                        </div>
+                                        </form>
                                     </div>
-
-                                </form>
+                                </div>
                             </section>
                         </div>
                     </div>
@@ -285,91 +293,108 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                         <!-- Cadastro medida ingrediente -->
                         <div class="conteiner-abas">
 
-                            <div>
+                            <div class="composicao">
                                 <form action="../../../controller/receitaComposicaoControllerEdicao.php" method="post">
                                     <input type="hidden" name="acao" id="acao" value="salvar">
                                     <input type="hidden" name="nome_receita" id="nome_receita" value="<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">
                                     <input type="hidden" name="idIngrediente" id="idIngrediente" value="">
                                     <input type="hidden" name="idMedida" id="idMedida" value="">
 
-                                    <label for="ingrediente">Ingrediente</label>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="ingrediente">Ingrediente</label>
+                                            <input type="text" class="form-control" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" onkeyup="carregarIngrediente(this.value)" autocomplete="off">
+                                            <span id="resultado-pesquisa-ingrediente"></span>
+                                        </div>
+                                        <div class="col">
+                                            <label for="medida">Medida</label>
+                                            <input type="text" class="form-control" id="medida" name="medida" placeholder="Pesquisar Medida" onkeyup="carregarMedida(this.value)" autocomplete="off">
+                                            <span id="resultado-pesquisa-medida"></span>
+                                        </div>
+                                        <div class="col">
+                                            <label for="quantidade">Quantidade</label>
+                                            <input type="number" class="form-control" placeholder="Ex: 0" name="quantidade" id="quantidade">
+                                        </div>
+                                        <div class="col button">
+                                            <button type="submit" name="salvar_composicao" class="btn btn-primary">Adicionar</button>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-5">
+                                                <div class="box-link">
+                                                    <a href="pageReceitaIngreMedidaAlteracao.php?nome_receita=<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">
+                                                        Lista de Ingredientes e Medidas salvas
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <input type="text" id="ingrediente" name="ingrediente" placeholder="Pesquisar Ingrediente" onkeyup="carregarIngrediente(this.value)" autocomplete="off">
-
-                                    <span id="resultado-pesquisa-ingrediente"></span>
-
-                                    <label for="medida">Medida</label>
-                                    <input type="text" id="medida" name="medida" placeholder="Pesquisar Medida" onkeyup="carregarMedida(this.value)" autocomplete="off">
-
-                                    <span id="resultado-pesquisa-medida"></span>
-
-                                    <label for="quantidade">Quantidade</label>
-                                    <input type="number" name="quantidade" id="quantidade">
-
-                                    <button type="submit" name="salvar_composicao">Adicionar</button>
+                                    </div>
                                 </form>
+                            </div>
 
-                                <div class="box-link-i-m"> <a href="pageReceitaIngreMedidaAlteracao.php?nome_receita=<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">Lista de Ingredientes e Medidas salvas</a></div>
-
-                                <div class="table-lista">
-                                    <h3>Lista de Ingredientes</h3>
-                                    <table class="table" id="table">
-                                        <thead>
+                            <div class="table-lista">
+                                <h4>Lista de Ingredientes</h4>
+                                <table class="table" id="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="select-column"></th>
+                                            <th>Ingredientes</th>
+                                            <th>Medidas</th>
+                                            <th>Quantidade</th>
+                                            <th class="operacao">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Gerando de acordo com o que foi cadastrado -->
+                                        <?php foreach ($recuperar_composicao as $index => $composicao) : ?>
                                             <tr>
-                                                <th class="select-column"></th>
-                                                <th>Ingredientes</th>
-                                                <th>Medidas</th>
-                                                <th>Quantidade</th>
-                                                <th class="operacao">OPERAÇÕES</th>
+                                                <td> </td>
+                                                <td> <?php echo $composicao['nome']; ?> </td>
+                                                <td> <?php echo $composicao['descricao']; ?> </td>
+                                                <td> <?php echo $composicao['qtd_medida']; ?> </td>
+                                                <td>
+                                                    <a onclick="excluirComposicao(this, '<?php echo $composicao['nome_receita']; ?>', <?php echo $composicao['idIngrediente']; ?>, <?php echo $composicao['idMedida']; ?>)" href="#">
+                                                        <span class="material-symbols-outlined"> delete </span>
+                                                    </a>
+
+                                                    <a onclick="editarComposicao('<?php echo $composicao['nome_receita'] ?>', <?php echo $composicao['idIngrediente']; ?>, '<?php echo $composicao['nome'] ?>',<?php echo $composicao['idMedida']; ?>, '<?php echo $composicao['descricao'] ?>',<?php echo $composicao['qtd_medida']; ?>)" href="#" id="btn-salvar-composicao" data-id="<?php echo $composicao['nome_receita']; ?>" data-idI="<?php echo $composicao['idIngrediente']; ?>" data-idM="<?php echo $composicao['idMedida']; ?>">
+                                                        <span class="material-symbols-outlined"> edit </span>
+                                                    </a>
+                                                </td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <!-- Gerando de acordo com o que foi cadastrado -->
-                                            <?php foreach ($recuperar_composicao as $index => $composicao) : ?>
-                                                <tr>
-                                                    <td></td>
-                                                    <td> <?php echo $composicao['nome']; ?> </td>
-                                                    <td> <?php echo $composicao['descricao']; ?> </td>
-                                                    <td> <?php echo $composicao['qtd_medida']; ?> </td>
-                                                    <td>
-                                                        <a onclick="excluirComposicao(this, '<?php echo $composicao['nome_receita']; ?>', <?php echo $composicao['idIngrediente']; ?>, <?php echo $composicao['idMedida']; ?>)" href="#">
-                                                            Remover
-                                                        </a>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
 
-                                                        <a onclick="editarComposicao('<?php echo $composicao['nome_receita'] ?>', <?php echo $composicao['idIngrediente']; ?>, '<?php echo $composicao['nome'] ?>',<?php echo $composicao['idMedida']; ?>, '<?php echo $composicao['descricao'] ?>',<?php echo $composicao['qtd_medida']; ?>)" href="#" id="btn-salvar-composicao" data-id="<?php echo $composicao['nome_receita']; ?>" data-idI="<?php echo $composicao['idIngrediente']; ?>" data-idM="<?php echo $composicao['idMedida']; ?>">
-                                                            Editar
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                <!-- <button>Salvar e Sair</button> -->
 
-                                    <button>Salvar e Sair</button>
-
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
         </div>
+        </section>
+    </div>
 
-        <script>
-            setTimeout(function() {
-                var mensagemDiv = document.getElementById('mensagemFoto');
-                mensagemDiv.style.display = 'none';
-            }, 2000);
-        </script>
+    <script>
+        setTimeout(function() {
+            var mensagemDiv = document.getElementById('mensagemFoto');
+            mensagemDiv.style.display = 'none';
+        }, 2000);
+        setTimeout(function() {
+            var mensagemDiv = document.getElementById('mensagemR');
+            mensagemDiv.style.display = 'none';
+        }, 2000);
+    </script>
 
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-        <script src="../../js/customReceita.js"></script>
-        <script src="../../js/customReceita2.js"></script>
-        <script src="../../js/customComposicaoReceitaAlteracao.js"></script>
+    <script src="../../js/customReceita.js"></script>
+    <script src="../../js/customReceita2.js"></script>
+    <script src="../../js/customComposicaoReceitaAlteracao.js"></script>
 
-        <!-- BOOSTRAP JAVASCRIPT -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- BOOSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
