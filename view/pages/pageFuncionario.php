@@ -18,17 +18,11 @@ include_once('../../controller/funcionarioController.php');
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../css/styleInativaCheckBox.css">
-    <link rel="stylesheet" href="../css/styleConteudoPages.css">
-    <link rel="stylesheet" href="../css/styleCabeçalhoPesquisa.css">
-=======
     <link rel="stylesheet" href="../components/style.css">
 
     <link rel="stylesheet" href="../css/styleAllConteinerPages.css">
     <link rel="stylesheet" href="../css/styleCabecalhoPesquisa.css">
     <link rel="stylesheet" href="../css/styleNoti.css">
->>>>>>> 4fb2ba83548940f58276ae656f8cf4388badf223
     <link rel="stylesheet" href="../css/stylePesquisar.css">
     <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
@@ -61,15 +55,6 @@ include_once('../../controller/funcionarioController.php');
 </head>
 
 <body>
-<<<<<<< HEAD
-    <!-- Menu lateral - vem de outra página -->
-    <?php require_once('../components/menu.php'); ?>
-
-    <section class="conteiner-conteudo2">
-        <div class="paginação">
-            <a href="homePage.php">Homepage > </a>
-            <a href="pagefuncionario.php">Funcionario</a>
-=======
 <!-- Menu lateral - vem de outra página -->
 <?php include '../components/testemenu.php'; ?>
     <!-- Page Content -->
@@ -87,7 +72,6 @@ include_once('../../controller/funcionarioController.php');
         <div class="paginação">
             <a href="homePage.php">Homepage > </a>
             <a href="pagefuncionario.php" class="pagina-atual">Funcionário</a>
->>>>>>> 4fb2ba83548940f58276ae656f8cf4388badf223
         </div>
 
         <div class="containerPesquisa">

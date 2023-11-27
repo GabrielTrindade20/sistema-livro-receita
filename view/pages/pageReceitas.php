@@ -113,51 +113,7 @@ unset(
                     ?>
                 </div>
             </section>
-            <section>
-                <section>
-                    <!--<button onclick="confirmarExclusaoCheckbox()">Excluir Selecionados</button> -->
-
-                    <form id="excluirSelect" action="../../controller/receitaController.php?acao=excluirSelecionados" method="post">
-                        <table class="table table-sm table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="select-column">-</th>
-                                    <th>Receita</th>
-                                    <th>Categorias</th>
-                                    <th class="operation" colspan="2">Operações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Tabela de categoria -->
-                                <?php foreach ($dados_receitas as $index => $receita) : ?>
-                                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                                        <td class="select-column">
-                                            <input type="checkbox" name="checkbox[]" value="<?php echo $receita['nome_receita']; ?>">
-                                        </td>
-                                        <td> <?php echo $receita['nome_receita']; ?> </td>
-                                        <td> <?php echo $receita['categoria_nome']; ?> </td>
-                                        <td class="operation">
-                                            <a href="#" onclick="confirmarExclusao(<?php echo $receita['nome_receita']; ?>);" class="button">
-                                                <span class="material-symbols-outlined"> visibility </span>
-                                            </a>
-                                            <a href="../pages/Receitas/pageReceitaCadastro.php?nome_receita=<?php echo $receita['nome_receita']; ?>">
-                                                <span class="material-symbols-outlined"> edit </span>
-                                            </a>
-                                            <a href="#" class="button">
-                                                <span class="material-symbols-outlined"> delete </span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </form>
-                </section>
-            </section>
         </div>
-
-
-<<<<<<< HEAD
             <form id="excluirSelect" action="../../controller/receitaController.php?acao=excluirSelecionados" method="post">
                 <table class="table table-striped table-hover">
                     <thead>
@@ -197,8 +153,6 @@ unset(
                 </table>
             </form>
         </section>
-=======
->>>>>>> 4fb2ba83548940f58276ae656f8cf4388badf223
 
         <!-- BOOSTRAP JAVASCRIPT -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

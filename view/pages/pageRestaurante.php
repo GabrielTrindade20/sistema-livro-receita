@@ -42,26 +42,11 @@ include_once('../../controller/referenciaController.php');
                 </button>
             </header>
         </div>
-<<<<<<< HEAD
-
-        <div class="containerPesquisa">
-            <div class="row">
-                <div class="col-md-6 col-sm-12 conteiner-info">
-                    <div>
-                        <h1>Lista de Restaurantes</h1>
-                    </div>
-                    <div class="info-qtd">
-                        <a href="#">
-                            <?php echo "(" . $count_referencias . ") Salvos"; ?>
-                        </a>
-                    </div>
-=======
         <div class="conteudo">
             <section>
                 <div class="paginação">
                     <a href="homePage.php">Homepage </a> >
                     <a href="pageRestaurante.php" class="pagina-atual"> Restaurantes</a>
->>>>>>> 4fb2ba83548940f58276ae656f8cf4388badf223
                 </div>
 
                 <div class="containerPesquisa">
@@ -74,18 +59,8 @@ include_once('../../controller/referenciaController.php');
                                 <a href="#">
                                     <?php echo "(" . $count_referencias . ") Salvos"; ?>
                                 </a>
-<<<<<<< HEAD
-                            </td>                            
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </form>
-    </section>
-=======
                             </div>
                         </div>
->>>>>>> 4fb2ba83548940f58276ae656f8cf4388badf223
 
                         <div class="col-md-6 col-sm-12 conteiner-func">
                             <!-- Search -->
