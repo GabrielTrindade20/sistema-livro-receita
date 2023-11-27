@@ -56,13 +56,13 @@ body {
     padding:20px 50px 50px 50px;
 }
 
-.btn {
+.btn-info {
     color: var(--white);
     background: none;
     border: none;
 }
 
-.btn:hover {
+.btn-info:hover {
     background: var(--primary-hover);
 }
 

@@ -1,9 +1,4 @@
 
-<!-- Bootstrap CSS CDN -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"> -->
-<!-- Our Custom CSS -->
-<!-- <link rel="stylesheet" href="../components/style.css"> -->
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 <!-- Font Awesome JS -->

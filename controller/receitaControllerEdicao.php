@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
     $id_categoria  = $_POST["idCategoria"];
 
     if (
-        isset($nome) && isset($data_criacao) && isset($modo_preparo) && isset($qtd_porcao) && isset($ind_inedita)
+        isset($nome) && isset($data_criacao) && isset($modo_preparo) && isset($qtd_porcao)
+        && isset($degustador) && isset($data_degustacao) && isset($nota_degustacao) && isset($ind_inedita)
         && isset($id_cozinheiro) && isset($id_categoria) && isset($id_foto_receita) && isset($path_foto_receita)
     ) {
         // inserir os dados no banco de dados 

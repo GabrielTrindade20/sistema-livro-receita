@@ -5,9 +5,12 @@ if (!isset($_SESSION)) {
 }
 
 include_once(__DIR__ . '../../configuration/connect.php');
-include_once(__DIR__ . '../../model/modelCargo/cargoModel.php'); // Inclua o modelo de cargo
+include_once(__DIR__ . '../../model/modelCargo/cargoModel.php');
+include_once(__DIR__ . '../../configuration/connect.php');
+include_once(__DIR__ . '../../model/funcionarioModel.php');
 
 $cargoModel = new cargoModel($link);
+$funcionarioModel = new funcionarioModel($link);
 
 
 // SALVAR 
@@ -28,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
             } else {
                 $_SESSION["erros"] = ["Erro ao salvar no banco de dados."];
             }
-            
         }
         exit();
     }
@@ -41,12 +43,14 @@ elseif (isset($_POST['editar'])) {
 
     // Verifique se a descrição não está vazia
     if (empty($novaDescricao)) {
-        $cargoModel->validar_campos($descricao);
+        $cargoModel->validar_campos($novaDescricao);
     } else {
         // Verificar se a erro
         if (!empty($cargoModel->getErros())) {
             // Há erros, armazene-os na sessão
             $_SESSION["erros"] = $cargoModel->getErros();
+            header("Location: ../view/pages/pageCargo.php");
+            exit();
         } else {
             if ($atualizado = $cargoModel->update($idCargo, $novaDescricao)) {
                 $_SESSION["sucesso"] = $cargoModel->getSucesso();
@@ -54,9 +58,9 @@ elseif (isset($_POST['editar'])) {
             } else {
                 $_SESSION["erros"] = ["Erro ao alterar no banco de dados."];
             }
-
+            header("Location: ../view/pages/pageCargo.php");
+            exit();
         }
-        exit();
     }
 }
 
@@ -65,11 +69,20 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
     if (isset($_GET['idCargo'])) {
         $idCargo = $_GET['idCargo'];
 
-        if ($cargoModel->delete($idCargo)) {
-            $_SESSION["sucesso"] = $cargoModel->getSucesso();
+        // Recupera os funcionários vinculados ao cargo
+        $funcionariosVinculados = $funcionarioModel->recuperaFuncionarioCargo($idCargo);
+
+        if (!empty($funcionariosVinculados)) {
+            $_SESSION["erros"] = ["Cargo não pode ser excluído, pois está vinculado com funcionário."];
             header("Location: ../view/pages/pageCargo.php");
         } else {
-            $_SESSION["erros"] = ["Erro ao excluir no banco de dados."];
+            // Não há funcionários vinculados, proceder com a exclusão do cargo
+            if ($cargoModel->delete($idCargo)) {
+                $_SESSION["sucesso"] = $cargoModel->getSucesso();
+                header("Location: ../view/pages/pageCargo.php");
+            } else {
+                $_SESSION["erros"] = ["Erro ao excluir no banco de dados."];
+            }
         }
     } else {
         $_SESSION["erros"] = ["ID de cargo não especificado."];
@@ -81,12 +94,20 @@ elseif (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
         foreach ($_POST['checkbox'] as $idCargo) {
             // Verificar se o ID da cargo é válido (por exemplo, um número inteiro positivo)
             if (is_numeric($idCargo) && $idCargo > 0) {
-                if ($cargoModel->delete($idCargo)) {
-                    // A cargo foi excluída com sucesso
-                    $_SESSION["sucesso"] = ["Cargos excluídas com sucesso."];
+                // Recupera os funcionários vinculados ao cargo
+                $funcionariosVinculados = $funcionarioModel->recuperaFuncionarioCargo($idCargo);
+
+                if (!empty($funcionariosVinculados)) {
+                    $_SESSION["erros"] = ["Algum cargo não pode ser excluído, pois está vinculado com funcionário."];
+                    header("Location: ../view/pages/pageCargo.php");
                 } else {
-                    // Houve um erro na exclusão
-                    $_SESSION["erros"] = ["Erro ao excluir a cargo com ID $idCargo."];
+                    if ($cargoModel->delete($idCargo)) {
+                        // A cargo foi excluída com sucesso
+                        $_SESSION["sucesso"] = ["Cargos excluídas com sucesso."];
+                    } else {
+                        // Houve um erro na exclusão
+                        $_SESSION["erros"] = ["Erro ao excluir a cargo com ID $idCargo."];
+                    }
                 }
             } else {
                 // O ID da cargo não é válido
@@ -105,24 +126,3 @@ else {
     // Contar quandas linhas tem na tabela
     $countCargos = count($cargos);
 }
-
-// include_once('../../configuration/connect.php');
-// include_once('../../model/modelCargo/cargoModel.php');// Inclua o modelo de cargo
-
-// $cargoModel = new CargoModel($conexao); // Crie uma instância do modelo de cargo
-
-// if (isset($_POST['salvar'])) {
-//     $nome = $_POST['nome']; // Obtenha o nome do cargo do formulário
-//     $resultado = $cargoModel->criarCargo($nome); // Chame a função para criar um cargo
-
-//     if ($atualizado) {
-//         $mensagem = 'Cargo atualizado com sucesso!';
-//         header("Location: ../view/pages/pageCargo.php?mensagem=" . urlencode($mensagem));
-//         exit();
-//     } else {
-//         $mensagem = 'Erro ao cadastrar o cargo.';
-//     }
-
-//     exit();
-// }
-?>

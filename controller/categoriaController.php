@@ -43,7 +43,7 @@ elseif (isset($_POST['alterar'])) {
 
     // Verifique se a descrição não está vazia
     if (empty($novaDescricao)) {
-        $categoriaModel->validar_campos($descricao);
+        $categoriaModel->validar_campos($novaDescricao);
     } else {
         // Verificar se a erro
         if (!empty($categoriaModel->getErros())) {

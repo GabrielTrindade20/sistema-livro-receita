@@ -8,10 +8,46 @@ include_once('../../../configuration/connect.php');
 include_once('../../../controller/receitaController.php');
 include_once('../../../controller/receitaComposicaoController.php');
 include_once('../../../model/fotoModel.php');
+include_once('../../../model/receitaModel.php');
+include_once('../../../model/composicaoModel.php');
 include_once('../../../model/funcoes.php');
 
 if (!isset($_SESSION['controlar_abas'])) {
     $_SESSION['controlar_abas'] = 0;
+}
+
+if (isset($_GET['nome_receita'])) {
+    $nome_receita = $_GET['nome_receita'];
+    $receitaModel = new receitaModel($link);
+    $recuperar = $receitaModel->recuperaReceita($nome_receita);
+
+    $composicaoModel = new composicaoModel($link);
+    $recuperar_composicao = $composicaoModel->recuperaReceitaComposicao($nome_receita);
+
+
+    if ($recuperar) {
+        $nome_receita = $recuperar["nome_receita"];
+        $data_criacao = $recuperar["data_criacao"];
+        $modo_preparo = $recuperar["modo_preparo"];
+        $qtd_porcao = $recuperar["qtd_porcao"];
+        $degustador = $recuperar["degustador"];
+        $data_degustacao = $recuperar["data_degustacao"];
+        $nota_degustacao = $recuperar["nota_degustacao"];
+        $ind_inedita = $recuperar["ind_inedita"];
+        $id_cozinheiro = $recuperar["id_cozinheiro"];
+        $id_categoria = $recuperar["id_categoria"];
+        $id_foto_receita = $recuperar["id_foto_receita"];
+        $path_foto_receita = $recuperar["path_foto_receita"];
+    } else {
+        header("Location: pageReceita.php?mensagem=" . urlencode("Receita não encontrado."));
+        exit();
+    }
+
+
+    if (isset($id_foto_receita) && isset($path_foto_receita)) {
+        $id_foto_receita =  $id_foto_receita;
+        $img_receita = "<img src=" . $path_foto_receita . " >";
+    }
 }
 
 $fotoModel = new fotoModel($link);
@@ -41,7 +77,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
 
             if ($deu_certo) {
                 $fotoModel->create($novo_nome_arquivo, $nome_do_arquivo, $path, $usuario);
-                $_SESSION["mensagem"] = "Foto salva!";
+                $_SESSION["mensagem"] = "Arquivo salvo!";
                 $_SESSION["cadastro_sucesso"] = true;
                 // Armazene o ID da última foto salva na sessão
                 $_SESSION["ultima_id_foto_receita"] = $fotoModel->recuperaUltimoIdFoto();
@@ -55,14 +91,6 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
     }
 }
 
-$ultima_foto = $foto_recuperada = $fotoModel->recuperaFoto();
-
-if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-    $id_foto_receita =  $ultima_foto['id_foto_receita'];
-    $img_ultima = "<img src=" . $ultima_foto['path'] . ">";
-    $link_img = "<a target=\"blank\" href=" . $ultima_foto['path'] . ">VER</a>";
-    $delete_link_img = "<a href=\"pageReceitaCadastro.php?idFoto=" . $id_foto_receita . "&acao=deletar-foto\">DELETAR</a>";
-}
 ?>
 
 <!DOCTYPE html>
@@ -83,12 +111,13 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
     <link rel="stylesheet" href="../../css/styleReceita.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
 
-    <title>Receita Cadastro</title>
+    <title>Receita Edição</title>
 </head>
 
 <body>
     <!-- Menu lateral -->
-    <?php include '../../components/menuSub1.php'; ?>
+    <?php include '../../components/menuSub1.php';
+    ?>
     <!-- Page Content -->
     <div id="content">
         <div class="container-fluid">
@@ -102,7 +131,7 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
             <div class="paginação-sub">
                 <a href="../homePage.php">Homepage </a> >
                 <a href="../pageReceitas.php"> Receitas </a> >
-                <a href="#" class="pagina-atual"> Receita Cadastro</a>
+                <a href="#" class="pagina-atual"> Receita Edição</a>
             </div>
             <section>
 
@@ -111,11 +140,11 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                         <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Foto</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] < 1) echo "disabled"; ?> <?php if ($_SESSION['controlar_abas'] == 1) echo "active"; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Dados</button>
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 1) echo "active"; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Dados</button>
 
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] < 2) echo "disabled"; ?><?php if ($_SESSION['controlar_abas'] == 2) echo "active"; ?>" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Ingredientes</button>
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 2) echo "active"; ?>" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Ingredientes</button>
                     </li>
                     <li class="nav-item ms-auto" role="presentation">
                         <a class="nav-link " href="../pageReceitas.php">Sair</a>
@@ -123,7 +152,7 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
-                    <div class="mensagens" id="mensagemFoto">
+                    <div class="foto" id="mensagemFoto">
                         <?php
                         if (isset($_SESSION["mensagem"])) {
                             echo $_SESSION["mensagem"];
@@ -133,34 +162,36 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                     </div>
                     <!-- foto form -->
                     <div class="tab-pane show <?php if ($_SESSION['controlar_abas'] == 0) {
-                                                    echo "active";
+                                                    echo 'active';
                                                 } else {
-                                                    echo " ";
+                                                    echo '';
                                                 } ?>" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <!-- foto -->
                         <div class="conteiner-abas">
                             <div class="box-foto">
                                 <?php
-                                if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-                                    $_SESSION['img_foto'] = $img_ultima;
-                                    echo $_SESSION['img_foto'];
-                                }
+                                // if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
+                                echo $img_receita;
+                                // }
                                 ?>
                             </div>
+
                             <div class="row justify-content-center">
                                 <div class="col-6">
-                                    <form enctype="multipart/form-data" action="" method="post">
-                                        <div class="mb-3">
-                                            <label for="foto_receita" class="form-label">Foto da Receita</label>
-                                            <input class="form-control" type="file" id="formFile" accept="image/*" name="foto_receita">
+                                    <div class="box-form">
+                                        <form enctype="multipart/form-data" action="" method="post">
+                                            <div class="mb-3">
+                                                <label for="foto_receita" class="form-label">Foto da Receita</label>
+                                                <input class="form-control" type="file" id="formFile" accept="image/*" name="foto_receita">
 
-                                            <button type="submit" id="file" name="upload" class="btn btn-primary">Salvar</button>
-                                        </div>
-                                    </form>
+                                                <button type="submit" id="file" name="upload" class="btn btn-primary">Salvar</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
 
                     <!-- Notificação de erro ou não receita -->
@@ -183,10 +214,10 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                     </div>
 
                     <!-- receita form -->
-                    <div class="tab-pane  <?php if ($_SESSION['controlar_abas'] == 1) {
+                    <div class="tab-pane <?php if ($_SESSION['controlar_abas'] == 1) {
                                                 echo 'active';
                                             } else {
-                                                echo ' ';
+                                                echo '';
                                             } ?>" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                         <!-- receita -->
                         <div class="conteiner-abas">
@@ -197,54 +228,53 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                                             <div class="form">
                                                 <div class="mb-3">
                                                     <label for="nome" class="form-label">Nome</label>
-                                                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo isset($_SESSION['nome_receita']) ? $_SESSION['nome_receita'] : ''; ?>" required>
+                                                    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome" value="<?php echo isset($nome_receita) ? $nome_receita : ''; ?>" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="data_criacao" class="form-label">Data de Criação</label>
-                                                    <input type="date" class="form-control" id="data_criacao" name="data_criacao" value="<?php echo isset($_SESSION['data_criacao']) ? $_SESSION['data_criacao'] : ''; ?>" required>
+                                                    <input type="date" class="form-control" id="data_criacao" name="data_criacao" value="<?php echo isset($data_criacao) ? $data_criacao : ''; ?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="qtd_porcao" class="form-label">Quantidade de Porções</label>
-                                                    <input type="number" class="form-control" id="qtd_porcao" name="qtd_porcao" value="<?php echo isset($_SESSION['qtd_porcao']) ? $_SESSION['qtd_porcao'] : ''; ?>" required>
+                                                    <label for="data_criacao" class="form-label">Quantidade de Porções</label>
+                                                    <input type="number" class="form-control" id="qtd_porcao" name="qtd_porcao" value="<?php echo isset($qtd_porcao) ? $qtd_porcao : ''; ?>" required>
                                                 </div>
                                                 <div class="mb-3">
-                                                        <label for="degustador" class="form-label">Degustador</label>
-                                                        <?php monta_select_degustador(isset($_SESSION['degustador']) ? $_SESSION['degustador'] : '');  ?>                                                
+                                                    <label for="degustador" class="form-label">Degustador</label>
+                                                    <?php monta_select_degustador_recupera(isset($degustador) ? $degustador : '');  ?>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="nota_degustacao" class="form-label">Nota</label>
-                                                    <input type="number" class="form-control" id="nota_degustacao" name="nota_degustacao" value="<?php echo isset($_SESSION['nota_degustacao']) ? $_SESSION['nota_degustacao'] : ''; ?>">
+                                                    <label for="nota_degustacao" class="form-label">Nota Desgustação</label>
+                                                    <input type="number" class="form-control" id="nota_degustacao" name="nota_degustacao" value="<?php echo isset($nota_degustacao) ? $nota_degustacao : ''; ?>">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="data_degustacao" class="form-label">Data de Degustação</label>
-                                                    <input type="date" class="form-control" id="data_degustacao" name="data_degustacao" value="<?php echo isset($_SESSION['data_degustacao']) ? $_SESSION['data_degustacao'] : ''; ?>">
+                                                    <input type="date" class="form-control" id="data_degustacao" name="data_degustacao" value="<?php echo isset($data_degustacao) ? $data_degustacao : ''; ?>">
                                                 </div>
 
                                                 <div class="conteiner-dados-input-select">
                                                     <div class="mb-3">
                                                         <label for="ind_inedita" class="form-label">Inédita</label> <br>
-                                                        <input type="radio" id="sim" name="ind_inedita" value="S" <?php echo (isset($_SESSION['ind_inedita']) && $_SESSION['ind_inedita'] == 'S') ? 'checked' : ''; ?>>
+                                                        <input type="radio" id="sim" name="ind_inedita" value="S" <?php echo (isset($ind_inedita) && $ind_inedita == 'S') ? 'checked' : ''; ?>>
                                                         <label for="sim" class="form-label">Sim</label>
-                                                        <input type="radio" id="nao" name="ind_inedita" value="N" <?php echo (isset($_SESSION['ind_inedita']) && $_SESSION['ind_inedita'] == 'N') ? 'checked' : ''; ?>>
+                                                        <input type="radio" id="nao" name="ind_inedita" value="N" <?php echo (isset($ind_inedita) && $ind_inedita == 'N') ? 'checked' : ''; ?>>
                                                         <label for="nao" class="form-label">Não</label> <br>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="cozinheiro" class="form-label">Cozinheiro</label>
-                                                        <?php monta_select_cozinheiro(isset($_SESSION['cozinheiro']) ? $_SESSION['cozinheiro'] : ''); ?>
+                                                        <?php monta_select_cozinheiro_recupera(isset($id_cozinheiro) ? $id_cozinheiro : ''); ?>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="categoria" class="form-label">Categoria</label>
-                                                        <?php monta_select_categoria2(isset($_SESSION['categoria']) ? $_SESSION['categoria'] : ''); ?>
+                                                        <?php monta_select_categoria_recupera(isset($id_categoria) ? $id_categoria : ''); ?>
                                                     </div>
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <h3 class="titulo" class="form-label">Modo de Preparo</h3>
-                                                    <textarea class="form-control" name="modo_preparo" id="" rows="10" cols="40" maxlength="4000"><?php echo isset($_SESSION['modo_preparo']) ? $_SESSION['modo_preparo'] : ''; ?></textarea>
+                                                    <textarea class="form-control" name="modo_preparo" id="modo_preparo" rows="10" cols="40" maxlength="4000"><?php echo isset($modo_preparo) ? $modo_preparo : ''; ?></textarea>
                                                 </div>
-
                                                 <div class="mb-3">
-                                                    <button type="submit" name="salvar" class="btn btn-primary">Salvar e Próximo</button>
+                                                    <button type="submit" name="salvar" class="btn btn-primary">Salvar e próximo</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -258,15 +288,15 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                     <div class="tab-pane <?php if ($_SESSION['controlar_abas'] == 2) {
                                                 echo 'active';
                                             } else {
-                                                echo ' ';
+                                                echo '';
                                             } ?>" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
                         <!-- Cadastro medida ingrediente -->
                         <div class="conteiner-abas">
 
                             <div class="composicao">
-                                <form action="../../../controller/receitaComposicaoController.php" method="post">
+                                <form action="../../../controller/receitaComposicaoControllerEdicao.php" method="post">
                                     <input type="hidden" name="acao" id="acao" value="salvar">
-                                    <input type="hidden" name="nome_receita" id="nome_receita" value="<?php echo isset($_SESSION['nome_receita']) ? $_SESSION['nome_receita'] : ''; ?>">
+                                    <input type="hidden" name="nome_receita" id="nome_receita" value="<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">
                                     <input type="hidden" name="idIngrediente" id="idIngrediente" value="">
                                     <input type="hidden" name="idMedida" id="idMedida" value="">
 
@@ -286,15 +316,18 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                                             <input type="number" class="form-control" placeholder="Ex: 0" name="quantidade" id="quantidade">
                                         </div>
                                         <div class="col button">
-                                            <button type="submit" name="salvar_composicao"  class="btn btn-primary">Adicionar</button>
+                                            <button type="submit" name="salvar_composicao" class="btn btn-primary">Adicionar</button>
                                         </div>
                                         <div class="row justify-content-center">
-                                        <div class="col-5">
-                                            <div class="box-link">
-                                                <a href="pageReceitaIngreMedida.php">Lista de Ingredientes e Medidas salvas</a>
+                                            <div class="col-5">
+                                                <div class="box-link">
+                                                    <a href="pageReceitaIngreMedidaAlteracao.php?nome_receita=<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">
+                                                        Lista de Ingredientes e Medidas salvas
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                        </div>
+
                                     </div>
                                 </form>
                             </div>
@@ -308,14 +341,14 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                                             <th>Ingredientes</th>
                                             <th>Medidas</th>
                                             <th>Quantidade</th>
-                                            <th class="operacao">OPERAÇÕES</th>
+                                            <th class="operacao">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!-- Gerando de acordo com o que foi cadastrado -->
-                                        <?php foreach ($dados_composicao as $index => $composicao) : ?>
+                                        <?php foreach ($recuperar_composicao as $index => $composicao) : ?>
                                             <tr>
-                                                <td></td>
+                                                <td> </td>
                                                 <td> <?php echo $composicao['nome']; ?> </td>
                                                 <td> <?php echo $composicao['descricao']; ?> </td>
                                                 <td> <?php echo $composicao['qtd_medida']; ?> </td>
@@ -342,23 +375,23 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
         </div>
         </section>
     </div>
-    </div>
 
     <script>
         setTimeout(function() {
             var mensagemDiv = document.getElementById('mensagemFoto');
             mensagemDiv.style.display = 'none';
-        }, 4000);
+        }, 2000);
         setTimeout(function() {
             var mensagemDiv = document.getElementById('mensagemR');
             mensagemDiv.style.display = 'none';
-        }, 4000);
+        }, 2000);
     </script>
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script src="../../js/customReceita.js"></script>
     <script src="../../js/customReceita2.js"></script>
-    <script src="../../js/customComposicaoReceita.js"></script>
+    <script src="../../js/customComposicaoReceitaAlteracao.js"></script>
 
     <!-- BOOSTRAP JAVASCRIPT -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

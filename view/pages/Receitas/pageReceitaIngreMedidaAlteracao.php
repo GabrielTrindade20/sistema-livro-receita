@@ -5,6 +5,11 @@ if (!isset($_SESSION)) {
 include_once('../../../controller/protectSubFolders.php');
 include_once('../../../controller/ingredienteController.php');
 include_once('../../../controller/medidaController.php');
+
+if (isset($_GET["nome_receita"])) {
+    $nome_receita = $_GET["nome_receita"];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +44,7 @@ include_once('../../../controller/medidaController.php');
         </div>
         <div class="conteudo">
             <div class="box-sair">
-                <a href="pageReceitaCadastro.php">Voltar</a>
+                <a href="pageReceitaAlteracao.php?nome_receita=<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">Voltar</a>
             </div>
 
             <!-- Ingrediente -->

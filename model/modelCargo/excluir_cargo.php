@@ -10,7 +10,7 @@ if (isset($_POST['idCargo'])) {
     $cargoModel = new CargoModel($link);
 
     // Tente excluir o cargo
-    $excluido = $cargoModel->excluirCargo($cargoID);
+    $excluido = $cargoModel->delete($cargoID);
 
     if ($excluido) {
         // A exclusão foi bem-sucedida

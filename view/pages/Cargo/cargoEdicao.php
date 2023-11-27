@@ -66,7 +66,7 @@ if (isset($_GET['idCargo'])) {
                     </div>
 
                     <!-- Formulário de Alteraçao -->
-                    <form method="POST" action="../../controller/controllerCargo/cargoController.php">
+                    <form method="POST" action="../../../controller/cargoController.php">
                         <div class="conteiner-dados-funcionario">
                             <input type="hidden" name="idCargo" value="<?php echo $idCargo; ?>">
                             <label for="nome">Nome do Cargo</label>

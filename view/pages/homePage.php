@@ -1,5 +1,6 @@
 <?php
 include_once('../../controller/protect.php');
+include_once('../../controller/receitaController.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -43,17 +44,17 @@ include_once('../../controller/protect.php');
                 <div class="container text-center">
                     <h3>Parâmetro do Sistema</h3>
                     <div class="row">
-                        <div class="col">
+                        <!-- <div class="col">
                             Mês Produção
                             <p>100</p>
                         </div>
                         <div class="col">
                             Ano Produção
                             <p>100</p>
-                        </div>
+                        </div> -->
                         <div class="col">
                             Total Receitas
-                            <p>10230</p>
+                            <p> <?php echo  $countReceitas  ?></p>
                         </div>
                     </div>
                 </div>
