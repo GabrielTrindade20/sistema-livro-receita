@@ -135,20 +135,23 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
             </div>
             <section>
 
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">1 Foto</button>
+                <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Foto</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 1) echo "active"; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">2 Dados</button>
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 1) echo "active"; ?>" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Dados</button>
 
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 2) echo "active"; ?>" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">3 Ingredientes</button>
+                        <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 2) echo "active"; ?>" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Ingredientes</button>
+                    </li>
+                    <li class="nav-item ms-auto" role="presentation">
+                        <a class="nav-link " href="../pageReceitas.php">Sair</a>
                     </li>
                 </ul>
 
-                <div class="foto">
+                <div class="foto" id="mensagemFoto">
                     <?php
                     if (isset($_SESSION["mensagem"])) {
                         echo $_SESSION["mensagem"];
@@ -160,28 +163,36 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                 <div class="tab-content" id="myTabContent">
                     <!-- foto form -->
                     <div class="tab-pane show <?php if ($_SESSION['controlar_abas'] == 0) {
-                                                echo 'active';
-                                            }?>" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                                                    echo 'active';
+                                                } else {
+                                                    echo '';
+                                                } ?>" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <!-- foto -->
                         <div class="conteiner-abas">
                             <div class="box-foto">
                                 <?php
                                 // if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["cadastro_sucesso"]) {
-
                                 echo $img_receita;
                                 // }
                                 ?>
                             </div>
 
-                            <form enctype="multipart/form-data" action="" method="post">
-                                <div class="box-foto">
-                                    <label for="foto_receita">Foto da Receita</label>
-                                    <input type="file" accept="image/*" name="foto_receita"> <br>
-                                    <button type="submit" id="file" name="upload" class="button">Salvar</button>
-                                </div>
-                            </form>
-                        </div>
+                            <div class="row justify-content-center">
+                                <div class="col-6">
+                                    <div class="box-form">
+                                        <form enctype="multipart/form-data" action="" method="post">
+                                            <div class="mb-3">
+                                                <label for="foto_receita" class="form-label">Foto da Receita</label>
+                                                <input class="form-control" type="file" id="formFile" accept="image/*" name="foto_receita">
 
+                                                <button type="submit" id="file" name="upload" class="btn btn-primary">Salvar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <!-- Notificação de erro ou não receita -->
@@ -206,7 +217,9 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                     <!-- receita form -->
                     <div class="tab-pane <?php if ($_SESSION['controlar_abas'] == 1) {
                                                 echo 'active';
-                                            }?>" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                                            } else {
+                                                echo '';
+                                            } ?>" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                         <!-- receita -->
                         <div class="conteiner-abas">
                             <section>
@@ -227,7 +240,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
 
                                             <div class="conteiner-dados-input-select">
                                                 <label for="degustador">Degustador</label>
-                                                <?php monta_select_degustador(isset($degustador) ? $degustador : '');  ?>
+                                                <?php monta_select_degustador_recupera(isset($degustador) ? $degustador : '');  ?>
                                             </div>
                                             <label for="nota_degustacao">Nota</label>
                                             <input type="number" id="nota_degustacao" name="nota_degustacao" value="<?php echo isset($nota_degustacao) ? $nota_degustacao : ''; ?>">
@@ -244,10 +257,10 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                                                 <label for="nao">Não</label> <br>
 
                                                 <label for="cozinheiro">Cozinheiro</label>
-                                                <?php monta_select_cozinheiro(isset($id_cozinheiro) ? $id_cozinheiro : ''); ?>
+                                                <?php monta_select_cozinheiro_recupera(isset($id_cozinheiro) ? $id_cozinheiro : ''); ?>
 
                                                 <label for="categoria">Categoria</label>
-                                                <?php monta_select_categoria(isset($id_categoria) ? $id_categoria : ''); ?>
+                                                <?php monta_select_categoria_recupera(isset($id_categoria) ? $id_categoria : ''); ?>
                                             </div>
 
                                         </div>
@@ -266,7 +279,9 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                     <!-- composição -->
                     <div class="tab-pane <?php if ($_SESSION['controlar_abas'] == 2) {
                                                 echo 'active';
-                                            }?>" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                                            } else {
+                                                echo '';
+                                            } ?>" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
                         <!-- Cadastro medida ingrediente -->
                         <div class="conteiner-abas">
 
@@ -339,6 +354,13 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
                 </div>
             </section>
         </div>
+
+        <script>
+            setTimeout(function() {
+                var mensagemDiv = document.getElementById('mensagemFoto');
+                mensagemDiv.style.display = 'none';
+            }, 2000);
+        </script>
 
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 

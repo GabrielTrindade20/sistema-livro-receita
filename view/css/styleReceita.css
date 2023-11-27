@@ -21,38 +21,56 @@
 }
 
 .conteiner-abas {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgba(0, 0, 0, 0.212);
+    border-top: none;
 }
 
-.conteiner-abas h2{
-    z-index: 1;
-    position: absolute;
-    padding-left: 40px;
+.mensagens {/* mensagem */
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgba(0, 0, 0, 0.212);
+    border-top: none;
+    border-bottom: none;
+    text-align: center;
     padding-top: 20px;
-    font-size: 23px;
 }
 
 .conteiner-abas form {
-    background-color: rgb(255, 255, 255);
-    border: solid 1px rgba(0, 0, 0, 0.212);
     width: 100%;
     position: relative;
     text-align: center;
     padding: 20px;
 }
 
-.conteiner-operacoes button {
-    position: absolute;
-    width: 10%;
-    height: 33px;
-    padding: 5px;
-    justify-content: space-between;
-    background-color: #F0C3AA;
-    right: 0px;
-    top: -34px;
+.nav-tabs a {
+    color: var(--black);
+    width: 100%;
+    background-color: var(--primary);
     border-radius: 10px 10px 0px 0px;
-    border: none;
     font-size: 1rem;
+}
+.nav-tabs li>a:hover{
+    background-color: var(--primary-hover);
+    color: var(--white);
+}
+
+.nav-link {
+    color: var(--primary);
+}
+
+.btn-primary {
+    margin: 10px;
+    background: var(--primary);
+    color: var(--black);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
 }
 
 .conteiner-operacoes a {
@@ -67,57 +85,27 @@
     border-radius: 10px 10px 0px 0px;
 }
 
-.button:hover{
-    cursor: pointer;
-}
-
-.title-container h1{
+.title-container h1 {
     font-size: 25px;
     font-weight: bold;
 }
 
-/* page funcionario e categoria */
-.conteiner-formulario{
-    background-color: #BE783C;
-    width: 100%;
-}
-
-.conteiner-dados-funcionario {
-    width: 32%;
-    display: block;
-    align-items: center;
-    text-align: left;
-    margin-left: 35%;
-}
-
-.conteiner-dados-funcionario input {
-    width: 100%;
-    font-size: 14px;
-    padding: 3px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
-.conteiner-dados-funcionario-select select {
-    width: 100%;
-    font-size: 14px;
-    padding: 3px;
-    margin-top: 5px;
-    cursor:pointer;
-    padding: 5px 10px;
-}
-
-.conteiner-dados-funcionario-status {
-    display: flex;
-}
-
-.conteiner-dados-funcionario-status input {
-    width: 15%;
-    
-}
-
 /*receita*/
-.form{
+.box-foto {
+    text-align: center;
+}
+
+.box-foto img {
+    width: 350px;
+    border: solid 4px rgba(0, 0, 0, 0.212);
+    border-style: dotted;
+}
+
+.box-form {
+    text-align: center;
+}
+
+.form {
     width: 100%;
     display: flex;
     grid-template-columns: repeat(2, 1fr);
@@ -130,9 +118,10 @@
 }
 
 
-.conteiner-form-colum-operacoes{
-   float: right;
+.conteiner-form-colum-operacoes {
+    float: right;
 }
+
 .conteiner-form-colum input {
     width: 100%;
     font-size: 14px;
@@ -147,7 +136,7 @@
     padding: 3px;
     margin-top: 5px;
     margin-bottom: 10px;
-    cursor:pointer;
+    cursor: pointer;
     padding: 5px 10px;
 }
 
@@ -156,5 +145,5 @@
 }
 
 .conteiner-dados-input-select input[type=radio] {
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }

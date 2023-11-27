@@ -41,7 +41,7 @@ if (isset($_FILES["foto_receita"]) && $_SERVER["REQUEST_METHOD"] === "POST" && i
 
             if ($deu_certo) {
                 $fotoModel->create($novo_nome_arquivo, $nome_do_arquivo, $path, $usuario);
-                $_SESSION["mensagem"] = "Arquivo salvo!";
+                $_SESSION["mensagem"] = "Foto salva!";
                 $_SESSION["cadastro_sucesso"] = true;
                 // Armazene o ID da última foto salva na sessão
                 $_SESSION["ultima_id_foto_receita"] = $fotoModel->recuperaUltimoIdFoto();
@@ -107,7 +107,7 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
             </div>
             <section>
 
-                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link <?php if ($_SESSION['controlar_abas'] == 0) echo "active"; ?>" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">1 Foto</button>
                     </li>
@@ -118,9 +118,12 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                     <li class="nav-item" role="presentation">
                         <button class="nav-link <?php if ($_SESSION['controlar_abas'] < 2) echo "disabled"; ?><?php if ($_SESSION['controlar_abas'] == 2) echo "active"; ?>" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">3 Ingredientes</button>
                     </li>
+                    <li class="nav-item ms-auto" role="presentation">
+                        <a class="nav-link " href="../pageReceitas.php">Sair</a>
+                    </li>
                 </ul>
 
-                <div class="foto">
+                <div class="mensagens" id="mensagemFoto">
                     <?php
                     if (isset($_SESSION["mensagem"])) {
                         echo $_SESSION["mensagem"];
@@ -146,14 +149,18 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                                 }
                                 ?>
                             </div>
-
-                            <form enctype="multipart/form-data" action="" method="post">
-                                <div class="box-foto">
-                                    <label for="foto_receita">Foto da Receita</label>
-                                    <input type="file" accept="image/*" name="foto_receita"> <br>
-                                    <button type="submit" id="file" name="upload" class="button">Salvar</button>
+                            <div class="row justify-content-center">
+                                <div class="col-6">
+                                    <form enctype="multipart/form-data" action="" method="post">
+                                        <div class="mb-3">
+                                            <label for="foto_receita" class="form-label">Foto da Receita</label>
+                                            <input class="form-control" type="file" id="formFile" accept="image/*" name="foto_receita">
+                                        
+                                            <button type="submit" id="file" name="upload" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
 
                     </div>
@@ -299,9 +306,8 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                                                             Remover
                                                         </a>
 
-                                                        <a onclick="editarComposicao('<?php echo $composicao['nome_receita'] ?>', <?php echo $composicao['idIngrediente']; ?>, '<?php echo $composicao['nome'] ?>',<?php echo $composicao['idMedida']; ?>, '<?php echo $composicao['descricao'] ?>',<?php echo $composicao['qtd_medida']; ?>)" 
-                                                        href="#" id="btn-salvar-composicao"  data-id="<?php echo $composicao['nome_receita']; ?>"  data-idI="<?php echo $composicao['idIngrediente']; ?>"  data-idM="<?php echo $composicao['idMedida']; ?>"> 
-                                                            Editar 
+                                                        <a onclick="editarComposicao('<?php echo $composicao['nome_receita'] ?>', <?php echo $composicao['idIngrediente']; ?>, '<?php echo $composicao['nome'] ?>',<?php echo $composicao['idMedida']; ?>, '<?php echo $composicao['descricao'] ?>',<?php echo $composicao['qtd_medida']; ?>)" href="#" id="btn-salvar-composicao" data-id="<?php echo $composicao['nome_receita']; ?>" data-idI="<?php echo $composicao['idIngrediente']; ?>" data-idM="<?php echo $composicao['idMedida']; ?>">
+                                                            Editar
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -318,7 +324,12 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                 </div>
             </section>
         </div>
-
+        <script>
+            setTimeout(function() {
+                var mensagemDiv = document.getElementById('mensagemFoto');
+                mensagemDiv.style.display = 'none';
+            }, 2000);
+        </script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
         <script src="../../js/customReceita.js"></script>
