@@ -78,7 +78,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["salvar"])) {
 
     mysqli_close($link);
 }
+// EXCLUIR
+if (isset($_GET['acao']) && $_GET['acao'] === 'delete') {
+    if (isset($_GET['nome_receita'])) {
+        $nome_receita = $_GET['nome_receita'];
 
+        if ($receitaModel->delete($nome_receita)) {
+            $_SESSION["sucesso"] = ["Receita deleta."];
+        } else {
+            $_SESSION["erros"] = ["Erro ao excluir no banco de dados."];
+        }
+    } else {
+        $_SESSION["erros"] = ["Reecita não especificado."];
+    }
+
+    header("Location: ../view/pages/pageReceitas.php");
+    exit();
+} 
 
 $dados_receitas = $receitaModel->read();
 $countReceitas = count($dados_receitas);

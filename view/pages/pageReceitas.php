@@ -40,6 +40,19 @@ unset(
     <link rel="stylesheet" href="../css/styleTable3.css">
     <link rel="icon" href="../css/iconsSVG/iconReceita.svg">
 
+    <script>
+        function confirmarExclusao(nome_receita) {
+            console.log("delete")
+            var confirmacao = confirm("Tem certeza de que deseja excluir esta receita?");
+
+            if (confirmacao) {
+                window.location.href = "../../controller/receitaController.php?acao=delete&nome_receita=" + nome_receita;
+            } else {
+                // Se o usuário cancelar, não faça nada
+            }
+        }
+    </script>
+
     <title>Receitas</title>
 </head>
 
@@ -139,13 +152,13 @@ unset(
                                         <td> <?php echo $receita['nome_receita']; ?> </td>
                                         <td> <?php echo $receita['categoria_nome']; ?> </td>
                                         <td class="operation">
-                                            <a href="#" onclick="confirmarExclusao(<?php echo $receita['nome_receita']; ?>);" class="button">
+                                            <a href="../pages/Receitas/pageReceitaView.php?nome_receita=<?php echo $receita['nome_receita']; ?>" class="button">
                                                 <span class="material-symbols-outlined"> visibility </span>
                                             </a>
                                             <a href="../pages/Receitas/pageReceitaAlteracao.php?nome_receita=<?php echo $receita['nome_receita']; ?>">
                                                 <span class="material-symbols-outlined"> edit </span>
                                             </a>
-                                            <a href="#" class="button">
+                                            <a href="#"  onclick="confirmarExclusao('<?php echo $receita['nome_receita']; ?>')" class="button">
                                                 <span class="material-symbols-outlined"> delete </span>
                                             </a>
                                         </td>

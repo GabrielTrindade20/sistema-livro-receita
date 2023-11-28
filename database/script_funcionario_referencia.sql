@@ -45,15 +45,15 @@ VALUES
 -- Inserir restaurantes fictícios
 INSERT INTO restaurante (nome, contato)
 VALUES
-('Restaurante d', '123-456-7890'),
-('Restaurante f', '987-654-3210'),
-('Restaurante g', '555-555-5555');
+('Restaurante A', '61900000000'),
+('Restaurante B', '6111111111'),
+('Restaurante C', '6122222222');
 
 -- Inserir associações funcionário-restaurante fictícias
 INSERT INTO referencia (idFuncionario, idRestaurante, data_inicio, data_fim)
 VALUES
-(5, 1, '2023-01-15', '2023-04-30'),
-(5, 2, '2023-02-20', '2023-04-30');
+(1, 1, '2023-01-15', '2023-04-30'),
+(2, 2, '2023-02-20', '2023-04-30');
 
 DELETE 
 FROM referencia 

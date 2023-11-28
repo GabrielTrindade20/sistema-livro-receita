@@ -128,3 +128,59 @@ foreign key(idIngrediente) references ingrediente (idIngrediente),
 foreign key(idMedida) references medida (idMedida)
 )
 engine=InnoDB;
+
+-- DADOS FICTÍCIOS
+-- Inserir Categorias
+insert into categoria
+(descricao)
+value ("Drinks"),
+("Bolos"),
+("Aves"),
+("Carnes"),
+("Doces");
+
+-- Inserir Cargos
+insert into Cargo 
+(descricao)
+value ("Cozinheiro"),
+("Desgustador"),
+("Editor"),
+("Ajudante de cozinha"),
+("Chefe de cozinha");
+
+-- Inserir funcionários fictícios
+INSERT INTO funcionario (rg, nome, data_ingresso, salario, nome_fantasia, situacao, idCargo)
+VALUES
+('123456789', 'João Silva', '2023-01-15', 3000.00, 'Jão', '0', 1),
+('987654321', 'Maria Souza', '2023-02-20', 2800.00, 'Souza', '0', 2),
+('555555555', 'Pedro Santos', '2023-03-10', 3200.00, 'Santos', '1', 3);
+
+-- Inserir restaurantes fictícios
+INSERT INTO restaurante (nome, contato)
+VALUES
+('Restaurante A', '61900000000'),
+('Restaurante B', '6111111111'),
+('Restaurante C', '6122222222');
+
+-- Inserir associações funcionário-restaurante fictícias
+INSERT INTO referencia (idFuncionario, idRestaurante, data_inicio, data_fim)
+VALUES
+(1, 1, '2023-01-15', '2023-04-30'),
+(2, 2, '2023-02-20', '2023-04-30');
+
+-- Inserir ingrediente
+INSERT INTO ingrediente (nome, descricao)
+VALUES
+('Açúcar'),
+('leite condensado'),
+('leite'),
+('ovos');
+
+-- Inserir medida
+INSERT INTO medida (descricao)
+VALUES
+('colheres de sopa '),
+('lata '),
+('unidade'),
+('xícara (chá)');
+

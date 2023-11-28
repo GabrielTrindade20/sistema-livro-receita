@@ -308,7 +308,7 @@ if (isset($ultima_foto) && isset($_SESSION["cadastro_sucesso"]) &&  $_SESSION["c
                                             <th>Ingredientes</th>
                                             <th>Medidas</th>
                                             <th>Quantidade</th>
-                                            <th class="operacao">OPERAÇÕES</th>
+                                            <th class="operacao">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -53,7 +53,8 @@ insert into Cargo
 value ("Cozinheiro"),
 ("Desgustador"),
 ("Editor"),
-("Ajudante de cozinha");
+("Ajudante de cozinha"),
+("Chefe de cozinha");
 
 select *
 from cargo;

@@ -146,6 +146,32 @@ class receitaModel
         return $receitas;
     } // fim read
 
+    public function delete( $nome_receita )
+    {
+        $query =   "DELETE 
+                    FROM receita 
+                    WHERE nome_receita = ?";
+
+        $stmt = $this->link->prepare($query);
+
+        if ($stmt) {
+            $stmt->bind_param("s", $nome_receita);
+
+            if ($stmt->execute()) {
+                $this->sucesso[] = "Exclusão efetuada com sucesso!";
+                return true;
+            } else {
+                $this->erros[] = "Erro ao excluir: " . $stmt->error;
+            }
+
+            $stmt->close();
+        } else {
+            $this->erros[] = "Erro ao preparar a declaração: " . $this->link->error;
+        }
+
+        return false; 
+    }// fim delete
+    
     public function update($id, $rg, $nome, $data_ingresso, $salario, $nome_fantasia, $situacao, $cargo)
     {
         $query =   "UPDATE funcionario 
@@ -186,7 +212,52 @@ class receitaModel
                     WHERE nome_receita = ?";
 
         $stmt = $this->link->prepare($query);
-        $stmt->bind_param("s", $nome_receita); 
+        $stmt->bind_param("s", $nome_receita);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $receita = $result->fetch_assoc();
+
+        return $receita;
+    } // fim de recuperaReceita
+
+    public function viewReceita($nome_receita)
+    {
+        $query =   "SELECT 
+                    r.nome_receita, 
+                    r.data_criacao, 
+                    r.modo_preparo, 
+                    r.qtd_porcao, 
+                    f_degustador.nome AS nome_degustador, -- Nome do degustador
+                    f_cozinheiro.nome AS nome_cozinheiro, -- Nome do cozinheiro
+                    r.data_degustacao, 
+                    r.nota_degustacao, 
+                    r.ind_inedita, 
+                    r.id_cozinheiro AS cozinheiro_id, 
+                    c.descricao AS categoria_nome, -- Nome da categoria
+                    r.id_categoria AS categoria_id, 
+                    fr.nome_foto, -- Nome da foto
+                    fr.path AS path_foto
+                FROM 
+                    receita r
+                    -- Join com a tabela de funcionário para obter o nome do degustador
+                    INNER JOIN funcionario f_degustador ON r.degustador = f_degustador.idFuncionario
+                    -- Join com a tabela de funcionário para obter o nome do cozinheiro
+                    INNER JOIN funcionario f_cozinheiro ON r.id_cozinheiro = f_cozinheiro.idFuncionario
+                    -- Join com a tabela de categoria para obter o nome da categoria
+                    INNER JOIN categoria c ON r.id_categoria = c.idCategoria
+                    -- Join com a tabela de foto_receita para obter dados da foto
+                    LEFT JOIN foto_receita fr ON r.id_foto_receita = fr.id_foto_receita
+                WHERE r.nome_receita = ?;";
+
+        // $receitas = array();
+
+        // $stmt = $this->link->prepare($query);
+        // $stmt->bind_param("s", $nome_receita);
+        // $stmt->execute();
+        // $result = $stmt->get_result();
+
+        $stmt = $this->link->prepare($query);
+        $stmt->bind_param("s", $nome_receita);
         $stmt->execute();
         $result = $stmt->get_result();
         $receita = $result->fetch_assoc();

@@ -23,7 +23,7 @@ if (isset($_GET["nome_receita"])) {
 
     <link rel="stylesheet" href="../../components/style.css">
 
-    <!-- <link rel="stylesheet" href="../../css/styleEdica.css"> -->
+    <link rel="stylesheet" href="../../css/styleReceita.css">
     <link rel="icon" href="../../css/iconsSVG/iconReceita.svg">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
@@ -46,109 +46,120 @@ if (isset($_GET["nome_receita"])) {
             <div class="box-sair">
                 <a href="pageReceitaAlteracao.php?nome_receita=<?php echo isset($nome_receita) ? $nome_receita : ''; ?>">Voltar</a>
             </div>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col">
+                        <!-- Ingrediente -->
+                        <section>
+                            <div class="continer">
+                                <div class="box-form">
+                                    <h4>Ingrediente</h4>
+                                    <!-- Formulário de Cadastro ingrediente-->
+                                    <form method="POST" action="../../../controller/ingredienteController.php">
+                                        <div class="conteiner-dados">
+                                            <input type="hidden" name="acao" id="acao" value="salvar">
+                                            <input type="hidden" name="idIngrediente" id="idIngrediente" value="">
+                                            <div class="mb-3">
+                                                <label for="nome" class="form-label">Nome Ingrediente</label>
+                                                <input type="text" class="form-control form-control-sm"  id="nome_ingrediente" name="nome_ingrediente" placeholder="" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="descricao" class="form-label">Descrição:</label>
+                                                <input type="text" class="form-control form-control-sm"  id="descricao" name="descricao">
+                                            </div>
+                                        </div>
+                                        <div class="conteiner-operacoes">
+                                            <button type="submit" name="salvar_ingredientes" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
 
-            <!-- Ingrediente -->
-            <section>
-                <div class="continer">
-                    <div class="box-form">
-                        <h3>Ingrediente</h3>
-                        <!-- Formulário de Cadastro ingrediente-->
-                        <form method="POST" action="../../../controller/ingredienteController.php">
-                            <div class="conteiner-dados">
-                                <input type="hidden" name="acao" id="acao" value="salvar">
-                                <input type="hidden" name="idIngrediente" id="idIngrediente" value="">
-                                <label for="nome">Nome Ingrediente:</label>
-                                <input type="text" id="nome_ingrediente" name="nome_ingrediente" required>
-                                <label for="descricao">Descrição:</label>
-                                <input type="text" id="descricao" name="descricao">
+                                <div class="table-lista">
+                                    <h4>Lista de Ingredientes</h4>
+                                    <table class="table" id="table"  border="1">
+                                        <thead>
+                                            <tr>
+                                                <th class="select-column"></th>
+                                                <th>Nome</th>
+                                                <th>Descrição</th>
+                                                <th class="operacao">Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Gerando de acordo com o que foi cadastrado -->
+                                            <?php foreach ($dados_ingredientes as $index => $ingrediente) : ?>
+                                                <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                                                    <td></td>
+                                                    <td> <?php echo $ingrediente['nome']; ?> </td>
+                                                    <td> <?php echo $ingrediente['descricao']; ?> </td>
+                                                    <td>
+                                                        <a onclick="" class="remover-restaurante" href="pageReceitaIngreMedida.php?idIngrediente=<?php echo $ingrediente['idIngrediente']; ?>&acao=delete">
+                                                            <span class="material-symbols-outlined"> delete </span> 
+                                                        </a>
+                                                        <a onclick="editarIngrediente(<?php echo $ingrediente['idIngrediente'] ?>, '<?php echo $ingrediente['nome'] ?>', '<?php echo $ingrediente['descricao']; ?>')" href="#" class="editar-ingrediente" id="btn-salvar-ingrediente" data-id="<?php echo $ingrediente['idIngrediente']; ?>"> 
+                                                            <span class="material-symbols-outlined"> edit </span> 
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div class="conteiner-operacoes">
-                                <button type="submit" name="salvar_ingredientes" class="button">Salvar</button>
-                            </div>
-                        </form>
+                        </section>
                     </div>
+                    <div class="col">
+                        <!-- Medida -->
+                        <section>
+                            <div class="continer">
+                                <div class="box-form">
+                                    <h4>Medida</h4>
+                                    <!-- Formulário de Cadastro -->
+                                    <form method="POST" action="../../../controller/medidaController.php">
+                                        <input type="hidden" name="acaoM" id="acaoM" value="salvarM">
+                                        <input type="hidden" name="idMedida" id="idMedida" value="">
+                                        <div class="conteiner-dados">
+                                            <label for="medida" class="form-label">Medida</label>
+                                            <input type="text" class="form-control form-control-sm"  id="medida" name="medida" required>
+                                        </div>
 
-                    <div class="table-lista">
-                        <h3>Lista de Ingredientes</h3>
-                        <table class="table" id="table" border="1" align="right">
-                            <thead>
-                                <tr>
-                                    <th class="select-column">-</th>
-                                    <th>Nome</th>
-                                    <th>Descrição</th>
-                                    <th class="operacao" colspan="2">OPERAÇÕES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Gerando de acordo com o que foi cadastrado -->
-                                <?php foreach ($dados_ingredientes as $index => $ingrediente) : ?>
-                                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                                        <td></td>
-                                        <td> <?php echo $ingrediente['nome']; ?> </td>
-                                        <td> <?php echo $ingrediente['descricao']; ?> </td>
-                                        <td>
-                                            <a onclick="" class="remover-restaurante" href="pageReceitaIngreMedida.php?idIngrediente=<?php echo $ingrediente['idIngrediente']; ?>&acao=delete">
-                                                Remover </a>
-                                            <a onclick="editarIngrediente(<?php echo $ingrediente['idIngrediente'] ?>, '<?php echo $ingrediente['nome'] ?>', '<?php echo $ingrediente['descricao']; ?>')" href="#" class="editar-ingrediente" id="btn-salvar-ingrediente" data-id="<?php echo $ingrediente['idIngrediente']; ?>"> Editar </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                        <div>
+                                            <button type="submit" name="salvar_medida" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="table-lista">
+                                    <h4>Lista de Medida</h4>
+                                    <table class="table" id="table" border="1">
+                                        <thead>
+                                            <tr>
+                                                <th class="select-column">-</th>
+                                                <th>Medida</th>
+                                                <th class="operacao" colspan="2">OPERAÇÕES</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Gerando de acordo com o que foi cadastrado -->
+                                            <?php foreach ($dados_medidas as $index => $medida) : ?>
+                                                <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
+                                                    <td></td>
+                                                    <td> <?php echo $medida['descricao']; ?> </td>
+                                                    <td>
+                                                        <a onclick="" class="remover-medida" href="pageReceitaIngreMedida.php?idMedida=<?php echo $medida['idMedida'];  ?>&acao=deleteM">
+                                                            Remover </a>
+                                                        <a onclick="editarMedida(<?php echo $medida['idMedida'] ?>, '<?php echo $medida['descricao']; ?>')" href="#" class="editar-medida" id="btn-salvar-medida" data-id="<?php echo $media['idMedida']; ?>"> Editar </a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
-            </section>
-
-            <!-- Medida -->
-            <section>
-
-                <div class="continer">
-                    <div class="box-form">
-                        <h3>Medida</h3>
-                        <!-- Formulário de Cadastro -->
-                        <form method="POST" action="../../../controller/medidaController.php">
-                            <input type="hidden" name="acaoM" id="acaoM" value="salvarM">
-                            <input type="hidden" name="idMedida" id="idMedida" value="">
-                            <div class="conteiner-dados">
-                                <label for="medida">Medida:</label>
-                                <input type="text" id="medida" name="medida" required>
-                            </div>
-
-                            <div>
-                                <button type="submit" name="salvar_medida">Salvar</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="table-lista">
-                        <h3>Lista de Medida</h3>
-                        <table class="table" id="table" border="1" align="right">
-                            <thead>
-                                <tr>
-                                    <th class="select-column">-</th>
-                                    <th>Medida</th>
-                                    <th class="operacao" colspan="2">OPERAÇÕES</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Gerando de acordo com o que foi cadastrado -->
-                                <?php foreach ($dados_medidas as $index => $medida) : ?>
-                                    <tr class="<?php echo ($index % 2 == 0) ? 'even-row' : 'odd-row'; ?>">
-                                        <td></td>
-                                        <td> <?php echo $medida['descricao']; ?> </td>
-                                        <td>
-                                            <a onclick="" class="remover-medida" href="pageReceitaIngreMedida.php?idMedida=<?php echo $medida['idMedida'];  ?>&acao=deleteM">
-                                                Remover </a>
-                                            <a onclick="editarMedida(<?php echo $medida['idMedida'] ?>, '<?php echo $medida['descricao']; ?>')" href="#" class="editar-medida" id="btn-salvar-medida" data-id="<?php echo $media['idMedida']; ?>"> Editar </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
+            </div>
         </div>
 
         <script src="../../js/ingredienteAlteracao.js"></script>
