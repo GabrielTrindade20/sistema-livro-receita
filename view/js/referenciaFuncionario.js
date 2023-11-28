@@ -1,6 +1,6 @@
 function carregarFuncionario(valor) {
     // Realize uma solicitação AJAX para o script PHP de atualização
-    if (valor.length >= 2) {
+    if (valor.length >= 1) {
         // Crie uma instância do objeto XMLHttpRequest
         var xhr = new XMLHttpRequest();
 

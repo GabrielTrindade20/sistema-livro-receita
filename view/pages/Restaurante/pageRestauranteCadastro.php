@@ -66,8 +66,9 @@ include_once('../../../controller/restauranteController.php');
                     </div>
 
                     <div class="nova">
-                    <a href="cadastrarRestaurante.php">Cadastrar Restaurante</a>
-
+                        <div class="box-link">
+                            <a href="cadastrarRestaurante.php">Cadastrar Restaurante</a>
+                        </div>
                     </div>
 
                     <form method="POST" action="../../../controller/referenciaController.php">
@@ -103,7 +104,7 @@ include_once('../../../controller/restauranteController.php');
 
                         </div>
                     </form>
-                    
+
                 </div>
             </section>
         </div>

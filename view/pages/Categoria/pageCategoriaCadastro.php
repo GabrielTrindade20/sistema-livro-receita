@@ -42,10 +42,10 @@ include_once('../../../controller/protectSubFolders.php');
                     <a href="../pageCategoria.php"> Categorias </a> >
                     <a href="#" class="pagina-atual"> Categoria Cadastro</a>
                 </div>
+                <div class="titulo">
+                    <h1>Categoria</h1>
+                </div>
                 <div class="conteiner-abas">
-                    <div class="title-container">
-                        <h1>Categoria</h1>
-                    </div>
                     <!-- Formulário de Cadastro -->
                     <form method="POST" action="../../../controller/categoriaController.php">
 
@@ -66,23 +66,9 @@ include_once('../../../controller/protectSubFolders.php');
 
             </section>
         </div>
-   <!-- Bootstrap JS -->
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
 </html>
- <!-- Menu lateral - vem de outra página -->
- <?php include '../../components/menuSub1.php'; ?>
-    <!-- Page Content -->
-    <div id="content">
-        <div class="container-fluid">
-            <header>
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                </button>
-            </header>
-        </div>
-        <div class="conteudo">
-
-        </div>

@@ -59,12 +59,10 @@ if (isset($_GET['idCargo'])) {
             </div>
             <!-- Estrutura do formulário de edição -->
             <section>
-
+                <div class="titulo">
+                    <h1>Edição Cargo</h1>
+                </div>
                 <div class="conteiner-abas">
-                    <div class="title-container">
-                        <h1>Edição Cargo</h1>
-                    </div>
-
                     <!-- Formulário de Alteraçao -->
                     <form method="POST" action="../../../controller/cargoController.php">
                         <div class="conteiner-dados-funcionario">

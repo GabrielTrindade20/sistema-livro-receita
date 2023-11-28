@@ -48,8 +48,7 @@ include_once('../../../model/funcoes.php');
             </div>
             <!-- Cadastro do funcionario -->
             <section>
-
-                <div>
+                <div class="titulo">
                     <h1>Informações</h1>
                 </div>
 

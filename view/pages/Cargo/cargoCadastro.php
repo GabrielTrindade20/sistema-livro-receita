@@ -44,11 +44,10 @@ include_once('../../../model/modelCargo/cargoModel.php');
                 <a href="#" class="pagina-atual"> Cargo</a>
             </div>
             <section>
-
+                <div class="titulo">
+                    <h1>Cadastrar Cargo</h1>
+                </div>
                 <div class="conteiner-abas">
-                    <div class="title-container">
-                        <h1>Cadastrar Cargo</h1>
-                    </div>
 
                     <!-- Formulário de Cadastro -->
                     <form action="../../../controller/cargoController.php" method="POST">

@@ -57,11 +57,12 @@ if (isset($_GET['idCategoria'])) {
                     <a href="homePage.php">Homepage </a> >
                     <a href="../pageCategoria.php"> Categorias </a> >
                     <a href="#" class="pagina-atual"> Categoria Edição</a>
-                </div>
-                <div class="conteiner-abas">
-                    <div class="title-container">
+                </div>   
+                <div class="titulo">
                         <h1>Editar Categoria</h1>
                     </div>
+                <div class="conteiner-abas">
+                 
                     <!-- Formulário de Alteraçao -->
                     <form method="POST" action="../../../controller/categoriaController.php">
                         <div class="conteiner-dados-funcionario">
