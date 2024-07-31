@@ -1,4 +1,4 @@
-<h1>Projeto de Arcevo de Recitas</h1>
+<h1>Projeto de Arcevo de Receitas</h1>
 
 > ## Status: Em desenvolvimento :warning:
 
